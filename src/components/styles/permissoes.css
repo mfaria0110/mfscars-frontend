@@ -1,0 +1,90 @@
+.perm-titulo.incompleto {
+  color: #f59e0b;
+}
+
+.permissoes-page {
+  padding: 20px;
+}
+
+.permissoes-topo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.permissoes-topo input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.permissoes-topo button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.permissoes-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.permissoes-col {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.perm-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.role-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.role-info {
+  cursor: pointer;
+}
+
+.role-info span {
+  display: block;
+  font-size: 12px;
+  color: #666;
+}
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.perm-grupo {
+  margin-bottom: 20px;
+}
+
+.perm-titulo {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.perm-count {
+  font-size: 12px;
+  color: #666;
+}

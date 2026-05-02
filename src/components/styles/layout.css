@@ -1,0 +1,38 @@
+/* ===============================
+   LAYOUT BASE
+================================ */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===============================
+   CONTEÚDO PRINCIPAL
+================================ */
+
+.main-content {
+  margin-left: 220px; /* 🔥 espaço da sidebar */
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================
+   CONTEÚDO INTERNO
+================================ */
+.page-content {
+  flex: 1;
+  padding: 8px 20px 20px 20px;
+
+  overflow-y: auto;
+}
+
+/* ===============================
+   SIDEBAR COLLAPSED
+================================ */
+
+.sidebar.collapsed + .main-content {
+  margin-left: 70px;
+}

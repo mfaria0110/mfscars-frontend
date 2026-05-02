@@ -1,0 +1,198 @@
+/* ===============================
+   🔝 HEADER
+================================ */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 20px;
+
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+  width: 100%;
+  box-sizing: border-box;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header-perfil {
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header-loja span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ===============================
+   LADO ESQUERDO
+================================ */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex-wrap: wrap;
+ 
+}
+
+/* 🔥 ESSENCIAL: evita overflow */
+.header-left > * {
+  min-width: 0;
+}
+
+/* LOJA */
+.header-loja {
+  display: flex;
+  flex-direction: column;
+  color: #2d20d5;
+}
+
+.header-loja strong {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.header-loja span {
+  font-size: 15px;
+  color: #777;
+}
+
+/* ===============================
+   SELECT (CORRIGIDO 100%)
+================================ */
+
+.header-select-wrapper {
+  display: flex;
+  min-width: 0; /* 🔥 ESSENCIAL */
+}
+
+.header-select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  min-width: 180px;
+  max-width: 300px;
+  width: auto;
+  margin-top: -10px;
+}
+
+/* ===============================
+   PLANO
+================================ */
+
+.header-plano {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  background: #e0f2fe;
+  color: #0369a1;
+
+  white-space: nowrap;
+}
+
+/* ===============================
+   LADO DIREITO
+================================ */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.header-user-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* USUÁRIO */
+.header-user {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* BOTÕES */
+.header-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+
+  background: #f3f4f6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header-btn:hover {
+  background: #e5e7eb;
+}
+
+/* LOGOUT */
+.header-logout {
+  background: #ef4444;
+  color: white;
+}
+
+.header-logout:hover {
+  background: #dc2626;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .header-left {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .header-select-wrapper {
+    width: 100%;
+  }
+
+  .header-select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}

@@ -1,0 +1,407 @@
+/* ===============================
+   🚗 VEÍCULOS
+================================ */
+
+.veiculos-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+.veiculos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.veiculos-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ===============================
+   FILTROS
+================================ */
+.veiculos-filtros {
+  display: grid;
+
+  /* 🔥 RESPONSIVO DE VERDADE */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+  gap: 10px;
+
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+  width: 100%;
+}
+
+.filtro-marca {
+  grid-column: span 2;
+}
+
+.filtro-modelo {
+  grid-column: span 2;
+}
+
+.filtro-cor {
+  grid-column: span 0.5;
+}
+
+/* 🔥 INPUT CORRIGIDO (PRINCIPAL FIX) */
+.veiculos-filtros input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box; /* 🔥 evita overflow */
+
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  font-size: 14px;
+  background: #f9fafb;
+
+  transition: 0.2s;
+}
+
+.veiculos-filtros input:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+
+/* BOTÃO */
+
+.veiculos-filtros button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.veiculos-filtros button:hover {
+  background: #1d4ed8;
+}
+
+/* ===============================
+   GRID
+================================ */
+
+.veiculos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 260px));
+  justify-content: center;
+  gap: 20px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.veiculo-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.veiculo-card:hover {
+  transform: translateY(-4px);
+}
+
+/* IMAGEM */
+
+.veiculo-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* CONTEÚDO */
+
+.veiculo-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* TÍTULO */
+
+.veiculo-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* SUBINFO */
+
+.veiculo-card .modelo {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* TEXTO PADRÃO */
+
+.veiculo-card span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* PREÇO */
+
+.veiculo-card .valor {
+  font-size: 18px;
+  font-weight: 700;
+  color: #16a34a;
+  margin-top: 5px;
+}
+
+/* ===============================
+   BOTÕES
+================================ */
+
+.veiculo-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.veiculo-actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* CORES */
+
+.btn-editar {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-excluir {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-vender {
+  background: #22c55e;
+  color: white;
+}
+
+/* ===============================
+   EMPTY
+================================ */
+
+.veiculos-empty {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  margin-top: 6px;
+}
+
+.tabs-header button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+
+.tabs-header button.active {
+  background: #2563eb;
+  color: white;
+}
+
+.tabs-content {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.opcionais-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.op-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ceefec;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[name="valor"] {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+.btn-save {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+  width: 100px;
+}
+
+.btn-save:hover {
+  background: #1d4ed8;
+}
+
+.btn-save.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 18px;
+  z-index: 999;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: -4px;
+  display: block;
+}
+
+/* CONTAINER */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* LINHA SUPERIOR */
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 15px;
+}
+
+/* GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+/* GRUPO */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* LABEL */
+.form-group label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* INPUT */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  transition: 0.2s;
+  height: 35px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+
+/* TEXTAREA */
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 1200px) {
+  .veiculos-filtros {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .veiculos-filtros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

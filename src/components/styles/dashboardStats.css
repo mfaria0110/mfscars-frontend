@@ -1,0 +1,60 @@
+.stats {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+
+  margin-bottom: 10px;
+}
+
+/* CARD */
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 90px; /* 🔥 mantém padrão */
+}
+
+/* TEXTO */
+.stat-card span {
+  font-size: 13px;
+  color: #777;
+}
+
+/* VALOR */
+.stat-card strong {
+  display: block;
+  margin-top: 6px;
+
+  font-size: 22px;
+}
+
+/* ÚLTIMO (ex: plano ou alerta) */
+.stat-card:last-child strong {
+  color: orange;
+}
+
+@media (max-width: 480px) {
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card strong {
+    font-size: 20px;
+  }
+
+}

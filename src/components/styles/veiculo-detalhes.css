@@ -1,0 +1,184 @@
+/* ===============================
+   👤 PROPRIETÁRIO
+================================ */
+
+.proprietario-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* padrão geral */
+.proprietario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 15px;
+}
+
+/* específico do proprietário */
+.proprietario-container .proprietario-grid {
+  grid-template-columns:
+    2fr
+    1.2fr
+    1.2fr
+    2fr;
+}
+
+.proprietario-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.proprietario-group2 {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  background: #f9fafb;
+ 
+}
+
+.proprietario-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* ===============================
+   🔥 PADRÃO CAMPOS FORM
+============================== */
+
+.proprietario-group input,
+.proprietario-group select,
+.proprietario-group textarea {
+  height: 33px;              /* 🔥 altura padrão */
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+/* textarea maior */
+.proprietario-group2 textarea {
+  height: auto;
+  min-height: 80px;
+  padding: 10px 14px;
+}
+
+/* foco */
+.proprietario-group input:focus,
+.proprietario-group select:focus,
+.proprietario-group textarea:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+.proprietario-group input:focus {
+  border-color: #2563eb;
+  background: white;
+  outline: none;
+}
+
+/* botão */
+.proprietario-btn {
+  align-self: flex-start;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.proprietario-btn:hover {
+  background: #1d4ed8;
+}
+
+
+/* responsivo */
+@media (max-width: 900px) {
+  .proprietario-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===============================
+   📎 DOCUMENTOS
+================================ */
+
+.documentos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.documentos-upload {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.documentos-upload select,
+.documentos-upload input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.documentos-upload button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+}
+
+.documentos-upload button:hover {
+  background: #15803d;
+}
+
+/* lista */
+.documentos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.documento-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.documento-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.documento-tipo {
+  font-weight: 600;
+}
+
+.documento-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.documento-link:hover {
+  text-decoration: underline;
+}

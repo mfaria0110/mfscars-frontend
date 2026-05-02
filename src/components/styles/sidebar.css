@@ -1,0 +1,203 @@
+/* ===============================
+   SIDEBAR BASE
+================================ */
+.sidebar {
+  position: fixed;        /* 🔥 FIXA */
+  top: 0;                 /* 🔥 começa no topo */
+  left: 0;
+
+  width: 220px;
+  height: 100vh;
+
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  transition: width 0.3s ease;
+
+  z-index: 100; /* 🔥 fica acima */
+}
+
+/* ===============================
+   COLLAPSED
+================================ */
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* ===============================
+   LOGO
+================================ */
+
+.sidebar-logo {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* centraliza quando colapsado */
+.sidebar.collapsed .sidebar-logo {
+  justify-content: center;
+}
+
+/* ===============================
+   BOTÃO TOGGLE
+================================ */
+
+.sidebar-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.sidebar-toggle button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #aaa;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.sidebar-toggle button:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ===============================
+   MENU
+================================ */
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ITEM */
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 5px;
+  border-radius: 8px;
+
+  text-decoration: none;
+  color: #cbd5f5;
+
+  transition: 0.2s;
+}
+
+/* REMOVE SUBLINHADO GLOBAL */
+.sidebar-item,
+.sidebar-item:visited,
+.sidebar-item:hover {
+  text-decoration: none;
+}
+
+/* HOVER */
+
+.sidebar-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+/* ATIVO (NavLink) */
+
+.sidebar-item.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #fff;
+}
+
+/* ÍCONE */
+
+.sidebar-icon {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* TEXTO */
+
+.sidebar-text {
+  font-size: 13px;
+  transition: opacity 0.2s;
+}
+
+/* ===============================
+   COLLAPSE COMPORTAMENTO
+================================ */
+
+/* esconde texto */
+.sidebar.collapsed .sidebar-text {
+  display: none;
+}
+
+/* centraliza itens */
+.sidebar.collapsed .sidebar-item {
+  justify-content: center;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* esconde footer no collapse */
+.sidebar.collapsed .sidebar-footer {
+  display: none;
+}
+
+.sidebar-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: auto;
+}
+
+.sidebar-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.badge {
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+@media (max-width: 1024px) {
+
+  .sidebar:hover {
+    width: 220px;
+  }
+
+  .sidebar:hover .sidebar-text {
+    display: inline;
+  }
+
+  .sidebar:hover .sidebar-item {
+    justify-content: flex-start;
+  }
+
+}

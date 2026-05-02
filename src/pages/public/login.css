@@ -1,0 +1,128 @@
+/* ===============================
+   🔐 LOGIN PAGE (FULL SCREEN)
+================================ */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* FUNDO TOTAL */
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #1e3c72, #2563eb);
+}
+
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+
+  background: white;
+  padding: 35px 25px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.login-card {
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ANIMAÇÃO SUAVE */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TÍTULO */
+.login-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* SUBTÍTULO */
+.login-subtitle {
+  text-align: center;
+  font-size: 20px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* INPUT */
+.login-input {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.login-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  outline: none;
+}
+
+/* BOTÃO */
+.login-btn {
+  margin-top: 10px;
+
+  padding: 14px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.login-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* DESABILITADO */
+.login-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVO */
+@media(max-width: 400px){
+  .login-card {
+    padding: 25px 15px;
+  }
+}
