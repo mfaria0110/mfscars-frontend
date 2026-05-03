@@ -132,27 +132,29 @@ function abrirNovo() {
   /* ===============================
      EDITAR
   ============================== */
-  function editarUsuario(u) {
+async function editarUsuario(u) {
 
   if (!temPermissao("usuario.editar")) {
     alert("Sem permissão para editar usuários")
     return
   }
 
-    const lojasUsuario =
-      typeof u.lojas === "string"
-        ? JSON.parse(u.lojas)
-        : (u.lojas || [])
+  try {
+    const res = await api.get(`/usuarios/${u.id}`)
 
-    setUsuarioSelecionado(u)
+    const usuario = res.data
+
+    const lojasUsuario = usuario.lojas || []
+
+    setUsuarioSelecionado(usuario)
 
     setForm({
-      nome: u.nome,
-      email: u.email,
+      nome: usuario.nome,
+      email: usuario.email,
       senha: "",
-      tipo: u.tipo || "usuario",
-      ativo: u.ativo ?? true,
-      empresa_id: u.empresa_id,
+      tipo: usuario.tipo || "usuario",
+      ativo: usuario.ativo ?? true,
+      empresa_id: usuario.empresa_id,
       lojas: lojasUsuario.map(l => ({
         loja_id: Number(l.loja_id),
         perfil: l.perfil || "vendedor"
@@ -160,7 +162,13 @@ function abrirNovo() {
     })
 
     setModalOpen(true)
+
+  } catch (e) {
+    console.error(e)
+    alert("Erro ao carregar usuário")
   }
+}
+
 
   /* ===============================
      SALVAR
@@ -173,10 +181,13 @@ function abrirNovo() {
       ).values()
     )
 
-    if (!lojasAtualizadas.length) {
-      alert("Selecione ao menos uma loja")
-      return
-    }
+if (
+  form.tipo === "usuario" &&
+  !lojasAtualizadas.length
+) {
+  alert("Selecione ao menos uma loja")
+  return
+}
 
       const dados = {
         ...form,

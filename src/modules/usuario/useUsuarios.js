@@ -51,9 +51,7 @@ export function useUsuarios() {
       return res.data || []
     },
 
-    enabled:
-      Boolean(lojaId) &&
-      podeVisualizar,
+    enabled: podeVisualizar,
 
     retry: false,
 
