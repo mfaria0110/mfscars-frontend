@@ -1,5 +1,4 @@
 import { requestPublic } from './api-public.js';
-//import { renderFooter } from '../public/footer.js';
 import { renderFooter } from './footer.js';
 
 const API_URL = "https://mfscars-backend.onrender.com";
@@ -173,7 +172,7 @@ if (!res.ok) {
     const FRONT_URL = "https://mfscars-frontend.onrender.com";
 
     setTimeout(() => {
-    window.location.href = `${FRONT_URL}/login`;
+    window.location.href = `${FRONT_URL}`;
     }, 1500);
 
   } catch (err) {
