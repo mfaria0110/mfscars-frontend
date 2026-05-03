@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001";
+const API_URL = "https://mfscars-backend.onrender.com";
 
 /* ===============================
    🔓 REQUEST PUBLICO
@@ -7,7 +7,7 @@ const API_URL = "http://localhost:3001";
 export async function requestPublic(url, options = {}) {
 
   try {
- 
+
     const headers = {
       ...(options.headers || {})
     };
@@ -23,11 +23,11 @@ export async function requestPublic(url, options = {}) {
 
     let data = null;
 
-      try {
-        data = await response.json();
-      } catch {
-        data = null;
-      }
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
 
     return {
       ok: response.ok,
