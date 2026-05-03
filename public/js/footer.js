@@ -5,7 +5,7 @@ import { requestPublic } from './api-public.js';
 ================================ */
 async function carregarPlanos(){
 
-  const res = await requestPublic("/planos");
+  const res = await requestPublic("/public/planos");
 
   if(!res.ok){
     console.error("Erro ao buscar planos");
