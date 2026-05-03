@@ -68,7 +68,7 @@ async function carregarMarcas(){
 
   try{
 
-    const res = await requestPublic("/catalogo/marcas");
+     const res = await requestPublic("/public/catalogo/marcas");
 
     if(!res.ok){
       console.error("Erro ao buscar marcas");
@@ -117,7 +117,9 @@ async function carregarVeiculos(){
 
     params.append("page", paginaAtual);
 
-  const res = await requestPublic(`/veiculos?${params.toString()}`);
+
+const res = await requestPublic(`/public/veiculos?${params.toString()}`);
+
 
     if(!res.ok){
       grid.innerHTML = `<p style="text-align:center">Erro ao carregar veículos</p>`;
