@@ -69,7 +69,7 @@ app.innerHTML = `
 
 <div style="margin-top:20px;text-align:center;">
 Já tem conta?
-<a href="../frontend/index.html">Entrar</a>
+<a href="../index.html">Entrar</a>
 </div>
 
 </div>
