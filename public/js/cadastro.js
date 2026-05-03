@@ -170,10 +170,10 @@ if (!res.ok) {
     msg.style.color = "green";
     msg.innerText = "Conta criada com sucesso!";
 
-    const FRONT_URL = "http://localhost:5173";
+    const FRONT_URL = "https://mfscars-frontend.onrender.com";
 
     setTimeout(() => {
-      window.location.href = `${FRONT_URL}/login`;
+    window.location.href = `${FRONT_URL}/login`;
     }, 1500);
 
   } catch (err) {
