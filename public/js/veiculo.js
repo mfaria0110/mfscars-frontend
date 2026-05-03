@@ -1,6 +1,6 @@
 import { requestPublic } from './api-public.js';
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://mfscars-backend.onrender.com";
 
 const app = document.getElementById("app-public");
 app.classList.add("veiculo-page");

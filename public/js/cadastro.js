@@ -2,7 +2,7 @@ import { requestPublic } from './api-public.js';
 //import { renderFooter } from '../public/footer.js';
 import { renderFooter } from './footer.js';
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://mfscars-backend.onrender.com";
 
 const app = document.getElementById("app-public");
 
