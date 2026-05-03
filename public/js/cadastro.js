@@ -91,7 +91,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.getElementById("btnVoltar").onclick = () => {
-  window.location = "/public/index.html";
+  window.location = "/public/home.html";
 };
 
 

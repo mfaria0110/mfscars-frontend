@@ -77,7 +77,7 @@ const id = params.get("id");
 
 if (!id) {
   alert("Veículo inválido");
-  window.location = "/index.html";
+  window.location = "/home.html";
 }
 
 /* ===============================

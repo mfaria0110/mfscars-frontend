@@ -89,7 +89,7 @@ const id = params.get("id");
 
 if(!id){
   alert("Loja inválida");
-  window.location = "/public/index.html";
+  window.location = "/public/home.html";
 }
 
 /* ===============================

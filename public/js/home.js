@@ -1,6 +1,6 @@
 import { requestPublic } from './api-public.js';
 
-const API_URL = "http://localhost:3001";
+const API_URL = "https://mfscars-backend.onrender.com";
 
 let paginaAtual = 1;
 let totalPaginas = 1;
@@ -15,7 +15,7 @@ app.innerHTML = `
 <div class="header">
   <div class="logo">🚗 MFS Cars</div>
   <div class="menu">
-    <a href="/public/cadastro.html">Cadastrar loja</a>
+    <a href="/cadastro.html">Cadastrar loja</a>
   </div>
 </div>
 
@@ -68,7 +68,7 @@ async function carregarMarcas(){
 
   try{
 
-    const res = await requestPublic("/public/catalogo/marcas");
+    const res = await requestPublic("/catalogo/marcas");
 
     if(!res.ok){
       console.error("Erro ao buscar marcas");
@@ -117,7 +117,7 @@ async function carregarVeiculos(){
 
     params.append("page", paginaAtual);
 
-  const res = await requestPublic(`/public/veiculos?${params.toString()}`);
+  const res = await requestPublic(`/veiculos?${params.toString()}`);
 
     if(!res.ok){
       grid.innerHTML = `<p style="text-align:center">Erro ao carregar veículos</p>`;
@@ -242,11 +242,11 @@ function buscar(){
 ============================== */
 
 window.abrirVeiculo = function(id){
-  window.location = `/public/veiculo.html?id=${id}`;
+  window.location = `/veiculo.html?id=${id}`;
 }
 
 window.abrirLoja = function(lojaId){
-  window.location = `/public/empresa.html?id=${lojaId}`;
+  window.location = `/empresa.html?id=${lojaId}`;
 }
 
 /* ===============================
