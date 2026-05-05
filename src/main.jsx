@@ -15,27 +15,19 @@ const queryClient =
   new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus:
-          false,
-
+        refetchOnWindowFocus: false,
         retry: false,
-
-        staleTime:
-          1000 * 60 * 2
+        staleTime: 1000 * 60 * 2
       }
     }
   })
 
 /* dark mode */
 const dark =
-  localStorage.getItem(
-    "dark"
-  ) === "true"
+  localStorage.getItem("dark") === "true"
 
 if (dark) {
-  document.documentElement.classList.add(
-    "dark"
-  )
+  document.documentElement.classList.add("dark")
 }
 
 const token =
@@ -45,18 +37,25 @@ if (token) {
   iniciarIdleLogout()
 }
 
-ReactDOM.createRoot(
-  document.getElementById(
-    "root"
-  )
-).render(
-  <QueryClientProvider
-    client={queryClient}
-  >
-    <Router />
+/* ===========================
+   🌐 CONTROLE DE DOMÍNIO
+=========================== */
+const host = window.location.hostname
+const path = window.location.pathname
 
-    <Toaster
-      position="top-right"
-    />
+// 👉 se NÃO for app e estiver na raiz
+if (!host.startsWith("app.") && path === "/") {
+  window.location.replace("/home")
+}
+
+/* ===========================
+   🚀 RENDER APP
+=========================== */
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <QueryClientProvider client={queryClient}>
+    <Router />
+    <Toaster position="top-right" />
   </QueryClientProvider>
 )
