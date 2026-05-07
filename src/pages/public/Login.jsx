@@ -42,7 +42,7 @@ export default function Login() {
       )
 
       // ✅ CORRIGIDO
-      navigate("/veiculos")
+      window.location.href = "/veiculos"
 
     } catch (error) {
 
