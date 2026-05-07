@@ -26,11 +26,11 @@ export default function VeiculoCard({ v, invalidate, onCancelar }) {
   }
 
 function handleVender() {
-  navigate(`/app/vendas/nova?veiculo_id=${v.id}`)
+  navigate(`/vendas/nova?veiculo_id=${v.id}`)
 }
 
   function handleEditar() {
-    navigate(`/app/veiculos/editar/${v.id}`)
+    navigate(`/vendas/nova?veiculo_id=${v.id}`)
   }
 
   async function handleExcluir() {
