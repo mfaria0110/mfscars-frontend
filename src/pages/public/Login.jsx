@@ -5,36 +5,59 @@ import { useAuth } from "../../modules/auth/useAuth"
 import "./login.css"
 
 export default function Login() {
+
   const navigate = useNavigate()
 
   const { login, loading } = useAuth()
 
-  const [email, setEmail] = useState("")
-  const [senha, setSenha] = useState("")
+  const [email, setEmail] =
+    useState("")
+
+  const [senha, setSenha] =
+    useState("")
 
   async function handleLogin() {
+
     if (!email || !senha) {
-      toast.error("Preencha email e senha")
+
+      toast.error(
+        "Preencha email e senha"
+      )
+
       return
     }
 
     try {
-      const ok = await login(email, senha)
+
+      const ok =
+        await login(
+          email,
+          senha
+        )
 
       if (!ok) return
 
-      toast.success("Login realizado com sucesso")
+      toast.success(
+        "Login realizado com sucesso"
+      )
 
-      navigate("/app/veiculos")
+      // ✅ CORRIGIDO
+      navigate("/veiculos")
 
     } catch (error) {
+
       console.error(error)
-      toast.error("Erro ao conectar com o servidor")
+
+      toast.error(
+        "Erro ao conectar com o servidor"
+      )
     }
   }
 
   return (
+
     <div className="login-page">
+
       <div className="login-card">
 
         <h1 className="login-title">
@@ -50,7 +73,9 @@ export default function Login() {
           placeholder="Email"
           value={email}
           onChange={(e) =>
-            setEmail(e.target.value)
+            setEmail(
+              e.target.value
+            )
           }
         />
 
@@ -60,7 +85,9 @@ export default function Login() {
           placeholder="Senha"
           value={senha}
           onChange={(e) =>
-            setSenha(e.target.value)
+            setSenha(
+              e.target.value
+            )
           }
         />
 
@@ -69,12 +96,17 @@ export default function Login() {
           onClick={handleLogin}
           disabled={loading}
         >
-          {loading
-            ? "Entrando..."
-            : "Entrar"}
+
+          {
+            loading
+              ? "Entrando..."
+              : "Entrar"
+          }
+
         </button>
 
       </div>
+
     </div>
   )
 }
