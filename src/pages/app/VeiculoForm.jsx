@@ -618,18 +618,15 @@ if (!id && veiculoId) {
         {doc.tipo}
       </span>
 
-      <a
-        className="documento-link"
-        href={
-  doc.arquivo.startsWith("http")
-    ? doc.arquivo
-    : `${import.meta.env.VITE_API_URL}/uploads/${doc.arquivo}`
-}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Ver arquivo
-      </a>
+<a
+  className="documento-link"
+  href={doc.arquivo}
+  target="_blank"
+  rel="noreferrer"
+>
+  Ver arquivo
+</a>
+
     </div>
 
 <button
