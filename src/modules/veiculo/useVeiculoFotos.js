@@ -1,50 +1,75 @@
 import { useState, useEffect } from "react"
 import api from "../../api/api"
 import toast from "react-hot-toast"
+
 import { useUIStore } from "../../store/uiStore"
 import { usePermissao } from "../permissao/usePermissao"
 
+const API_URL =
+  import.meta.env.VITE_API_URL
+
 export function useVeiculoFotos(id) {
-  const [fotos, setFotos] = useState([])
-  const [preview, setPreview] = useState([])
 
-  const setLoadingGlobal = useUIStore(
-    state => state.setLoading
-  )
+  const [fotos, setFotos] =
+    useState([])
 
-  const { temPermissao } = usePermissao()
+  const [preview, setPreview] =
+    useState([])
 
-  const podeVisualizar = temPermissao(
-    "veiculo.visualizar"
-  )
+  const setLoadingGlobal =
+    useUIStore(
+      state => state.setLoading
+    )
 
-  const podeEditar = temPermissao(
-    "veiculo.editar"
-  )
+  const { temPermissao } =
+    usePermissao()
+
+  const podeVisualizar =
+    temPermissao(
+      "veiculo.visualizar"
+    )
+
+  const podeEditar =
+    temPermissao(
+      "veiculo.editar"
+    )
 
   useEffect(() => {
-    if (!id || !podeVisualizar) return
+
+    if (
+      !id ||
+      !podeVisualizar
+    ) return
 
     async function carregarFotos() {
+
       try {
+
         setLoadingGlobal(true)
 
-        const res = await api.get(
-          `/veiculos/${id}/fotos`
-        )
+        const res =
+          await api.get(
+            `/veiculos/${id}/fotos`
+          )
 
         const fotosBackend =
           res.data || []
 
         const previews =
           fotosBackend.map(f => ({
+
             id: f.id,
-            url: `http://localhost:3001/uploads/${f.url}`,
+
+            url:
+              `${API_URL}/uploads/${f.url}`,
+
             isBackend: true
           }))
 
         setPreview(previews)
+
       } catch (e) {
+
         console.error(
           "Erro ao carregar fotos",
           e
@@ -54,12 +79,15 @@ export function useVeiculoFotos(id) {
           e.response?.data?.erro ||
           "Erro ao carregar fotos"
         )
+
       } finally {
+
         setLoadingGlobal(false)
       }
     }
 
     carregarFotos()
+
   }, [
     id,
     podeVisualizar,
@@ -67,22 +95,30 @@ export function useVeiculoFotos(id) {
   ])
 
   function handleSelect(e) {
+
     if (!podeEditar) {
+
       toast.error(
         "Sem permissão para adicionar fotos"
       )
+
       return
     }
 
-    const files = Array.from(
-      e.target.files
-    )
+    const files =
+      Array.from(
+        e.target.files
+      )
 
     if (
-      preview.length + files.length >
-      6
+      preview.length +
+      files.length > 6
     ) {
-      toast.error("Máximo de 6 fotos")
+
+      toast.error(
+        "Máximo de 6 fotos"
+      )
+
       return
     }
 
@@ -91,15 +127,16 @@ export function useVeiculoFotos(id) {
       ...files
     ])
 
-    const previews = files.map(
-      file => ({
+    const previews =
+      files.map(file => ({
+
         file,
-        url: URL.createObjectURL(
-          file
-        ),
+
+        url:
+          URL.createObjectURL(file),
+
         isBackend: false
-      })
-    )
+      }))
 
     setPreview(prev => [
       ...prev,
@@ -108,19 +145,25 @@ export function useVeiculoFotos(id) {
   }
 
   async function remover(index) {
+
     if (!podeEditar) {
+
       toast.error(
         "Sem permissão para remover fotos"
       )
+
       return
     }
 
-    const item = preview[index]
+    const item =
+      preview[index]
 
     try {
+
       setLoadingGlobal(true)
 
       if (item.isBackend) {
+
         await api.delete(
           `/veiculos/fotos/${item.id}`
         )
@@ -145,6 +188,7 @@ export function useVeiculoFotos(id) {
       )
 
       setPreview(prev => {
+
         const novo = [...prev]
 
         URL.revokeObjectURL(
@@ -155,39 +199,47 @@ export function useVeiculoFotos(id) {
           (_, i) => i !== index
         )
       })
+
     } catch (e) {
+
       console.error(e)
 
       toast.error(
         e.response?.data?.erro ||
         "Erro ao remover foto"
       )
+
     } finally {
+
       setLoadingGlobal(false)
     }
   }
 
   async function upload(veiculoId) {
+
     if (!podeEditar) {
+
       toast.error(
         "Sem permissão para enviar fotos"
       )
+
       return
     }
 
     if (
       !veiculoId ||
       fotos.length === 0
-    )
-      return
+    ) return
 
     try {
+
       setLoadingGlobal(true)
 
       const formData =
         new FormData()
 
       fotos.forEach(f => {
+
         formData.append(
           "foto",
           f
@@ -195,8 +247,11 @@ export function useVeiculoFotos(id) {
       })
 
       await api.post(
+
         `/veiculos/${veiculoId}/fotos`,
+
         formData,
+
         {
           headers: {
             "Content-Type":
@@ -209,38 +264,52 @@ export function useVeiculoFotos(id) {
         "Fotos enviadas!"
       )
 
-      const res = await api.get(
-        `/veiculos/${veiculoId}/fotos`
-      )
+      const res =
+        await api.get(
+          `/veiculos/${veiculoId}/fotos`
+        )
 
       const fotosBackend =
         res.data || []
 
       setPreview(
+
         fotosBackend.map(f => ({
+
           id: f.id,
-          url: `http://localhost:3001/uploads/${f.url}`,
+
+          url:
+            `${API_URL}/uploads/${f.url}`,
+
           isBackend: true
         }))
       )
 
       setFotos([])
+
     } catch (e) {
+
       console.error(e)
 
       toast.error(
         e.response?.data?.erro ||
         "Erro ao enviar fotos"
       )
+
     } finally {
+
       setLoadingGlobal(false)
     }
   }
 
   return {
+
     preview,
+
     handleSelect,
+
     remover,
+
     upload
   }
 }
