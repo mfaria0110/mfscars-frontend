@@ -8,20 +8,15 @@ import {
 } from "../store/useAppStore"
 
 export default function PrivateRoute() {
+
   const accessToken =
     useAppStore(
       (state) =>
         state.accessToken
     )
 
-  const usuario =
-    useAppStore(
-      (state) =>
-        state.usuario
-    )
-
   /*
-    fallback para reload da aba
+    fallback para reload
   */
   const token =
     accessToken ||
@@ -29,7 +24,9 @@ export default function PrivateRoute() {
       "accessToken"
     )
 
-  if (!token || !usuario) {
+  // ✅ somente token
+  if (!token) {
+
     return (
       <Navigate
         to="/login"

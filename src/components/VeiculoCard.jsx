@@ -25,12 +25,12 @@ export default function VeiculoCard({ v, invalidate, onCancelar }) {
     })
   }
 
-function handleVender() {
-  navigate(`/vendas/nova?veiculo_id=${v.id}`)
-}
+  function handleVender() {
+    navigate(`/vendas/nova?veiculo_id=${v.id}`)
+  }
 
   function handleEditar() {
-    navigate(`/vendas/nova?veiculo_id=${v.id}`)
+    navigate(`/veiculos/editar/${v.id}`)
   }
 
   async function handleExcluir() {
