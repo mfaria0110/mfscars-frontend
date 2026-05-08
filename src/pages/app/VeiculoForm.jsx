@@ -620,7 +620,11 @@ if (!id && veiculoId) {
 
       <a
         className="documento-link"
-        href={`http://localhost:3001/uploads/${doc.arquivo}`}
+        href={
+  doc.arquivo.startsWith("http")
+    ? doc.arquivo
+    : `${import.meta.env.VITE_API_URL}/uploads/${doc.arquivo}`
+}
         target="_blank"
         rel="noreferrer"
       >
