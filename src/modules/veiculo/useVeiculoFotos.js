@@ -8,6 +8,34 @@ import { usePermissao } from "../permissao/usePermissao"
 const API_URL =
   import.meta.env.VITE_API_URL
 
+/* =========================
+   🔥 NORMALIZA URL
+========================= */
+function normalizarUrl(url) {
+
+  if (!url) {
+    return `${API_URL}/assets/sem-foto.jpg`
+  }
+
+  // já é URL completa
+  if (url.startsWith("http")) {
+
+    return url.replace(
+      "http://localhost:3001",
+      API_URL
+    )
+  }
+
+  // remove uploads duplicado
+  const limpa =
+    url.replace(
+      /^uploads\//,
+      ""
+    )
+
+  return `${API_URL}/uploads/${limpa}`
+}
+
 export function useVeiculoFotos(id) {
 
   const [fotos, setFotos] =
@@ -34,6 +62,9 @@ export function useVeiculoFotos(id) {
       "veiculo.editar"
     )
 
+  /* =========================
+     🔥 CARREGAR FOTOS
+  ========================= */
   useEffect(() => {
 
     if (
@@ -61,7 +92,9 @@ export function useVeiculoFotos(id) {
             id: f.id,
 
             url:
-              `${API_URL}/uploads/${f.url}`,
+              normalizarUrl(
+                f.url
+              ),
 
             isBackend: true
           }))
@@ -94,6 +127,9 @@ export function useVeiculoFotos(id) {
     setLoadingGlobal
   ])
 
+  /* =========================
+     🔥 SELECIONAR
+  ========================= */
   function handleSelect(e) {
 
     if (!podeEditar) {
@@ -144,6 +180,9 @@ export function useVeiculoFotos(id) {
     ])
   }
 
+  /* =========================
+     🔥 REMOVER
+  ========================= */
   async function remover(index) {
 
     if (!podeEditar) {
@@ -215,6 +254,9 @@ export function useVeiculoFotos(id) {
     }
   }
 
+  /* =========================
+     🔥 UPLOAD
+  ========================= */
   async function upload(veiculoId) {
 
     if (!podeEditar) {
@@ -279,7 +321,9 @@ export function useVeiculoFotos(id) {
           id: f.id,
 
           url:
-            `${API_URL}/uploads/${f.url}`,
+            normalizarUrl(
+              f.url
+            ),
 
           isBackend: true
         }))

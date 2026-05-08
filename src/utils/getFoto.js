@@ -1,5 +1,5 @@
 const API_URL =
-  "https://mfscars-backend.onrender.com"
+  import.meta.env.VITE_API_URL
 
 export function getFoto(url) {
 
@@ -7,11 +7,19 @@ export function getFoto(url) {
     return `${API_URL}/assets/sem-foto.jpg`
   }
 
+  // já é URL completa
   if (url.startsWith("http")) {
-    return url
+
+    // corrige localhost salvo no banco
+    return url.replace(
+      "http://localhost:3001",
+      API_URL
+    )
   }
 
-  const limpa = url.replace(/^uploads\//, "")
+  // remove uploads duplicado
+  const limpa =
+    url.replace(/^uploads\//, "")
 
   return `${API_URL}/uploads/${limpa}`
 }
