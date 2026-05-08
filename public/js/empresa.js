@@ -524,16 +524,19 @@ function render(lista) {
 
   lista.forEach(v => {
 
-    const foto =
-      v.foto
-        ? (
-            v.foto.startsWith("http")
-              ? v.foto
-              : `${API_URL}/uploads/${v.foto}`
-          )
-        : `${API_URL}/uploads/sem-foto.jpg`;
+const foto =
+  v.foto &&
+  v.foto !== "undefined" &&
+  v.foto !== "null"
+    ? (
+        v.foto.startsWith("http")
+          ? v.foto
+          : `${API_URL}/uploads/${v.foto}`
+      )
+    : `${API_URL}/uploads/sem-foto.jpg`;
 
     grid.innerHTML += `
+
       <div
         class="card"
         onclick="window.abrirVeiculo(${v.id})"
@@ -556,7 +559,10 @@ function render(lista) {
             : "🤍"}
         </div>
 
-        <img src="${foto}">
+        <img
+  src="${foto}"
+  onerror="this.src='${API_URL}/uploads/sem-foto.jpg'"
+>
 
         <div class="info">
 
@@ -565,7 +571,7 @@ function render(lista) {
           </div>
 
           <div>
-            ${v.ano}
+            ${v.ano || "-"}
           </div>
 
           <div class="valor">
