@@ -1,8 +1,11 @@
 import { requestPublic } from './api-public.js';
 
-const API_URL = "https://mfscars-backend.onrender.com";
+const API_URL =
+  "https://mfscars-backend.onrender.com";
 
-const app = document.getElementById("app-public");
+const app =
+  document.getElementById("app-public");
+
 app.classList.add("empresa-page");
 
 let veiculos = [];
@@ -13,70 +16,155 @@ let veiculos = [];
 
 app.innerHTML = `
 <div class="header">
-  <span>🚗 MFS Cars Marketplace</span>
-  <button id="btnVoltar">← Voltar</button>
+
+  <span>
+    🚗 MFS Cars Marketplace
+  </span>
+
+  <button id="btnVoltar">
+    ← Voltar
+  </button>
+
 </div>
 
 <div class="topo-loja">
+
   <div class="loja-box">
 
-    <img id="logo" class="logo">
+    <img
+      id="logo"
+      class="logo"
+    >
 
     <div class="loja-info">
 
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+      ">
+
         <h1 id="nome"></h1>
+
         <span id="qtdTopo"></span>
+
       </div>
 
-      <div id="premium" class="badge-premium">
+      <div
+        id="premium"
+        class="badge-premium"
+      >
         ⭐ Loja Premium
       </div>
 
       <p id="cidade"></p>
+
       <p id="telefone"></p>
 
-      <a id="whats" class="whats" target="_blank">WhatsApp</a>
-      <a id="btnMapa" target="_blank">📍 Ver no mapa</a>
+      <a
+        id="whats"
+        class="whats"
+        target="_blank"
+      >
+        WhatsApp
+      </a>
+
+      <a
+        id="btnMapa"
+        target="_blank"
+      >
+        📍 Ver no mapa
+      </a>
 
     </div>
 
   </div>
+
 </div>
 
-<div class="container" style="display:flex; gap:20px;">
+<div
+  class="container"
+  style="display:flex;gap:20px;"
+>
 
   <div class="sidebar">
 
     <h3>Filtrar</h3>
 
-    <input id="buscaGeral" placeholder="Buscar">
-    <input id="fMarca" placeholder="Marca">
-    <input id="fModelo" placeholder="Modelo">
+    <input
+      id="buscaGeral"
+      placeholder="Buscar"
+    >
 
-    <input id="fPrecoMin" placeholder="Min" type="number">
-    <input id="fPrecoMax" placeholder="Max" type="number">
+    <input
+      id="fMarca"
+      placeholder="Marca"
+    >
+
+    <input
+      id="fModelo"
+      placeholder="Modelo"
+    >
+
+    <input
+      id="fPrecoMin"
+      placeholder="Min"
+      type="number"
+    >
+
+    <input
+      id="fPrecoMax"
+      placeholder="Max"
+      type="number"
+    >
 
     <select id="fOrdenar">
-      <option value="">Ordenar</option>
-      <option value="preco_asc">Menor preço</option>
-      <option value="preco_desc">Maior preço</option>
-      <option value="ano_desc">Mais novos</option>
+
+      <option value="">
+        Ordenar
+      </option>
+
+      <option value="preco_asc">
+        Menor preço
+      </option>
+
+      <option value="preco_desc">
+        Maior preço
+      </option>
+
+      <option value="ano_desc">
+        Mais novos
+      </option>
+
     </select>
 
-    <button id="btnFiltrar">Filtrar</button>
+    <button id="btnFiltrar">
+      Filtrar
+    </button>
 
   </div>
 
   <div style="flex:1;">
+
     <h2 id="titulo"></h2>
-    <div id="grid" class="grid"></div>
+
+    <div
+      id="grid"
+      class="grid"
+    ></div>
+
   </div>
 
 </div>
 
 <div class="mapa">
-  <iframe id="mapa" width="100%" height="300"></iframe>
+
+  <iframe
+    id="mapa"
+    width="100%"
+    height="300"
+  ></iframe>
+
 </div>
 `;
 
@@ -84,136 +172,279 @@ app.innerHTML = `
    🔍 PARAMS
 ============================== */
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
 
-if(!id){
+const id =
+  params.get("id");
+
+if (!id) {
+
   alert("Loja inválida");
-  window.location = "/public/home.html";
+
+  window.location =
+    "/home.html";
 }
 
 /* ===============================
    🔘 EVENTOS
 ============================== */
 
-document.getElementById("btnVoltar").onclick = () => {
-  window.location = "/public/index.html";
+document.getElementById(
+  "btnVoltar"
+).onclick = () => {
+
+  window.location =
+    "/home.html";
 };
 
-document.getElementById("btnFiltrar").onclick = filtrar;
+document.getElementById(
+  "btnFiltrar"
+).onclick = filtrar;
 
 /* ===============================
    🚀 CARREGAR LOJA
 ============================== */
 
-async function carregar(){
+async function carregar() {
 
-  try{
+  try {
 
-    const res = await requestPublic(`/public/loja/${id}`);
+    const res =
+      await requestPublic(
+        `/public/loja/${id}`
+      );
 
-    if(!res.ok){
-      throw new Error("Erro ao carregar loja");
+    if (!res.ok) {
+
+      throw new Error(
+        "Erro ao carregar loja"
+      );
     }
 
-   const dados = res.data; 
-    
-    const loja = dados.loja || {};
+    const dados =
+      res.data;
 
-    document.title = `${loja.nome} - MFS Cars`;
+    const loja =
+      dados.loja || {};
+
+    document.title =
+      `${loja.nome} - MFS Cars`;
 
     /* 🔥 LOJA */
 
-    document.getElementById("nome").innerText = loja.nome || "-";
+    document.getElementById(
+      "nome"
+    ).innerText =
+      loja.nome || "-";
 
-    if(loja.premium){
-      document.getElementById("premium").style.display = "block";
+    if (loja.premium) {
+
+      document.getElementById(
+        "premium"
+      ).style.display =
+        "block";
     }
 
-    document.getElementById("cidade").innerText =
+    document.getElementById(
+      "cidade"
+    ).innerText =
       `${loja.cidade || ""} - ${loja.estado || ""}`;
 
-    document.getElementById("telefone").innerText =
+    document.getElementById(
+      "telefone"
+    ).innerText =
       loja.telefone || "-";
 
     /* WHATS */
 
-    let tel = (loja.telefone || "").replace(/\D/g,'');
+    let tel =
+      (
+        loja.telefone || ""
+      ).replace(/\D/g, '');
 
-    if(!tel.startsWith("55")){
-      tel = "55" + tel;
+    if (
+      !tel.startsWith("55")
+    ) {
+
+      tel =
+        "55" + tel;
     }
 
-    document.getElementById("whats").href =
+    document.getElementById(
+      "whats"
+    ).href =
       `https://wa.me/${tel}`;
 
     /* LOGO */
 
-    document.getElementById("logo").src =
+    document.getElementById(
+      "logo"
+    ).src =
       loja.logo
-        ? `${API_URL}/assets/${loja.logo}`
+        ? (
+            loja.logo.startsWith("http")
+              ? loja.logo
+              : `${API_URL}/assets/${loja.logo}`
+          )
         : `${API_URL}/assets/sem-logo.png`;
 
     /* MAPA */
 
-    document.getElementById("btnMapa").href =
-      loja.latitude && loja.longitude
+    document.getElementById(
+      "btnMapa"
+    ).href =
+      loja.latitude &&
+      loja.longitude
         ? `https://www.google.com/maps?q=${loja.latitude},${loja.longitude}`
         : `https://www.google.com/maps?q=${loja.cidade}`;
 
     /* VEÍCULOS */
 
-    veiculos = dados.veiculos || [];
+    veiculos =
+      dados.veiculos || [];
 
     filtrar();
 
-  }catch(err){
+  } catch (err) {
 
     console.error(err);
-    alert("Erro ao carregar loja");
 
+    alert(
+      "Erro ao carregar loja"
+    );
   }
-
 }
 
 /* ===============================
    🔍 FILTRO
 ============================== */
 
-function filtrar(){
+function filtrar() {
 
-  let lista = [...veiculos];
+  let lista =
+    [...veiculos];
 
-  const busca = document.getElementById("buscaGeral").value.toLowerCase();
+  const busca =
+    document
+      .getElementById(
+        "buscaGeral"
+      )
+      .value
+      .toLowerCase();
 
-  if(busca){
-    lista = lista.filter(v =>
-      `${v.marca} ${v.modelo}`.toLowerCase().includes(busca)
+  if (busca) {
+
+    lista =
+      lista.filter(v =>
+        `${v.marca} ${v.modelo}`
+          .toLowerCase()
+          .includes(busca)
+      );
+  }
+
+  const marca =
+    document
+      .getElementById(
+        "fMarca"
+      )
+      .value
+      .toLowerCase();
+
+  const modelo =
+    document
+      .getElementById(
+        "fModelo"
+      )
+      .value
+      .toLowerCase();
+
+  if (marca) {
+
+    lista =
+      lista.filter(v =>
+        v.marca
+          .toLowerCase()
+          .includes(marca)
+      );
+  }
+
+  if (modelo) {
+
+    lista =
+      lista.filter(v =>
+        v.modelo
+          .toLowerCase()
+          .includes(modelo)
+      );
+  }
+
+  const min =
+    parseFloat(
+      document.getElementById(
+        "fPrecoMin"
+      ).value
+    );
+
+  const max =
+    parseFloat(
+      document.getElementById(
+        "fPrecoMax"
+      ).value
+    );
+
+  if (min) {
+
+    lista =
+      lista.filter(
+        v => v.valor >= min
+      );
+  }
+
+  if (max) {
+
+    lista =
+      lista.filter(
+        v => v.valor <= max
+      );
+  }
+
+  const ordenar =
+    document.getElementById(
+      "fOrdenar"
+    ).value;
+
+  if (
+    ordenar === "preco_asc"
+  ) {
+
+    lista.sort(
+      (a, b) =>
+        a.valor - b.valor
     );
   }
 
-  const marca = document.getElementById("fMarca").value.toLowerCase();
-  const modelo = document.getElementById("fModelo").value.toLowerCase();
+  if (
+    ordenar === "preco_desc"
+  ) {
 
-  if(marca){
-    lista = lista.filter(v => v.marca.toLowerCase().includes(marca));
+    lista.sort(
+      (a, b) =>
+        b.valor - a.valor
+    );
   }
 
-  if(modelo){
-    lista = lista.filter(v => v.modelo.toLowerCase().includes(modelo));
+  if (
+    ordenar === "ano_desc"
+  ) {
+
+    lista.sort(
+      (a, b) =>
+        b.ano - a.ano
+    );
   }
-
-  const min = parseFloat(document.getElementById("fPrecoMin").value);
-  const max = parseFloat(document.getElementById("fPrecoMax").value);
-
-  if(min) lista = lista.filter(v => v.valor >= min);
-  if(max) lista = lista.filter(v => v.valor <= max);
-
-  const ordenar = document.getElementById("fOrdenar").value;
-
-  if(ordenar === "preco_asc") lista.sort((a,b)=>a.valor-b.valor);
-  if(ordenar === "preco_desc") lista.sort((a,b)=>b.valor-a.valor);
-  if(ordenar === "ano_desc") lista.sort((a,b)=>b.ano-a.ano);
 
   render(lista);
 }
@@ -222,22 +453,43 @@ function filtrar(){
    ❤️ FAVORITOS
 ============================== */
 
-function isFavorito(id){
-  const favs = JSON.parse(localStorage.getItem("favs") || "[]");
+function isFavorito(id) {
+
+  const favs =
+    JSON.parse(
+      localStorage.getItem(
+        "favs"
+      ) || "[]"
+    );
+
   return favs.includes(id);
 }
 
-function toggleFavorito(id){
+function toggleFavorito(id) {
 
-  let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+  let favs =
+    JSON.parse(
+      localStorage.getItem(
+        "favs"
+      ) || "[]"
+    );
 
-  if(favs.includes(id)){
-    favs = favs.filter(f => f !== id);
-  }else{
+  if (favs.includes(id)) {
+
+    favs =
+      favs.filter(
+        f => f !== id
+      );
+
+  } else {
+
     favs.push(id);
   }
 
-  localStorage.setItem("favs", JSON.stringify(favs));
+  localStorage.setItem(
+    "favs",
+    JSON.stringify(favs)
+  );
 
   filtrar();
 }
@@ -246,42 +498,81 @@ function toggleFavorito(id){
    🎨 RENDER
 ============================== */
 
-function render(lista){
+function render(lista) {
 
-  const grid = document.getElementById("grid");
+  const grid =
+    document.getElementById(
+      "grid"
+    );
 
-  if(lista.length === 0){
-    grid.innerHTML = "Nenhum veículo encontrado";
+  if (
+    lista.length === 0
+  ) {
+
+    grid.innerHTML =
+      "Nenhum veículo encontrado";
+
     return;
   }
 
-  document.getElementById("titulo").innerText =
+  document.getElementById(
+    "titulo"
+  ).innerText =
     `${lista.length} veículos disponíveis`;
 
   grid.innerHTML = "";
 
-  lista.forEach(v=>{
+  lista.forEach(v => {
 
-const foto = v.foto?.startsWith("http")
-  ? v.foto
-  : `${API_URL}/uploads/${v.foto || "sem-foto.jpg"}`;
+    const foto =
+      v.foto
+        ? (
+            v.foto.startsWith("http")
+              ? v.foto
+              : `${API_URL}/uploads/${v.foto}`
+          )
+        : `${API_URL}/uploads/sem-foto.jpg`;
 
     grid.innerHTML += `
-      <div class="card" onclick="window.abrirVeiculo(${v.id})">
+      <div
+        class="card"
+        onclick="window.abrirVeiculo(${v.id})"
+      >
 
-        <div onclick="event.stopPropagation();window.toggleFav(${v.id})"
-          style="position:absolute;top:8px;right:8px;cursor:pointer;">
-          ${isFavorito(v.id) ? "❤️" : "🤍"}
+        <div
+          onclick="
+            event.stopPropagation();
+            window.toggleFav(${v.id})
+          "
+          style="
+            position:absolute;
+            top:8px;
+            right:8px;
+            cursor:pointer;
+          "
+        >
+          ${isFavorito(v.id)
+            ? "❤️"
+            : "🤍"}
         </div>
 
         <img src="${foto}">
 
         <div class="info">
-          <div class="modelo">${v.marca} ${v.modelo}</div>
-          <div>${v.ano}</div>
-          <div class="valor">
-            R$ ${Number(v.valor).toLocaleString("pt-BR")}
+
+          <div class="modelo">
+            ${v.marca} ${v.modelo}
           </div>
+
+          <div>
+            ${v.ano}
+          </div>
+
+          <div class="valor">
+            R$ ${Number(v.valor)
+              .toLocaleString("pt-BR")}
+          </div>
+
         </div>
 
       </div>
@@ -293,11 +584,14 @@ const foto = v.foto?.startsWith("http")
    🌐 GLOBALS
 ============================== */
 
-window.abrirVeiculo = (id)=>{
-  window.location = `/public/veiculo.html?id=${id}`;
+window.abrirVeiculo = (id) => {
+
+  window.location =
+    `/veiculo.html?id=${id}`;
 };
 
-window.toggleFav = toggleFavorito;
+window.toggleFav =
+  toggleFavorito;
 
 /* ===============================
    🚀 INIT
