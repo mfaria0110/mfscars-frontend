@@ -169,11 +169,9 @@ toast.success(
 /*
  força tela desmontar e montar novamente
 */
-navigate("/app")
-
-setTimeout(() => {
-  navigate("/app/veiculos")
-}, 100)
+if (!id && veiculoId) {
+  navigate(`/app/veiculos/editar/${veiculoId}`)
+}
 
 
     } catch (e) {
