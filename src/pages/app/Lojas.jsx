@@ -19,6 +19,9 @@ import {
 } from "react-leaflet"
 import "../../components/styles/lojas.css"
 
+const API_URL =
+  import.meta.env.VITE_API_URL
+
 export default function Lojas() {
 
   /* ===============================
@@ -498,7 +501,7 @@ if (!podeVisualizar) {
       <div>
         {l.logo && (
           <img
-            src={`http://localhost:3001${l.logo}`}
+            src={`${API_URL}${l.logo}`}
             alt="logo"
             style={{
               width: "60px",
@@ -759,7 +762,7 @@ if (!podeVisualizar) {
     />
   ) : form.logo ? (
     <img
-      src={`http://localhost:3001${form.logo}`}
+      src={`${API_URL}${form.logo}`}
       alt="Logo"
       style={{
         width: "120px",
@@ -771,7 +774,7 @@ if (!podeVisualizar) {
     />
   ) : null}
 </div>
-
+ 
 
               {/* TEXTOS */}
               <div className="form-group col-12">
