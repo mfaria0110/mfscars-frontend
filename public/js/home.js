@@ -146,9 +146,13 @@ const res = await requestPublic(`/public/veiculos?${params.toString()}`);
 
     veiculos.forEach(v=>{
 
-      const foto = v.foto
-        ? `${API_URL}/uploads/${v.foto}`
-        : `${API_URL}/uploads/sem-foto.jpg`;
+const foto = v.foto
+  ? (
+      v.foto.startsWith("http")
+        ? v.foto
+        : `${API_URL}/uploads/${v.foto}`
+    )
+  : `${API_URL}/uploads/sem-foto.jpg`;
 
       grid.innerHTML += `
         <div class="card" onclick="window.abrirVeiculo(${v.id})">
