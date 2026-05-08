@@ -1,5 +1,5 @@
 const API_URL =
-  import.meta.env.VITE_API_URL
+  "https://mfscars-backend.onrender.com"
 
 export function getFoto(url) {
 
@@ -11,5 +11,7 @@ export function getFoto(url) {
     return url
   }
 
-  return `${API_URL}/uploads/${url}`
+  const limpa = url.replace(/^uploads\//, "")
+
+  return `${API_URL}/uploads/${limpa}`
 }
