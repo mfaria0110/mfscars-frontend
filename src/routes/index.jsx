@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 
 import PrivateRoute from "./PrivateRoute"
+
 import PublicLayout from "../layouts/PublicLayout"
 import PrivateLayout from "../layouts/PrivateLayout"
 
@@ -15,30 +16,36 @@ import Login from "../pages/public/Login"
 
 import Veiculos from "../pages/app/Veiculos"
 import VeiculoForm from "../pages/app/VeiculoForm"
+
 import VendaForm from "../pages/app/VendaForm"
+import Vendas from "../pages/app/Vendas"
+
 import Lojas from "../pages/app/Lojas"
 import Usuarios from "../pages/app/Usuarios"
 import Leads from "../pages/app/Leads"
 import Permissoes from "../pages/app/Permissoes"
-import Vendas from "../pages/app/Vendas"
 
-import { usePermissao } from "../modules/permissao/usePermissao"
+import {
+  usePermissao
+} from "../modules/permissao/usePermissao"
 
 function ProtectedPermissionRoute({
   children,
   permissao
 }) {
 
-  const { temPermissao } =
-    usePermissao()
+  const {
+    temPermissao
+  } = usePermissao()
 
   if (
     permissao &&
     !temPermissao(permissao)
   ) {
+
     return (
       <Navigate
-        to="/veiculos"
+        to="/app/veiculos"
         replace
       />
     )
@@ -50,6 +57,7 @@ function ProtectedPermissionRoute({
 export default function Router() {
 
   return (
+
     <BrowserRouter>
 
       <Routes>
@@ -57,8 +65,11 @@ export default function Router() {
         {/* =========================
             🌐 PÚBLICO
         ========================== */}
+
         <Route
-          element={<PublicLayout />}
+          element={
+            <PublicLayout />
+          }
         >
 
           <Route
@@ -71,103 +82,133 @@ export default function Router() {
         {/* =========================
             🔒 PRIVADO
         ========================== */}
+
         <Route
-          element={<PrivateRoute />}
+          element={
+            <PrivateRoute />
+          }
         >
 
           <Route
-            element={<PrivateLayout />}
+            element={
+              <PrivateLayout />
+            }
           >
 
             {/* DASHBOARD */}
+
             <Route
-              path="/dashboard"
+              path="/app/dashboard"
               element={<Dashboard />}
             />
 
             {/* VEÍCULOS */}
+
             <Route
-              path="/veiculos"
+              path="/app/veiculos"
               element={
                 <ProtectedPermissionRoute permissao="veiculo.visualizar">
+
                   <Veiculos />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             <Route
-              path="/veiculos/novo"
+              path="/app/veiculos/novo"
               element={
                 <ProtectedPermissionRoute permissao="veiculo.criar">
+
                   <VeiculoForm />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             <Route
-              path="/veiculos/editar/:id"
+              path="/app/veiculos/editar/:id"
               element={
                 <ProtectedPermissionRoute permissao="veiculo.editar">
+
                   <VeiculoForm />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             {/* VENDAS */}
+
             <Route
-              path="/vendas"
+              path="/app/vendas"
               element={
                 <ProtectedPermissionRoute permissao="venda.visualizar">
+
                   <Vendas />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             <Route
-              path="/vendas/nova"
+              path="/app/vendas/nova"
               element={
                 <ProtectedPermissionRoute permissao="venda.criar">
+
                   <VendaForm />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             {/* LOJAS */}
+
             <Route
-              path="/lojas"
+              path="/app/lojas"
               element={
                 <ProtectedPermissionRoute permissao="loja.visualizar">
+
                   <Lojas />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             {/* USUÁRIOS */}
+
             <Route
-              path="/usuarios"
+              path="/app/usuarios"
               element={
                 <ProtectedPermissionRoute permissao="usuario.visualizar">
+
                   <Usuarios />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             {/* LEADS */}
+
             <Route
-              path="/leads"
+              path="/app/leads"
               element={
                 <ProtectedPermissionRoute permissao="lead.visualizar">
+
                   <Leads />
+
                 </ProtectedPermissionRoute>
               }
             />
 
             {/* PERMISSÕES */}
+
             <Route
-              path="/permissoes"
+              path="/app/permissoes"
               element={
                 <ProtectedPermissionRoute permissao="permissao.visualizar">
+
                   <Permissoes />
+
                 </ProtectedPermissionRoute>
               }
             />
@@ -180,7 +221,6 @@ export default function Router() {
             🔥 REDIRECTS
         ========================== */}
 
-        {/* LOGIN PADRÃO */}
         <Route
           path="/"
           element={
@@ -191,7 +231,6 @@ export default function Router() {
           }
         />
 
-        {/* QUALQUER OUTRA */}
         <Route
           path="*"
           element={

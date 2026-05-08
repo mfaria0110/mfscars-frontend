@@ -42,7 +42,7 @@ export default function Login() {
       )
 
       // ✅ CORRIGIDO
-      window.location.href = "/veiculos"
+      window.location.href = "/app/veiculos"
 
     } catch (error) {
 
