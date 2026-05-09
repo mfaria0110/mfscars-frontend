@@ -523,17 +523,29 @@ function render(lista) {
   grid.innerHTML = "";
 
   lista.forEach(v => {
+    
 
-const foto =
-  v.foto &&
-  v.foto !== "undefined" &&
-  v.foto !== "null"
-    ? (
-        v.foto.startsWith("http")
-          ? v.foto
-          : `${API_URL}/uploads/${v.foto}`
-      )
-    : `${API_URL}/uploads/sem-foto.jpg`;
+    const primeiraFoto =
+      Array.isArray(v.fotos)
+        ? v.fotos[0]
+        : null;
+
+    const foto =
+      primeiraFoto?.url
+        ? primeiraFoto.url
+        : (
+            v.foto &&
+            v.foto !== "undefined" &&
+            v.foto !== "null"
+          )
+            ? (
+                v.foto.startsWith("http")
+                  ? v.foto
+                  : `${API_URL}/uploads/${v.foto}`
+              )
+            : `${API_URL}/uploads/sem-foto.jpg`;
+
+
 
     grid.innerHTML += `
 
