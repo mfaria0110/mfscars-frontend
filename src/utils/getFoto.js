@@ -3,23 +3,37 @@ const API_URL =
 
 export function getFoto(url) {
 
-  if (!url) {
+  /* 🔥 NULL / UNDEFINED */
+  if (
+    !url ||
+    url === "null" ||
+    url === "undefined"
+  ) {
+
     return `${API_URL}/assets/sem-foto.jpg`
   }
 
-  // já é URL completa
-  if (url.startsWith("http")) {
+  /* 🔥 GARANTE STRING */
+  url = String(url)
 
-    // corrige localhost salvo no banco
+  /* 🔥 CLOUDINARY / URL COMPLETA */
+  if (
+    url.startsWith("http://") ||
+    url.startsWith("https://")
+  ) {
+
     return url.replace(
       "http://localhost:3001",
       API_URL
     )
   }
 
-  // remove uploads duplicado
+  /* 🔥 REMOVE uploads/ DUPLICADO */
   const limpa =
-    url.replace(/^uploads\//, "")
+    url.replace(
+      /^uploads\//,
+      ""
+    )
 
   return `${API_URL}/uploads/${limpa}`
 }
