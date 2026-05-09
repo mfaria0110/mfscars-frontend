@@ -19,11 +19,6 @@ export function useVeiculos() {
     state => state.lojaId
   )
 
-  const isChangingLoja =
-    useAppStore(
-      state => state.isChangingLoja
-    )
-
   const { temPermissao } =
     usePermissao()
 
@@ -44,35 +39,40 @@ export function useVeiculos() {
   const [erro, setErro] =
     useState(null)
 
-  /* ===============================
-     🔥 DEBOUNCE FILTROS
-  ============================== */
+  /* debounce */
   useEffect(() => {
-    const delay = setTimeout(() => {
-      setFiltrosDebounced(filtros)
-    }, 500)
 
-    return () => clearTimeout(delay)
+    const delay =
+      setTimeout(() => {
+        setFiltrosDebounced(
+          filtros
+        )
+      }, 500)
+
+    return () =>
+      clearTimeout(delay)
+
   }, [filtros])
 
-  /* ===============================
-     🔥 QUERY VEÍCULOS
-  ============================== */
+  /* query */
   const query = useQuery({
+
     queryKey: [
       "veiculos",
       lojaId,
-      JSON.stringify(filtrosDebounced)
+      JSON.stringify(
+        filtrosDebounced
+      )
     ],
 
     queryFn: async () => {
 
       if (!lojaId) return []
 
-      console.log("🔥 CHAMANDO API VEICULOS")
-
       const lista =
-        await getVeiculos(filtrosDebounced)
+        await getVeiculos(
+          filtrosDebounced
+        )
 
       return lista.map(v => ({
         ...v,
@@ -80,63 +80,51 @@ export function useVeiculos() {
       }))
     },
 
-    enabled: !!lojaId, // 🔥 SIMPLES E CORRETO
+    enabled: !!lojaId,
 
     retry: false,
 
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
 
-    staleTime: 0
+    staleTime: 1000 * 30
   })
 
-  /* ===============================
-     🔥 REFETCH AO TROCAR LOJA
-  ============================== */
-  useEffect(() => {
-    if (lojaId) {
-      console.log("🔥 refetch por mudança de loja:", lojaId)
-      query.refetch()
+  const invalidate =
+    async () => {
+
+      await queryClient.invalidateQueries({
+        queryKey: ["veiculos"],
+        exact: false
+      })
     }
-  }, [lojaId])
-
-  /* ===============================
-     🔥 INVALIDAR
-  ============================== */
-  const invalidate = async () => {
-    await queryClient.invalidateQueries({
-      queryKey: ["veiculos"],
-      exact: false
-    })
-
-    await query.refetch()
-  }
-
-  const limparErro = () =>
-    setErro(null)
 
   return {
-    veiculos: query.data || [],
+
+    veiculos:
+      query.data || [],
 
     total:
       query.data?.length || 0,
 
-    loading: query.isLoading,
+    loading:
+      query.isLoading,
 
     error:
       erro ||
       query.error?.message ||
       null,
 
-    limparErro,
+    limparErro:
+      () => setErro(null),
 
     filtros,
     setFiltros,
 
-    refetch: query.refetch,
+    refetch:
+      query.refetch,
 
     invalidate,
 
-    podeVisualizar // 👈 agora só pra UI
+    podeVisualizar
   }
 }

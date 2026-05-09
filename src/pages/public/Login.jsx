@@ -42,7 +42,7 @@ export default function Login() {
       )
 
       // ✅ CORRIGIDO
-      window.location.href = "/app/veiculos"
+      navigate("/app/veiculos")
 
     } catch (error) {
 
