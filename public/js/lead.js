@@ -10,7 +10,7 @@ app.innerHTML = `
 <div class="header">
   <div class="logo">🚗 MFS Cars</div>
   <div class="menu">
-    <a href="/public/home.html">Início</a>
+    <a href="/home.html">Início</a>
   </div>
 </div>
 
