@@ -219,25 +219,22 @@ async function carregar() {
     document.getElementById(
       "comb"
     ).innerText =
-      "Combustível: " +
-      v.combustivel;
+      "Combustível: " + (v.combustivel || "-");
 
     document.getElementById(
       "cambio"
     ).innerText =
-      "Câmbio: " +
-      v.cambio;
+      "Câmbio: " + (v.cambio || "-");
 
     document.getElementById(
       "cor"
     ).innerText =
-      "Cor: " +
-      v.cor;
+      "Cor: " + (v.cor || "-");
 
     document.getElementById(
       "descricao"
     ).innerText =
-      v.descricao;
+      v.descricao || "Sem descrição";
 
     document.getElementById(
       "loja"
