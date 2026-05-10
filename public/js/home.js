@@ -37,7 +37,6 @@ app.innerHTML = `
 
 <div class="container">
   <h3>Veículos disponíveis</h3>
-  <h5>Ver Detalhes do Veículo - Clique na foto</h5>
   <div class="grid" id="veiculos"></div>
   <div id="paginacao" style="text-align:center;margin-top:20px;"></div>
 </div>
@@ -159,6 +158,10 @@ const foto = v.foto
         <div class="card" onclick="window.abrirVeiculo(${v.id})">
 
           <img src="${foto}">
+
+<div class="overlay">
+  Ver detalhes do veículo
+</div>
 
           <div class="info">
 
