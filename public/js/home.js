@@ -160,7 +160,7 @@ const foto = v.foto
           <img src="${foto}">
 
 <div class="overlay">
-  Ver detalhes do veículo
+  Ver detalhes do veículo - Clique na foto
 </div>
 
           <div class="info">

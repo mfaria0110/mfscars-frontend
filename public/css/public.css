@@ -692,8 +692,6 @@ text-decoration:none;
 
 #app-public .overlay{
 
-  position:absolute;
-
   top:8px;
   left:8px;
 
@@ -705,7 +703,9 @@ text-decoration:none;
 
   border-radius:6px;
 
-  font-size:11px;
+  font-size:9px;
+
+  text-align:center;
 
   font-weight:600;
 
