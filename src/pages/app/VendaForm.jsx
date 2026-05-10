@@ -314,6 +314,39 @@ try {
         .replace(/[^\d.]/g, "")
     ) || 0
 
+
+const entradaSemValor =
+  veiculosEntrada.some(item => {
+
+    const temDados =
+      item.marca?.trim() ||
+      item.modelo?.trim() ||
+      item.placa?.trim() ||
+      item.renavam?.trim() ||
+      item.chassi?.trim()
+
+    const valor =
+      Number(
+        String(
+          item.valor_entrada || 0
+        )
+          .replace(/\./g, "")
+          .replace(",", ".")
+          .replace(/[^\d.]/g, "")
+      ) || 0
+
+    return temDados && valor <= 0
+  })
+
+if (entradaSemValor) {
+  toast.error(
+    "Veículo de entrada precisa ter valor"
+  )
+
+  return
+}
+
+
   await salvar({
     // entrada em dinheiro
     valor_entrada:
