@@ -98,10 +98,20 @@ export async function upgradePlano(
   plano_id,
   loja_id
 ) {
-  if (
-    !validarPermissao(
-      "plano.editar"
+
+  const podeAssinar =
+    validarPermissao(
+      "billing.assinar"
     )
+
+  const podeUpgrade =
+    validarPermissao(
+      "billing.upgrade"
+    )
+
+  if (
+    !podeAssinar &&
+    !podeUpgrade
   ) {
     throw new Error(
       "Sem permissão para alterar plano"
@@ -114,6 +124,30 @@ export async function upgradePlano(
       {
         plano_id,
         loja_id
+      }
+    )
+
+  return data
+}
+
+export async function assinarPlano(
+  plano_id
+) {
+  if (
+    !validarPermissao(
+      "plano.editar"
+    )
+  ) {
+    throw new Error(
+      "Sem permissão para assinar plano"
+    )
+  }
+
+  const { data } =
+    await api.post(
+      "/billing/assinar",
+      {
+        plano_id
       }
     )
 

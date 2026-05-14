@@ -561,9 +561,21 @@ if (!id && veiculoId) {
         />
       </div>
 
+      <div className="proprietario-group">
+        <label>&nbsp;</label>
+
+        <button
+          type="button"
+          className="btn-delete-documento"
+          onClick={
+            proprietario.excluir
+          }
+        >
+          🗑 Excluir
+        </button>
+      </div>
+
     </div>
-
-
   </div>
 )}
 

@@ -1,4 +1,4 @@
-const API_URL = "https://mfscars-backend.onrender.com";
+const API_URL = "https://api.mfscars.com.br";
 
 /* ===============================
    🔓 REQUEST PUBLICO

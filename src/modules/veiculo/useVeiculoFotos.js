@@ -20,10 +20,11 @@ function normalizarUrl(url) {
   // já é URL completa
   if (url.startsWith("http")) {
 
-    return url.replace(
-      "http://localhost:3001",
-      API_URL
-    )
+  return url.replace(
+    /^http:\/\//,
+    "https://"
+  )
+    
   }
 
   // remove uploads duplicado

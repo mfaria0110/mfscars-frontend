@@ -1,7 +1,7 @@
 import { requestPublic } from './api-public.js';
 
 const API_URL =
-  "https://mfscars-backend.onrender.com";
+  "https://api.mfscars.com.br";
 
 const app =
   document.getElementById("app-public");
@@ -279,17 +279,17 @@ async function carregar() {
       `https://wa.me/${tel}`;
 
     /* LOGO */
-
     document.getElementById(
       "logo"
     ).src =
       loja.logo
         ? (
             loja.logo.startsWith("http")
-              ? loja.logo
+              ? loja.logo.replace("http://", "https://")
               : `${API_URL}/assets/${loja.logo}`
           )
         : `${API_URL}/assets/sem-logo.png`;
+
 
     /* MAPA */
 
@@ -539,8 +539,8 @@ function render(lista) {
             v.foto !== "null"
           )
             ? (
-                v.foto.startsWith("http")
-                  ? v.foto
+               v.foto.startsWith("http")
+                ? v.foto.replace("http://", "https://")
                   : `${API_URL}/uploads/${v.foto}`
               )
             : `${API_URL}/uploads/sem-foto.jpg`;

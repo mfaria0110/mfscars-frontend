@@ -25,6 +25,8 @@ import Usuarios from "../pages/app/Usuarios"
 import Leads from "../pages/app/Leads"
 import Permissoes from "../pages/app/Permissoes"
 
+import Assinatura from "../pages/app/Assinatura"
+
 import {
   usePermissao
 } from "../modules/permissao/usePermissao"
@@ -94,6 +96,13 @@ export default function Router() {
               <PrivateLayout />
             }
           >
+
+            {/* ASSINATURA */}
+
+<Route
+  path="/app/assinatura"
+  element={<Assinatura />}
+/>
 
             {/* DASHBOARD */}
 

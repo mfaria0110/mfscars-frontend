@@ -3,7 +3,7 @@ import { useAppStore } from "../store/useAppStore"
 import toast from "react-hot-toast"
 
 const api = axios.create({
-  baseURL: "https://mfscars-backend.onrender.com",
+  baseURL: "https://api.mfscars.com.br",
   withCredentials: true
 })
 

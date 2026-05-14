@@ -22,7 +22,15 @@
     2fr
     1.2fr
     1.2fr
-    2fr;
+    2fr
+    auto;
+
+  align-items: end;
+}
+
+.btn-delete-documento {
+  height: 33px;
+  white-space: nowrap;
 }
 
 .proprietario-group {

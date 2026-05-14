@@ -5,7 +5,21 @@ import { usePermissao } from "../permissao/usePermissao"
 import toast from "react-hot-toast"
 
 export function useProprietario(veiculoId) {
-  const lojaId = useAppStore(state => state.lojaId)
+const lojaId = useAppStore(
+  state => state.lojaId
+)
+
+const lojas = useAppStore(
+  state => state.lojas
+)
+
+const lojaAtual =
+  lojas.find(
+    l => l.id === lojaId
+  )
+
+const empresaId =
+  lojaAtual?.empresa_id
 
   const { temPermissao } = usePermissao()
 
@@ -82,10 +96,12 @@ export function useProprietario(veiculoId) {
 
       await api.post(
         "/veiculo-proprietario",
-        {
-          ...form,
-          veiculo_id: veiculoId
-        }
+      {
+        ...form,
+        veiculo_id: veiculoId,
+        empresa_id: empresaId,
+        loja_id: lojaId
+      }
       )
 
       toast.success(
@@ -103,10 +119,57 @@ export function useProprietario(veiculoId) {
     }
   }
 
+  async function excluir() {
+
+  if (!veiculoId) return
+
+  const confirmar =
+    window.confirm(
+      "Deseja excluir o proprietário?"
+    )
+
+  if (!confirmar) return
+
+  try {
+
+    setLoading(true)
+
+    await api.delete(
+      `/veiculo-proprietario/${veiculoId}`
+    )
+
+    setForm({
+      nome: "",
+      cpf_cnpj: "",
+      telefone: "",
+      email: "",
+      endereco: ""
+    })
+
+    toast.success(
+      "Proprietário excluído"
+    )
+
+  } catch (e) {
+
+    console.error(e)
+
+    toast.error(
+      e.response?.data?.erro ||
+      "Erro ao excluir proprietário"
+    )
+
+  } finally {
+
+    setLoading(false)
+  }
+}
+
   return {
     form,
     loading,
     handleChange,
-    salvar
+    salvar,
+    excluir
   }
 }

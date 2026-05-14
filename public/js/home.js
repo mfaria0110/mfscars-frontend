@@ -1,6 +1,6 @@
 import { requestPublic } from './api-public.js';
 
-const API_URL = "https://mfscars-backend.onrender.com";
+const API_URL = "https://api.mfscars.com.br";
 
 let paginaAtual = 1;
 let totalPaginas = 1;
@@ -146,13 +146,13 @@ const res = await requestPublic(`/public/veiculos?${params.toString()}`);
 
     veiculos.forEach(v=>{
 
-const foto = v.foto
-  ? (
-      v.foto.startsWith("http")
-        ? v.foto
-        : `${API_URL}/uploads/${v.foto}`
-    )
-  : `${API_URL}/uploads/sem-foto.jpg`;
+    const foto = v.foto
+      ? (
+          v.foto.startsWith("http")
+            ? v.foto.replace("http://", "https://")
+            : `${API_URL}/uploads/${v.foto}`
+        )
+      : `${API_URL}/uploads/sem-foto.jpg`;
 
       grid.innerHTML += `
         <div class="card" onclick="window.abrirVeiculo(${v.id})">

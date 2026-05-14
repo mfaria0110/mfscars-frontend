@@ -1,6 +1,6 @@
 import { requestPublic } from './api-public.js';
 
-const API_URL = "https://mfscars-backend.onrender.com";
+const API_URL = "https://api.mfscars.com.br";
 
 const app = document.getElementById("app-public");
 
@@ -318,8 +318,11 @@ async function carregar() {
       dados.fotos?.length
     ) {
 
-      principal.src =
-        dados.fotos[0].url;
+    principal.src =
+      dados.fotos[0].url?.replace(
+        "http://",
+        "https://"
+      );
 
       dados.fotos.forEach(f => {
 
@@ -327,7 +330,10 @@ async function carregar() {
           document.createElement("img");
 
         img.src =
-          f.url;
+          f.url?.replace(
+            "http://",
+            "https://"
+          );
 
         img.onclick = () => {
 
@@ -413,13 +419,16 @@ async function carregarSimilares() {
       similares.forEach(v => {
 
         const foto =
-          v.foto
-            ? (
-                v.foto.startsWith("http")
-                  ? v.foto
-                  : `${API_URL}/uploads/${v.foto}`
-              )
-            : `${API_URL}/uploads/sem-foto.jpg`;
+        v.foto
+          ? (
+              v.foto.startsWith("http")
+                ? v.foto.replace(
+                    "http://",
+                    "https://"
+                  )
+                : `${API_URL}/uploads/${v.foto}`
+            )
+          : `${API_URL}/uploads/sem-foto.jpg`;
 
         const div =
           document.createElement("div");

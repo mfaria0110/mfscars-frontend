@@ -22,10 +22,11 @@ export function getFoto(url) {
     url.startsWith("https://")
   ) {
 
-    return url.replace(
-      "http://localhost:3001",
-      API_URL
-    )
+  return url.replace(
+    /^http:\/\//,
+    "https://"
+  )
+    
   }
 
   /* 🔥 REMOVE uploads/ DUPLICADO */

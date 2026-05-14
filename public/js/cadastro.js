@@ -1,7 +1,7 @@
 import { requestPublic } from './api-public.js';
 import { renderFooter } from './footer.js';
 
-const API_URL = "https://mfscars-backend.onrender.com";
+const API_URL = "https://api.mfscars.com.br";
 
 const app = document.getElementById("app-public");
 
@@ -69,7 +69,12 @@ app.innerHTML = `
 
 <div style="margin-top:20px;text-align:center;">
 Já tem conta?
-<a href="../index.html">Entrar</a>
+<a
+  href="https://app.mfscars.com.br"
+  target="_blank"
+>
+  Entrar
+</a>
 </div>
 
 </div>
@@ -169,7 +174,7 @@ if (!res.ok) {
     msg.style.color = "green";
     msg.innerText = "Conta criada com sucesso!";
 
-    const FRONT_URL = "https://mfscars-frontend.onrender.com";
+    const FRONT_URL = "https://app.mfscars.com.br";
 
     setTimeout(() => {
     window.location.href = `${FRONT_URL}`;

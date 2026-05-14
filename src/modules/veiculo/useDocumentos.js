@@ -5,7 +5,21 @@ import { usePermissao } from "../permissao/usePermissao"
 import toast from "react-hot-toast"
 
 export function useDocumentos(veiculoId) {
-  const lojaId = useAppStore(state => state.lojaId)
+const lojaId = useAppStore(
+  state => state.lojaId
+)
+
+const lojas = useAppStore(
+  state => state.lojas
+)
+
+const lojaAtual =
+  lojas.find(
+    l => l.id === lojaId
+  )
+
+const empresaId =
+  lojaAtual?.empresa_id
 
   const { temPermissao } = usePermissao()
 
@@ -67,6 +81,8 @@ export function useDocumentos(veiculoId) {
 
       formData.append("arquivo", file)
       formData.append("veiculo_id", veiculoId)
+      formData.append("empresa_id", empresaId)
+      formData.append("loja_id", lojaId)
       formData.append("tipo", tipo)
 
       await api.post(
