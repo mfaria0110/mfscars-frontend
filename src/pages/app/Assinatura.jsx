@@ -287,6 +287,9 @@ export default function Assinatura() {
               Number(plano.id) ===
               Number(planoAtual?.plano_id)
 
+            const isFree =
+              Number(plano.preco) < 0.5
+
             return (
 
               <div
@@ -381,7 +384,9 @@ export default function Assinatura() {
                     }
                   }}
 
-                  disabled={isAtual}
+                  disabled={
+                      isAtual || isFree
+                    }
 
                   style={{
 
@@ -390,32 +395,38 @@ export default function Assinatura() {
                     borderRadius: 14,
                     border: 0,
 
-                    cursor:
-                      isAtual
-                        ? "default"
-                        : "pointer",
+cursor:
+  isAtual || isFree
+    ? "default"
+    : "pointer",
 
                     fontSize: 16,
 
                     fontWeight: "700",
 
-                    background:
-                      isAtual
-                        ? "#334155"
-                        : "#2563eb",
+background:
+  isAtual || isFree
+    ? "#334155"
+    : "#2563eb",
 
-                    opacity:
-                      isAtual
-                        ? 0.7
-                        : 1,
+opacity:
+  isAtual || isFree
+    ? 0.7
+    : 1,
 
                     color: "#fff"
                   }}
                 >
 
-                  {isAtual
-                    ? "Plano Atual"
-                    : "Escolher Plano"}
+{
+  isAtual
+    ? "Plano Atual"
+
+    : isFree
+    ? "Plano Gratuito"
+
+    : "Escolher Plano"
+}
 
                 </button>
 

@@ -40,18 +40,18 @@ export function usePlano() {
     useQueryClient()
 
   /* ===============================
-   PIX
-=============================== */
+     PIX
+  =============================== */
 
-const [
-  pixData,
-  setPixData
-] = useState(null)
+  const [
+    pixData,
+    setPixData
+  ] = useState(null)
 
-const [
-  showPixModal,
-  setShowPixModal
-] = useState(false)
+  const [
+    showPixModal,
+    setShowPixModal
+  ] = useState(false)
 
   const { temPermissao } =
     usePermissao()
@@ -195,102 +195,103 @@ const [
     }
   }
 
-/* ===============================
-   ASSINAR PLANO PIX
-=============================== */
+  /* ===============================
+     ASSINAR PLANO PIX
+  =============================== */
 
-async function handleAssinar(
-  plano_id
-) {
+  async function handleAssinar(
+    plano_id
+  ) {
 
-  try {
+    try {
 
-    const response =
-      await gerarPixPlano(
-        plano_id
-      )
-
-    /*
-      PIX GERADO
-    */
-
-    if (
-      response?.payment_id
-    ) {
+      const response =
+        await gerarPixPlano(
+          plano_id
+        )
 
       /*
-        PIX REUTILIZADO
+        PIX GERADO
       */
 
       if (
-        response?.reutilizado
+        response?.payment_id
       ) {
 
-        alert(
-          "PIX anterior reutilizado."
-        )
-      }
-
-      /*
-        ABRE MODAL PIX
-      */
-
-      setPixData(response)
-
-      setShowPixModal(true)
-
-      return
-    }
-
-    alert(
-      "Erro ao gerar PIX"
-    )
-
-  } catch (e) {
-
-    console.error(e)
-
-    alert(
-      "Erro ao iniciar pagamento"
-    )
-  }
-}
-
-/* ===============================
-   POLLING PIX
-=============================== */
-
-useEffect(() => {
-
-  if (
-    !pixData?.payment_id
-  ) return
-
-  const interval =
-    setInterval(async () => {
-
-      try {
-
-        const status =
-          await consultarStatusPix(
-            pixData.payment_id
-          )
-
         /*
-          PLANO ATIVO
+          PIX REUTILIZADO
         */
 
         if (
-          status?.plano_status ===
-          "ativo"
+          response?.reutilizado
+        ) {
+
+          alert(
+            "PIX anterior reutilizado."
+          )
+        }
+
+        /*
+          ABRE MODAL PIX
+        */
+
+        setPixData(response)
+
+        setShowPixModal(true)
+
+        return
+      }
+
+      alert(
+        "Erro ao gerar PIX"
+      )
+
+    } catch (e) {
+
+      console.error(e)
+
+      alert(
+        "Erro ao iniciar pagamento"
+      )
+    }
+  }
+
+  /* ===============================
+     POLLING PIX
+  =============================== */
+
+  useEffect(() => {
+
+    if (
+      !pixData?.payment_id
+    ) return
+
+    /* ===============================
+       TEMPO INICIAL PIX
+    =============================== */
+
+    const startedAt =
+      Date.now()
+
+    const interval =
+      setInterval(async () => {
+
+        /* ===============================
+           EXPIRA PIX
+        =============================== */
+
+        const elapsed =
+          Date.now() - startedAt
+
+        const limite =
+          15 * 60 * 1000
+
+        if (
+          elapsed > limite
         ) {
 
           clearInterval(
             interval
-          )
-
-          alert(
-            "Plano ativado com sucesso!"
           )
 
           setShowPixModal(
@@ -299,40 +300,77 @@ useEffect(() => {
 
           setPixData(null)
 
-          /*
-            RELOAD
-          */
+          alert(
+            "PIX expirado. Gere uma nova cobrança."
+          )
 
-          queryClient.invalidateQueries({
-            queryKey: [
-              "planoAtual",
-              lojaId
-            ]
-          })
-
-          queryClient.invalidateQueries({
-            queryKey: [
-              "dashboard",
-              lojaId
-            ]
-          })
+          return
         }
 
-      } catch (e) {
+        try {
 
-        console.error(e)
-      }
+          const status =
+            await consultarStatusPix(
+              pixData.payment_id
+            )
 
-    }, 3000)
+          /*
+            PAGAMENTO APROVADO
+          */
 
-  return () =>
-    clearInterval(interval)
+          if (
+            status?.status ===
+            "pago"
+          ) {
 
-}, [
-  pixData,
-  lojaId,
-  queryClient
-])
+            clearInterval(
+              interval
+            )
+
+            alert(
+              "Plano ativado com sucesso!"
+            )
+
+            setShowPixModal(
+              false
+            )
+
+            setPixData(null)
+
+            /*
+              RELOAD
+            */
+
+            queryClient.invalidateQueries({
+              queryKey: [
+                "planoAtual",
+                lojaId
+              ]
+            })
+
+            queryClient.invalidateQueries({
+              queryKey: [
+                "dashboard",
+                lojaId
+              ]
+            })
+          }
+
+        } catch (e) {
+
+          console.error(e)
+        }
+
+      }, 3000)
+
+    return () =>
+      clearInterval(interval)
+
+  }, [
+    pixData,
+    lojaId,
+    queryClient
+  ])
 
   /* ===============================
      RETURN
@@ -377,6 +415,5 @@ useEffect(() => {
     showPixModal,
 
     setShowPixModal
-    
   }
 }
