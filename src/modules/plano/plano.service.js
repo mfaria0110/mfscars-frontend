@@ -1,15 +1,22 @@
 import api from "../../api/api"
 import { useAppStore } from "../../store/useAppStore"
 
+/* ===============================
+   VALIDA PERMISSÃO
+=============================== */
 function validarPermissao(
   chave
 ) {
+
   const {
     usuario,
     permissoes
   } =
     useAppStore.getState()
 
+  /*
+    MASTER LIBERADO
+  */
   if (
     usuario?.master
   ) {
@@ -25,7 +32,11 @@ function validarPermissao(
     : false
 }
 
+/* ===============================
+   LISTA PLANOS
+=============================== */
 export async function getPlanos() {
+
   if (
     !validarPermissao(
       "plano.visualizar"
@@ -35,6 +46,7 @@ export async function getPlanos() {
   }
 
   try {
+
     const { data } =
       await api.get(
         "/planos"
@@ -43,11 +55,18 @@ export async function getPlanos() {
     return data || []
 
   } catch (e) {
+
+    console.error(e)
+
     return []
   }
 }
 
+/* ===============================
+   PLANO ATUAL
+=============================== */
 export async function getPlanoAtual() {
+
   const state =
     useAppStore.getState()
 
@@ -57,13 +76,18 @@ export async function getPlanoAtual() {
   const isChangingLoja =
     state.isChangingLoja
 
+  /*
+    evita corrida ao trocar loja
+  */
   if (
     !lojaId ||
     isChangingLoja
   ) {
+
     console.warn(
       "Bloqueado getPlanoAtual -> loja não pronta"
     )
+
     return null
   }
 
@@ -76,6 +100,7 @@ export async function getPlanoAtual() {
   }
 
   try {
+
     const { data } =
       await api.get(
         "/planos/atual"
@@ -84,16 +109,25 @@ export async function getPlanoAtual() {
     return data || null
 
   } catch (e) {
+
+    /*
+      loja sem plano
+    */
     if (
       e.response?.status === 400
     ) {
       return null
     }
 
+    console.error(e)
+
     throw e
   }
 }
 
+/* ===============================
+   UPGRADE LOCAL
+=============================== */
 export async function upgradePlano(
   plano_id,
   loja_id
@@ -113,6 +147,7 @@ export async function upgradePlano(
     !podeAssinar &&
     !podeUpgrade
   ) {
+
     throw new Error(
       "Sem permissão para alterar plano"
     )
@@ -130,14 +165,22 @@ export async function upgradePlano(
   return data
 }
 
+/* ===============================
+   ASSINAR PLANO
+=============================== */
 export async function assinarPlano(
   plano_id
 ) {
+
+  /*
+    billing próprio SaaS
+  */
   if (
     !validarPermissao(
-      "plano.editar"
+      "billing.assinar"
     )
   ) {
+
     throw new Error(
       "Sem permissão para assinar plano"
     )

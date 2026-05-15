@@ -122,6 +122,10 @@ export const useAppStore =
 
     isChangingLoja: false,
 
+    paywall: false,
+
+    paywallMensagem: "",
+
     // 🔥 NOVO ESTADO
     isVendaAtiva: false,
     setVendaAtiva: (v) => set({ isVendaAtiva: v }),
@@ -265,16 +269,39 @@ export const useAppStore =
     /* ===============================
        PERFIL
     ============================== */
-setPerfil: (perfil) => {
-  sessionStorage.setItem("perfil", perfil)
-  set({ perfil })
-},
+    setPerfil: (perfil) => {
+      sessionStorage.setItem("perfil", perfil)
+      set({ perfil })
+    },
 
-setChangingLoja: (value) => {
-  set({
-    isChangingLoja: value
-  })
-},
+    setChangingLoja: (value) => {
+      set({
+        isChangingLoja: value
+      })
+    },
+
+    abrirPaywall: (
+      mensagem
+    ) => {
+
+      set({
+
+        paywall: true,
+
+        paywallMensagem:
+          mensagem
+      })
+    },
+
+    fecharPaywall: () => {
+
+      set({
+
+        paywall: false,
+
+        paywallMensagem: ""
+      })
+    },
 
     /* ===============================
        PERMISSÕES

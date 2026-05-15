@@ -1,162 +1,376 @@
-import {
-  useEffect,
-  useState
-} from "react"
-
-import {
-  getPlanos,
-  getPlanoAtual,
-  assinarPlano
-} from "../../modules/plano/plano.service"
+import { usePlano } from "../../modules/plano/usePlano"
 
 export default function Assinatura() {
 
-  const [planos, setPlanos] =
-    useState([])
+  const {
+    planoAtual,
+    planos,
+    loading,
+    handleAssinar
+  } = usePlano()
 
-  const [planoAtual, setPlanoAtual] =
-    useState(null)
+  const usados =
+    planoAtual?.usados || 0
 
-  const [loading, setLoading] =
-    useState(true)
+  const limite =
+    planoAtual?.limite_veiculos || 0
 
-  async function carregar() {
-    try {
-
-      const [
-        planosData,
-        planoAtualData
-      ] = await Promise.all([
-        getPlanos(),
-        getPlanoAtual()
-      ])
-
-      setPlanos(planosData)
-      setPlanoAtual(planoAtualData)
-
-    } catch (err) {
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    carregar()
-  }, [])
-
-  async function handleAssinar(
-    planoId
-  ) {
-    try {
-
-      const response =
-        await assinarPlano(
-          planoId
+  const porcentagem =
+    limite > 0
+      ? Math.min(
+          (usados / limite) * 100,
+          100
         )
+      : 0
 
-      if (
-        response?.init_point
-      ) {
-        window.location.href =
-          response.init_point
-      }
+  const status =
+    String(
+      planoAtual?.status || ""
+    ).toUpperCase()
 
-    } catch (err) {
-
-      console.error(err)
-
-      alert(
-        err.message ||
-        "Erro ao iniciar assinatura"
-      )
-    }
-  }
+  const statusColor =
+    status === "ATIVO"
+      ? "#16a34a"
+      : status === "INADIMPLENTE"
+      ? "#dc2626"
+      : "#f59e0b"
 
   if (loading) {
     return (
-      <div className="p-6">
-        Carregando...
+      <div style={{
+        padding: 24
+      }}>
+        Carregando assinatura...
       </div>
     )
   }
 
   return (
-    <div className="p-6">
+    <div style={{
+      padding: 24
+    }}>
 
-      <h1 className="text-2xl font-bold mb-6">
-        Assinatura
-      </h1>
+      {/* =========================
+          PLANO ATUAL
+      ========================= */}
 
-      {planoAtual && (
-        <div className="bg-white rounded-xl shadow p-4 mb-6">
+      <div
+        style={{
+          background:
+            "linear-gradient(135deg, #020617 0%, #0f172a 100%)",
 
-          <h2 className="text-lg font-bold mb-2">
-            Plano Atual
-          </h2>
+          borderRadius: 24,
 
-          <p>
-            {planoAtual.nome}
-          </p>
+          padding: 36,
 
-          <p>
-            {planoAtual.usados}
-            {" / "}
-            {planoAtual.limite_veiculos}
-            {" "}veículos
-          </p>
+          color: "#fff",
 
-          <p>
-            Status:
-            {" "}
-            {planoAtual.status}
-          </p>
+          marginBottom: 32,
 
-          <p>
-            Renova em:
-            {" "}
-            {planoAtual.ciclo_fim}
-          </p>
+          boxShadow:
+            "0 10px 30px rgba(0,0,0,0.25)"
+        }}
+      >
+
+        <h1
+          style={{
+            fontSize: 42,
+            marginBottom: 24
+          }}
+        >
+          Plano Atual
+        </h1>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(220px, 1fr))",
+
+            gap: 24
+          }}
+        >
+
+          <div>
+            <div
+              style={{
+                opacity: 0.7,
+                marginBottom: 6
+              }}
+            >
+              Plano
+            </div>
+
+            <div
+              style={{
+                fontSize: 28,
+                fontWeight: "700"
+              }}
+            >
+              {planoAtual?.nome || "-"}
+            </div>
+          </div>
+
+          <div>
+            <div
+              style={{
+                opacity: 0.7,
+                marginBottom: 6
+              }}
+            >
+              Status
+            </div>
+
+            <div
+              style={{
+                color: statusColor,
+                fontWeight: "700",
+                fontSize: 20
+              }}
+            >
+              {status || "-"}
+            </div>
+          </div>
+
+          <div>
+            <div
+              style={{
+                opacity: 0.7,
+                marginBottom: 6
+              }}
+            >
+              Valor Mensal
+            </div>
+
+            <div
+              style={{
+                fontSize: 24,
+                fontWeight: "700"
+              }}
+            >
+              R$ {planoAtual?.preco || "0.00"}
+            </div>
+          </div>
 
         </div>
-      )}
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* =========================
+            CONSUMO
+        ========================= */}
 
-        {planos.map((plano) => (
+        <div
+          style={{
+            marginTop: 36
+          }}
+        >
 
           <div
-            key={plano.id}
-            className="bg-white rounded-xl shadow p-4"
+            style={{
+              display: "flex",
+              justifyContent:
+                "space-between",
+
+              marginBottom: 10,
+
+              fontSize: 18
+            }}
+          >
+            <span>
+              Consumo
+            </span>
+
+            <strong>
+              {usados} / {limite} veículos
+            </strong>
+          </div>
+
+          <div
+            style={{
+              width: "100%",
+              height: 14,
+              background: "#1e293b",
+              borderRadius: 999,
+              overflow: "hidden"
+            }}
           >
 
-            <h2 className="text-xl font-bold mb-2">
-              {plano.nome}
-            </h2>
+            <div
+              style={{
+                width:
+                  `${porcentagem}%`,
 
-            <p className="text-green-600 text-2xl font-bold mb-2">
-              R$ {plano.valor}
-            </p>
+                height: "100%",
 
-            <p className="mb-4">
-              {plano.limite_veiculos}
-              {" "}veículos
-            </p>
+                background:
+                  porcentagem >= 90
+                    ? "#dc2626"
+                    : porcentagem >= 70
+                    ? "#f59e0b"
+                    : "#2563eb",
 
-            <button
-              onClick={() =>
-                handleAssinar(
-                  plano.id
-                )
-              }
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg w-full"
-            >
-              Escolher Plano
-            </button>
+                transition:
+                  "0.3s ease"
+              }}
+            />
 
           </div>
 
-        ))}
+        </div>
+
+      </div>
+
+      {/* =========================
+          PLANOS DISPONÍVEIS
+      ========================= */}
+
+      <div
+        style={{
+          display: "grid",
+
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(260px, 1fr))",
+
+          gap: 24
+        }}
+      >
+
+        {Array.isArray(planos) &&
+          planos.map(plano => {
+
+            const isAtual =
+              Number(plano.id) ===
+              Number(planoAtual?.plano_id)
+
+            return (
+
+              <div
+                key={plano.id}
+
+                style={{
+
+                  background:
+                    "linear-gradient(135deg, #111827 0%, #1e293b 100%)",
+
+                  borderRadius: 24,
+
+                  padding: 28,
+
+                  color: "#fff",
+
+                  border:
+                    isAtual
+                      ? "2px solid #2563eb"
+                      : "2px solid transparent",
+
+                  position: "relative",
+
+                  boxShadow:
+                    "0 8px 24px rgba(0,0,0,0.15)"
+                }}
+              >
+
+                {isAtual && (
+
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 16,
+                      right: 16,
+
+                      background: "#2563eb",
+
+                      padding:
+                        "6px 12px",
+
+                      borderRadius: 999,
+
+                      fontSize: 12,
+
+                      fontWeight: "700"
+                    }}
+                  >
+                    PLANO ATUAL
+                  </div>
+
+                )}
+
+                <h2
+                  style={{
+                    fontSize: 38,
+                    marginBottom: 16
+                  }}
+                >
+                  {plano.nome}
+                </h2>
+
+                <div
+                  style={{
+                    fontSize: 42,
+                    fontWeight: "700",
+                    marginBottom: 12
+                  }}
+                >
+                  R$ {plano.preco}
+                </div>
+
+                <div
+                  style={{
+                    opacity: 0.8,
+                    marginBottom: 28,
+                    fontSize: 18
+                  }}
+                >
+                  {plano.limite_veiculos} veículos
+                </div>
+
+                <button
+
+                  onClick={() => {
+
+                    if (!isAtual) {
+
+                      handleAssinar(
+                        plano.id
+                      )
+                    }
+                  }}
+
+                  disabled={isAtual}
+
+                  style={{
+
+                    width: "100%",
+                    padding: 14,
+                    borderRadius: 14,
+                    border: 0,
+                    cursor:
+                      isAtual
+                        ? "default"
+                        : "pointer",
+                    fontSize: 16,
+                    fontWeight: "700",
+                    background:
+                      isAtual
+                        ? "#334155"
+                        : "#2563eb",
+                    opacity:
+                      isAtual
+                        ? 0.7
+                        : 1,
+                    color: "#fff"
+                  }}
+                >
+
+                  {isAtual
+                    ? "Plano Atual"
+                    : "Escolher Plano"}
+
+                </button>
+
+              </div>
+            )
+          })
+        }
 
       </div>
 

@@ -46,6 +46,10 @@ const podeTrocarLoja =
   /* ===============================
      🔥 STATUS
   ============================== */
+  console.log(
+  "LOJA ATUAL:",
+  lojaAtual
+)
   const status = String(lojaAtual?.status || "")
     .trim()
     .toUpperCase()

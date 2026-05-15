@@ -140,10 +140,55 @@ api.interceptors.response.use(
     /* ===============================
        OUTROS 403
     =============================== */
-    if (status === 403) {
-      toast.error(mensagem || "Sem permissão")
-      return Promise.reject(error)
-    }
+/* ===============================
+   PAYWALL SaaS
+=============================== */
+
+const bloqueioPlano =
+
+  mensagem.includes(
+    "inadimplente"
+  ) ||
+
+  mensagem.includes(
+    "Limite"
+  ) ||
+
+  mensagem.includes(
+    "Plano"
+  ) ||
+
+  mensagem.includes(
+    "vencido"
+  )
+
+if (bloqueioPlano) {
+
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      mensagem
+    )
+
+  return Promise.reject(
+    error
+  )
+}
+
+/* ===============================
+   OUTROS 403
+=============================== */
+
+if (status === 403) {
+
+  toast.error(
+    mensagem || "Sem permissão"
+  )
+
+  return Promise.reject(
+    error
+  )
+}
 
     /* ===============================
        OUTROS ERROS

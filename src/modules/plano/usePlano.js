@@ -10,13 +10,16 @@ import { usePermissao } from "../permissao/usePermissao"
 import {
   getPlanos,
   getPlanoAtual,
-  upgradePlano
+  upgradePlano,
+  assinarPlano
 } from "./plano.service"
 
 export function usePlano() {
-  const lojaId = useAppStore(
-    state => state.lojaId
-  )
+
+  const lojaId =
+    useAppStore(
+      state => state.lojaId
+    )
 
   const isChangingLoja =
     useAppStore(
@@ -40,10 +43,16 @@ export function usePlano() {
       "plano.editar"
     )
 
-  /* lista planos */
+  /* ===============================
+     LISTA PLANOS
+  =============================== */
+
   const planosQuery =
     useQuery({
-      queryKey: ["planos"],
+
+      queryKey: [
+        "planos"
+      ],
 
       queryFn:
         getPlanos,
@@ -54,9 +63,13 @@ export function usePlano() {
       retry: false
     })
 
-  /* plano atual */
+  /* ===============================
+     PLANO ATUAL
+  =============================== */
+
   const planoAtualQuery =
     useQuery({
+
       queryKey: [
         "planoAtual",
         lojaId
@@ -73,15 +86,21 @@ export function usePlano() {
         !isChangingLoja,
 
       retry: false,
+
       refetchOnMount:
         false,
+
       refetchOnWindowFocus:
         false
     })
 
-  /* upgrade */
+  /* ===============================
+     UPGRADE LOCAL
+  =============================== */
+
   const mutation =
     useMutation({
+
       mutationFn: ({
         plano_id,
         loja_id
@@ -92,6 +111,7 @@ export function usePlano() {
         ),
 
       onSuccess: () => {
+
         queryClient.invalidateQueries({
           queryKey: [
             "planoAtual",
@@ -108,36 +128,101 @@ export function usePlano() {
       }
     })
 
+  /* ===============================
+     TROCAR PLANO
+  =============================== */
+
   async function trocar(
     plano_id
   ) {
+
     if (!podeEditar) {
+
       alert(
         "Sem permissão para alterar plano"
       )
+
       return
     }
 
     if (!lojaId) {
+
       alert(
         "Selecione uma loja"
       )
+
       return
     }
 
     try {
+
       await mutation.mutateAsync({
+
         plano_id,
-        loja_id: lojaId
+
+        loja_id:
+          lojaId
       })
+
     } catch (e) {
+
       alert(
         e.message
       )
     }
   }
 
+  /* ===============================
+     ASSINAR PLANO
+  =============================== */
+
+  async function handleAssinar(
+    plano_id
+  ) {
+
+    try {
+
+      const response =
+        await assinarPlano(
+          plano_id
+        )
+
+      /*
+        Mercado Pago
+      */
+
+      if (
+        response?.init_point
+      ) {
+
+        window.open(
+          response.init_point,
+          "_blank"
+        )
+
+        return
+      }
+
+      alert(
+        "Checkout não disponível"
+      )
+
+    } catch (e) {
+
+      console.error(e)
+
+      alert(
+        "Erro ao iniciar assinatura"
+      )
+    }
+  }
+
+  /* ===============================
+     RETURN
+  =============================== */
+
   return {
+
     planos:
       planosQuery.data || [],
 
@@ -146,19 +231,28 @@ export function usePlano() {
       null,
 
     loading:
+
       planosQuery.isLoading ||
+
       planoAtualQuery.isLoading ||
+
       mutation.isPending,
 
     error:
+
       planosQuery.error
         ?.message ||
+
       planoAtualQuery.error
         ?.message ||
+
       mutation.error
         ?.message ||
+
       null,
 
-    trocar
+    trocar,
+
+    handleAssinar
   }
 }
