@@ -3,10 +3,21 @@ import { usePlano } from "../../modules/plano/usePlano"
 export default function Assinatura() {
 
   const {
+
     planoAtual,
+
     planos,
+
     loading,
-    handleAssinar
+
+    handleAssinar,
+
+    pixData,
+
+    showPixModal,
+
+    setShowPixModal
+
   } = usePlano()
 
   const usados =
@@ -35,6 +46,32 @@ export default function Assinatura() {
       ? "#dc2626"
       : "#f59e0b"
 
+  /* =========================
+     COPIAR PIX
+  ========================= */
+
+  async function copiarPix() {
+
+    try {
+
+      await navigator.clipboard.writeText(
+        pixData?.copiaecola || ""
+      )
+
+      alert(
+        "PIX copiado!"
+      )
+
+    } catch (e) {
+
+      console.error(e)
+
+      alert(
+        "Erro ao copiar PIX"
+      )
+    }
+  }
+
   if (loading) {
     return (
       <div style={{
@@ -46,6 +83,7 @@ export default function Assinatura() {
   }
 
   return (
+
     <div style={{
       padding: 24
     }}>
@@ -92,6 +130,7 @@ export default function Assinatura() {
         >
 
           <div>
+
             <div
               style={{
                 opacity: 0.7,
@@ -109,9 +148,11 @@ export default function Assinatura() {
             >
               {planoAtual?.nome || "-"}
             </div>
+
           </div>
 
           <div>
+
             <div
               style={{
                 opacity: 0.7,
@@ -130,9 +171,11 @@ export default function Assinatura() {
             >
               {status || "-"}
             </div>
+
           </div>
 
           <div>
+
             <div
               style={{
                 opacity: 0.7,
@@ -150,6 +193,7 @@ export default function Assinatura() {
             >
               R$ {planoAtual?.preco || "0.00"}
             </div>
+
           </div>
 
         </div>
@@ -175,6 +219,7 @@ export default function Assinatura() {
               fontSize: 18
             }}
           >
+
             <span>
               Consumo
             </span>
@@ -182,6 +227,7 @@ export default function Assinatura() {
             <strong>
               {usados} / {limite} veículos
             </strong>
+
           </div>
 
           <div
@@ -343,20 +389,26 @@ export default function Assinatura() {
                     padding: 14,
                     borderRadius: 14,
                     border: 0,
+
                     cursor:
                       isAtual
                         ? "default"
                         : "pointer",
+
                     fontSize: 16,
+
                     fontWeight: "700",
+
                     background:
                       isAtual
                         ? "#334155"
                         : "#2563eb",
+
                     opacity:
                       isAtual
                         ? 0.7
                         : 1,
+
                     color: "#fff"
                   }}
                 >
@@ -373,6 +425,224 @@ export default function Assinatura() {
         }
 
       </div>
+
+      {/* =========================
+          MODAL PIX
+      ========================= */}
+
+      {showPixModal && (
+
+        <div
+          style={{
+
+            position: "fixed",
+
+            inset: 0,
+
+            background:
+              "rgba(0,0,0,0.75)",
+
+            display: "flex",
+
+            alignItems: "center",
+
+            justifyContent: "center",
+
+            zIndex: 9999,
+
+            padding: 24
+          }}
+        >
+
+          <div
+            style={{
+
+              width: "100%",
+
+              maxWidth: 520,
+
+              background:
+                "#0f172a",
+
+              borderRadius: 24,
+
+              padding: 32,
+
+              color: "#fff",
+
+              textAlign: "center",
+
+              boxShadow:
+                "0 10px 40px rgba(0,0,0,0.4)"
+            }}
+          >
+
+            <h2
+              style={{
+                fontSize: 32,
+                marginBottom: 24
+              }}
+            >
+              Pagamento PIX
+            </h2>
+
+            {/* =====================
+                QR CODE
+            ===================== */}
+
+            {pixData?.qr_code && (
+
+              <img
+                src={
+                  `data:image/png;base64,${pixData.qr_code}`
+                }
+
+                alt="PIX"
+
+                style={{
+
+                  width: 260,
+
+                  height: 260,
+
+                  background: "#fff",
+
+                  padding: 12,
+
+                  borderRadius: 16,
+
+                  marginBottom: 24
+                }}
+              />
+
+            )}
+
+            {/* =====================
+                PIX COPIA E COLA
+            ===================== */}
+
+            <textarea
+
+              readOnly
+
+              value={
+                pixData?.copiaecola || ""
+              }
+
+              style={{
+
+                width: "100%",
+
+                minHeight: 120,
+
+                borderRadius: 14,
+
+                padding: 16,
+
+                border: 0,
+
+                resize: "none",
+
+                marginBottom: 18,
+
+                background: "#1e293b",
+
+                color: "#fff",
+
+                fontSize: 14
+              }}
+            />
+
+            {/* =====================
+                BOTÕES
+            ===================== */}
+
+            <div
+              style={{
+
+                display: "flex",
+
+                gap: 12
+              }}
+            >
+
+              <button
+
+                onClick={copiarPix}
+
+                style={{
+
+                  flex: 1,
+
+                  padding: 14,
+
+                  borderRadius: 14,
+
+                  border: 0,
+
+                  background: "#2563eb",
+
+                  color: "#fff",
+
+                  fontWeight: "700",
+
+                  cursor: "pointer"
+                }}
+              >
+                Copiar PIX
+              </button>
+
+              <button
+
+                onClick={() =>
+                  setShowPixModal(false)
+                }
+
+                style={{
+
+                  flex: 1,
+
+                  padding: 14,
+
+                  borderRadius: 14,
+
+                  border: 0,
+
+                  background: "#334155",
+
+                  color: "#fff",
+
+                  fontWeight: "700",
+
+                  cursor: "pointer"
+                }}
+              >
+                Fechar
+              </button>
+
+            </div>
+
+            {/* =====================
+                STATUS
+            ===================== */}
+
+            <div
+              style={{
+
+                marginTop: 24,
+
+                opacity: 0.7,
+
+                fontSize: 14
+              }}
+            >
+              Aguardando confirmação automática do pagamento...
+            </div>
+
+          </div>
+
+        </div>
+      )}
 
     </div>
   )

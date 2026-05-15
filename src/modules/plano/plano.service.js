@@ -209,3 +209,64 @@ export async function assinarPlano(
 
   return data
 }
+
+/* ===============================
+   GERAR PIX
+=============================== */
+export async function gerarPixPlano(
+  plano_id
+) {
+
+  /*
+    billing próprio SaaS
+  */
+
+  if (
+    !validarPermissao(
+      "billing.assinar"
+    )
+  ) {
+
+    throw new Error(
+      "Sem permissão para assinar plano"
+    )
+  }
+
+  const loja_id =
+    useAppStore
+      .getState()
+      .lojaId
+
+  if (!loja_id) {
+
+    throw new Error(
+      "Loja não encontrada"
+    )
+  }
+
+  const { data } =
+    await api.post(
+      "/billing/pix",
+      {
+        loja_id,
+        plano_id
+      }
+    )
+
+  return data
+}
+
+/* ===============================
+   STATUS PIX
+=============================== */
+export async function consultarStatusPix(
+  payment_id
+) {
+
+  const { data } =
+    await api.get(
+      `/billing/status/${payment_id}`
+    )
+
+  return data
+}

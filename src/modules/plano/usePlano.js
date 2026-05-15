@@ -1,4 +1,9 @@
 import {
+  useState,
+  useEffect
+} from "react"
+
+import {
   useQuery,
   useMutation,
   useQueryClient
@@ -8,10 +13,14 @@ import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
 
 import {
+
   getPlanos,
   getPlanoAtual,
   upgradePlano,
-  assinarPlano
+  assinarPlano,
+  gerarPixPlano,
+  consultarStatusPix
+
 } from "./plano.service"
 
 export function usePlano() {
@@ -29,6 +38,20 @@ export function usePlano() {
 
   const queryClient =
     useQueryClient()
+
+  /* ===============================
+   PIX
+=============================== */
+
+const [
+  pixData,
+  setPixData
+] = useState(null)
+
+const [
+  showPixModal,
+  setShowPixModal
+] = useState(false)
 
   const { temPermissao } =
     usePermissao()
@@ -172,71 +195,144 @@ export function usePlano() {
     }
   }
 
-  /* ===============================
-     ASSINAR PLANO
-  =============================== */
+/* ===============================
+   ASSINAR PLANO PIX
+=============================== */
 
-  async function handleAssinar(
-    plano_id
-  ) {
+async function handleAssinar(
+  plano_id
+) {
 
-    try {
+  try {
 
-      const response =
-        await assinarPlano(
-          plano_id
-        )
+    const response =
+      await gerarPixPlano(
+        plano_id
+      )
+
+    /*
+      PIX GERADO
+    */
+
+    if (
+      response?.payment_id
+    ) {
 
       /*
-        CHECKOUT MP
+        PIX REUTILIZADO
       */
 
       if (
-        response?.init_point
+        response?.reutilizado
       ) {
 
-        /*
-          CHECKOUT REUTILIZADO
-        */
-
-        if (
-          response?.reutilizado
-        ) {
-
-          alert(
-            "Seu checkout anterior foi reaberto para continuar o pagamento."
-          )
-        }
-
-        /*
-          ABRE MP
-        */
-
-        window.open(
-          response.init_point,
-          "_blank"
+        alert(
+          "PIX anterior reutilizado."
         )
-
-        return
       }
 
       /*
-        SEM CHECKOUT
+        ABRE MODAL PIX
       */
 
-      alert(
-        "Checkout não disponível"
-      )
+      setPixData(response)
 
-    } catch (e) {
+      setShowPixModal(true)
 
-      console.error(e)
-
-      alert(
-        "Erro ao iniciar assinatura"
-      )
+      return
     }
+
+    alert(
+      "Erro ao gerar PIX"
+    )
+
+  } catch (e) {
+
+    console.error(e)
+
+    alert(
+      "Erro ao iniciar pagamento"
+    )
   }
+}
+
+/* ===============================
+   POLLING PIX
+=============================== */
+
+useEffect(() => {
+
+  if (
+    !pixData?.payment_id
+  ) return
+
+  const interval =
+    setInterval(async () => {
+
+      try {
+
+        const status =
+          await consultarStatusPix(
+            pixData.payment_id
+          )
+
+        /*
+          PLANO ATIVO
+        */
+
+        if (
+          status?.plano_status ===
+          "ativo"
+        ) {
+
+          clearInterval(
+            interval
+          )
+
+          alert(
+            "Plano ativado com sucesso!"
+          )
+
+          setShowPixModal(
+            false
+          )
+
+          setPixData(null)
+
+          /*
+            RELOAD
+          */
+
+          queryClient.invalidateQueries({
+            queryKey: [
+              "planoAtual",
+              lojaId
+            ]
+          })
+
+          queryClient.invalidateQueries({
+            queryKey: [
+              "dashboard",
+              lojaId
+            ]
+          })
+        }
+
+      } catch (e) {
+
+        console.error(e)
+      }
+
+    }, 3000)
+
+  return () =>
+    clearInterval(interval)
+
+}, [
+  pixData,
+  lojaId,
+  queryClient
+])
 
   /* ===============================
      RETURN
@@ -274,6 +370,13 @@ export function usePlano() {
 
     trocar,
 
-    handleAssinar
+    handleAssinar,
+
+    pixData,
+
+    showPixModal,
+
+    setShowPixModal
+    
   }
 }
