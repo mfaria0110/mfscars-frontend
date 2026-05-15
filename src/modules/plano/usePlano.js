@@ -191,9 +191,36 @@ export function usePlano() {
         Mercado Pago
       */
 
-      if (
-        response?.init_point
-      ) {
+if (
+  response?.init_point
+) {
+
+  /*
+    CHECKOUT REUTILIZADO
+  */
+
+  if (
+    response?.reutilizado
+  ) {
+
+    alert(
+      "Seu checkout anterior foi reaberto para continuar o pagamento."
+    )
+  }
+
+  /*
+    ABRE MP
+  */
+
+  window.open(
+    response.init_point,
+    "_blank"
+  )
+
+  return
+}
+
+      {
 
         window.open(
           response.init_point,
