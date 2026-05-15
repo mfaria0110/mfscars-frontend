@@ -99,7 +99,7 @@ export default function Assinatura() {
 
           borderRadius: 24,
 
-          padding: 36,
+          padding: 22,
 
           color: "#fff",
 
@@ -112,7 +112,7 @@ export default function Assinatura() {
 
         <h1
           style={{
-            fontSize: 42,
+            fontSize: 30,
             marginBottom: 24
           }}
         >
@@ -204,7 +204,7 @@ export default function Assinatura() {
 
         <div
           style={{
-            marginTop: 36
+            marginTop: 24
           }}
         >
 
@@ -233,7 +233,7 @@ export default function Assinatura() {
           <div
             style={{
               width: "100%",
-              height: 14,
+              height: 10,
               background: "#1e293b",
               borderRadius: 999,
               overflow: "hidden"
@@ -345,7 +345,7 @@ export default function Assinatura() {
 
                 <h2
                   style={{
-                    fontSize: 38,
+                    fontSize: 30,
                     marginBottom: 16
                   }}
                 >
@@ -354,7 +354,7 @@ export default function Assinatura() {
 
                 <div
                   style={{
-                    fontSize: 42,
+                    fontSize: 34,
                     fontWeight: "700",
                     marginBottom: 12
                   }}
@@ -461,7 +461,9 @@ opacity:
 
             zIndex: 9999,
 
-            padding: 24
+            padding: window.innerWidth < 768
+            ? 16
+            : 24
           }}
         >
 
