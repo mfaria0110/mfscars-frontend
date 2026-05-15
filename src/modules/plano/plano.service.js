@@ -186,10 +186,23 @@ export async function assinarPlano(
     )
   }
 
+  const loja_id =
+    useAppStore
+      .getState()
+      .lojaId
+
+  if (!loja_id) {
+
+    throw new Error(
+      "Loja não encontrada"
+    )
+  }
+
   const { data } =
     await api.post(
       "/billing/assinar",
       {
+        loja_id,
         plano_id
       }
     )

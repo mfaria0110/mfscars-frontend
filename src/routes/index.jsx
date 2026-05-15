@@ -27,6 +27,12 @@ import Permissoes from "../pages/app/Permissoes"
 
 import Assinatura from "../pages/app/Assinatura"
 
+import PagamentoSucesso
+from "../pages/app/PagamentoSucesso"
+
+import PagamentoFalha
+from "../pages/app/PagamentoFalha"
+
 import {
   usePermissao
 } from "../modules/permissao/usePermissao"
@@ -67,7 +73,6 @@ export default function Router() {
         {/* =========================
             🌐 PÚBLICO
         ========================== */}
-
         <Route
           element={
             <PublicLayout />
@@ -79,12 +84,20 @@ export default function Router() {
             element={<Login />}
           />
 
+          <Route
+            path="/pagamento/sucesso"
+            element={<PagamentoSucesso />}
+          />
+
+          <Route
+            path="/pagamento/falha"
+            element={<PagamentoFalha />}
+          />
         </Route>
 
         {/* =========================
             🔒 PRIVADO
         ========================== */}
-
         <Route
           element={
             <PrivateRoute />
@@ -99,10 +112,10 @@ export default function Router() {
 
             {/* ASSINATURA */}
 
-<Route
-  path="/app/assinatura"
-  element={<Assinatura />}
-/>
+            <Route
+              path="/app/assinatura"
+              element={<Assinatura />}
+            />
 
             {/* DASHBOARD */}
 
