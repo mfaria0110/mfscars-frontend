@@ -353,15 +353,15 @@ export default function Assinatura() {
 
 <button
 
-  onClick={() => {
+onClick={() => {
 
-    if (!isAtual) {
+  if (!isAtual) {
 
-      handleAssinar(
-        plano.id
-      )
-    }
-  }}
+    handleAssinar(
+      plano
+    )
+  }
+}}
 
   disabled={isAtual}
 

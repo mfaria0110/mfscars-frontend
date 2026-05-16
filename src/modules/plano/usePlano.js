@@ -195,66 +195,116 @@ export function usePlano() {
     }
   }
 
-  /* ===============================
-     ASSINAR PLANO PIX
-  =============================== */
+/* ===============================
+   ASSINAR PLANO
+=============================== */
 
-  async function handleAssinar(
-    plano_id
-  ) {
+async function handleAssinar(
+  plano
+) {
 
-    try {
+  try {
 
-      const response =
-        await gerarPixPlano(
-          plano_id
-        )
+    /*
+      FREE
+    */
+
+    if (
+
+      plano?.nome
+        ?.toLowerCase?.() === "free"
+
+    ) {
+
+      await upgradePlano(
+
+        plano.id,
+
+        lojaId
+
+      )
 
       /*
-        PIX GERADO
+        REFRESH
+      */
+
+      queryClient.invalidateQueries({
+
+        queryKey: [
+          "planoAtual",
+          lojaId
+        ]
+      })
+
+      queryClient.invalidateQueries({
+
+        queryKey: [
+          "dashboard",
+          lojaId
+        ]
+      })
+
+      alert(
+        "Plano FREE ativado com sucesso!"
+      )
+
+      return
+    }
+
+    /*
+      PLANOS PAGOS
+    */
+
+    const response =
+      await gerarPixPlano(
+        plano.id
+      )
+
+    /*
+      PIX GERADO
+    */
+
+    if (
+      response?.payment_id
+    ) {
+
+      /*
+        PIX REUTILIZADO
       */
 
       if (
-        response?.payment_id
+        response?.reutilizado
       ) {
 
-        /*
-          PIX REUTILIZADO
-        */
-
-        if (
-          response?.reutilizado
-        ) {
-
-          alert(
-            "PIX anterior reutilizado."
-          )
-        }
-
-        /*
-          ABRE MODAL PIX
-        */
-
-        setPixData(response)
-
-        setShowPixModal(true)
-
-        return
+        alert(
+          "PIX anterior reutilizado."
+        )
       }
 
-      alert(
-        "Erro ao gerar PIX"
-      )
+      /*
+        ABRE MODAL PIX
+      */
 
-    } catch (e) {
+      setPixData(response)
 
-      console.error(e)
+      setShowPixModal(true)
 
-      alert(
-        "Erro ao iniciar pagamento"
-      )
+      return
     }
+
+    alert(
+      "Erro ao gerar PIX"
+    )
+
+  } catch (e) {
+
+    console.error(e)
+
+    alert(
+      "Erro ao iniciar pagamento"
+    )
   }
+}
 
   /* ===============================
      POLLING PIX
