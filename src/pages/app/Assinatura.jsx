@@ -5,17 +5,11 @@ export default function Assinatura() {
   const {
 
     planoAtual,
-
     planos,
-
     loading,
-
     handleAssinar,
-
     pixData,
-
     showPixModal,
-
     setShowPixModal
 
   } = usePlano()
@@ -98,13 +92,9 @@ export default function Assinatura() {
             "linear-gradient(135deg, #020617 0%, #0f172a 100%)",
 
           borderRadius: 24,
-
-          padding: 22,
-
+          padding: 18,
           color: "#fff",
-
           marginBottom: 32,
-
           boxShadow:
             "0 10px 30px rgba(0,0,0,0.25)"
         }}
@@ -112,7 +102,7 @@ export default function Assinatura() {
 
         <h1
           style={{
-            fontSize: 30,
+            fontSize: 22,
             marginBottom: 24
           }}
         >
@@ -142,7 +132,7 @@ export default function Assinatura() {
 
             <div
               style={{
-                fontSize: 28,
+                fontSize: 20,
                 fontWeight: "700"
               }}
             >
@@ -166,7 +156,7 @@ export default function Assinatura() {
               style={{
                 color: statusColor,
                 fontWeight: "700",
-                fontSize: 20
+                fontSize: 16
               }}
             >
               {status || "-"}
@@ -187,7 +177,7 @@ export default function Assinatura() {
 
             <div
               style={{
-                fontSize: 24,
+                fontSize: 18,
                 fontWeight: "700"
               }}
             >
@@ -204,7 +194,7 @@ export default function Assinatura() {
 
         <div
           style={{
-            marginTop: 24
+            marginTop: 16
           }}
         >
 
@@ -216,7 +206,7 @@ export default function Assinatura() {
 
               marginBottom: 10,
 
-              fontSize: 18
+              fontSize: 14
             }}
           >
 
@@ -233,7 +223,7 @@ export default function Assinatura() {
           <div
             style={{
               width: "100%",
-              height: 10,
+              height: 6,
               background: "#1e293b",
               borderRadius: 999,
               overflow: "hidden"
@@ -274,7 +264,7 @@ export default function Assinatura() {
           display: "grid",
 
           gridTemplateColumns:
-            "repeat(auto-fit, minmax(260px, 1fr))",
+            "repeat(auto-fit, minmax(220px, 1fr))",
 
           gap: 24
         }}
@@ -299,20 +289,14 @@ export default function Assinatura() {
 
                   background:
                     "linear-gradient(135deg, #111827 0%, #1e293b 100%)",
-
-                  borderRadius: 24,
-
-                  padding: 28,
-
+                  borderRadius: 20,
+                  padding: 18,
                   color: "#fff",
-
                   border:
                     isAtual
                       ? "2px solid #2563eb"
                       : "2px solid transparent",
-
                   position: "relative",
-
                   boxShadow:
                     "0 8px 24px rgba(0,0,0,0.15)"
                 }}
@@ -325,16 +309,11 @@ export default function Assinatura() {
                       position: "absolute",
                       top: 16,
                       right: 16,
-
                       background: "#2563eb",
-
                       padding:
-                        "6px 12px",
-
+                        "4px 10px",
                       borderRadius: 999,
-
-                      fontSize: 12,
-
+                      fontSize: 10,
                       fontWeight: "700"
                     }}
                   >
@@ -345,8 +324,8 @@ export default function Assinatura() {
 
                 <h2
                   style={{
-                    fontSize: 30,
-                    marginBottom: 16
+                    fontSize: 25,
+                    marginBottom: 15
                   }}
                 >
                   {plano.nome}
@@ -354,7 +333,7 @@ export default function Assinatura() {
 
                 <div
                   style={{
-                    fontSize: 34,
+                    fontSize: 24,
                     fontWeight: "700",
                     marginBottom: 12
                   }}
@@ -391,42 +370,41 @@ export default function Assinatura() {
                   style={{
 
                     width: "100%",
-                    padding: 14,
+                    padding: 10,
                     borderRadius: 14,
                     border: 0,
 
-cursor:
-  isAtual || isFree
-    ? "default"
-    : "pointer",
+                    cursor:
+                      isAtual || isFree
+                        ? "default"
+                        : "pointer",
 
                     fontSize: 16,
-
                     fontWeight: "700",
 
-background:
-  isAtual || isFree
-    ? "#334155"
-    : "#2563eb",
+                    background:
+                      isAtual || isFree
+                        ? "#334155"
+                        : "#2563eb",
 
-opacity:
-  isAtual || isFree
-    ? 0.7
-    : 1,
+                    opacity:
+                      isAtual || isFree
+                        ? 0.7
+                        : 1,
 
-                    color: "#fff"
-                  }}
-                >
+                                        color: "#fff"
+                                      }}
+                                    >
 
-{
-  isAtual
-    ? "Plano Atual"
+                    {
+                      isAtual
+                        ? "Plano Atual"
 
-    : isFree
-    ? "Plano Gratuito"
+                        : isFree
+                        ? "Plano Gratuito"
 
-    : "Escolher Plano"
-}
+                        : "Escolher Plano"
+                    }
 
                 </button>
 
@@ -447,20 +425,13 @@ opacity:
           style={{
 
             position: "fixed",
-
             inset: 0,
-
             background:
               "rgba(0,0,0,0.75)",
-
             display: "flex",
-
             alignItems: "center",
-
             justifyContent: "center",
-
             zIndex: 9999,
-
             padding: window.innerWidth < 768
             ? 16
             : 24
@@ -471,20 +442,13 @@ opacity:
             style={{
 
               width: "100%",
-
               maxWidth: 520,
-
               background:
                 "#0f172a",
-
               borderRadius: 24,
-
               padding: 32,
-
               color: "#fff",
-
               textAlign: "center",
-
               boxShadow:
                 "0 10px 40px rgba(0,0,0,0.4)"
             }}
@@ -515,15 +479,10 @@ opacity:
                 style={{
 
                   width: 260,
-
                   height: 260,
-
                   background: "#fff",
-
                   padding: 12,
-
                   borderRadius: 16,
-
                   marginBottom: 24
                 }}
               />
@@ -545,23 +504,14 @@ opacity:
               style={{
 
                 width: "100%",
-
                 minHeight: 120,
-
                 borderRadius: 14,
-
                 padding: 16,
-
                 border: 0,
-
                 resize: "none",
-
                 marginBottom: 18,
-
                 background: "#1e293b",
-
                 color: "#fff",
-
                 fontSize: 14
               }}
             />
@@ -574,7 +524,6 @@ opacity:
               style={{
 
                 display: "flex",
-
                 gap: 12
               }}
             >
@@ -586,19 +535,12 @@ opacity:
                 style={{
 
                   flex: 1,
-
                   padding: 14,
-
                   borderRadius: 14,
-
                   border: 0,
-
                   background: "#2563eb",
-
                   color: "#fff",
-
                   fontWeight: "700",
-
                   cursor: "pointer"
                 }}
               >
@@ -614,19 +556,12 @@ opacity:
                 style={{
 
                   flex: 1,
-
                   padding: 14,
-
                   borderRadius: 14,
-
                   border: 0,
-
                   background: "#334155",
-
                   color: "#fff",
-
                   fontWeight: "700",
-
                   cursor: "pointer"
                 }}
               >
@@ -643,9 +578,7 @@ opacity:
               style={{
 
                 marginTop: 24,
-
                 opacity: 0.7,
-
                 fontSize: 14
               }}
             >
