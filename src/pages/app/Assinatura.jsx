@@ -351,62 +351,57 @@ export default function Assinatura() {
                   {plano.limite_veiculos} veículos
                 </div>
 
-                <button
+<button
 
-                  onClick={() => {
+  onClick={() => {
 
-                    if (!isAtual) {
+    if (!isAtual) {
 
-                      handleAssinar(
-                        plano.id
-                      )
-                    }
-                  }}
+      handleAssinar(
+        plano.id
+      )
+    }
+  }}
 
-                  disabled={
-                      isAtual || isFree
-                    }
+  disabled={isAtual}
 
-                  style={{
+  style={{
 
-                    width: "100%",
-                    padding: 10,
-                    borderRadius: 14,
-                    border: 0,
+    width: "100%",
+    padding: 10,
+    borderRadius: 14,
+    border: 0,
 
-                    cursor:
-                      isAtual || isFree
-                        ? "default"
-                        : "pointer",
+    cursor:
+      isAtual
+        ? "default"
+        : "pointer",
 
-                    fontSize: 16,
-                    fontWeight: "700",
+    fontSize: 16,
+    fontWeight: "700",
 
-                    background:
-                      isAtual || isFree
-                        ? "#334155"
-                        : "#2563eb",
+    background:
+      isAtual
+        ? "#334155"
+        : "#2563eb",
 
-                    opacity:
-                      isAtual || isFree
-                        ? 0.7
-                        : 1,
+    opacity:
+      isAtual
+        ? 0.7
+        : 1,
 
-                                        color: "#fff"
-                                      }}
-                                    >
+    color: "#fff"
+  }}
+>
 
-                    {
-                      isAtual
-                        ? "Plano Atual"
+  {
+    isAtual
+      ? "Plano Atual"
+      : "Escolher Plano"
+  }
 
-                        : isFree
-                        ? "Plano Gratuito"
+</button>
 
-                        : "Escolher Plano"
-                    }
-
-                </button>
 
               </div>
             )
