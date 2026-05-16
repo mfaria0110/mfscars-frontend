@@ -280,6 +280,16 @@ export default function Assinatura() {
             const isFree =
               Number(plano.preco) < 0.5
 
+            const usuario =
+            JSON.parse(
+              sessionStorage.getItem(
+                "usuario"
+              ) || "{}"
+            )
+
+            const isMaster =
+              usuario?.master === true
+
             return (
 
               <div
@@ -351,56 +361,96 @@ export default function Assinatura() {
                   {plano.limite_veiculos} veículos
                 </div>
 
-<button
+                <button
 
-onClick={() => {
+                  onClick={() => {
 
-  if (!isAtual) {
+                    if (!isAtual) {
 
-    handleAssinar(
-      plano
-    )
-  }
-}}
+                      handleAssinar(
+                        plano
+                      )
+                    }
+                  }}
 
-  disabled={isAtual}
+                  disabled={
+                    isAtual ||
 
-  style={{
+                    (
+                      isFree &&
+                      !isMaster
+                    )
+                  }
 
-    width: "100%",
-    padding: 10,
-    borderRadius: 14,
-    border: 0,
+                  style={{
 
-    cursor:
-      isAtual
-        ? "default"
-        : "pointer",
+                    width: "100%",
+                    padding: 10,
+                    borderRadius: 14,
+                    border: 0,
 
-    fontSize: 16,
-    fontWeight: "700",
+                    cursor:
 
-    background:
-      isAtual
-        ? "#334155"
-        : "#2563eb",
+                      isAtual ||
 
-    opacity:
-      isAtual
-        ? 0.7
-        : 1,
+                      (
+                        isFree &&
+                        !isMaster
+                      )
 
-    color: "#fff"
-  }}
->
+                        ? "default"
+                        : "pointer",
 
-  {
-    isAtual
-      ? "Plano Atual"
-      : "Escolher Plano"
-  }
+                    fontSize: 16,
+                    fontWeight: "700",
 
-</button>
+                    background:
+
+                      isAtual ||
+
+                      (
+                        isFree &&
+                        !isMaster
+                      )
+
+                        ? "#334155"
+                        : "#2563eb",
+
+                    opacity:
+
+                      isAtual ||
+
+                      (
+                        isFree &&
+                        !isMaster
+                      )
+
+                        ? 0.7
+                        : 1,
+
+                    color: "#fff"
+                  }}
+                >
+
+                  {
+
+                    isAtual
+
+                      ? "Plano Atual"
+
+                      : (
+
+                          isFree &&
+                          !isMaster
+
+                        )
+
+                          ? "Plano Gratuito"
+
+                          : "Escolher Plano"
+                  }
+
+                </button>
 
 
               </div>
