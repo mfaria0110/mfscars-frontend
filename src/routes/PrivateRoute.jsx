@@ -53,21 +53,7 @@ export default function PrivateRoute() {
     )
   }
 
-  /*
-  MASTER
-*/
 
-if (
-
-  usuario?.master === true ||
-
-  usuario?.master === "true"
-
-) {
-
-  return <Outlet />
-}
-  
 
   /*
     PLANO
@@ -91,7 +77,10 @@ if (
     sem plano
   */
 
-  if (!planoAtual) {
+    if (
+      !usuario?.master &&
+      !planoAtual
+    ) {
 
     return (
       <PlanoBloqueioModal
@@ -140,9 +129,11 @@ if (
     PENDENTE
   */
 
-  if (
-    status === "pendente"
-  ) {
+if (
+  !usuario?.master &&
+  status === "pendente"
+)
+  {
 
     return (
       <PlanoBloqueioModal
@@ -162,9 +153,11 @@ if (
     INADIMPLENTE
   */
 
-  if (
-    status === "inadimplente"
-  ) {
+if (
+  !usuario?.master &&
+  status === "inadimplente"
+)
+  {
 
     return (
       <PlanoBloqueioModal
@@ -185,8 +178,10 @@ if (
   */
 
   if (
+    !usuario?.master &&
     status === "cancelado"
-  ) {
+  )
+  {
 
     return (
       <PlanoBloqueioModal
@@ -207,6 +202,7 @@ if (
   */
 
   if (
+    !usuario?.master &&
     status === "pausado"
   ) {
 
