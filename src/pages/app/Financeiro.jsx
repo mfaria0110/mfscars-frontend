@@ -12,6 +12,8 @@ import {
   CreditCard
 } from "lucide-react"
 
+import { useAppStore } from "../../store/useAppStore"
+
 export default function Financeiro() {
 
   const [resumo, setResumo] =
@@ -23,11 +25,8 @@ export default function Financeiro() {
   const [loading, setLoading] =
     useState(true)
 
-  const usuario =
-  JSON.parse(
-    localStorage.getItem(
-      "usuario"
-    )
+  const usuario = useAppStore(
+    state => state.usuario
   )
 
   if (
