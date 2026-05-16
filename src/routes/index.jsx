@@ -26,6 +26,9 @@ import Leads from "../pages/app/Leads"
 import Permissoes from "../pages/app/Permissoes"
 
 import Assinatura from "../pages/app/Assinatura"
+import Financeiro
+  from "../pages/app/Financeiro"
+
 
 import PagamentoSucesso
 from "../pages/app/PagamentoSucesso"
@@ -115,6 +118,11 @@ export default function Router() {
             <Route
               path="/app/assinatura"
               element={<Assinatura />}
+            />
+
+            <Route
+              path="/financeiro"
+              element={<Financeiro />}
             />
 
             {/* DASHBOARD */}
