@@ -32,12 +32,12 @@ export default function PrivateRoute() {
       "accessToken"
     )
 
-    const usuario =
-  JSON.parse(
-    sessionStorage.getItem(
-      "usuario"
-    ) || "{}"
-  )
+  const usuario =
+    JSON.parse(
+      sessionStorage.getItem(
+        "usuario"
+      ) || "{}"
+    )
 
   /*
     SEM LOGIN
@@ -52,8 +52,6 @@ export default function PrivateRoute() {
       />
     )
   }
-
-
 
   /*
     PLANO
@@ -74,13 +72,19 @@ export default function PrivateRoute() {
   }
 
   /*
+    MASTER IGNORA BLOQUEIOS
+  */
+
+  if (usuario?.master === true) {
+
+    return <Outlet />
+  }
+
+  /*
     sem plano
   */
 
-    if (
-      !usuario?.master &&
-      !planoAtual
-    ) {
+  if (!planoAtual) {
 
     return (
       <PlanoBloqueioModal
@@ -101,14 +105,16 @@ export default function PrivateRoute() {
   */
 
   const status =
-    planoAtual.status
+    planoAtual?.status
+      ?.toLowerCase?.()
 
   /*
     FREE
   */
 
   if (
-    planoAtual?.nome?.toLowerCase() === "free"
+    planoAtual?.nome
+      ?.toLowerCase?.() === "free"
   ) {
 
     return <Outlet />
@@ -129,11 +135,9 @@ export default function PrivateRoute() {
     PENDENTE
   */
 
-if (
-  !usuario?.master &&
-  status === "pendente"
-)
-  {
+  if (
+    status === "pendente"
+  ) {
 
     return (
       <PlanoBloqueioModal
@@ -153,11 +157,9 @@ if (
     INADIMPLENTE
   */
 
-if (
-  !usuario?.master &&
-  status === "inadimplente"
-)
-  {
+  if (
+    status === "inadimplente"
+  ) {
 
     return (
       <PlanoBloqueioModal
@@ -178,10 +180,8 @@ if (
   */
 
   if (
-    !usuario?.master &&
     status === "cancelado"
-  )
-  {
+  ) {
 
     return (
       <PlanoBloqueioModal
@@ -202,7 +202,6 @@ if (
   */
 
   if (
-    !usuario?.master &&
     status === "pausado"
   ) {
 
