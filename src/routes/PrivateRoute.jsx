@@ -32,6 +32,13 @@ export default function PrivateRoute() {
       "accessToken"
     )
 
+    const usuario =
+  JSON.parse(
+    sessionStorage.getItem(
+      "usuario"
+    ) || "{}"
+  )
+
   /*
     SEM LOGIN
   */
@@ -45,6 +52,16 @@ export default function PrivateRoute() {
       />
     )
   }
+
+  /*
+  MASTER
+*/
+
+if (usuario?.master) {
+
+  return <Outlet />
+}
+  
 
   /*
     PLANO
