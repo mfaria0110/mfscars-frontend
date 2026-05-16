@@ -57,7 +57,13 @@ export default function PrivateRoute() {
   MASTER
 */
 
-if (usuario?.master) {
+if (
+
+  usuario?.master === true ||
+
+  usuario?.master === "true"
+
+) {
 
   return <Outlet />
 }
