@@ -1,23 +1,13 @@
 import ReactDOM from "react-dom/client"
-import Router from "./routes"
-import "./index.css"
-import "leaflet/dist/leaflet.css"
 
-import { Toaster } from "react-hot-toast"
+import "./index.css"
+
+import "leaflet/dist/leaflet.css"
 
 import {
   QueryClient,
   QueryClientProvider
 } from "@tanstack/react-query"
-
-import { iniciarIdleLogout }
-  from "./utils/idleLogout"
-
-import { useAppStore }
-  from "./store/useAppStore"
-
-import ModalAceiteTermos
-  from "./components/ModalAceiteTermos"
 
 const queryClient =
   new QueryClient({
@@ -37,51 +27,7 @@ const queryClient =
     }
   })
 
-/* ===========================
-   DARK MODE
-=========================== */
-
-const dark =
-  localStorage.getItem("dark") === "true"
-
-if (dark) {
-
-  document.documentElement
-    .classList.add("dark")
-}
-
-/* ===========================
-   IDLE LOGOUT
-=========================== */
-
-const token =
-  localStorage.getItem("token")
-
-if (token) {
-
-  iniciarIdleLogout()
-}
-
-/* ===========================
-   ROOT
-=========================== */
-
 function Root() {
-
-  const modalAceite =
-    useAppStore(
-      s => s.modalAceite
-    )
-
-  const pendentesAceite =
-    useAppStore(
-      s => s.pendentesAceite
-    )
-
-  const fecharAceite =
-    useAppStore(
-      s => s.fecharAceite
-    )
 
   return (
 
@@ -89,33 +35,29 @@ function Root() {
       client={queryClient}
     >
 
-      <Router />
+      <div style={{
 
-      <Toaster
-        position="top-right"
-      />
+        minHeight: "100vh",
 
-      <ModalAceiteTermos
+        display: "flex",
 
-        aberto={modalAceite}
+        alignItems: "center",
 
-        pendentes={
-          pendentesAceite
-        }
+        justifyContent: "center",
 
-        onAceitou={() => {
+        fontSize: 40,
 
-          fecharAceite()
-        }}
-      />
+        fontWeight: 700
+
+      }}>
+
+        TESTE OK
+
+      </div>
 
     </QueryClientProvider>
   )
 }
-
-/* ===========================
-   RENDER APP
-=========================== */
 
 ReactDOM.createRoot(
 

@@ -1,15 +1,35 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import toast from "react-hot-toast"
-import { useAuth } from "../../modules/auth/useAuth"
-import api from "../../api/api"
+import { useState }
+  from "react"
+
+import { useNavigate }
+  from "react-router-dom"
+
+import toast
+  from "react-hot-toast"
+
+import { useAuth }
+  from "../../modules/auth/useAuth"
+
+import { useAppStore }
+  from "../../store/useAppStore"
+
+import api
+  from "../../api/api"
+
 import "./login.css"
 
 export default function Login() {
 
-  const navigate = useNavigate()
+  const navigate =
+    useNavigate()
 
-  const { login, loading } = useAuth()
+  const { login, loading } =
+    useAuth()
+
+  const abrirAceite =
+    useAppStore(
+      s => s.abrirAceite
+    )
 
   const [email, setEmail] =
     useState("")
@@ -38,44 +58,43 @@ export default function Login() {
 
       if (!ok) return
 
+      /* ===============================
+         VERIFICA NOVOS TERMOS
+      =============================== */
+
+      try {
+
+        const aceite =
+          await api.get(
+            "/juridico/verificar-aceite"
+          )
+
+        if (
+
+          aceite.data?.precisaAceite
+
+        ) {
+
+          abrirAceite(
+            aceite.data.pendentes || []
+          )
+        }
+
+      } catch(e){
+
+        console.error(
+          "Erro ao verificar aceite",
+          e
+        )
+      }
+
       toast.success(
         "Login realizado com sucesso"
       )
 
-    /* ===============================
-   VERIFICA NOVOS TERMOS
-=============================== */
-
-const aceite =
-  await api.get(
-    "/juridico/verificar-aceite"
-  )
-
-if (
-
-  aceite.data?.precisaAceite
-
-) {
-
-  localStorage.setItem(
-
-    "mfs_pendentes_aceite",
-
-    JSON.stringify(
-      aceite.data.pendentes
-    )
-
-  )
-
-  navigate(
-    "/app/aceite-termos"
-  )
-
-  return
-}
-
-      // ✅ CORRIGIDO
-      navigate("/app/veiculos")
+      navigate(
+        "/app/veiculos"
+      )
 
     } catch (error) {
 
@@ -102,9 +121,13 @@ if (
         </p>
 
         <input
+
           className="login-input"
+
           placeholder="Email"
+
           value={email}
+
           onChange={(e) =>
             setEmail(
               e.target.value
@@ -113,10 +136,15 @@ if (
         />
 
         <input
+
           type="password"
+
           className="login-input"
+
           placeholder="Senha"
+
           value={senha}
+
           onChange={(e) =>
             setSenha(
               e.target.value
@@ -125,15 +153,21 @@ if (
         />
 
         <button
+
           className="login-btn"
+
           onClick={handleLogin}
+
           disabled={loading}
+
         >
 
           {
+
             loading
               ? "Entrando..."
               : "Entrar"
+
           }
 
         </button>
