@@ -66,9 +66,9 @@ export default function Veiculos() {
   ] = useState(false)
 
   const [modalCancelar, setModalCancelar] = useState({
-  open: false,
-  veiculoId: null
-})
+    open: false,
+    veiculoId: null
+  })
 
   /* ===============================
      🔥 ERRO
@@ -119,7 +119,19 @@ export default function Veiculos() {
      🔥 RENDER
   ============================== */
   return (
-    <div className="veiculos-page">
+
+    <div
+      className="veiculos-page"
+      style={{
+
+        minHeight: "100vh",
+
+        display: "flex",
+
+        flexDirection: "column"
+
+      }}
+    >
 
       {/* DASHBOARD */}
       <DashboardStats stats={stats} />
@@ -175,6 +187,7 @@ export default function Veiculos() {
           placeholder="Ano mínimo"
           value={filtros.anoMin || ""}
           onChange={(e) => {
+
             const value = e.target.value
 
             setFiltros((f) => ({
@@ -191,6 +204,7 @@ export default function Veiculos() {
           placeholder="Preço até"
           value={filtros.precoMax || ""}
           onChange={(e) => {
+
             const value = e.target.value
 
             setFiltros((f) => ({
@@ -204,12 +218,14 @@ export default function Veiculos() {
         />
 
         {Object.keys(filtros).length > 0 && (
+
           <button
             className="btn-clear"
             onClick={limparFiltros}
           >
             Limpar filtros
           </button>
+
         )}
 
       </div>
@@ -225,9 +241,13 @@ export default function Veiculos() {
         )}
 
       {/* GRID */}
-      <div className="veiculos-grid">
+      <div
+        className="veiculos-grid"
+        style={{ flex: 1 }}
+      >
 
         {veiculos.map((v) => (
+
           <VeiculoCard
             key={v.id}
             v={v}
@@ -239,12 +259,14 @@ export default function Veiculos() {
               })
             }
           />
+
         ))}
 
       </div>
 
       {/* MODAL ERRO */}
       {showModalErro && error && (
+
         <div
           className="modal"
           onClick={() => {
@@ -252,13 +274,16 @@ export default function Veiculos() {
             limparErro()
           }}
         >
+
           <div
             className="modal-content"
             onClick={(e) =>
               e.stopPropagation()
             }
           >
+
             <div className="modal-header">
+
               <h3>⚠️ Atenção</h3>
 
               <button
@@ -270,6 +295,7 @@ export default function Veiculos() {
               >
                 ✕
               </button>
+
             </div>
 
             <p style={{ fontSize: "16px" }}>
@@ -277,6 +303,7 @@ export default function Veiculos() {
             </p>
 
             <div className="actions">
+
               <button
                 onClick={() => {
                   setShowModalErro(false)
@@ -285,9 +312,13 @@ export default function Veiculos() {
               >
                 Fechar
               </button>
+
             </div>
+
           </div>
+
         </div>
+
       )}
 
       <CancelarVendaModal
@@ -299,13 +330,20 @@ export default function Veiculos() {
           })
         }
         onConfirm={async (motivo) => {
+
           try {
+
             await api.put(
+
               `/vendas/cancelar/${modalCancelar.veiculoId}`,
+
               { motivo }
+
             )
 
-            toast.success("Venda cancelada")
+            toast.success(
+              "Venda cancelada"
+            )
 
             setModalCancelar({
               open: false,
@@ -313,118 +351,127 @@ export default function Veiculos() {
             })
 
             await invalidate()
+
           } catch (e) {
+
             console.error(e)
-            toast.error("Erro ao cancelar venda")
+
+            toast.error(
+              "Erro ao cancelar venda"
+            )
           }
         }}
       />
 
-
       {/* FOOTER */}
-<div style={{
+      <div style={{
 
-  marginTop: 40,
+        marginTop: 40,
 
-  background: "#fff",
+        background: "#fff",
 
-  borderRadius: 20,
+        borderRadius: 20,
 
-  padding: "18px 24px",
+        padding: 20,
 
-  display: "flex",
+        display: "grid",
 
-  alignItems: "center",
+        gridTemplateColumns:
+          "repeat(auto-fit,minmax(220px,1fr))",
 
-  justifyContent: "space-between",
+        gap: 20,
 
-  flexWrap: "wrap",
+        alignItems: "center",
 
-  gap: 20,
+        boxShadow:
+          "0 6px 20px rgba(0,0,0,.04)"
 
-  boxShadow:
-    "0 6px 20px rgba(0,0,0,.04)"
+      }}>
 
-}}>
+        {/* COLUNA 1 */}
+        <div>
 
-  {/* LOGO */}
-  <div style={{
+          <div style={{
 
-    display: "flex",
+            display: "flex",
 
-    alignItems: "center",
+            flexDirection: "column",
 
-    gap: 10,
+            gap: 8
 
-    fontWeight: 700,
+          }}>
 
-    fontSize: 18,
+            <p style={{ margin: 0 }}>
+              📧 mfaria2016@outlook.com
+            </p>
 
-    color: "#0f172a"
+            <p style={{ margin: 0 }}>
+              📱 (24) 99972-6811
+            </p>
 
-  }}>
+          </div>
 
-    🚗 MFS Cars Marketplace
+          <p style={{
 
-  </div>
+            marginTop: 12,
 
-  {/* LINKS */}
-  <div style={{
+            marginBottom: 0,
 
-    display: "flex",
+            color: "#64748b",
 
-    alignItems: "center",
+            fontSize: 13
 
-    gap: 18,
+          }}>
 
-    flexWrap: "wrap"
+            © 2026 MFS Cars Marketplace
 
-  }}>
+          </p>
 
-    <a
-      href="https://www.mfscars.com.br"
-      target="_blank"
-      rel="noreferrer"
-    >
-      🌐 Site Oficial
-    </a>
+        </div>
 
-    <a
-      href="/termos.html?tipo=termos"
-      target="_blank"
-      rel="noreferrer"
-    >
-      📜 Termos
-    </a>
+        {/* COLUNA 2 */}
+        <div>
 
-    <a
-      href="/termos.html?tipo=privacidade"
-      target="_blank"
-      rel="noreferrer"
-    >
-      🔒 Privacidade
-    </a>
+          <a
+            href="https://www.mfscars.com.br"
+            target="_blank"
+            rel="noreferrer"
+          >
+            🌐 Site Oficial
+          </a>
 
-    <a
-      href="https://veiculos.fipe.org.br"
-      target="_blank"
-      rel="noreferrer"
-    >
-      💰 FIPE
-    </a>
+        </div>
 
-    <a
-      href="https://www.mobills.com.br/calculadoras/calculadora-financiamento/"
-      target="_blank"
-      rel="noreferrer"
-    >
-      🧮 Financiamento
-    </a>
+        {/* COLUNA 3 */}
+        <div style={{
 
-  </div>
+          display: "flex",
 
-</div>
+          flexDirection: "column",
 
+          gap: 8
+
+        }}>
+
+          <a
+            href="https://veiculos.fipe.org.br"
+            target="_blank"
+            rel="noreferrer"
+          >
+            💰 Tabela FIPE
+          </a>
+
+          <a
+            href="https://www.google.com/search?q=consulta+placa"
+            target="_blank"
+            rel="noreferrer"
+          >
+            🚘 Consulta de Placa
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
   )
