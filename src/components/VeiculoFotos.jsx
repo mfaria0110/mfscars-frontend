@@ -153,9 +153,9 @@ export default function VeiculoFotos({
                     title="Definir como principal"
 
                     onClick={() =>
-                      definirPrincipal(p)
+                      definirPrincipal(p.id)
                     }
-
+                    
                     style={{
 
                       position: "absolute",
