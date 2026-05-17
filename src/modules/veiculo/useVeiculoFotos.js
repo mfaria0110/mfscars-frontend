@@ -266,48 +266,48 @@ export function useVeiculoFotos(id) {
   /* =========================
      🔥 DEFINIR PRINCIPAL
   ========================= */
-  async function definirPrincipal(foto) {
+  async function definirPrincipal(fotoId) {
 
-    if (!podeEditar) {
+  if (!podeEditar) {
 
-      toast.error(
-        "Sem permissão"
-      )
+    toast.error(
+      "Sem permissão"
+    )
 
-      return
-    }
-
-    try {
-
-      setLoadingGlobal(true)
-
-      await api.put(
-
-        `/veiculos/fotos/${foto.id}/principal`
-
-      )
-
-      toast.success(
-        "Foto principal definida"
-      )
-
-      await carregarFotos()
-
-    } catch (e) {
-
-      console.error(e)
-
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao definir principal"
-      )
-
-    } finally {
-
-      setLoadingGlobal(false)
-    }
+    return
   }
 
+  try {
+
+    setLoadingGlobal(true)
+
+    await api.put(
+
+      `/veiculos/fotos/${fotoId}/principal`
+
+    )
+
+    toast.success(
+      "Foto principal definida"
+    )
+
+    await carregarFotos()
+
+  } catch (e) {
+
+    console.error(e)
+
+    toast.error(
+      e.response?.data?.erro ||
+      "Erro ao definir principal"
+    )
+
+  } finally {
+
+    setLoadingGlobal(false)
+  }
+}
+  
   /* =========================
      🔥 UPLOAD
   ========================= */

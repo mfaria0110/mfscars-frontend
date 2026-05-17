@@ -4,19 +4,13 @@ import { usePermissao }
 export default function VeiculoFotos({
 
   preview,
-
   handleSelect,
-
   remover,
-
   upload,
-
   modo,
-
   veiculoId,
-
   definirPrincipal
-
+  
 }) {
 
   const { temPermissao } =
