@@ -233,9 +233,9 @@ if(cnpjLimpo.length !== 14){
     estado,
     telefone: telefoneLimpo,
     email,
-    senha
+    senha,
     aceitou_termos: true,
-    versao_termos: "1.0",
+    versao_termos: "1.0"
   })
 });
 
