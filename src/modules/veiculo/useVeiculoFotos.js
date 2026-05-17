@@ -153,11 +153,11 @@ export function useVeiculoFotos(id) {
 
     if (
       preview.length +
-      files.length > 6
+      files.length > 10
     ) {
 
       toast.error(
-        "Máximo de 6 fotos"
+        "Máximo de 10 fotos"
       )
 
       return

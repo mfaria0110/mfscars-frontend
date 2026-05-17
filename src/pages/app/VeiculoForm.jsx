@@ -471,22 +471,35 @@ if (!id && veiculoId) {
 
                 {tab ===
                   "fotos" && (
+
                   <VeiculoFotos
+
                     preview={
                       fotos.preview
                     }
+
                     handleSelect={
                       fotos.handleSelect
                     }
+
                     remover={
                       fotos.remover
                     }
+
                     upload={
                       fotos.upload
                     }
+
+                    definirPrincipal={
+                      fotos.definirPrincipal
+                    }
+
                     veiculoId={id}
+
                     modo={modo}
-                  />
+
+                  />  
+
                 )}
 
                 {tab ===
