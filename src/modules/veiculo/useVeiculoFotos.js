@@ -171,8 +171,9 @@ export function useVeiculoFotos(id) {
     const previews =
       files.map(file => ({
 
-        id: null,
-        
+        id:
+          `tmp-${Date.now()}-${Math.random()}`,
+
         file,
 
         url:
@@ -210,16 +211,11 @@ export function useVeiculoFotos(id) {
 
       setLoadingGlobal(true)
 
+      /* FOTO BACKEND */
       if (item.isBackend) {
 
         await api.delete(
           `/veiculos/fotos/${item.id}`
-        )
-
-        setPreview(prev =>
-          prev.filter(
-            (_, i) => i !== index
-          )
         )
 
         toast.success(
@@ -231,6 +227,7 @@ export function useVeiculoFotos(id) {
         return
       }
 
+      /* FOTO LOCAL */
       setFotos(prev =>
         prev.filter(
           (_, i) => i !== index
@@ -241,9 +238,16 @@ export function useVeiculoFotos(id) {
 
         const novo = [...prev]
 
-        URL.revokeObjectURL(
-          novo[index].url
-        )
+        if (
+          novo[index]?.url?.startsWith(
+            "blob:"
+          )
+        ) {
+
+          URL.revokeObjectURL(
+            novo[index].url
+          )
+        }
 
         return novo.filter(
           (_, i) => i !== index
@@ -270,46 +274,44 @@ export function useVeiculoFotos(id) {
   ========================= */
   async function definirPrincipal(fotoId) {
 
-  if (!podeEditar) {
+    if (!podeEditar) {
 
-    toast.error(
-      "Sem permissão"
-    )
+      toast.error(
+        "Sem permissão"
+      )
 
-    return
+      return
+    }
+
+    try {
+
+      setLoadingGlobal(true)
+
+      await api.put(
+        `/veiculos/fotos/${fotoId}/principal`
+      )
+
+      await carregarFotos()
+
+      toast.success(
+        "Foto principal definida"
+      )
+
+    } catch (e) {
+
+      console.error(e)
+
+      toast.error(
+        e.response?.data?.erro ||
+        "Erro ao definir principal"
+      )
+
+    } finally {
+
+      setLoadingGlobal(false)
+    }
   }
 
-  try {
-
-    setLoadingGlobal(true)
-
-    await api.put(
-
-      `/veiculos/fotos/${fotoId}/principal`
-
-    )
-
-    toast.success(
-      "Foto principal definida"
-    )
-
-    await carregarFotos()
-
-  } catch (e) {
-
-    console.error(e)
-
-    toast.error(
-      e.response?.data?.erro ||
-      "Erro ao definir principal"
-    )
-
-  } finally {
-
-    setLoadingGlobal(false)
-  }
-}
-  
   /* =========================
      🔥 UPLOAD
   ========================= */
@@ -358,28 +360,48 @@ export function useVeiculoFotos(id) {
         }
       )
 
-    setFotos([])
+      /* limpa blobs locais */
+      preview.forEach(p => {
 
-    setPreview([])
-    
-    await carregarFotos()
+        if (
+          !p.isBackend &&
+          p.url?.startsWith("blob:")
+        ) {
 
-    toast.success(
-      "Fotos enviadas!"
-    )
+          URL.revokeObjectURL(
+            p.url
+          )
+        }
+      })
+
+      /* limpa estados */
+      setFotos([])
+
+      /* mantém somente backend */
+      setPreview(prev =>
+        prev.filter(
+          p => p.isBackend
+        )
+      )
+
+      await carregarFotos()
+
+      toast.success(
+        "Fotos enviadas!"
+      )
 
     } catch (e) {
 
-    console.error(
-      "UPLOAD FOTO ERRO:",
-      e.response?.data || e
-    )
+      console.error(
+        "UPLOAD FOTO ERRO:",
+        e.response?.data || e
+      )
 
-    toast.error(
-      e.response?.data?.erro ||
-      e.message ||
-      "Erro ao enviar fotos"
-    )
+      toast.error(
+        e.response?.data?.erro ||
+        e.message ||
+        "Erro ao enviar fotos"
+      )
 
     } finally {
 
