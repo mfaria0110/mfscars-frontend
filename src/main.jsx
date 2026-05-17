@@ -86,14 +86,15 @@ function Root() {
 
 /* ===========================
    🌐 CONTROLE DE DOMÍNIO
-=========================== */
+=========================== 
+
 const host = window.location.hostname
 const path = window.location.pathname
 
 // 👉 se NÃO for app e estiver na raiz
 if (!host.startsWith("app.") && path === "/") {
   window.location.replace("/home")
-}
+}*/
 
 /* ===========================
    🚀 RENDER APP
