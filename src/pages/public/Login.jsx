@@ -78,6 +78,8 @@ export default function Login() {
           abrirAceite(
             aceite.data.pendentes || []
           )
+
+          return
         }
 
       } catch(e){
