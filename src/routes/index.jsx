@@ -5,33 +5,53 @@ import {
   Navigate
 } from "react-router-dom"
 
-import PrivateRoute from "./PrivateRoute"
+import PrivateRoute
+  from "./PrivateRoute"
 
-import PublicLayout from "../layouts/PublicLayout"
-import PrivateLayout from "../layouts/PrivateLayout"
+import PublicLayout
+  from "../layouts/PublicLayout"
 
-import Dashboard from "../pages/app/Dashboard"
+import PrivateLayout
+  from "../layouts/PrivateLayout"
 
-import Login from "../pages/public/Login"
+import Dashboard
+  from "../pages/app/Dashboard"
 
-import Veiculos from "../pages/app/Veiculos"
-import VeiculoForm from "../pages/app/VeiculoForm"
+import Login
+  from "../pages/public/Login"
 
-import VendaForm from "../pages/app/VendaForm"
-import Vendas from "../pages/app/Vendas"
+import Veiculos
+  from "../pages/app/Veiculos"
 
-import Lojas from "../pages/app/Lojas"
-import Usuarios from "../pages/app/Usuarios"
-import Leads from "../pages/app/Leads"
-import Permissoes from "../pages/app/Permissoes"
+import VeiculoForm
+  from "../pages/app/VeiculoForm"
+
+import VendaForm
+  from "../pages/app/VendaForm"
+
+import Vendas
+  from "../pages/app/Vendas"
+
+import Lojas
+  from "../pages/app/Lojas"
+
+import Usuarios
+  from "../pages/app/Usuarios"
+
+import Leads
+  from "../pages/app/Leads"
+
+import Permissoes
+  from "../pages/app/Permissoes"
 
 import PagamentoSucesso
-from "../pages/app/PagamentoSucesso"
+  from "../pages/app/PagamentoSucesso"
 
 import PagamentoFalha
-from "../pages/app/PagamentoFalha"
+  from "../pages/app/PagamentoFalha"
 
-import Assinatura from "../pages/app/Assinatura"
+import Assinatura
+  from "../pages/app/Assinatura"
 
 import Financeiro
   from "../pages/app/Financeiro"
@@ -44,8 +64,10 @@ import {
 } from "../modules/permissao/usePermissao"
 
 function ProtectedPermissionRoute({
+
   children,
   permissao
+
 }) {
 
   const {
@@ -53,11 +75,15 @@ function ProtectedPermissionRoute({
   } = usePermissao()
 
   if (
+
     permissao &&
+
     !temPermissao(permissao)
+
   ) {
 
     return (
+
       <Navigate
         to="/app/veiculos"
         replace
@@ -79,6 +105,7 @@ export default function Router() {
         {/* =========================
             🌐 PÚBLICO
         ========================== */}
+
         <Route
           element={
             <PublicLayout />
@@ -99,11 +126,13 @@ export default function Router() {
             path="/pagamento/falha"
             element={<PagamentoFalha />}
           />
+
         </Route>
 
         {/* =========================
             🔒 PRIVADO
         ========================== */}
+
         <Route
           element={
             <PrivateRoute />
@@ -123,9 +152,18 @@ export default function Router() {
               element={<Assinatura />}
             />
 
+            {/* FINANCEIRO */}
+
             <Route
               path="/app/financeiro"
               element={<Financeiro />}
+            />
+
+            {/* JURÍDICO */}
+
+            <Route
+              path="/app/juridico"
+              element={<Juridico />}
             />
 
             {/* DASHBOARD */}
@@ -275,21 +313,6 @@ export default function Router() {
         />
 
       </Routes>
-
-      <Route
-
-  path="/juridico"
-
-  element={
-
-    usuario?.master
-
-      ? <Juridico />
-
-      : <Navigate to="/" />
-
-  }
-/>
 
     </BrowserRouter>
   )
