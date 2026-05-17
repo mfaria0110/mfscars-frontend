@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import api from "../../api/api"
 import toast from "react-hot-toast"
+import imageCompression
+  from "browser-image-compression"
 
 import { useUIStore } from "../../store/uiStore"
 import { usePermissao } from "../permissao/usePermissao"
+
 
 const API_URL =
   import.meta.env.VITE_API_URL
@@ -135,7 +138,7 @@ export function useVeiculoFotos(id) {
   /* =========================
      🔥 SELECIONAR
   ========================= */
-  function handleSelect(e) {
+  async function handleSelect(e) {
 
     if (!podeEditar) {
 
@@ -146,9 +149,31 @@ export function useVeiculoFotos(id) {
       return
     }
 
-    const files =
+    const rawFiles =
       Array.from(
         e.target.files
+      )
+
+    const files =
+      await Promise.all(
+
+        rawFiles.map(file =>
+
+          imageCompression(
+
+            file,
+
+            {
+
+              maxSizeMB: 0.7,
+
+              maxWidthOrHeight: 1600,
+
+              useWebWorker: true
+
+            }
+          )
+        )
       )
 
     if (
