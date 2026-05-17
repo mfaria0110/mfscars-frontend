@@ -25,9 +25,9 @@ export default function Financeiro() {
   const [loading, setLoading] =
     useState(true)
 
-/* =========================
-   FILTROS
-========================= */
+{/* =====================
+    FILTROS
+===================== */}
 
 const [page, setPage] =
   useState(1)
@@ -55,6 +55,23 @@ const [dataFim, setDataFim] =
     state => state.usuario
   )
 
+  const campoStyle = {
+
+  width: "100%",
+
+  padding: 12,
+
+  borderRadius: 12,
+
+  border: "1px solid #cbd5e1",
+
+  background: "#fff",
+
+  fontSize: 15,
+
+  outline: "none"
+}
+
   if (
 
   !usuario?.master &&
@@ -66,7 +83,10 @@ const [dataFim, setDataFim] =
   return (
 
     <div style={{
-      padding: 24
+
+      padding: "16px 24px 24px",
+      maxWidth: 1600,
+      margin: "0 auto"
     }}>
 
       Sem permissão
@@ -262,41 +282,61 @@ useEffect(() => {
         marginBottom: 28
       }}>
 
-        <h1 style={{
-          fontSize: 32,
-          fontWeight: 700,
-          marginBottom: 8
-        }}>
-          Financeiro
-        </h1>
+      <h1 style={{
+        margin: 0,
+        fontSize: 32,
+        fontWeight: 800,
+        color: "#0f172a"
+      }}>
 
-        <p style={{
-          color: "#64748b"
-        }}>
-          Gestão financeira do SaaS
-        </p>
+        Financeiro
+
+      </h1>
+
+      <p style={{
+        marginTop: 8,
+        marginBottom: 24,
+        color: "#64748b",
+        fontSize: 18
+      }}>
+
+        Gestão financeira do SaaS
+
+      </p>
 
       </div>
 
-    /* =====================
-        FILTROS
-    ===================== */
-
-    <div style={{
+      {/* =====================
+          FILTROS
+      ===================== */}
+      <div style={{
 
       display: "grid",
 
       gridTemplateColumns:
-        "repeat(auto-fit, minmax(180px, 1fr))",
+        "repeat(auto-fit, minmax(220px, 1fr))",
 
-      gap: 12,
+      gap: 16,
 
-      marginBottom: 24
+      marginBottom: 28,
+
+      background: "#fff",
+
+      padding: 20,
+
+      borderRadius: 18,
+
+      boxShadow:
+        "0 4px 20px rgba(0,0,0,0.06)"
 
     }}>
 
+      {/* STATUS */}
+
       <select
+
         value={status}
+
         onChange={e => {
 
           setPage(1)
@@ -305,6 +345,9 @@ useEffect(() => {
             e.target.value
           )
         }}
+
+        style={campoStyle}
+
       >
 
         <option value="">
@@ -325,9 +368,56 @@ useEffect(() => {
 
       </select>
 
+      {/* LOJA */}
+
       <input
+
+        placeholder="Filtrar loja"
+
+        value={loja}
+
+        onChange={e => {
+
+          setPage(1)
+
+          setLoja(
+            e.target.value
+          )
+        }}
+
+        style={campoStyle}
+
+      />
+
+      {/* PLANO */}
+
+      <input
+
+        placeholder="Filtrar plano"
+
+        value={plano}
+
+        onChange={e => {
+
+          setPage(1)
+
+          setPlano(
+            e.target.value
+          )
+        }}
+
+        style={campoStyle}
+
+      />
+
+      {/* DATA INICIAL */}
+
+      <input
+
         type="date"
+
         value={dataInicio}
+
         onChange={e => {
 
           setPage(1)
@@ -336,11 +426,19 @@ useEffect(() => {
             e.target.value
           )
         }}
+
+        style={campoStyle}
+
       />
 
+      {/* DATA FINAL */}
+
       <input
+
         type="date"
+
         value={dataFim}
+
         onChange={e => {
 
           setPage(1)
@@ -349,9 +447,13 @@ useEffect(() => {
             e.target.value
           )
         }}
+
+        style={campoStyle}
+
       />
 
     </div>
+
 
       {/* =====================
           CARDS
