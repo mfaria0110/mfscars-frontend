@@ -25,6 +25,32 @@ export default function Financeiro() {
   const [loading, setLoading] =
     useState(true)
 
+/* =========================
+   FILTROS
+========================= */
+
+const [page, setPage] =
+  useState(1)
+
+const [pages, setPages] =
+  useState(1)
+
+const [status, setStatus] =
+  useState("")
+
+const [loja, setLoja] =
+  useState("")
+
+const [plano, setPlano] =
+  useState("")
+
+const [dataInicio, setDataInicio] =
+  useState("")
+
+const [dataFim, setDataFim] =
+  useState("")
+
+
   const usuario = useAppStore(
     state => state.usuario
   )
@@ -53,12 +79,25 @@ export default function Financeiro() {
      LOAD
   ========================= */
 
-  useEffect(() => {
+useEffect(() => {
 
-    carregar()
+  carregar()
 
-  }, [])
+}, [
 
+  page,
+
+  status,
+
+  loja,
+
+  plano,
+
+  dataInicio,
+
+  dataFim
+
+])
   /* =========================
      API
   ========================= */
@@ -82,7 +121,30 @@ export default function Financeiro() {
         ),
 
         api.get(
-          "/financeiro/cobrancas"
+          "/financeiro/cobrancas",
+          {
+            params: {
+
+              page,
+
+              limit: 20,
+
+              status:
+                status || null,
+
+              loja:
+                loja || null,
+
+              plano:
+                plano || null,
+
+              dataInicio:
+                dataInicio || null,
+
+              dataFim:
+                dataFim || null
+            }
+          }
         )
 
       ])
@@ -92,7 +154,11 @@ export default function Financeiro() {
       )
 
       setCobrancas(
-        cobrancasRes.data || []
+        cobrancasRes.data.items || []
+      )
+
+      setPages(
+        cobrancasRes.data.pages || 1
       )
 
     } catch (e) {
@@ -211,6 +277,81 @@ export default function Financeiro() {
         </p>
 
       </div>
+
+    /* =====================
+        FILTROS
+    ===================== */
+
+    <div style={{
+
+      display: "grid",
+
+      gridTemplateColumns:
+        "repeat(auto-fit, minmax(180px, 1fr))",
+
+      gap: 12,
+
+      marginBottom: 24
+
+    }}>
+
+      <select
+        value={status}
+        onChange={e => {
+
+          setPage(1)
+
+          setStatus(
+            e.target.value
+          )
+        }}
+      >
+
+        <option value="">
+          Todos Status
+        </option>
+
+        <option value="pago">
+          Pago
+        </option>
+
+        <option value="pendente">
+          Pendente
+        </option>
+
+        <option value="cancelado">
+          Cancelado
+        </option>
+
+      </select>
+
+      <input
+        type="date"
+        value={dataInicio}
+        onChange={e => {
+
+          setPage(1)
+
+          setDataInicio(
+            e.target.value
+          )
+        }}
+      />
+
+      <input
+        type="date"
+        value={dataFim}
+        onChange={e => {
+
+          setPage(1)
+
+          setDataFim(
+            e.target.value
+          )
+        }}
+      />
+
+    </div>
 
       {/* =====================
           CARDS
@@ -389,6 +530,54 @@ export default function Financeiro() {
         </div>
 
       </div>
+
+      <div style={{
+
+  display: "flex",
+
+  justifyContent: "center",
+
+  gap: 12,
+
+  padding: 20
+
+}}>
+
+  <button
+
+    disabled={page <= 1}
+
+    onClick={() =>
+      setPage(prev =>
+        prev - 1
+      )
+    }
+
+  >
+    Anterior
+  </button>
+
+  <span>
+
+    Página {page} de {pages}
+
+  </span>
+
+  <button
+
+    disabled={page >= pages}
+
+    onClick={() =>
+      setPage(prev =>
+        prev + 1
+      )
+    }
+
+  >
+    Próxima
+  </button>
+
+</div>
 
     </div>
   )
