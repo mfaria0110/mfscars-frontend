@@ -126,91 +126,121 @@ useEffect(() => {
   /* =========================
      API
   ========================= */
-
   async function carregar() {
 
-    try {
+  try {
 
-      setLoading(true)
+    setLoading(true)
 
-        const [
+    /* =========================
+       RESUMO
+    ========================= */
 
-          resumoRes,
+    const resumoRes =
+      await api.get(
+        "/financeiro/resumo"
+      )
 
-          cobrancasRes,
+    setResumo(
+      resumoRes.data || {}
+    )
 
-          lojasRes,
+    /* =========================
+       COBRANÇAS
+    ========================= */
 
-          planosRes
+    const cobrancasRes =
+      await api.get(
+        "/financeiro/cobrancas",
+        {
+          params: {
 
-        ] = await Promise.all([
+            page,
 
-        api.get(
-          "/financeiro/resumo"
-        ),
+            limit: 20,
 
-        api.get(
-          "/financeiro/cobrancas",
-          {
-            params: {
+            status:
+              status || null,
 
-              page,
+            loja:
+              loja || null,
 
-              limit: 20,
+            plano:
+              plano || null,
 
-              status:
-                status || null,
+            dataInicio:
+              dataInicio || null,
 
-              loja:
-                loja || null,
-
-              plano:
-                plano || null,
-
-              dataInicio:
-                dataInicio || null,
-
-              dataFim:
-                dataFim || null
-            }
+            dataFim:
+              dataFim || null
           }
-        )
-
-      ])
-
-      setResumo(
-        resumoRes.data
+        }
       )
 
-      setCobrancas(
-        cobrancasRes.data.items || []
-      )
+    setCobrancas(
+      cobrancasRes.data.items || []
+    )
 
-      setPages(
-        cobrancasRes.data.pages || 1
-      )
+    setPages(
+      cobrancasRes.data.pages || 1
+    )
 
-      setLojas(
-        lojasRes.data || []
-      )
+    /* =========================
+       MOCK TEMPORÁRIO
+    ========================= */
 
-      setPlanos(
-        planosRes.data || []
-      )
+    setLojas([
 
-    } catch (e) {
+      {
+        id: 1,
+        nome: "Loja 1"
+      },
 
-      console.error(e)
+      {
+        id: 2,
+        nome: "Loja 2"
+      }
 
-      alert(
-        "Erro ao carregar financeiro"
-      )
+    ])
 
-    } finally {
+    setPlanos([
 
-      setLoading(false)
-    }
+      {
+        id: 1,
+        nome: "FREE"
+      },
+
+      {
+        id: 2,
+        nome: "PRO"
+      },
+
+      {
+        id: 3,
+        nome: "BUSINESS"
+      },
+
+      {
+        id: 4,
+        nome: "PREMIUM"
+      }
+
+    ])
+
+  } catch (e) {
+
+    console.error(e)
+
+    alert(
+      "Erro ao carregar financeiro"
+    )
+
+  } finally {
+
+    setLoading(false)
   }
+}
+
 
   /* =========================
      HELPERS
