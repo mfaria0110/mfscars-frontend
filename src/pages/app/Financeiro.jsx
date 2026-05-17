@@ -50,6 +50,11 @@ const [dataInicio, setDataInicio] =
 const [dataFim, setDataFim] =
   useState("")
 
+const [lojas, setLojas] =
+  useState([])
+
+const [planos, setPlanos] =
+  useState([])
 
   const usuario = useAppStore(
     state => state.usuario
@@ -128,13 +133,17 @@ useEffect(() => {
 
       setLoading(true)
 
-      const [
+        const [
 
-        resumoRes,
+          resumoRes,
 
-        cobrancasRes
+          cobrancasRes,
 
-      ] = await Promise.all([
+          lojasRes,
+
+          planosRes
+
+        ] = await Promise.all([
 
         api.get(
           "/financeiro/resumo"
@@ -179,6 +188,14 @@ useEffect(() => {
 
       setPages(
         cobrancasRes.data.pages || 1
+      )
+
+      setLojas(
+        lojasRes.data || []
+      )
+
+      setPlanos(
+        planosRes.data || []
       )
 
     } catch (e) {
@@ -370,45 +387,79 @@ useEffect(() => {
 
       {/* LOJA */}
 
-      <input
+      <select
 
-        placeholder="Filtrar loja"
+      value={loja}
 
-        value={loja}
+      onChange={e => {
 
-        onChange={e => {
+        setPage(1)
 
-          setPage(1)
+        setLoja(
+          e.target.value
+        )
+      }}
 
-          setLoja(
-            e.target.value
-          )
-        }}
+      style={campoStyle}
 
-        style={campoStyle}
+    >
 
-      />
+      <option value="">
+        Todas Lojas
+      </option>
+
+      {lojas.map(loja => (
+
+        <option
+          key={loja.id}
+          value={loja.id}
+        >
+
+          {loja.nome}
+
+        </option>
+
+      ))}
+
+    </select>
 
       {/* PLANO */}
 
-      <input
+    <select
 
-        placeholder="Filtrar plano"
+      value={plano}
 
-        value={plano}
+      onChange={e => {
 
-        onChange={e => {
+        setPage(1)
 
-          setPage(1)
+        setPlano(
+          e.target.value
+        )
+      }}
 
-          setPlano(
-            e.target.value
-          )
-        }}
+      style={campoStyle}
 
-        style={campoStyle}
+    >
 
-      />
+      <option value="">
+        Todos Planos
+      </option>
+
+      {planos.map(plano => (
+
+        <option
+          key={plano.id}
+          value={plano.id}
+        >
+
+          {plano.nome}
+
+        </option>
+
+      ))}
+
+    </select>
 
       {/* DATA INICIAL */}
 
