@@ -31,29 +31,11 @@ function Root() {
 
   return (
 
-    <QueryClientProvider
-      client={queryClient}
-    >
+    <QueryClientProvider client={queryClient}>
 
-      <div style={{
+      <Router />
 
-        minHeight: "100vh",
-
-        display: "flex",
-
-        alignItems: "center",
-
-        justifyContent: "center",
-
-        fontSize: 40,
-
-        fontWeight: 700
-
-      }}>
-
-        TESTE OK
-
-      </div>
+      <Toaster position="top-right" />
 
     </QueryClientProvider>
   )
