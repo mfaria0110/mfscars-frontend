@@ -17,17 +17,16 @@ function normalizarUrl(url) {
     return `${API_URL}/assets/sem-foto.jpg`
   }
 
-  // já é URL completa
+  /* já é URL completa */
   if (url.startsWith("http")) {
 
-  return url.replace(
-    /^http:\/\//,
-    "https://"
-  )
-    
+    return url.replace(
+      /^http:\/\//,
+      "https://"
+    )
   }
 
-  // remove uploads duplicado
+  /* remove uploads duplicado */
   const limpa =
     url.replace(
       /^uploads\//,
@@ -73,60 +72,65 @@ export function useVeiculoFotos(id) {
       !podeVisualizar
     ) return
 
-    async function carregarFotos() {
-
-      try {
-
-        setLoadingGlobal(true)
-
-        const res =
-          await api.get(
-            `/veiculos/${id}/fotos`
-          )
-
-        const fotosBackend =
-          res.data || []
-
-        const previews =
-          fotosBackend.map(f => ({
-
-            id: f.id,
-
-            url:
-              normalizarUrl(
-                f.url
-              ),
-
-            isBackend: true
-          }))
-
-        setPreview(previews)
-
-      } catch (e) {
-
-        console.error(
-          "Erro ao carregar fotos",
-          e
-        )
-
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar fotos"
-        )
-
-      } finally {
-
-        setLoadingGlobal(false)
-      }
-    }
-
     carregarFotos()
 
   }, [
     id,
-    podeVisualizar,
-    setLoadingGlobal
+    podeVisualizar
   ])
+
+  /* =========================
+     🔥 CARREGAR
+  ========================= */
+  async function carregarFotos() {
+
+    try {
+
+      setLoadingGlobal(true)
+
+      const res =
+        await api.get(
+          `/veiculos/${id}/fotos`
+        )
+
+      const fotosBackend =
+        res.data || []
+
+      const previews =
+        fotosBackend.map(f => ({
+
+          id: f.id,
+
+          url:
+            normalizarUrl(
+              f.url
+            ),
+
+          principal:
+            f.principal,
+
+          isBackend: true
+        }))
+
+      setPreview(previews)
+
+    } catch (e) {
+
+      console.error(
+        "Erro ao carregar fotos",
+        e
+      )
+
+      toast.error(
+        e.response?.data?.erro ||
+        "Erro ao carregar fotos"
+      )
+
+    } finally {
+
+      setLoadingGlobal(false)
+    }
+  }
 
   /* =========================
      🔥 SELECIONAR
@@ -171,6 +175,8 @@ export function useVeiculoFotos(id) {
 
         url:
           URL.createObjectURL(file),
+
+        principal: false,
 
         isBackend: false
       }))
@@ -218,6 +224,8 @@ export function useVeiculoFotos(id) {
           "Foto removida!"
         )
 
+        await carregarFotos()
+
         return
       }
 
@@ -247,6 +255,51 @@ export function useVeiculoFotos(id) {
       toast.error(
         e.response?.data?.erro ||
         "Erro ao remover foto"
+      )
+
+    } finally {
+
+      setLoadingGlobal(false)
+    }
+  }
+
+  /* =========================
+     🔥 DEFINIR PRINCIPAL
+  ========================= */
+  async function definirPrincipal(foto) {
+
+    if (!podeEditar) {
+
+      toast.error(
+        "Sem permissão"
+      )
+
+      return
+    }
+
+    try {
+
+      setLoadingGlobal(true)
+
+      await api.put(
+
+        `/veiculos/fotos/${foto.id}/principal`
+
+      )
+
+      toast.success(
+        "Foto principal definida"
+      )
+
+      await carregarFotos()
+
+    } catch (e) {
+
+      console.error(e)
+
+      toast.error(
+        e.response?.data?.erro ||
+        "Erro ao definir principal"
       )
 
     } finally {
@@ -307,28 +360,7 @@ export function useVeiculoFotos(id) {
         "Fotos enviadas!"
       )
 
-      const res =
-        await api.get(
-          `/veiculos/${veiculoId}/fotos`
-        )
-
-      const fotosBackend =
-        res.data || []
-
-      setPreview(
-
-        fotosBackend.map(f => ({
-
-          id: f.id,
-
-          url:
-            normalizarUrl(
-              f.url
-            ),
-
-          isBackend: true
-        }))
-      )
+      await carregarFotos()
 
       setFotos([])
 
@@ -355,6 +387,8 @@ export function useVeiculoFotos(id) {
 
     remover,
 
-    upload
+    upload,
+
+    definirPrincipal
   }
 }
