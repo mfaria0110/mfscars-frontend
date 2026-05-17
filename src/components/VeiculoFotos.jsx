@@ -26,24 +26,24 @@ export default function VeiculoFotos({
 
     <div>
 
-      {/* ===============================
-         INPUT FOTO
-      =============================== */}
+      {/* INPUT FOTO */}
+      {
 
-      {temPermissao("veiculo.editar") && (
+        temPermissao(
+          "veiculo.editar"
+        ) && (
 
-        <input
-          type="file"
-          multiple
-          onChange={handleSelect}
-        />
+          <input
+            type="file"
+            multiple
+            onChange={handleSelect}
+          />
 
-      )}
+        )
 
-      {/* ===============================
-         PREVIEW
-      =============================== */}
+      }
 
+      {/* PREVIEW */}
       <div style={{
 
         display: "flex",
@@ -139,17 +139,18 @@ export default function VeiculoFotos({
               }
 
               {/* BOTÃO PRINCIPAL */}
+
               {
 
                 temPermissao(
                   "veiculo.editar"
-                ) && (
+                ) && !p.principal && (
 
                   <button
 
-                    title="Definir como principal"
-
                     type="button"
+
+                    title="Definir como principal"
 
                     onClick={() =>
                       definirPrincipal(p)
@@ -158,28 +159,17 @@ export default function VeiculoFotos({
                     style={{
 
                       position: "absolute",
-
                       bottom: 6,
-
                       right: 6,
-
                       background:
                         "#f59e0b",
-
                       color: "#fff",
-
                       border: 0,
-
                       borderRadius: 6,
-
                       cursor: "pointer",
-
                       padding: "4px 8px",
-
                       fontSize: 12,
-
                       fontWeight: 600
-
                     }}
                   >
 
@@ -192,41 +182,33 @@ export default function VeiculoFotos({
               }
 
               {/* BOTÃO REMOVER */}
+
               {
 
-                  {temPermissao(
-                    "veiculo.editar"
-                  ) && !p.principal && (
+                temPermissao(
+                  "veiculo.editar"
+                ) && (
 
-                    <button
+                  <button
+
+                    type="button"
 
                     onClick={() =>
                       remover(i)
                     }
 
                     style={{
-
                       position: "absolute",
-
                       top: 4,
-
                       right: 4,
-
                       background:
                         "#ef4444",
-
                       color: "#fff",
-
                       border: 0,
-
                       borderRadius: 6,
-
                       cursor: "pointer",
-
                       padding: "4px 6px",
-
                       fontSize: 12
-
                     }}
                   >
 
@@ -246,10 +228,7 @@ export default function VeiculoFotos({
 
       </div>
 
-      {/* ===============================
-         UPLOAD
-      =============================== */}
-
+      {/* BOTÃO UPLOAD */}
       {
 
         temPermissao(
@@ -297,10 +276,7 @@ export default function VeiculoFotos({
 
       }
 
-      {/* ===============================
-         CREATE MODE
-      =============================== */}
-
+      {/* CREATE MODE */}
       {
 
         modo === "create" && (
