@@ -171,6 +171,8 @@ export function useVeiculoFotos(id) {
     const previews =
       files.map(file => ({
 
+        id: null,
+        
         file,
 
         url:
@@ -356,22 +358,26 @@ export function useVeiculoFotos(id) {
         }
       )
 
-      toast.success(
-        "Fotos enviadas!"
-      )
+    setFotos([])
 
-      await carregarFotos()
+    await carregarFotos()
 
-      setFotos([])
+    toast.success(
+      "Fotos enviadas!"
+    )
 
     } catch (e) {
 
-      console.error(e)
+    console.error(
+      "UPLOAD FOTO ERRO:",
+      e.response?.data || e
+    )
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao enviar fotos"
-      )
+    toast.error(
+      e.response?.data?.erro ||
+      e.message ||
+      "Erro ao enviar fotos"
+    )
 
     } finally {
 
