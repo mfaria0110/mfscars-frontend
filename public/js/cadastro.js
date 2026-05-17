@@ -63,6 +63,65 @@ app.innerHTML = `
     </div>
   </div>
 
+<div
+  style="
+    margin-top:20px;
+    margin-bottom:20px;
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    background:#f8fafc;
+  "
+>
+
+  <label
+    style="
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-size:14px;
+      line-height:1.5;
+      color:#334155;
+      cursor:pointer;
+    "
+  >
+
+    <input
+      type="checkbox"
+      id="aceite-termos"
+      style="
+        margin-top:4px;
+      "
+    />
+
+    <span>
+
+      Li e aceito os
+
+      <a
+        href="/termos.html?tipo=termos"
+        target="_blank"
+      >
+        Termos de Uso
+      </a>
+
+      e a
+
+      <a
+        href="/termos.html?tipo=privacidade"
+        target="_blank"
+      >
+        Política de Privacidade
+      </a>
+
+      do MFS Cars Marketplace.
+
+    </span>
+
+  </label>
+
+</div>
+
   <button id="btnCadastrar" class="btn-primary">Criar conta</button>
 
 <div class="msg" id="msg"></div>
@@ -147,6 +206,19 @@ if(!senha){
   return resetUI();
 }
 
+const aceitou =
+  document.getElementById(
+    "aceite-termos"
+  ).checked;
+
+if (!aceitou) {
+
+  msg.innerText =
+    "Você precisa aceitar os Termos de Uso.";
+
+  return resetUI();
+}
+
 if(cnpjLimpo.length !== 14){
   msg.innerText = "CNPJ inválido";
   return resetUI();
@@ -162,6 +234,8 @@ if(cnpjLimpo.length !== 14){
     telefone: telefoneLimpo,
     email,
     senha
+    aceitou_termos: true,
+    versao_termos: "1.0",
   })
 });
 

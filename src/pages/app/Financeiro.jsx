@@ -843,7 +843,7 @@ function Th({ children }) {
 
       padding: 8,
 
-      fontSize: 10,
+      fontSize: 13,
 
       color: "#64748b"
 
@@ -863,7 +863,7 @@ function Td({ children }) {
 
       padding: 8,
 
-      fontSize: 10
+      fontSize: 11
 
     }}>
 

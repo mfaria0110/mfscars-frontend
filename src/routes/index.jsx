@@ -25,16 +25,19 @@ import Usuarios from "../pages/app/Usuarios"
 import Leads from "../pages/app/Leads"
 import Permissoes from "../pages/app/Permissoes"
 
-import Assinatura from "../pages/app/Assinatura"
-import Financeiro
-  from "../pages/app/Financeiro"
-
-
 import PagamentoSucesso
 from "../pages/app/PagamentoSucesso"
 
 import PagamentoFalha
 from "../pages/app/PagamentoFalha"
+
+import Assinatura from "../pages/app/Assinatura"
+
+import Financeiro
+  from "../pages/app/Financeiro"
+
+import Juridico
+  from "../pages/app/Juridico"
 
 import {
   usePermissao
@@ -272,6 +275,21 @@ export default function Router() {
         />
 
       </Routes>
+
+      <Route
+
+  path="/juridico"
+
+  element={
+
+    usuario?.master
+
+      ? <Juridico />
+
+      : <Navigate to="/" />
+
+  }
+/>
 
     </BrowserRouter>
   )

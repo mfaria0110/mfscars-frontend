@@ -11,6 +11,12 @@ import {
 
 import { iniciarIdleLogout } from "./utils/idleLogout"
 
+import { useAppStore }
+  from "./store/useAppStore"
+
+import ModalAceiteTermos
+  from "./components/ModalAceiteTermos"
+
 const queryClient =
   new QueryClient({
     defaultOptions: {
@@ -37,6 +43,47 @@ if (token) {
   iniciarIdleLogout()
 }
 
+function Root() {
+
+  const modalAceite =
+    useAppStore(
+      s => s.modalAceite
+    )
+
+  const pendentesAceite =
+    useAppStore(
+      s => s.pendentesAceite
+    )
+
+  const fecharAceite =
+    useAppStore(
+      s => s.fecharAceite
+    )
+
+  return (
+
+    <QueryClientProvider client={queryClient}>
+
+      <Router />
+
+      <Toaster position="top-right" />
+
+      <ModalAceiteTermos
+
+        aberto={modalAceite}
+
+        pendentes={pendentesAceite}
+
+        onAceitou={() => {
+
+          fecharAceite()
+        }}
+      />
+
+    </QueryClientProvider>
+  )
+}
+
 /* ===========================
    🌐 CONTROLE DE DOMÍNIO
 =========================== */
@@ -54,8 +101,5 @@ if (!host.startsWith("app.") && path === "/") {
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
-  <QueryClientProvider client={queryClient}>
-    <Router />
-    <Toaster position="top-right" />
-  </QueryClientProvider>
+  <Root />
 )

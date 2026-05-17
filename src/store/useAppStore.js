@@ -126,6 +126,10 @@ export const useAppStore =
 
     paywallMensagem: "",
 
+    modalAceite: false,
+
+    pendentesAceite: [],
+
     // 🔥 NOVO ESTADO
     isVendaAtiva: false,
     setVendaAtiva: (v) => set({ isVendaAtiva: v }),
@@ -300,6 +304,31 @@ export const useAppStore =
         paywall: false,
 
         paywallMensagem: ""
+      })
+    },
+
+    abrirAceite: (
+      pendentes
+    ) => {
+
+      set({
+
+        modalAceite: true,
+
+        pendentesAceite:
+          pendentes || []
+
+      })
+    },
+
+    fecharAceite: () => {
+
+      set({
+
+        modalAceite: false,
+
+        pendentesAceite: []
+
       })
     },
 

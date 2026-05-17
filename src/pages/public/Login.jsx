@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
 import { useAuth } from "../../modules/auth/useAuth"
+import api from "../../api/api"
 import "./login.css"
 
 export default function Login() {
@@ -40,6 +41,38 @@ export default function Login() {
       toast.success(
         "Login realizado com sucesso"
       )
+
+    /* ===============================
+   VERIFICA NOVOS TERMOS
+=============================== */
+
+const aceite =
+  await api.get(
+    "/juridico/verificar-aceite"
+  )
+
+if (
+
+  aceite.data?.precisaAceite
+
+) {
+
+  localStorage.setItem(
+
+    "mfs_pendentes_aceite",
+
+    JSON.stringify(
+      aceite.data.pendentes
+    )
+
+  )
+
+  navigate(
+    "/app/aceite-termos"
+  )
+
+  return
+}
 
       // ✅ CORRIGIDO
       navigate("/app/veiculos")
