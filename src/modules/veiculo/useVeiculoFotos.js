@@ -360,6 +360,8 @@ export function useVeiculoFotos(id) {
 
     setFotos([])
 
+    setPreview([])
+    
     await carregarFotos()
 
     toast.success(
