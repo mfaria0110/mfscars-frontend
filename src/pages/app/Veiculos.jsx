@@ -320,210 +320,111 @@ export default function Veiculos() {
         }}
       />
 
+
       {/* FOOTER */}
 <div style={{
 
-  marginTop: 60,
+  marginTop: 40,
 
   background: "#fff",
 
-  borderRadius: 24,
+  borderRadius: 20,
 
-  padding: 30,
+  padding: "18px 24px",
 
-  display: "grid",
+  display: "flex",
 
-  gridTemplateColumns:
-    "repeat(auto-fit,minmax(240px,1fr))",
+  alignItems: "center",
 
-  gap: 30,
+  justifyContent: "space-between",
+
+  flexWrap: "wrap",
+
+  gap: 20,
 
   boxShadow:
-    "0 8px 24px rgba(0,0,0,.05)"
+    "0 6px 20px rgba(0,0,0,.04)"
 
 }}>
 
-  {/* COLUNA 1 */}
-  <div>
+  {/* LOGO */}
+  <div style={{
 
-    <h3 style={{
+    display: "flex",
 
-      marginBottom: 20,
+    alignItems: "center",
 
-      color: "#0f172a"
+    gap: 10,
 
-    }}>
+    fontWeight: 700,
 
-      🚗 MFS Cars Marketplace
+    fontSize: 18,
 
-    </h3>
+    color: "#0f172a"
 
-    <p>
+  }}>
 
-      Plataforma completa para
-      gestão automotiva,
-      anúncios, leads e vendas.
-
-    </p>
-
-    <div style={{
-      marginTop: 20
-    }}>
-
-      <p>
-        📧
-        {" "}
-        mfaria2016@outlook.com
-      </p>
-
-      <p>
-        📱
-        {" "}
-        (24) 99972-6811
-      </p>
-
-    </div>
-
-    <p style={{
-
-      marginTop: 20,
-
-      color: "#64748b",
-
-      fontSize: 14
-
-    }}>
-
-      © 2026 MFS Cars Marketplace
-
-    </p>
+    🚗 MFS Cars Marketplace
 
   </div>
 
-  {/* COLUNA 2 */}
-  <div>
+  {/* LINKS */}
+  <div style={{
 
-    <h3 style={{
+    display: "flex",
 
-      marginBottom: 20,
+    alignItems: "center",
 
-      color: "#0f172a"
+    gap: 18,
 
-    }}>
+    flexWrap: "wrap"
 
-      🔗 Links úteis
+  }}>
 
-    </h3>
+    <a
+      href="https://www.mfscars.com.br"
+      target="_blank"
+      rel="noreferrer"
+    >
+      🌐 Site Oficial
+    </a>
 
-    <div style={{
+    <a
+      href="/termos.html?tipo=termos"
+      target="_blank"
+      rel="noreferrer"
+    >
+      📜 Termos
+    </a>
 
-      display: "flex",
+    <a
+      href="/termos.html?tipo=privacidade"
+      target="_blank"
+      rel="noreferrer"
+    >
+      🔒 Privacidade
+    </a>
 
-      flexDirection: "column",
+    <a
+      href="https://veiculos.fipe.org.br"
+      target="_blank"
+      rel="noreferrer"
+    >
+      💰 FIPE
+    </a>
 
-      gap: 12
-
-    }}>
-
-      <a
-        href="https://www.mfscars.com.br"
-        target="_blank"
-        rel="noreferrer"
-      >
-        🌐 Site Oficial
-      </a>
-
-      <a
-        href="/termos.html?tipo=termos"
-        target="_blank"
-        rel="noreferrer"
-      >
-        📜 Termos de Uso
-      </a>
-
-      <a
-        href="/termos.html?tipo=privacidade"
-        target="_blank"
-        rel="noreferrer"
-      >
-        🔒 Política de Privacidade
-      </a>
-
-      <a
-        href="/termos.html?tipo=cookies"
-        target="_blank"
-        rel="noreferrer"
-      >
-        🍪 Política de Cookies
-      </a>
-
-    </div>
-
-  </div>
-
-  {/* COLUNA 3 */}
-  <div>
-
-    <h3 style={{
-
-      marginBottom: 20,
-
-      color: "#0f172a"
-
-    }}>
-
-      🛠 Ferramentas
-
-    </h3>
-
-    <div style={{
-
-      display: "flex",
-
-      flexDirection: "column",
-
-      gap: 12
-
-    }}>
-
-      <a
-        href="https://veiculos.fipe.org.br"
-        target="_blank"
-        rel="noreferrer"
-      >
-        💰 Tabela FIPE
-      </a>
-
-      <a
-        href="https://www.mobills.com.br/calculadoras/calculadora-financiamento/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        🧮 Calculadora Financiamento
-      </a>
-
-      <a
-        href="https://www.google.com/search?q=simulador+parcelas+veiculo"
-        target="_blank"
-        rel="noreferrer"
-      >
-        📊 Simulador de Parcelas
-      </a>
-
-      <a
-        href="https://www.google.com/search?q=consulta+placa"
-        target="_blank"
-        rel="noreferrer"
-      >
-        🚘 Consulta de Placa
-      </a>
-
-    </div>
+    <a
+      href="https://www.mobills.com.br/calculadoras/calculadora-financiamento/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      🧮 Financiamento
+    </a>
 
   </div>
 
 </div>
-      
+
 
     </div>
   )
