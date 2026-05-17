@@ -1,4 +1,8 @@
-import api from "../api/api"
+import { useEffect }
+  from "react"
+
+import api
+  from "../api/api"
 
 export default function ModalAceiteTermos({
 
@@ -8,21 +12,33 @@ export default function ModalAceiteTermos({
 
 }) {
 
+  /* ===============================
+     CONTROLE GLOBAL
+  =============================== */
+
+  useEffect(() => {
+
+    if (aberto) {
+
+      document.body.style.overflow =
+        "hidden"
+
+      window.onbeforeunload =
+        () => true
+    }
+
+    return () => {
+
+      document.body.style.overflow =
+        "auto"
+
+      window.onbeforeunload =
+        null
+    }
+
+  }, [aberto])
+
   if (!aberto) return null
-
-  /* ===============================
-     BLOQUEIA SCROLL
-  =============================== */
-
-  document.body.style.overflow =
-    "hidden"
-
-  /* ===============================
-     BLOQUEIA FECHAR/RELOAD
-  =============================== */
-
-  window.onbeforeunload =
-    () => true
 
   /* ===============================
      ACEITAR
@@ -61,16 +77,6 @@ export default function ModalAceiteTermos({
 
         )
       }
-
-      /* ===============================
-         LIBERA TELA
-      =============================== */
-
-      document.body.style.overflow =
-        "auto"
-
-      window.onbeforeunload =
-        null
 
       onAceitou()
 
