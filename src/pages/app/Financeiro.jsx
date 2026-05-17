@@ -186,46 +186,36 @@ useEffect(() => {
     )
 
     /* =========================
+       LOJAS
+    ========================= */
+
+    const lojasRes =
+      await api.get(
+        "/financeiro/lojas"
+      )
+
+    setLojas(
+      lojasRes.data || []
+    )
+
+    /* =========================
+       PLANOS
+    ========================= */
+
+    const planosRes =
+      await api.get(
+        "/financeiro/planos"
+      )
+
+    setPlanos(
+      planosRes.data || []
+    )
+
+    /* =========================
        MOCK TEMPORÁRIO
     ========================= */
 
-    setLojas([
-
-      {
-        id: 1,
-        nome: "Loja 1"
-      },
-
-      {
-        id: 2,
-        nome: "Loja 2"
-      }
-
-    ])
-
-    setPlanos([
-
-      {
-        id: 1,
-        nome: "FREE"
-      },
-
-      {
-        id: 2,
-        nome: "PRO"
-      },
-
-      {
-        id: 3,
-        nome: "BUSINESS"
-      },
-
-      {
-        id: 4,
-        nome: "PREMIUM"
-      }
-
-    ])
+ 
 
   } catch (e) {
 
@@ -240,7 +230,6 @@ useEffect(() => {
     setLoading(false)
   }
 }
-
 
   /* =========================
      HELPERS
@@ -455,22 +444,22 @@ useEffect(() => {
 
       {/* PLANO */}
 
-    <select
+      <select
 
-      value={plano}
+        value={plano}
 
-      onChange={e => {
+        onChange={e => {
 
-        setPage(1)
+          setPage(1)
 
-        setPlano(
-          e.target.value
-        )
-      }}
+          setPlano(
+            e.target.value
+          )
+        }}
 
-      style={campoStyle}
+        style={campoStyle}
 
-    >
+      >
 
       <option value="">
         Todos Planos
