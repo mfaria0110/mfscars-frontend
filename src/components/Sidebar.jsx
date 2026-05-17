@@ -114,56 +114,6 @@ export default function Sidebar() {
 
 </div>
 
-<div className="sidebar-footer">
-
-  <div style={{
-    fontSize: 14,
-    fontWeight: 600,
-    marginBottom: 6
-  }}>
-
-    MFS Cars Marketplace © 2026
-
-  </div>
-
-  <div style={{
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-    flexWrap: "wrap",
-    fontSize: 13
-  }}>
-
-    <span>
-      📧
-    </span>
-
-    <span style={{
-      color: "#22c55e"
-    }}>
-      mfaria2016@outlook.com
-    </span>
-
-    <span style={{
-      color: "#94a3b8"
-    }}>
-      |
-    </span>
-
-    <span>
-      📱
-    </span>
-
-    <span style={{
-      color: "#22c55e"
-    }}>
-      (24) 99972-6811
-    </span>
-
-  </div>
-
 </div>
-
-    </div>
   )
 }
