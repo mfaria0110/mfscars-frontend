@@ -90,6 +90,24 @@ export default function ModalAceiteTermos({
     }
   }
 
+  /* ===============================
+     SAIR
+  =============================== */
+
+  function sair() {
+
+    localStorage.removeItem(
+      "token"
+    )
+
+    localStorage.removeItem(
+      "usuario"
+    )
+
+    window.location.href =
+      "/login"
+  }
+
   return (
 
     <div style={{
@@ -237,36 +255,75 @@ export default function ModalAceiteTermos({
 
         </label>
 
-        <button
+        <div style={{
 
-          onClick={aceitar}
+          display: "flex",
 
-          style={{
+          gap: 12,
 
-            marginTop: 30,
+          marginTop: 30
 
-            background:
-              "#2563eb",
+        }}>
 
-            color: "#fff",
+          <button
 
-            border: 0,
+            onClick={aceitar}
 
-            borderRadius: 12,
+            style={{
 
-            padding:
-              "12px 20px",
+              background:
+                "#2563eb",
 
-            cursor: "pointer",
+              color: "#fff",
 
-            fontWeight: 600
+              border: 0,
 
-          }}
-        >
+              borderRadius: 12,
 
-          Aceitar e continuar
+              padding:
+                "12px 20px",
 
-        </button>
+              cursor: "pointer",
+
+              fontWeight: 600
+
+            }}
+          >
+
+            Aceitar e continuar
+
+          </button>
+
+          <button
+
+            onClick={sair}
+
+            style={{
+
+              background:
+                "#e2e8f0",
+
+              color: "#0f172a",
+
+              border: 0,
+
+              borderRadius: 12,
+
+              padding:
+                "12px 20px",
+
+              cursor: "pointer",
+
+              fontWeight: 600
+
+            }}
+          >
+
+            Sair
+
+          </button>
+
+        </div>
 
       </div>
 
