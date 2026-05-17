@@ -4,12 +4,14 @@ import "./index.css"
 import "leaflet/dist/leaflet.css"
 
 import { Toaster } from "react-hot-toast"
+
 import {
   QueryClient,
   QueryClientProvider
 } from "@tanstack/react-query"
 
-import { iniciarIdleLogout } from "./utils/idleLogout"
+import { iniciarIdleLogout }
+  from "./utils/idleLogout"
 
 import { useAppStore }
   from "./store/useAppStore"
@@ -19,29 +21,50 @@ import ModalAceiteTermos
 
 const queryClient =
   new QueryClient({
+
     defaultOptions: {
+
       queries: {
+
         refetchOnWindowFocus: false,
+
         retry: false,
-        staleTime: 1000 * 60 * 2
+
+        staleTime:
+          1000 * 60 * 2
+
       }
     }
   })
 
-/* dark mode */
+/* ===========================
+   DARK MODE
+=========================== */
+
 const dark =
   localStorage.getItem("dark") === "true"
 
 if (dark) {
-  document.documentElement.classList.add("dark")
+
+  document.documentElement
+    .classList.add("dark")
 }
+
+/* ===========================
+   IDLE LOGOUT
+=========================== */
 
 const token =
   localStorage.getItem("token")
 
 if (token) {
+
   iniciarIdleLogout()
 }
+
+/* ===========================
+   ROOT
+=========================== */
 
 function Root() {
 
@@ -62,17 +85,23 @@ function Root() {
 
   return (
 
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider
+      client={queryClient}
+    >
 
       <Router />
 
-      <Toaster position="top-right" />
+      <Toaster
+        position="top-right"
+      />
 
       <ModalAceiteTermos
 
         aberto={modalAceite}
 
-        pendentes={pendentesAceite}
+        pendentes={
+          pendentesAceite
+        }
 
         onAceitou={() => {
 
@@ -85,22 +114,17 @@ function Root() {
 }
 
 /* ===========================
-   🌐 CONTROLE DE DOMÍNIO
-=========================== 
-
-const host = window.location.hostname
-const path = window.location.pathname
-
-// 👉 se NÃO for app e estiver na raiz
-if (!host.startsWith("app.") && path === "/") {
-  window.location.replace("/home")
-}*/
-
-/* ===========================
-   🚀 RENDER APP
+   RENDER APP
 =========================== */
+
 ReactDOM.createRoot(
-  document.getElementById("root")
+
+  document.getElementById(
+    "root"
+  )
+
 ).render(
+
   <Root />
+
 )
