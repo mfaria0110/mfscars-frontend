@@ -64,7 +64,7 @@ const [planos, setPlanos] =
 
   width: "100%",
 
-  padding: 12,
+  padding: "6px 8px",
 
   borderRadius: 12,
 
@@ -72,7 +72,7 @@ const [planos, setPlanos] =
 
   background: "#fff",
 
-  fontSize: 13,
+  fontSize: 11,
 
   outline: "none"
 }
@@ -304,11 +304,11 @@ useEffect(() => {
      RENDER
   ========================= */
 
-  return (
+return (
 
-    <div style={{
-      padding: 24
-    }}>
+  <div style={{
+    padding: "0px 16px 16px"
+  }}>
 
       {/* =====================
           HEADER
@@ -331,7 +331,7 @@ useEffect(() => {
 
       <p style={{
         marginTop: 8,
-        marginBottom: 24,
+        marginBottom: 10,
         color: "#64748b",
         fontSize: 13
       }}>
@@ -350,7 +350,7 @@ useEffect(() => {
       display: "grid",
 
       gridTemplateColumns:
-        "repeat(auto-fit, minmax(220px, 1fr))",
+        "repeat(auto-fit, minmax(160px, 1fr))",
 
       gap: 10,
 
@@ -663,11 +663,11 @@ useEffect(() => {
                       color: "#fff",
 
                       padding:
-                        "4px 10px",
+                        "2px 6px",
 
                       borderRadius: 999,
 
-                      fontSize: 12,
+                      fontSize: 10,
 
                       fontWeight: 600,
 
@@ -711,7 +711,7 @@ useEffect(() => {
 
   gap: 12,
 
-  padding: 20
+  padding: 10
 
 }}>
 
@@ -780,7 +780,7 @@ function Card({
 
       borderRadius: 18,
 
-      padding: 18
+      padding: 10
 
     }}>
 
@@ -801,7 +801,7 @@ function Card({
 
           color: "#64748b",
 
-          fontSize: 14
+          fontSize: 11
 
         }}>
 
@@ -815,7 +815,7 @@ function Card({
 
       <div style={{
 
-        fontSize: 18,
+        fontSize: 15,
 
         fontWeight: 700
 
@@ -843,7 +843,7 @@ function Th({ children }) {
 
       padding: 8,
 
-      fontSize: 13,
+      fontSize: 10,
 
       color: "#64748b"
 
@@ -863,7 +863,7 @@ function Td({ children }) {
 
       padding: 8,
 
-      fontSize: 14
+      fontSize: 10
 
     }}>
 
