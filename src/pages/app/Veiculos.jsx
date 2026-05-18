@@ -363,14 +363,14 @@ export default function Veiculos() {
         }}
       />
 
-     {/* FOOTER */}
+      {/* FOOTER */}
       <div style={{
 
-        marginTop: 15,
+        marginTop: 10,
 
-        background: "#f3f3f3",
+        background: "#ddd",
 
-        borderRadius: 24,
+        borderRadius: 10,
 
         padding: 10,
 
@@ -378,11 +378,11 @@ export default function Veiculos() {
 
         gridTemplateColumns: "1fr 1fr",
 
-        rowGap: 24,
+        rowGap: 14,
 
-        gap: 20,
+        gap: 10,
 
-        alignItems: "start",
+        alignItems: "center",
 
         boxShadow:
           "0 6px 20px rgba(0,0,0,.04)"
@@ -400,7 +400,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 15,
+              fontSize: 13,
 
               fontWeight: 600,
 
@@ -418,9 +418,13 @@ export default function Veiculos() {
 
           display: "flex",
 
-          flexDirection: "column",
+          alignItems: "center",
 
-          gap: 10
+          gap: 16,
+
+          flexWrap: "wrap",
+
+          justifyContent: "flex-start"
 
         }}>
 
@@ -432,7 +436,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 15,
+              fontSize: 13,
 
               fontWeight: 600,
 
@@ -451,7 +455,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 15,
+              fontSize: 13,
 
               fontWeight: 600,
 
@@ -486,7 +490,7 @@ export default function Veiculos() {
           {/* EMAIL */}
           <span style={{
 
-            fontSize: 15,
+            fontSize: 13,
 
             fontWeight: 500,
 
@@ -503,7 +507,7 @@ export default function Veiculos() {
             rel="noreferrer"
             style={{
 
-              fontSize: 15,
+              fontSize: 13,
 
               fontWeight: 600,
 
@@ -519,7 +523,7 @@ export default function Veiculos() {
           {/* COPYRIGHT */}
           <span style={{
 
-            fontSize: 15,
+            fontSize: 13,
 
             color: "#888",
 
