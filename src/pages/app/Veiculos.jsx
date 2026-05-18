@@ -366,13 +366,13 @@ export default function Veiculos() {
      {/* FOOTER */}
       <div style={{
 
-        marginTop: 40,
+        marginTop: 15,
 
         background: "#f3f3f3",
 
         borderRadius: 24,
 
-        padding: 24,
+        padding: 10,
 
         display: "grid",
 
@@ -380,7 +380,7 @@ export default function Veiculos() {
 
         rowGap: 24,
 
-        gap: 40,
+        gap: 20,
 
         alignItems: "start",
 
@@ -400,7 +400,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 28,
+              fontSize: 15,
 
               fontWeight: 600,
 
@@ -420,7 +420,7 @@ export default function Veiculos() {
 
           flexDirection: "column",
 
-          gap: 14
+          gap: 10
 
         }}>
 
@@ -432,7 +432,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 28,
+              fontSize: 15,
 
               fontWeight: 600,
 
@@ -451,7 +451,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 28,
+              fontSize: 15,
 
               fontWeight: 600,
 
@@ -475,9 +475,9 @@ export default function Veiculos() {
 
           alignItems: "center",
 
-          gap: 28,
+          gap: 10,
 
-          paddingTop: 18,
+          paddingTop: 8,
 
           borderTop: "1px solid #d9d9d9"
 
@@ -486,7 +486,7 @@ export default function Veiculos() {
           {/* EMAIL */}
           <span style={{
 
-            fontSize: 22,
+            fontSize: 15,
 
             fontWeight: 500,
 
@@ -503,7 +503,7 @@ export default function Veiculos() {
             rel="noreferrer"
             style={{
 
-              fontSize: 22,
+              fontSize: 15,
 
               fontWeight: 600,
 
@@ -519,7 +519,7 @@ export default function Veiculos() {
           {/* COPYRIGHT */}
           <span style={{
 
-            fontSize: 18,
+            fontSize: 15,
 
             color: "#888",
 
