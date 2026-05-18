@@ -16,6 +16,9 @@ import { useAppStore }
 import api
   from "../../api/api"
 
+import ModalAceiteBloqueado
+  from "../../components/ModalAceiteBloqueado"
+
 import "./login.css"
 
 export default function Login() {
@@ -36,6 +39,13 @@ export default function Login() {
 
   const [senha, setSenha] =
     useState("")
+
+  const [
+
+  modalBloqueado,
+  setModalBloqueado
+
+  ] = useState(false)
 
   async function handleLogin() {
 
@@ -69,18 +79,36 @@ export default function Login() {
             "/juridico/verificar-aceite"
           )
 
-        if (
+if (
+  aceite.data?.precisaAceite
+) {
 
-          aceite.data?.precisaAceite
+  /* ===============================
+     👑 ADMIN PODE ACEITAR
+  ============================== */
 
-        ) {
+  if (
+    aceite.data?.podeAceitar
+  ) {
 
-          abrirAceite(
-            aceite.data.pendentes || []
-          )
+    abrirAceite(
+      aceite.data.pendentes || []
+    )
 
-          return
-        }
+  } else {
+
+    /* ===============================
+       🚫 USUÁRIO COMUM
+    ============================== */
+
+    setModalBloqueado(true)
+
+    return
+  }
+
+  return
+}
+
 
       } catch(e){
 
@@ -175,6 +203,17 @@ export default function Login() {
         </button>
 
       </div>
+
+      <ModalAceiteBloqueado
+
+        aberto={modalBloqueado}
+
+        onClose={() =>
+          setModalBloqueado(false)
+        }
+
+      />
+
 
     </div>
   )
