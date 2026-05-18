@@ -1,0 +1,81 @@
+.empresas-admin{
+
+  padding: 30px;
+}
+
+.empresas-table{
+
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.empresas-table th,
+.empresas-table td{
+
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.empresas-table th{
+
+  background: #f5f5f5;
+}
+
+.btn-danger{
+
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-success{
+
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-overlay{
+
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box{
+
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-box input,
+.modal-box textarea{
+
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-actions{
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

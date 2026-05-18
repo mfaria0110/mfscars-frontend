@@ -59,6 +59,9 @@ import Financeiro
 import Juridico
   from "../pages/app/Juridico"
 
+import EmpresasAdmin
+  from "../pages/app/EmpresasAdmin"
+
 import {
   usePermissao
 } from "../modules/permissao/usePermissao"
@@ -229,6 +232,22 @@ export default function Router() {
                   <VendaForm />
 
                 </ProtectedPermissionRoute>
+              }
+            />
+
+          {/* EMPRESAS */}
+
+            <Route    
+              path="/app/empresas"
+              element={
+                <ProtectedPermissionRoute
+                  permissao="empresa.visualizar"
+                >
+
+                  <EmpresasAdmin />
+
+                </ProtectedPermissionRoute>
+
               }
             />
 
