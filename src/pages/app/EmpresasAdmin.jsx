@@ -9,7 +9,7 @@ import api
 import toast
   from "react-hot-toast"
 
-import "./empresasAdmin.css"
+import "../../components/styles/empresasAdmin.css"
 
 export default function EmpresasAdmin(){
 
