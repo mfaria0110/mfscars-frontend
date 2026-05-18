@@ -75,7 +75,17 @@ export default function PrivateRoute() {
     MASTER IGNORA BLOQUEIOS
   */
 
-  if (usuario?.master === true) {
+  if (
+
+    usuario?.master === true ||
+
+    usuario?.master === "true" ||
+
+    usuario?.master === 1 ||
+
+    usuario?.master === "1"
+
+  ) {
 
     return <Outlet />
   }
