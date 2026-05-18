@@ -364,183 +364,193 @@ export default function Veiculos() {
       />
 
       {/* FOOTER */}
-      <div style={{
+<div style={{
 
-        marginTop: 5,
+  marginTop: 5,
 
-        background: "#ddd",
+  background: "#ddd",
 
-        borderRadius: 10,
+  borderRadius: 10,
 
-        padding: 5 20 5 20;,
+  padding: "5px 20px",
 
-        display: "grid",
+  display: "grid",
 
-        gridTemplateColumns: "1fr 1fr",
+  gridTemplateColumns: "1fr 1fr",
 
-        rowGap: 14,
+  rowGap: 14,
 
-        gap: 1,
+  gap: 1,
 
-        alignItems: "center",
+  alignItems: "center",
 
-        boxShadow:
-          "0 6px 20px rgba(0,0,0,.04)"
+  boxShadow:
+    "0 6px 20px rgba(0,0,0,.04)"
 
-      }}>
+}}>
 
-        {/* COLUNA 1 */}
-        <div>
+  {/* COLUNA 1 */}
+  <div style={{
 
-                  <a
-            href="https://veiculos.fipe.org.br"
-            target="_blank"
-            rel="noreferrer"
-            style={{
+    display: "flex",
 
-              color: "#4b0082",
+    alignItems: "center",
 
-              fontSize: 12,
+    gap: 10,
 
-              fontWeight: 600,
+    flexWrap: "wrap"
 
-              textDecoration: "underline"
+  }}>
 
-            }}
-          >
-            💰 Tabela FIPE
-          </a>
+    <a
+      href="https://veiculos.fipe.org.br"
+      target="_blank"
+      rel="noreferrer"
+      style={{
 
-          <a
-            href="https://www.google.com/search?q=consulta+placa"
-            target="_blank"
-            rel="noreferrer"
-            style={{
+        color: "#4b0082",
 
-              color: "#4b0082",
+        fontSize: 12,
 
-              fontSize: 12,
+        fontWeight: 600,
 
-              fontWeight: 600,
+        textDecoration: "underline"
 
-              textDecoration: "underline"
+      }}
+    >
+      💰 Tabela FIPE
+    </a>
 
-            }}
-          >
-            🚘 Consulta de Placa
-          </a>
+    <a
+      href="https://www.google.com/search?q=consulta+placa"
+      target="_blank"
+      rel="noreferrer"
+      style={{
 
+        color: "#4b0082",
 
-        </div>
+        fontSize: 12,
 
-        {/* COLUNA 2 */}
-        <div style={{
+        fontWeight: 600,
 
-          display: "flex",
+        textDecoration: "underline"
 
-          justifyContent: "flex-start",
+      }}
+    >
+      🚘 Consulta de Placa
+    </a>
 
-          alignItems: "center",
+  </div>
 
-          gap: 10,
+  {/* COLUNA 2 */}
+  <div style={{
 
-          flexWrap: "wrap",
+    display: "flex",
 
-          width: "100%",
+    justifyContent: "flex-start",
 
-          textAlign: "left"
+    alignItems: "center",
 
-        }}>
+    gap: 10,
 
-          <a
-            href="https://www.mfscars.com.br"
-            target="_blank"
-            rel="noreferrer"
-            style={{
+    flexWrap: "wrap",
 
-              color: "#4b0082",
+    width: "100%",
 
-              fontSize: 12,
+    textAlign: "left"
 
-              fontWeight: 600,
+  }}>
 
-              textDecoration: "underline"
+    <a
+      href="https://www.mfscars.com.br"
+      target="_blank"
+      rel="noreferrer"
+      style={{
 
-            }}
-          >
-            🌐 Site  - Marketplace
-          </a>
+        color: "#4b0082",
 
-        </div>
+        fontSize: 12,
 
-        {/* LINHA INFERIOR */}
-        <div style={{
+        fontWeight: 600,
 
-          gridColumn: "1 / -1",
+        textDecoration: "underline"
 
-          display: "flex",
+      }}
+    >
+      🌐 Site - Marketplace
+    </a>
 
-          flexWrap: "wrap",
+  </div>
 
-          alignItems: "center",
+  {/* LINHA INFERIOR */}
+  <div style={{
 
-          gap: 1,
+    gridColumn: "1 / -1",
 
-          paddingTop: 5,
+    display: "flex",
 
-          borderTop: "1px solid #d9d9d9"
+    flexWrap: "wrap",
 
-        }}>
+    alignItems: "center",
 
-          {/* EMAIL */}
-          <span style={{
+    gap: 10,
 
-            fontSize: 12,
+    paddingTop: 5,
 
-            fontWeight: 500,
+    borderTop: "1px solid #d9d9d9"
 
-            color: "#555"
+  }}>
 
-          }}>
-            📧 mfaria2016@outlook.com
-          </span>
+    {/* EMAIL */}
+    <span style={{
 
-          {/* WHATSAPP */}
-          <a
-            href="https://wa.me/5524999726811"
-            target="_blank"
-            rel="noreferrer"
-            style={{
+      fontSize: 12,
 
-              fontSize: 12,
+      fontWeight: 500,
 
-              fontWeight: 600,
+      color: "#555"
 
-              textDecoration: "none",
+    }}>
+      📧 mfaria2016@outlook.com
+    </span>
 
-              color: "#000"
+    {/* WHATSAPP */}
+    <a
+      href="https://wa.me/5524999726811"
+      target="_blank"
+      rel="noreferrer"
+      style={{
 
-            }}
-          >
-            📱 (24) 99972-6811
-          </a>
+        fontSize: 12,
 
-          {/* COPYRIGHT */}
-          <span style={{
+        fontWeight: 600,
 
-            fontSize: 12,
+        textDecoration: "none",
 
-            color: "#888",
+        color: "#000"
 
-            marginLeft: "auto"
+      }}
+    >
+      📱 (24) 99972-6811
+    </a>
 
-          }}>
-            © 2026 MFS Cars Marketplace
-          </span>
+    {/* COPYRIGHT */}
+    <span style={{
 
-        </div>
+      fontSize: 12,
 
-      </div>
+      color: "#888",
+
+      marginLeft: "auto"
+
+    }}>
+      © 2026 MFS Cars Marketplace
+    </span>
+
+  </div>
+
+</div>
+
 
 
 
