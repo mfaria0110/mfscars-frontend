@@ -101,8 +101,10 @@
 
 .veiculos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 260px));
+  grid-template-columns:
+    repeat(auto-fill, minmax(240px, 260px));
   justify-content: center;
+  align-items: start;
   gap: 20px;
 }
 
