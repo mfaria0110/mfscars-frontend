@@ -392,7 +392,47 @@ export default function Veiculos() {
         {/* COLUNA 1 */}
         <div>
 
-                  <a
+          <a
+            href="https://www.mfscars.com.br"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+
+              color: "#4b0082",
+
+              fontSize: 12,
+
+              fontWeight: 600,
+
+              textDecoration: "underline"
+
+            }}
+          >
+            🌐 Site  - Marketplace
+          </a>
+
+        </div>
+
+        {/* COLUNA 2 */}
+        <div style={{
+
+          display: "flex",
+
+          justifyContent: "flex-start",
+
+          alignItems: "center",
+
+          gap: 10,
+
+          flexWrap: "wrap",
+
+          width: "100%",
+
+          textAlign: "left"
+
+        }}>
+
+          <a
             href="https://veiculos.fipe.org.br"
             target="_blank"
             rel="noreferrer"
@@ -428,47 +468,6 @@ export default function Veiculos() {
             }}
           >
             🚘 Consulta de Placa
-          </a>
-
-
-        </div>
-
-        {/* COLUNA 2 */}
-        <div style={{
-
-          display: "flex",
-
-          justifyContent: "flex-start",
-
-          alignItems: "center",
-
-          gap: 10,
-
-          flexWrap: "wrap",
-
-          width: "100%",
-
-          textAlign: "left"
-
-        }}>
-
-          <a
-            href="https://www.mfscars.com.br"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-
-              color: "#4b0082",
-
-              fontSize: 12,
-
-              fontWeight: 600,
-
-              textDecoration: "underline"
-
-            }}
-          >
-            🌐 Site  - Marketplace
           </a>
 
         </div>
