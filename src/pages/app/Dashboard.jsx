@@ -1,5 +1,6 @@
 import { useDashboard } from "../../modules/dashboard/useDashboard"
-
+import { usePermissao }
+  from "../../modules/permissao/usePermissao"
 import "../../components/styles/dashboard.css"
 
 export default function Dashboard() {
@@ -47,17 +48,17 @@ export default function Dashboard() {
 
         <div className="dashboard-card card-blue">
           <div className="dashboard-title">Veículos</div>
-          <div className="dashboard-value">{data.veiculos}</div>
+          <div className="dashboard-value">{data?.veiculos || 0}</div>
         </div>
 
         <div className="dashboard-card card-green">
           <div className="dashboard-title">Leads</div>
-          <div className="dashboard-value">{data.leads}</div>
+          <div className="dashboard-value">{data?.leads || 0}</div>
         </div>
 
         <div className="dashboard-card card-yellow">
           <div className="dashboard-title">Vendas</div>
-          <div className="dashboard-value">{data.vendas}</div>
+          <div className="dashboard-value">{data?.vendas || 0}</div>
         </div>
 
         <div className="dashboard-card card-red">
