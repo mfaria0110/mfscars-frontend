@@ -1,47 +1,132 @@
-import { useAppStore } from "../../store/useAppStore"
+import {
+  useAppStore
+} from "../../store/useAppStore"
 
 export function usePermissao() {
-  const usuario = useAppStore((state) => state.usuario)
-  const permissoes = useAppStore((state) => state.permissoes)
+
+  const usuario =
+    useAppStore(
+      (state) => state.usuario
+    )
+
+  const permissoes =
+    useAppStore(
+      (state) => state.permissoes
+    )
+
+  /* =========================
+     ADMIN GLOBAL
+  ========================= */
 
   function isAdminGlobal() {
-    if (!usuario) return false
 
-    // 🔥 regra alinhada com backend
-    if (usuario.master) return true
+    if (!usuario) {
 
-    // garante consistência (case insensitive)
+      return false
+    }
+
+    /* =========================
+       MASTER
+    ========================= */
+
     if (
-      typeof usuario.perfil === "string" &&
-      usuario.perfil.toLowerCase() === "admin"
+
+      usuario.master === true ||
+
+      usuario.master === "true" ||
+
+      usuario.master === 1 ||
+
+      usuario.master === "1"
+
     ) {
+
+      return true
+    }
+
+    /* =========================
+       PERFIL ADMIN
+    ========================= */
+
+    if (
+
+      typeof usuario.perfil ===
+        "string" &&
+
+      usuario.perfil
+        .toLowerCase()
+        .trim() === "admin"
+
+    ) {
+
       return true
     }
 
     return false
   }
 
-  function temPermissao(chave) {
-    if (!chave || typeof chave !== "string") {
-      console.warn("Permissão inválida:", chave)
+  /* =========================
+     TEM PERMISSÃO
+  ========================= */
+
+  function temPermissao(
+    chave
+  ) {
+
+    if (
+
+      !chave ||
+
+      typeof chave !==
+        "string"
+
+    ) {
+
+      console.warn(
+
+        "Permissão inválida:",
+
+        chave
+
+      )
+
       return false
     }
 
-    // 🔥 bypass global
+    /* =========================
+       BYPASS ADMIN
+    ========================= */
+
     if (isAdminGlobal()) {
+
       return true
     }
 
-    // segurança contra estado indefinido
-    if (!Array.isArray(permissoes)) {
+    /* =========================
+       SEGURANÇA
+    ========================= */
+
+    if (
+
+      !Array.isArray(
+        permissoes
+      )
+
+    ) {
+
       return false
     }
 
-    return permissoes.includes(chave)
+    return permissoes.includes(
+      chave
+    )
   }
 
   return {
+
     temPermissao,
+
     isAdminGlobal
+
   }
 }
