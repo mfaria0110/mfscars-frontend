@@ -22,60 +22,43 @@ export default function PrivateRoute() {
         state.accessToken
     )
 
-  /*
-    fallback reload
-  */
-
   const token =
     accessToken ||
+
     sessionStorage.getItem(
       "accessToken"
     )
 
   const usuario =
     JSON.parse(
+
       sessionStorage.getItem(
         "usuario"
       ) || "{}"
+
     )
 
-  /*
-    SEM LOGIN
-  */
+  /* =========================
+     SEM LOGIN
+  ========================= */
 
   if (!token) {
 
     return (
+
       <Navigate
         to="/login"
         replace
       />
+
     )
   }
 
-  /*
-    PLANO
-  */
+  /* =========================
+     MASTER
+  ========================= */
 
-  const {
-    planoAtual,
-    loading
-  } = usePlano()
-
-  /*
-    carregando
-  */
-
-  if (loading) {
-
-    return null
-  }
-
-  /*
-    MASTER IGNORA BLOQUEIOS
-  */
-
-  if (
+  const isMaster =
 
     usuario?.master === true ||
 
@@ -85,18 +68,42 @@ export default function PrivateRoute() {
 
     usuario?.master === "1"
 
-  ) {
+  /* =========================
+     MASTER IGNORA TUDO
+  ========================= */
+
+  if (isMaster) {
 
     return <Outlet />
   }
 
-  /*
-    sem plano
-  */
+  /* =========================
+     PLANO
+  ========================= */
+
+  return <PlanoValidator />
+}
+
+/* =========================
+   VALIDADOR PLANO
+========================= */
+
+function PlanoValidator() {
+
+  const {
+    planoAtual,
+    loading
+  } = usePlano()
+
+  if (loading) {
+
+    return null
+  }
 
   if (!planoAtual) {
 
     return (
+
       <PlanoBloqueioModal
 
         aberto={true}
@@ -106,33 +113,26 @@ export default function PrivateRoute() {
         }
 
         onClose={() => {}}
+
       />
+
     )
   }
-
-  /*
-    STATUS
-  */
 
   const status =
     planoAtual?.status
       ?.toLowerCase?.()
 
-  /*
-    FREE
-  */
-
   if (
+
     planoAtual?.nome
-      ?.toLowerCase?.() === "free"
+      ?.toLowerCase?.() ===
+      "free"
+
   ) {
 
     return <Outlet />
   }
-
-  /*
-    ATIVO
-  */
 
   if (
     status === "ativo"
@@ -141,15 +141,12 @@ export default function PrivateRoute() {
     return <Outlet />
   }
 
-  /*
-    PENDENTE
-  */
-
   if (
     status === "pendente"
   ) {
 
     return (
+
       <PlanoBloqueioModal
 
         aberto={true}
@@ -159,19 +156,18 @@ export default function PrivateRoute() {
         }
 
         onClose={() => {}}
+
       />
+
     )
   }
-
-  /*
-    INADIMPLENTE
-  */
 
   if (
     status === "inadimplente"
   ) {
 
     return (
+
       <PlanoBloqueioModal
 
         aberto={true}
@@ -181,19 +177,18 @@ export default function PrivateRoute() {
         }
 
         onClose={() => {}}
+
       />
+
     )
   }
-
-  /*
-    CANCELADO
-  */
 
   if (
     status === "cancelado"
   ) {
 
     return (
+
       <PlanoBloqueioModal
 
         aberto={true}
@@ -203,19 +198,18 @@ export default function PrivateRoute() {
         }
 
         onClose={() => {}}
+
       />
+
     )
   }
-
-  /*
-    PAUSADO
-  */
 
   if (
     status === "pausado"
   ) {
 
     return (
+
       <PlanoBloqueioModal
 
         aberto={true}
@@ -225,15 +219,14 @@ export default function PrivateRoute() {
         }
 
         onClose={() => {}}
+
       />
+
     )
   }
 
-  /*
-    fallback
-  */
-
   return (
+
     <PlanoBloqueioModal
 
       aberto={true}
@@ -243,6 +236,8 @@ export default function PrivateRoute() {
       }
 
       onClose={() => {}}
+
     />
+
   )
 }
