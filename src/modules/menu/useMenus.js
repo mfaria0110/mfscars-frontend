@@ -7,18 +7,18 @@ import api
 import { usePermissao }
   from "../permissao/usePermissao"
 
-import { useAuthStore }
-  from "../../store/useAuthStore"
+import { useAppStore }
+  from "../../store/useAppStore"
 
 export function useMenus() {
 
   const { temPermissao } =
     usePermissao()
 
-  const usuario =
-    useAuthStore(
-      s => s.usuario
-    )
+const usuario =
+  useAppStore(
+    s => s.usuario
+  )
 
   const podeVisualizarMenu =
     true
