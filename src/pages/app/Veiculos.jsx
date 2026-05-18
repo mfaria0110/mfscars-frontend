@@ -528,7 +528,8 @@ export default function Veiculos() {
 
         textDecoration: "none",
 
-        color: "#000"
+        color: "#000",
+
         marginLeft: "auto"
 
       }}
