@@ -363,25 +363,26 @@ export default function Veiculos() {
         }}
       />
 
-      {/* FOOTER */}
+     {/* FOOTER */}
       <div style={{
 
         marginTop: 40,
 
-        background: "#fff",
+        background: "#f3f3f3",
 
-        borderRadius: 20,
+        borderRadius: 24,
 
-        padding: 20,
+        padding: 24,
 
         display: "grid",
 
-        gridTemplateColumns:
-          "repeat(auto-fit,minmax(220px,1fr))",
+        gridTemplateColumns: "1fr 1fr",
 
-        gap: 20,
+        rowGap: 24,
 
-        alignItems: "center",
+        gap: 40,
+
+        alignItems: "start",
 
         boxShadow:
           "0 6px 20px rgba(0,0,0,.04)"
@@ -391,65 +392,35 @@ export default function Veiculos() {
         {/* COLUNA 1 */}
         <div>
 
-          <div style={{
-
-            display: "flex",
-
-            flexDirection: "column",
-
-            gap: 8
-
-          }}>
-
-            <p style={{ margin: 0 }}>
-              📧 mfaria2016@outlook.com
-            </p>
-
-            <p style={{ margin: 0 }}>
-              📱 (24) 99972-6811
-            </p>
-
-          </div>
-
-          <p style={{
-
-            marginTop: 12,
-
-            marginBottom: 0,
-
-            color: "#64748b",
-
-            fontSize: 13
-
-          }}>
-
-            © 2026 MFS Cars Marketplace
-
-          </p>
-
-        </div>
-
-        {/* COLUNA 2 */}
-        <div>
-
           <a
             href="https://www.mfscars.com.br"
             target="_blank"
             rel="noreferrer"
+            style={{
+
+              color: "#4b0082",
+
+              fontSize: 28,
+
+              fontWeight: 600,
+
+              textDecoration: "underline"
+
+            }}
           >
             🌐 Site Oficial
           </a>
 
         </div>
 
-        {/* COLUNA 3 */}
+        {/* COLUNA 2 */}
         <div style={{
 
           display: "flex",
 
           flexDirection: "column",
 
-          gap: 8
+          gap: 14
 
         }}>
 
@@ -457,6 +428,17 @@ export default function Veiculos() {
             href="https://veiculos.fipe.org.br"
             target="_blank"
             rel="noreferrer"
+            style={{
+
+              color: "#4b0082",
+
+              fontSize: 28,
+
+              fontWeight: 600,
+
+              textDecoration: "underline"
+
+            }}
           >
             💰 Tabela FIPE
           </a>
@@ -465,13 +447,94 @@ export default function Veiculos() {
             href="https://www.google.com/search?q=consulta+placa"
             target="_blank"
             rel="noreferrer"
+            style={{
+
+              color: "#4b0082",
+
+              fontSize: 28,
+
+              fontWeight: 600,
+
+              textDecoration: "underline"
+
+            }}
           >
             🚘 Consulta de Placa
           </a>
 
         </div>
 
+        {/* LINHA INFERIOR */}
+        <div style={{
+
+          gridColumn: "1 / -1",
+
+          display: "flex",
+
+          flexWrap: "wrap",
+
+          alignItems: "center",
+
+          gap: 28,
+
+          paddingTop: 18,
+
+          borderTop: "1px solid #d9d9d9"
+
+        }}>
+
+          {/* EMAIL */}
+          <span style={{
+
+            fontSize: 22,
+
+            fontWeight: 500,
+
+            color: "#555"
+
+          }}>
+            📧 mfaria2016@outlook.com
+          </span>
+
+          {/* WHATSAPP */}
+          <a
+            href="https://wa.me/5524999726811"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+
+              fontSize: 22,
+
+              fontWeight: 600,
+
+              textDecoration: "none",
+
+              color: "#000"
+
+            }}
+          >
+            📱 (24) 99972-6811
+          </a>
+
+          {/* COPYRIGHT */}
+          <span style={{
+
+            fontSize: 18,
+
+            color: "#888",
+
+            marginLeft: "auto"
+
+          }}>
+            © 2026 MFS Cars Marketplace
+          </span>
+
+        </div>
+
       </div>
+
+
+
 
     </div>
   )
