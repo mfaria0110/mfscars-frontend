@@ -380,7 +380,7 @@ export default function Veiculos() {
 
         rowGap: 14,
 
-        gap: 10,
+        gap: 1,
 
         alignItems: "center",
 
@@ -400,7 +400,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 13,
+              fontSize: 12,
 
               fontWeight: 600,
 
@@ -408,7 +408,7 @@ export default function Veiculos() {
 
             }}
           >
-            🌐 Site Oficial
+            🌐 Site  - Marketplace
           </a>
 
         </div>
@@ -418,13 +418,17 @@ export default function Veiculos() {
 
           display: "flex",
 
+          justifyContent: "flex-start",
+
           alignItems: "center",
 
-          gap: 16,
+          gap: 10,
 
           flexWrap: "wrap",
 
-          justifyContent: "flex-start"
+          width: "100%",
+
+          textAlign: "left"
 
         }}>
 
@@ -436,7 +440,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 13,
+              fontSize: 12,
 
               fontWeight: 600,
 
@@ -455,7 +459,7 @@ export default function Veiculos() {
 
               color: "#4b0082",
 
-              fontSize: 13,
+              fontSize: 12,
 
               fontWeight: 600,
 
@@ -479,7 +483,7 @@ export default function Veiculos() {
 
           alignItems: "center",
 
-          gap: 10,
+          gap: 1,
 
           paddingTop: 8,
 
@@ -490,7 +494,7 @@ export default function Veiculos() {
           {/* EMAIL */}
           <span style={{
 
-            fontSize: 13,
+            fontSize: 12,
 
             fontWeight: 500,
 
@@ -507,7 +511,7 @@ export default function Veiculos() {
             rel="noreferrer"
             style={{
 
-              fontSize: 13,
+              fontSize: 12,
 
               fontWeight: 600,
 
@@ -523,7 +527,7 @@ export default function Veiculos() {
           {/* COPYRIGHT */}
           <span style={{
 
-            fontSize: 13,
+            fontSize: 12,
 
             color: "#888",
 
