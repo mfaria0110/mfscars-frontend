@@ -480,6 +480,28 @@ export default function Veiculos() {
       🌐 Site - Marketplace
     </a>
 
+        {/* WHATSAPP */}
+    <a
+      href="https://wa.me/5524999726811"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+
+        fontSize: 12,
+
+        fontWeight: 600,
+
+        textDecoration: "none",
+
+        color: "#000",
+
+        marginLeft: "auto"
+
+      }}
+    >
+      📱 (24) 99972-6811
+    </a>
+
   </div>
 
   {/* LINHA INFERIOR */}
@@ -514,28 +536,6 @@ export default function Veiculos() {
     }}>
       © 2026 MFS Cars Marketplace
     </span>
-
-        {/* WHATSAPP */}
-    <a
-      href="https://wa.me/5524999726811"
-      target="_blank"
-      rel="noreferrer"
-      style={{
-
-        fontSize: 12,
-
-        fontWeight: 600,
-
-        textDecoration: "none",
-
-        color: "#000",
-
-        marginLeft: "auto"
-
-      }}
-    >
-      📱 (24) 99972-6811
-    </a>
 
   </div>
 
