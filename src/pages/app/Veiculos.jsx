@@ -366,13 +366,13 @@ export default function Veiculos() {
       {/* FOOTER */}
       <div style={{
 
-        marginTop: 10,
+        marginTop: 5,
 
         background: "#ddd",
 
         borderRadius: 10,
 
-        padding: 10,
+        padding: 5 20 5 20;,
 
         display: "grid",
 
@@ -392,47 +392,7 @@ export default function Veiculos() {
         {/* COLUNA 1 */}
         <div>
 
-          <a
-            href="https://www.mfscars.com.br"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-
-              color: "#4b0082",
-
-              fontSize: 12,
-
-              fontWeight: 600,
-
-              textDecoration: "underline"
-
-            }}
-          >
-            🌐 Site  - Marketplace
-          </a>
-
-        </div>
-
-        {/* COLUNA 2 */}
-        <div style={{
-
-          display: "flex",
-
-          justifyContent: "flex-start",
-
-          alignItems: "center",
-
-          gap: 10,
-
-          flexWrap: "wrap",
-
-          width: "100%",
-
-          textAlign: "left"
-
-        }}>
-
-          <a
+                  <a
             href="https://veiculos.fipe.org.br"
             target="_blank"
             rel="noreferrer"
@@ -470,6 +430,47 @@ export default function Veiculos() {
             🚘 Consulta de Placa
           </a>
 
+
+        </div>
+
+        {/* COLUNA 2 */}
+        <div style={{
+
+          display: "flex",
+
+          justifyContent: "flex-start",
+
+          alignItems: "center",
+
+          gap: 10,
+
+          flexWrap: "wrap",
+
+          width: "100%",
+
+          textAlign: "left"
+
+        }}>
+
+          <a
+            href="https://www.mfscars.com.br"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+
+              color: "#4b0082",
+
+              fontSize: 12,
+
+              fontWeight: 600,
+
+              textDecoration: "underline"
+
+            }}
+          >
+            🌐 Site  - Marketplace
+          </a>
+
         </div>
 
         {/* LINHA INFERIOR */}
@@ -485,7 +486,7 @@ export default function Veiculos() {
 
           gap: 1,
 
-          paddingTop: 8,
+          paddingTop: 5,
 
           borderTop: "1px solid #d9d9d9"
 
