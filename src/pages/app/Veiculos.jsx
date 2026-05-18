@@ -531,7 +531,9 @@ export default function Veiculos() {
 
       color: "#888",
 
-      marginLeft: "auto"
+      width: "100%",
+
+      textAlign: "center"
 
     }}>
       © 2026 MFS Cars Marketplace
