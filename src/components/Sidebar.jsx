@@ -99,18 +99,6 @@ export default function Sidebar() {
   />
 ))}
 
-{
-
-  isMaster && (
-
-    <MenuItem
-      to="/juridico"
-      icon="📜"
-      label="Jurídico"
-    />
-
-  )
-}
 
 </div>
 
