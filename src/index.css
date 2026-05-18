@@ -12,7 +12,65 @@ body {
   color: #1f2937;
 }
 
+/* =========================
+   TOAST
+========================= */
+
+.react-hot-toast {
+
+  font-size: 14px !important;
+
+  border-radius: 14px !important;
+
+  padding: 14px 16px !important;
+
+  min-width: 280px !important;
+
+  max-width: 420px !important;
+
+  box-shadow:
+    0 10px 25px rgba(
+      0,
+      0,
+      0,
+      0.15
+    ) !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 10px !important;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.react-hot-toast[data-type="error"] {
+
+  background: #ffffff !important;
+
+  color: #1f2937 !important;
+
+  border-left:
+    5px solid #ef4444 !important;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.react-hot-toast[data-type="success"] {
+
+  background: #ffffff !important;
+
+  color: #1f2937 !important;
+
+  border-left:
+    5px solid #10b981 !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-

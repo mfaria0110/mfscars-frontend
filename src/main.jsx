@@ -119,9 +119,30 @@ function Root() {
 
       <Router />
 
-      <Toaster
-        position="top-right"
-      />
+  <Toaster
+
+    position="top-center"
+
+    toastOptions={{
+
+      duration: 4000,
+
+      style: {
+
+        background: "#fff",
+
+        color: "#111827",
+
+        borderRadius: "14px",
+
+        padding: "14px 16px",
+
+        fontSize: "14px"
+
+      }
+
+    }}
+  />
 
       <ModalAceiteTermos
 
