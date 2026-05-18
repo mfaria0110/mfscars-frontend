@@ -1,71 +1,151 @@
 import { useDashboard } from "../../modules/dashboard/useDashboard"
+
 import { usePermissao }
   from "../../modules/permissao/usePermissao"
+
 import "../../components/styles/dashboard.css"
 
 export default function Dashboard() {
 
-  const { temPermissao } = usePermissao()
+  const { temPermissao } =
+    usePermissao()
 
-  const { data, loading } = useDashboard()
+  const {
+    stats,
+    loading,
+    error
+  } = useDashboard()
 
-  if (!temPermissao("dashboard.visualizar")) {
-  return (
-    <div style={{ padding: 40 }}>
-      🚫 Sem permissão para visualizar dashboard
-    </div>
-  )
-}
+  /* ===============================
+     🔐 PERMISSÃO
+  ============================== */
+  if (
+    !temPermissao(
+      "dashboard.visualizar"
+    )
+  ) {
 
+    return (
+      <div style={{ padding: 40 }}>
+        🚫 Sem permissão para visualizar dashboard
+      </div>
+    )
+  }
+
+  /* ===============================
+     ⏳ LOADING
+  ============================== */
   if (loading) {
-    return <div>Carregando...</div>
+
+    return (
+      <div>
+        Carregando...
+      </div>
+    )
   }
 
-  if (!data) {
-    return <div>Erro ao carregar</div>
+  /* ===============================
+     ❌ ERRO
+  ============================== */
+  if (error) {
+
+    return (
+      <div style={{ padding: 40 }}>
+        ❌ {error}
+      </div>
+    )
   }
 
-  const plano = data.plano
+  const plano =
+    stats?.plano
 
   return (
+
     <div className="dashboard">
 
-      {/* ALERTAS */}
+      {/* ===============================
+          🚨 ALERTAS
+      ============================== */}
+
       {plano?.alerta === "limite" && (
+
         <div className="dashboard-alert alert-danger">
+
           🚫 Seu plano atingiu o limite
+
         </div>
       )}
 
       {plano?.alerta === "quase" && (
+
         <div className="dashboard-alert alert-warning">
+
           ⚠️ Restam apenas {plano.restante} vagas
+
         </div>
       )}
 
-      {/* CARDS */}
+      {/* ===============================
+          📊 CARDS
+      ============================== */}
+
       <div className="dashboard-cards">
 
+        {/* VEÍCULOS */}
         <div className="dashboard-card card-blue">
-          <div className="dashboard-title">Veículos</div>
-          <div className="dashboard-value">{data?.veiculos || 0}</div>
-        </div>
 
-        <div className="dashboard-card card-green">
-          <div className="dashboard-title">Leads</div>
-          <div className="dashboard-value">{data?.leads || 0}</div>
-        </div>
-
-        <div className="dashboard-card card-yellow">
-          <div className="dashboard-title">Vendas</div>
-          <div className="dashboard-value">{data?.vendas || 0}</div>
-        </div>
-
-        <div className="dashboard-card card-red">
-          <div className="dashboard-title">Plano</div>
-          <div className="dashboard-value">
-            {plano?.nome || "--"}
+          <div className="dashboard-title">
+            Veículos ativos
           </div>
+
+          <div className="dashboard-value">
+            {stats?.veiculos || 0}
+          </div>
+
+        </div>
+
+        {/* LEADS */}
+        <div className="dashboard-card card-green">
+
+          <div className="dashboard-title">
+            Leads recebidos
+          </div>
+
+          <div className="dashboard-value">
+            {stats?.leads || 0}
+          </div>
+
+        </div>
+
+        {/* VENDAS */}
+        <div className="dashboard-card card-yellow">
+
+          <div className="dashboard-title">
+            Vendas
+          </div>
+
+          <div className="dashboard-value">
+            {stats?.vendas || 0}
+          </div>
+
+        </div>
+
+        {/* PLANO */}
+        <div className="dashboard-card card-red">
+
+          <div className="dashboard-title">
+            Plano
+          </div>
+
+          <div className="dashboard-value">
+
+            {plano?.nome || "--"} (
+            {plano?.usados || 0}/
+            {plano?.limite || 0}
+            )
+
+          </div>
+
         </div>
 
       </div>
