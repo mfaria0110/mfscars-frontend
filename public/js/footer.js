@@ -45,16 +45,13 @@ export async function renderFooter(){
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    gap:40px;
+    gap:20px;
     flex-wrap:wrap;
 
-    padding:50px;
-
-    margin-top:60px;
-
-    background:#020617;
-
-    color:#fff;
+    padding:20px;
+    margin-top:10px;
+    background:#dbdce3;
+    color:#dbdce3;
   "
 >
   <!-- PLANOS -->
@@ -108,6 +105,8 @@ ${planos.map(p => {
 
     min-height:330px;
 
+    width: 160px;
+
     border-radius:28px;
 
     padding:24px;
@@ -154,14 +153,14 @@ ${p.nome === "BUSINESS" ? `
     letter-spacing:.4px;
   "
 >
-  MAIS VENDIDO
+  
 </div>
 
 ` : ""}
 
 <h3
   style="
-    font-size:42px;
+    font-size:32px;
 
     font-weight:900;
 
@@ -195,7 +194,7 @@ ${founders && p.nome !== "FREE" ? `
 
 <div
   style="
-    font-size:52px;
+    font-size:22px;
 
     font-weight:900;
 
