@@ -98,7 +98,7 @@ ${planos.map(p => {
   class="plano-card"
   style="
     position:relative;
-    overflow:hidden;
+    overflow:visible;
     min-height:230px;
     width: 200px;
     border-radius:28px;
@@ -173,7 +173,6 @@ ${founders && p.nome !== "FREE" ? `
     font-size:22px;
     font-weight:900;
     color:#6ee7b7;
-    line-height:1;
     margin-bottom:10px;
   "
 >
@@ -194,6 +193,7 @@ R$ ${valorFinal.toLocaleString(
 >
   Valor mensal
 </div>
+
 </div>
 
 <div
