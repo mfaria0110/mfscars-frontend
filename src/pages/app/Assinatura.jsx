@@ -578,7 +578,6 @@ return (
           fontWeight: "700"
         }}
       >
-        MAIS POPULAR
       </div>
 
     )}
@@ -592,15 +591,110 @@ return (
                   {plano.nome}
                 </h2>
 
-                <div
-                  style={{
-                    fontSize: 24,
-                    fontWeight: "700",
-                    marginBottom: 12
-                  }}
-                >
-                  R$ {plano.preco}
-                </div>
+
+
+
+
+
+
+<div
+  style={{
+    marginBottom: 18
+  }}
+>
+
+  {
+
+    founders?.restantes > 0 &&
+
+    plano.nome !== "FREE"
+
+      ? (
+
+        <>
+
+          {/* PREÇO ORIGINAL */}
+
+          <div
+            style={{
+              fontSize: 16,
+              opacity: 0.6,
+              textDecoration: "line-through",
+              marginBottom: 4
+            }}
+          >
+            R$ {Number(plano.preco).toFixed(2)}
+          </div>
+
+          {/* PREÇO FOUNDERS */}
+
+          <div
+            style={{
+              fontSize: 34,
+              fontWeight: 800,
+              color: "#6ee7b7",
+              lineHeight: 1
+            }}
+          >
+            R$ {
+
+              (
+                Number(plano.preco) *
+
+                (
+                  1 -
+
+                  (
+                    Number(
+                      plano.desconto_founders || 30
+                    ) / 100
+                  )
+                )
+
+              ).toFixed(2)
+
+            }
+          </div>
+
+          {/* TAG */}
+
+          <div
+            style={{
+              marginTop: 8,
+              fontSize: 13,
+              fontWeight: 700,
+              color: "#6ee7b7"
+            }}
+          >
+            🔥 30% OFF vitalício
+          </div>
+
+        </>
+
+      )
+
+      : (
+
+        <div
+          style={{
+            fontSize: 34,
+            fontWeight: 800
+          }}
+        >
+          R$ {Number(plano.preco).toFixed(2)}
+        </div>
+
+      )
+  }
+
+</div>
+
+
+
+
+
+
+
 
 <div
   style={{
