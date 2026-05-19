@@ -629,32 +629,43 @@ return (
           {/* PREÇO FOUNDERS */}
 
           <div
-            style={{
-              fontSize: 34,
-              fontWeight: 800,
-              color: "#6ee7b7",
-              lineHeight: 1
-            }}
-          >
-            R$ {
+          style={{
+            fontSize: 34,
+            fontWeight: 800,
+            color: "#6ee7b7",
+            lineHeight: 1.1
+          }}
+        >
+          R$ {
+
+            (
+              Number(plano.preco) *
 
               (
-                Number(plano.preco) *
+                1 -
 
                 (
-                  1 -
-
-                  (
-                    Number(
-                      plano.desconto_founders || 30
-                    ) / 100
-                  )
+                  Number(
+                    plano.desconto_founders || 30
+                  ) / 100
                 )
+              )
 
-              ).toFixed(2)
+            ).toFixed(2)
 
-            }
-          </div>
+          }
+        </div>
+
+        <div
+          style={{
+            marginTop: 8,
+            fontSize: 13,
+            opacity: 0.7,
+            fontWeight: 600
+          }}
+        >
+          Valor mensal
+        </div>
 
           {/* TAG */}
 
@@ -677,14 +688,14 @@ return (
 
         <div
           style={{
-            fontSize: 34,
+            fontSize: 30,
             fontWeight: 800
           }}
         >
           R$ {Number(plano.preco).toFixed(2)}
         </div>
-
       )
+      
   }
 
 </div>
