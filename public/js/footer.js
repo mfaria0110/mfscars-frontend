@@ -101,10 +101,11 @@ ${planos.map(p => {
   style="
     position:relative;
     overflow:hidden;
-    min-height:230px;
+    min-height:250px;
     width: 190px;
     border-radius:28px;
     padding:24px;
+    font-size:15px;
     background:${
       p.destaque
 
