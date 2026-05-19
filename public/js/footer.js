@@ -59,7 +59,6 @@ export async function renderFooter(){
     class="footer-planos"
     style="
       display:grid;
-
       grid-template-columns:
         repeat(
           auto-fit,
@@ -67,7 +66,6 @@ export async function renderFooter(){
         );
 
       gap:18px;
-
       flex:1;
     "
   >
@@ -148,7 +146,7 @@ ${p.nome === "BUSINESS" ? `
     font-weight:900;
     margin-bottom:2px;
     letter-spacing:-2px;
-    color:#fff;
+    color:#e2e8f0;
     margin-top:-10px;
   "
 >
@@ -159,7 +157,7 @@ ${founders && p.nome !== "FREE" ? `
 
 <div
   style="
-    font-size:18px;
+    font-size:15px;
     opacity:.6;
     text-decoration:line-through;
     margin-bottom:8px;
@@ -229,7 +227,7 @@ R$ ${valorFinal.toLocaleString(
 
 <div
   style="
-    font-size:18px;
+    font-size:15px;
     line-height:2;
     opacity:.95;
   "
@@ -239,7 +237,7 @@ R$ ${valorFinal.toLocaleString(
 
 <div
   style="
-    font-size:18px;
+    font-size:15px;
     line-height:2;
     opacity:.95;
   "
@@ -249,7 +247,7 @@ R$ ${valorFinal.toLocaleString(
 
 <div
   style="
-    font-size:18px;
+    font-size:15px;
     line-height:2;
     opacity:.95;
   "
@@ -257,9 +255,9 @@ R$ ${valorFinal.toLocaleString(
   👥 ${
     p.limite_vendedores
 
-      ? `${p.limite_vendedores} vendedores`
+      ? `${p.limite_vendedores} vendedoresMF`
 
-      : "Vendedores ilimitados"
+      : "Vendedores ilimitadosMF"
   }
 </div>
 

@@ -1,5 +1,6 @@
 import { requestPublic } from './api-public.js';
-import { renderFooter } from './footer.js';
+import { renderFooter }
+from './footer.js?v=999999';
 
 const API_URL = "https://api.mfscars.com.br";
 
