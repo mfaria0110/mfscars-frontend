@@ -113,8 +113,6 @@ ${planos.map(p => {
         : 'linear-gradient(135deg,#0f172a 0%,#111827 100%)'
     };
 
-    color:#fff;
-
     border:
       2px solid rgba(255,255,255,.05);
 
@@ -159,7 +157,7 @@ ${p.nome === "BUSINESS" ? `
     margin-bottom:2px;
     letter-spacing:-2px;
     color:#fff;
-    margin-top:15px;
+    margin-top:-15px;
   "
 >
   ${p.nome}
