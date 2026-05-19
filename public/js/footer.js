@@ -102,14 +102,13 @@ ${planos.map(p => {
     position:relative;
     overflow:hidden;
     min-height:270px;
-    width: 160px;
+    width: 180px;
     border-radius:28px;
     padding:24px;
     background:${
       p.destaque
 
         ? 'linear-gradient(135deg,#312e81 0%,#4338ca 100%)'
-
         : 'linear-gradient(135deg,#0f172a 0%,#111827 100%)'
     };
 
@@ -157,7 +156,7 @@ ${p.nome === "BUSINESS" ? `
     margin-bottom:2px;
     letter-spacing:-2px;
     color:#fff;
-    margin-top:-15px;
+    margin-top:-10px;
   "
 >
   ${p.nome}
@@ -168,11 +167,8 @@ ${founders && p.nome !== "FREE" ? `
 <div
   style="
     font-size:18px;
-
     opacity:.6;
-
     text-decoration:line-through;
-
     margin-bottom:8px;
   "
 >
