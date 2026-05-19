@@ -192,13 +192,22 @@ ${founders && p.nome !== "FREE" ? `
     margin-bottom:10px;
   "
 >
-  R$ ${valorFinal.toLocaleString(
-    "pt-BR",
-    {
-      minimumFractionDigits:2
-    }
-    Valor Mensal
-  )}
+R$ ${valorFinal.toLocaleString(
+  "pt-BR",
+  {
+    minimumFractionDigits:2
+  }
+)}
+
+<div
+  style="
+    font-size:12px;
+    opacity:.7;
+    margin-top:6px;
+  "
+>
+  Valor mensal
+</div>
 </div>
 
 <div
