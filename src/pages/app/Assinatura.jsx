@@ -529,98 +529,57 @@ const vendedoresLimite =
             const isMaster =
               usuario?.master === true
 
-            return (
+return (
 
-                <div
-                  key={plano.id}
+  <div
+    key={plano.id}
 
-                  style={{
+    style={{
 
-                    background:
+      background:
 
-                      plano.nome === "PREMIUM"
+        plano.nome === "PREMIUM"
 
-                        ? "linear-gradient(135deg,#312e81,#1e1b4b)"
+          ? "linear-gradient(135deg,#312e81,#1e1b4b)"
 
-                        : "linear-gradient(135deg,#111827,#1e293b)",
+          : "linear-gradient(135deg,#111827,#1e293b)",
 
-                    borderRadius: 20,
-                    padding: 18,
-                    color: "#fff",
+      borderRadius: 20,
 
-                    border:
-                      isAtual
-                        ? "2px solid #2563eb"
-                        : "2px solid transparent",
+      padding: 18,
 
-                    position: "relative",
+      color: "#fff",
 
-                    boxShadow:
-                      "0 8px 24px rgba(0,0,0,0.15)"
-                  }}
-                >
+      border:
+        isAtual
+          ? "2px solid #2563eb"
+          : "2px solid transparent",
 
-                  {plano.nome === "BUSINESS" && (
+      position: "relative",
 
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 16,
-                        left: 16,
-                        background: "#16a34a",
-                        padding: "5px 12px",
-                        borderRadius: 999,
-                        fontSize: 11,
-                        fontWeight: "700"
-                      }}
-                    >
-                      MAIS POPULAR
-                    </div>
+      boxShadow:
+        "0 8px 24px rgba(0,0,0,0.15)"
+    }}
+  >
 
-                  )}
+    {plano.nome === "BUSINESS" && (
 
-                style={{
+      <div
+        style={{
+          position: "absolute",
+          top: 16,
+          left: 16,
+          background: "#16a34a",
+          padding: "5px 12px",
+          borderRadius: 999,
+          fontSize: 11,
+          fontWeight: "700"
+        }}
+      >
+        MAIS POPULAR
+      </div>
 
-                background:
-
-                  plano.nome === "PREMIUM"
-
-                    ? "linear-gradient(135deg,#312e81,#1e1b4b)"
-
-                    : "linear-gradient(135deg,#111827,#1e293b)",
-
-                  borderRadius: 20,
-                  padding: 18,
-                  color: "#fff",
-                  border:
-                    isAtual
-                      ? "2px solid #2563eb"
-                      : "2px solid transparent",
-                  position: "relative",
-                  boxShadow:
-                    "0 8px 24px rgba(0,0,0,0.15)"
-                }}
-              >
-
-                {isAtual && (
-
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 16,
-                      right: 16,
-                      background: "#2563eb",
-                      padding:
-                        "4px 10px",
-                      borderRadius: 999,
-                      fontSize: 10,
-                      fontWeight: "700"
-                    }}
-                  >
-                    PLANO ATUAL
-                  </div>
-
-                )}
+    )}
 
                 <h2
                   style={{
