@@ -100,17 +100,11 @@ ${planos.map(p => {
   class="plano-card"
   style="
     position:relative;
-
     overflow:hidden;
-
-    min-height:330px;
-
+    min-height:270px;
     width: 160px;
-
     border-radius:28px;
-
     padding:24px;
-
     background:${
       p.destaque
 
@@ -161,14 +155,11 @@ ${p.nome === "BUSINESS" ? `
 <h3
   style="
     font-size:32px;
-
     font-weight:900;
-
-    margin-bottom:22px;
-
+    margin-bottom:2px;
     letter-spacing:-2px;
-
     color:#fff;
+    margin-top:15px;
   "
 >
   ${p.nome}
@@ -195,13 +186,9 @@ ${founders && p.nome !== "FREE" ? `
 <div
   style="
     font-size:22px;
-
     font-weight:900;
-
     color:#6ee7b7;
-
     line-height:1;
-
     margin-bottom:10px;
   "
 >
@@ -210,17 +197,15 @@ ${founders && p.nome !== "FREE" ? `
     {
       minimumFractionDigits:2
     }
+    Valor Mensal
   )}
 </div>
 
 <div
   style="
     color:#22c55e;
-
     font-size:14px;
-
     font-weight:800;
-
     margin-bottom:18px;
   "
 >
@@ -231,7 +216,7 @@ ${founders && p.nome !== "FREE" ? `
 
 <div
   style="
-    font-size:52px;
+    font-size:32px;
 
     font-weight:900;
 
