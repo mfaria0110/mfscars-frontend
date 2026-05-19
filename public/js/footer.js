@@ -101,8 +101,8 @@ ${planos.map(p => {
   style="
     position:relative;
     overflow:hidden;
-    min-height:270px;
-    width: 180px;
+    min-height:230px;
+    width: 190px;
     border-radius:28px;
     padding:24px;
     background:${
@@ -125,22 +125,14 @@ ${p.nome === "BUSINESS" ? `
 <div
   style="
     position:absolute;
-
     top:14px;
     right:-42px;
-
     background:#16a34a;
-
     color:#fff;
-
     padding:8px 48px;
-
     font-size:12px;
-
     font-weight:900;
-
     transform:rotate(35deg);
-
     letter-spacing:.4px;
   "
 >
@@ -195,9 +187,10 @@ R$ ${valorFinal.toLocaleString(
 
 <div
   style="
-    font-size:12px;
+    font-size:14px;
     opacity:.7;
-    margin-top:6px;
+    margin-top:10px;
+    margin-bottom:10px;
   "
 >
   Valor mensal
@@ -209,7 +202,7 @@ R$ ${valorFinal.toLocaleString(
     color:#22c55e;
     font-size:14px;
     font-weight:800;
-    margin-bottom:18px;
+    margin-bottom:8px;
   "
 >
   🔥 ${p.desconto_founders}% OFF VITALÍCIO
@@ -220,13 +213,9 @@ R$ ${valorFinal.toLocaleString(
 <div
   style="
     font-size:32px;
-
     font-weight:900;
-
     color:#6ee7b7;
-
     line-height:1;
-
     margin-bottom:18px;
   "
 >
