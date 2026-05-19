@@ -126,6 +126,74 @@ app.innerHTML = `
 
 <div class="msg" id="msg"></div>
 
+<div
+  id="founders-banner"
+  style="
+    margin-top:32px;
+    margin-bottom:24px;
+    background:linear-gradient(135deg,#065f46,#064e3b);
+    border-radius:22px;
+    padding:28px;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+  "
+>
+
+  <div>
+
+    <div
+      style="
+        font-size:42px;
+        margin-bottom:10px;
+      "
+    >
+      🔥
+    </div>
+
+    <div
+      style="
+        font-size:36px;
+        font-weight:800;
+        margin-bottom:10px;
+      "
+    >
+      Oferta Founders
+    </div>
+
+    <div
+      style="
+        font-size:20px;
+        opacity:.92;
+        line-height:1.6;
+      "
+    >
+      Garanta
+      <strong>
+        30% OFF vitalício
+      </strong>
+      nos planos pagos.
+    </div>
+
+  </div>
+
+  <div
+    id="founders-restantes"
+    style="
+      font-size:58px;
+      font-weight:900;
+      white-space:nowrap;
+    "
+  >
+    --
+  </div>
+
+</div>
+
 <div style="margin-top:20px;text-align:center;">
 Já tem conta?
 <a
@@ -453,5 +521,54 @@ async function init(){
 
 }
 
+/* ===============================
+   🔥 FOUNDERS
+============================== */
+
+async function carregarFounders(){
+
+  try {
+
+    const res =
+      await requestPublic(
+        "/public/founders"
+      )
+
+    if(!res.ok) return
+
+    const data =
+      res.data
+
+    const el =
+      document.getElementById(
+        "founders-restantes"
+      )
+
+    if(!el) return
+
+    el.innerHTML = `
+      ${data.restantes}
+      <div
+        style="
+          font-size:16px;
+          font-weight:600;
+          margin-top:8px;
+        "
+      >
+        vagas restantes
+      </div>
+    `
+
+  } catch(e){
+
+    console.error(e)
+
+  }
+
+}
+
 init();
+
+carregarFounders();
+
 renderFooter();
