@@ -50,7 +50,7 @@ export async function renderFooter(){
 
     padding:20px;
     margin-top:10px;
-    background:#dbdce3;
+    background:#fff;
     color:#dbdce3;
   "
 >
@@ -99,8 +99,8 @@ ${planos.map(p => {
   style="
     position:relative;
     overflow:hidden;
-    min-height:250px;
-    width: 190px;
+    min-height:230px;
+    width: 200px;
     border-radius:28px;
     padding:24px;
     font-size:15px;
@@ -255,9 +255,9 @@ R$ ${valorFinal.toLocaleString(
   👥 ${
     p.limite_vendedores
 
-      ? `${p.limite_vendedores} vendedoresMF`
+      ? `${p.limite_vendedores} vendedores`
 
-      : "Vendedores ilimitadosMF"
+      : "Vendedores ilimitados"
   }
 </div>
 
