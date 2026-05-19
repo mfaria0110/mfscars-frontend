@@ -2,17 +2,19 @@ import { usePlano } from "../../modules/plano/usePlano"
 
 export default function Assinatura() {
 
-  const {
+const {
 
-    planoAtual,
-    planos,
-    loading,
-    handleAssinar,
-    pixData,
-    showPixModal,
-    setShowPixModal
+  planoAtual,
+  planos,
+  loading,
+  founders,
 
-  } = usePlano()
+  handleAssinar,
+  pixData,
+  showPixModal,
+  setShowPixModal
+
+} = usePlano()
 
   const usados =
     planoAtual?.usados || 0
