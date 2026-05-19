@@ -1,589 +1,713 @@
 /* ===============================
    🌐 ROOT PUBLIC (ISOLADO)
 ============================== */
+#app-public {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  background: #f6f7fb;
+  color: #1c1c1c;
+}
 
-#app-public{
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial;
+#app-public .btn-loja{
+margin-top:8px;
+width:100%;
+padding:6px;
+border:none;
+background:#007bff;
+color:white; 
+font-size:12px;
+border-radius:5px;
+cursor:pointer;
+transition:0.2s;
+}
 
-  background:#f6f7fb;
-  color:#1c1c1c;
+#app-public .btn-loja:hover{
+background:#0056b3;
 }
 
 /* ===============================
    HEADER
 ============================== */
-
-#app-public .header{
-
-  background:#111;
-
-  color:#fff;
-
-  padding:18px 30px;
-
-  font-size:18px;
-
-  font-weight:600;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
+#app-public .header {
+  background: #111;
+  color: white;
+  padding: 18px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* ===============================
-   HERO
+   HERO (HOME)
 ============================== */
-
-#app-public .hero{
-
-  background:
-    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70")
-    center/cover;
-
-  height:320px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
+#app-public .hero {
+  background: url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ===============================
    BUSCA
 ============================== */
-
-#app-public .busca{
-
-  background:#fff;
-
-  padding:18px;
-
-  border-radius:12px;
-
-  display:flex;
-
-  gap:10px;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.08);
+#app-public .busca {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 #app-public .busca input,
-#app-public .busca select{
-
-  padding:12px;
-
-  border-radius:8px;
-
-  border:1px solid #ddd;
-
-  width:100%;
+#app-public .busca select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 100%;
 }
 
-#app-public .busca button{
-
-  background:#007bff;
-
-  color:#fff;
-
-  border:none;
-
-  padding:12px 18px;
-
-  border-radius:8px;
-
-  cursor:pointer;
+#app-public .busca button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* ===============================
    GRID VEÍCULOS
 ============================== */
-
-#app-public .grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(auto-fill,minmax(180px,1fr));
-
-  gap:14px;
+#app-public .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
 }
 
-#app-public .card{
-
-  background:#fff;
-
-  border-radius:10px;
-
-  overflow:hidden;
-
-  box-shadow:
-    0 4px 18px rgba(0,0,0,.08);
-
-  transition:.2s;
-
-  cursor:pointer;
-
-  position:relative;
+#app-public .card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-#app-public .card:hover{
-  transform:translateY(-3px);
+#app-public .card:hover {
+  transform: translateY(-3px);
 }
 
-#app-public .card img{
-
-  width:100%;
-
-  height:120px;
-
-  object-fit:cover;
+#app-public .card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
 }
 
-#app-public .info{
+#app-public .info {
+  padding: 8px 10px;
+  font-size: 13px;
+}
 
-  padding:8px 10px;
+#app-public .marcas {
+    background: white;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
 
-  font-size:13px;
+#app-public .marcas img {
+   height:40px;
+cursor:pointer;
 }
 
 #app-public .modelo{
-
-  font-size:13px;
-
-  font-weight:bold;
+font-size:13px;
+font-weight:bold;
 }
 
 #app-public .ano{
-
-  font-size:12px;
-
-  color:#777;
+font-size:12px;
+color:#777;
 }
 
 #app-public .valor{
-
-  color:#0a7d2c;
-
-  font-size:15px;
-
-  font-weight:bold;
+color:#0a7d2c;
+font-size:15px;
+font-weight:bold;
 }
 
+/* 🔥 LOJA DESTACADA */
 #app-public .info .loja{
-
-  color:#007bff;
-
-  font-weight:bold;
-
-  margin-top:5px;
-
-  font-size:13px;
+color:#007bff;
+font-weight:bold;
+margin-top:5px;
+font-size:13px;
 }
 
+/* 🔥 LOCALIZAÇÃO */
 #app-public .info .local{
-
-  font-size:13px;
-
-  color:#555;
+font-size:13px;
+color:#555;
 }
-
-/* ===============================
-   CONTAINER
-============================== */
 
 #app-public .container{
-
   margin:auto;
-
   padding:10px 30px 30px;
 }
 
-/* ===============================
-   MENU
-============================== */
-
 #app-public .menu a{
-
-  color:#fff;
-
-  margin-left:20px;
-
-  text-decoration:none;
+color:white;
+margin-left:20px;
+text-decoration:none;
 }
 
 /* ===============================
-   MARCAS
+   FOOTER
 ============================== */
-
-#app-public .marcas{
-
-  background:#fff;
-
-  padding:20px;
-
-  display:flex;
-
-  gap:20px;
-
-  justify-content:center;
+#app-public .footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
 }
 
-#app-public .marcas img{
-
-  height:40px;
-
-  cursor:pointer;
+#app-public .footer a {
+  color: #00c853;
+  text-decoration: none;
 }
 
+#app-public .footer a:hover {
+  text-decoration: underline;
+}
 /* ===============================
-   FOOTER PREMIUM
+   🧾 FORM COM ROW (ESTÁVEL)
 ============================== */
-
-#app-public .footer{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:flex-start;
-
-  gap:40px;
-
-  flex-wrap:wrap;
-
-  padding:40px;
-
-  margin-top:40px;
-
-  background:#020617;
-
-  color:#fff;
-
-  text-align:left;
+#app-public .container-cadastro {
+  max-width: 900px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px 20px; /* 🔥 20px fixo dos dois lados */
+  box-sizing: border-box;
 }
 
-/* INFO */
-
-#app-public .footer-info{
-
-  color:#fff;
-
-  font-size:16px;
-
-  line-height:1.8;
+/* ROW */
+#app-public .form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-#app-public .footer-info a{
-
-  color:#6ee7b7;
-
-  text-decoration:none;
+/* CAMPOS */
+#app-public .form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-#app-public .footer-info a:hover{
-  text-decoration:underline;
+/* 🔥 ESSENCIAL */
+#app-public .form-group {
+  min-width: 0; /* evita overflow estranho */
 }
 
-/* PLANOS */
+/* TAMANHOS CUSTOM */
+#app-public .w-1 { flex: 1; }
+#app-public .w-2 { flex: 2; }
+#app-public .w-3 { flex: 3; }
 
-#app-public .footer-planos{
-
-  display:flex;
-
-  gap:22px;
-
-  flex-wrap:wrap;
-
-  justify-content:center;
-
-  align-items:stretch;
+/* LABEL */
+#app-public .form-group label {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
 }
 
-/* CARD */
-
-#app-public .plano-card{
-
-  position:relative;
-
-  width:260px;
-
-  border-radius:28px;
-
-  padding:28px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0f172a 0%,
-      #111827 100%
-    );
-
-  color:#fff;
-
-  border:
-    2px solid rgba(255,255,255,.05);
-
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.28);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    border .2s ease;
-
-  overflow:hidden;
-}
-
-#app-public .plano-card:hover{
-
-  transform:
-    translateY(-6px);
-
-  border-color:#2563eb;
-
-  box-shadow:
-    0 24px 60px rgba(37,99,235,.22);
-}
-
-/* BUSINESS */
-
-#app-public .plano-card.destaque{
-
-  background:
-    linear-gradient(
-      135deg,
-      #1e1b4b 0%,
-      #312e81 100%
-    );
-
-  border:
-    2px solid #4f46e5;
-}
-
-/* TITULO */
-
-#app-public .plano-card h3{
-
-  font-size:38px;
-
-  font-weight:900;
-
-  margin-bottom:20px;
-
-  letter-spacing:-1px;
-
-  color:#fff;
-}
-
-/* PREÇO */
-
-#app-public .plano-card .preco{
-
-  font-size:42px;
-
-  font-weight:900;
-
-  margin-bottom:12px;
-
-  color:#6ee7b7;
-
-  line-height:1;
-}
-
-/* LIMITE */
-
-#app-public .plano-card .limite{
-
-  font-size:18px;
-
-  line-height:1.9;
-
-  color:#fff;
-
-  opacity:.92;
-}
-
-/* BADGE */
-
-#app-public .plano-card .badge{
-
-  position:absolute;
-
-  top:16px;
-  right:16px;
-
-  background:#16a34a;
-
-  color:#fff;
-
-  font-size:11px;
-
-  font-weight:800;
-
-  padding:7px 14px;
-
-  border-radius:999px;
-
-  letter-spacing:.4px;
-}
-
-/* ===============================
-   FORM CADASTRO
-============================== */
-
-#app-public .container-cadastro{
-
-  max-width:900px;
-
-  width:100%;
-
-  margin:20px auto;
-
-  padding:30px 20px;
-
-  box-sizing:border-box;
-}
-
-#app-public .form-row{
-
-  display:flex;
-
-  gap:20px;
-
-  margin-bottom:20px;
-}
-
-#app-public .form-group{
-
-  display:flex;
-
-  flex-direction:column;
-
-  flex:1;
-
-  min-width:0;
-}
-
-#app-public .w-1{flex:1;}
-#app-public .w-2{flex:2;}
-#app-public .w-3{flex:3;}
-
-#app-public .form-group label{
-
-  margin-bottom:6px;
-
-  font-size:13px;
-
-  font-weight:600;
-
-  color:#444;
-}
-
+/* INPUT */
 #app-public .form-group input,
-#app-public .form-group select{
-
-  height:44px;
-
-  border-radius:12px;
-
-  border:1px solid #ddd;
-
-  background:#fafafa;
-
-  font-size:14px;
-
-  width:100%;
-
-  padding:0 14px;
-
-  box-sizing:border-box;
+#app-public .form-group select {
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box; /* 🔥 ESSENCIAL */
 }
 
+/* FOCO */
 #app-public .form-group input:focus,
-#app-public .form-group select:focus{
-
-  outline:none;
-
-  border-color:#820ad1;
-
-  background:#fff;
-
-  box-shadow:
-    0 0 0 3px rgba(130,10,209,.08);
+#app-public .form-group select:focus {
+  outline: none;
+  border-color: #820ad1;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(130,10,209,0.08);
 }
 
 /* BOTÃO */
-
-#app-public .btn-primary{
-
-  margin-top:10px;
-
-  width:100%;
-
-  padding:16px;
-
-  background:#2563eb;
-
-  color:#fff;
-
-  border:none;
-
-  border-radius:14px;
-
-  font-weight:700;
-
-  font-size:16px;
-
-  cursor:pointer;
-
-  transition:.2s;
+#app-public .btn-primary {
+  margin-top: 10px;
+  width: 100%;
+  padding: 16px;
+  background: #820ad1;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-#app-public .btn-primary:hover{
+#app-public #cnpj {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 
-  transform:translateY(-2px);
+#app-public #telefone {
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
 
-  background:#1d4ed8;
+#app-public input:required:invalid {
+  border-color: #dc3545;
+}
+
+#app-public input:required:valid {
+  border-color: #28a745;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+  #app-public .form-row {
+    flex-direction: column;
+  }
 }
 
 /* ===============================
-   RESPONSIVO
-============================== */
+   🚗 PÁGINA VEÍCULO (ISOLADO)
+================================ */
+
+/* ===============================
+   🚗 LAYOUT VEICULO
+================================ */
+
+#app-public.veiculo-page .veiculo-container{
+  max-width:1100px;
+  margin:30px auto;
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap:40px;
+  align-items:start;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  #app-public.veiculo-page .veiculo-container{
+    grid-template-columns:1fr;
+  }
+}
+
+/* FOTO PRINCIPAL */
+#app-public.veiculo-page .foto-principal{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* THUMBS */
+#app-public.veiculo-page .thumbs{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+#app-public.veiculo-page .thumbs img{
+  width:90px;
+  height:70px;
+  object-fit:cover;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+#app-public.veiculo-page .thumbs img:hover{
+  transform:scale(1.05);
+}
+
+/* INFO */
+#app-public.veiculo-page .veiculo-info{
+  background:white;
+  padding:25px;
+  border-radius:10px;
+}
+
+/* VALOR */
+#app-public.veiculo-page .valor{
+  font-size:32px;
+  color:#0a7d2c;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+/* BOTÕES */
+#app-public.veiculo-page .botao{
+  margin-top:10px;
+  padding:12px;
+  background:#0a7d2c;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  
+}
+
+#app-public.veiculo-page .botao2{
+  margin-top:10px;
+  padding:12px;
+  background:#111;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+ }
+
+/* DESCRIÇÃO */
+#app-public.veiculo-page .descricao,
+#app-public.veiculo-page .opcionais{
+  margin-top:20px;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+}
+
+/* TÍTULOS */
+#app-public.veiculo-page .descricao h2,
+#app-public.veiculo-page .opcionais h2,
+#app-public.veiculo-page .similares h2{
+  font-weight:600;
+  font-size:16px;
+  border-left:4px solid #007bff;
+  padding-left:10px;
+  margin-bottom:10px;
+}
+
+/* SIMILARES */
+#app-public.veiculo-page .grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+@media(max-width:900px){
+  #app-public.veiculo-page .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* ===============================
+   🏪 PÁGINA EMPRESA (ISOLADO)
+================================ */
+
+/* TOPO */
+#app-public.empresa-page .topo-loja{
+  background: linear-gradient(90deg, #111, #444);
+  padding:25px 0;
+  color:white;
+}
+
+#app-public.empresa-page .loja-box{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+
+/* LOGO */
+#app-public.empresa-page .logo{
+  width:90px;
+  height:90px;
+  border-radius:10px;
+  object-fit:cover;
+  background:#222;
+}
+
+/* INFO */
+#app-public.empresa-page .loja-info h1{
+  margin:0;
+  font-size:24px;
+}
+
+#app-public.empresa-page .loja-info p{
+  margin:4px 0;
+  font-size:14px;
+}
+
+/* PREMIUM */
+#app-public.empresa-page .badge-premium{
+  display:none;
+  background:gold;
+  color:#000;
+  padding:4px 8px;
+  border-radius:5px;
+  font-size:12px;
+  margin-top:5px;
+  width:max-content;
+}
+
+/* BOTÕES */
+#app-public.empresa-page .whats{
+  background:#25d366;
+  color:white;
+  padding:8px 15px;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:14px;
+  display:inline-block;
+  margin-top:8px;
+}
+
+/* CONTAINER */
+#app-public.empresa-page .container{
+  max-width:1200px;
+  margin:20px auto;
+  display:flex;
+  gap:20px;
+}
+
+/* SIDEBAR */
+#app-public.empresa-page .sidebar{
+  width:250px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+  height:fit-content;
+}
+
+#app-public.empresa-page .sidebar input,
+#app-public.empresa-page .sidebar select{
+  width:90%;
+  margin-bottom:10px;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+#app-public.empresa-page .sidebar button{
+  width:100%;
+  padding:10px;
+  background:#007bff;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* GRID */
+#app-public.empresa-page .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:15px;
+}
+
+/* CARD */
+#app-public.empresa-page .card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  transition:0.2s;
+  position:relative;
+}
+
+#app-public.empresa-page .card:hover{
+  transform:translateY(-4px);
+}
+
+/* IMAGEM */
+#app-public.empresa-page .card img{
+  width:100%;
+  height:130px;
+  object-fit:cover;
+}
+
+/* INFO CARD */
+#app-public.empresa-page .info{
+  padding:10px;
+}
+
+#app-public.empresa-page .modelo{
+  font-size:14px;
+  font-weight:bold;
+}
+
+#app-public.empresa-page .valor{
+  color:#0a7d2c;
+  font-size:15px;
+  font-weight:bold;
+}
+
+/* MAPA */
+#app-public.empresa-page .mapa{
+  margin-top:40px;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+
+  #app-public.empresa-page .container{
+    flex-direction:column;
+  }
+
+  #app-public.empresa-page .sidebar{
+    width:100%;
+  }
+
+}
+
+#app-public .footer-planos{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+#app-public .plano-card{
+  width:130px;       /* 🔥 menor pra caber melhor */
+  padding:12px;
+  text-align: center;
+  border:2px solid gold;
+  margin-left: 15px;
+  height: 80px;
+  }
+
+#app-public .plano-card.destaque{
+  border:2px solid gold;
+  text-align: center;
+ }
+
+#app-public .plano-card h3{
+  font-size:18px;
+  margin-bottom:5px;
+  color:#0a7d2c;
+  margin-top: -1px;
+}
+
+#app-public .limite{
+  font-size:20px;
+  margin-bottom:8px;
+  color:#0a7d2c;
+}
+
+#app-public .preco{
+  font-size:16px;        /* 🔥 menor */
+  font-weight:bold;
+  color:#0a7d2c;
+  margin:5px 0;
+}
+
+#app-public .footer{
+  text-align:center;
+}
+
+#app-public .footer-info{
+  font-size:15px;
+  line-height:1.5;
+  color:#f6f7fb;
+}
 
 @media(max-width:768px){
 
-  #app-public .form-row{
-    flex-direction:column;
-  }
-
   #app-public .footer{
-
     flex-direction:column;
-
     align-items:center;
-
-    text-align:center;
-  }
-
-  #app-public .footer-info{
     text-align:center;
   }
 
   #app-public .footer-planos{
+    margin-top:15px;
     justify-content:center;
   }
 
-  #app-public .plano-card{
-    width:100%;
-    max-width:320px;
-  }
+}
+
+/* 🔥 ORGANIZA FOOTER SEM QUEBRAR OUTROS */
+#app-public .footer{
+  justify-content:space-between;
+  text-align:left; /* 🔥 quebra o centralizado */
+  padding:20px 40px;
+}
+
+/* esquerda */
+#app-public .footer-info{
+  text-align:left;
+}
+
+/* direita */
+#app-public .footer-planos{
+  display:flex;
+  gap:20px;
+  background:white;
+}
+
+#app-public.veiculo-page .veiculo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+  gap:20px;
+}
+
+#app-public.veiculo-page .veiculo-grid .card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+#app-public.veiculo-page .veiculo-grid .card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+#app-public.veiculo-page .veiculo-grid .card{
+  transition:0.2s;
+}
+
+#app-public.veiculo-page .veiculo-grid .card:hover{
+  transform:translateY(-4px);
+}
+
+#app-public .card{
+  position:relative;
+}
+
+#app-public .overlay{
+
+  top:8px;
+  left:8px;
+
+  background:rgba(0,0,0,.72);
+
+  color:white;
+
+  padding:5px 8px;
+
+  border-radius:6px;
+
+  font-size:9px;
+
+  text-align:center;
+
+  font-weight:600;
+
+  z-index:2;
 }

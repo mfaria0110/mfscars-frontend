@@ -1,0 +1,585 @@
+/* =========================================
+   🚀 CADASTRO PREMIUM
+========================================= */
+
+/* ===============================
+   CONTAINER
+============================== */
+
+#app-public .container-cadastro{
+
+  max-width:1280px;
+
+  margin:30px auto;
+
+  padding:0 24px;
+}
+
+/* ===============================
+   FOUNDERS BANNER
+============================== */
+
+#founders-banner{
+
+  margin-bottom:34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #065f46 0%,
+      #064e3b 100%
+    );
+
+  border-radius:32px;
+
+  padding:42px;
+
+  color:#fff;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.22);
+}
+
+/* ÍCONE */
+
+#founders-banner .emoji{
+
+  font-size:72px;
+
+  margin-bottom:10px;
+}
+
+/* TÍTULO */
+
+#founders-banner .titulo{
+
+  font-size:58px;
+
+  font-weight:900;
+
+  line-height:1.1;
+
+  margin-bottom:14px;
+
+  letter-spacing:-2px;
+}
+
+/* SUB */
+
+#founders-banner .subtitulo{
+
+  font-size:28px;
+
+  line-height:1.6;
+
+  opacity:.95;
+}
+
+/* RESTANTES */
+
+#founders-restantes{
+
+  font-size:92px;
+
+  font-weight:900;
+
+  text-align:right;
+
+  line-height:1;
+}
+
+#founders-restantes .label{
+
+  margin-top:10px;
+
+  font-size:20px;
+
+  font-weight:700;
+
+  opacity:.9;
+}
+
+/* ===============================
+   FORM CARD
+============================== */
+
+#app-public .cadastro-card{
+
+  background:#fff;
+
+  border-radius:28px;
+
+  padding:34px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.08);
+
+  margin-bottom:40px;
+}
+
+/* ===============================
+   TITULO
+============================== */
+
+#app-public .cadastro-title{
+
+  font-size:44px;
+
+  font-weight:900;
+
+  margin-bottom:10px;
+
+  color:#020617;
+
+  letter-spacing:-1px;
+}
+
+#app-public .cadastro-sub{
+
+  font-size:18px;
+
+  color:#64748b;
+
+  margin-bottom:34px;
+}
+
+/* ===============================
+   FORM ROW
+============================== */
+
+#app-public .form-row{
+
+  display:flex;
+
+  gap:22px;
+
+  margin-bottom:22px;
+}
+
+/* ===============================
+   FORM GROUP
+============================== */
+
+#app-public .form-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+  flex:1;
+
+  min-width:0;
+}
+
+/* TAMANHOS */
+
+#app-public .w-1{flex:1;}
+#app-public .w-2{flex:2;}
+#app-public .w-3{flex:3;}
+
+/* LABEL */
+
+#app-public .form-group label{
+
+  margin-bottom:8px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#334155;
+}
+
+/* INPUT */
+
+#app-public .form-group input,
+#app-public .form-group select{
+
+  height:54px;
+
+  border-radius:16px;
+
+  border:1px solid #e2e8f0;
+
+  background:#f8fafc;
+
+  font-size:15px;
+
+  width:100%;
+
+  padding:0 16px;
+
+  box-sizing:border-box;
+
+  transition:
+    border .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+/* FOCUS */
+
+#app-public .form-group input:focus,
+#app-public .form-group select:focus{
+
+  outline:none;
+
+  border-color:#2563eb;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 0 4px rgba(37,99,235,.12);
+}
+
+/* BOTÃO */
+
+#app-public .btn-primary{
+
+  margin-top:14px;
+
+  width:100%;
+
+  height:58px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb 0%,
+      #1d4ed8 100%
+    );
+
+  color:#fff;
+
+  border:none;
+
+  border-radius:18px;
+
+  font-weight:800;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+
+  box-shadow:
+    0 12px 30px rgba(37,99,235,.24);
+}
+
+#app-public .btn-primary:hover{
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 18px 40px rgba(37,99,235,.28);
+}
+
+/* ===============================
+   LOGIN LINK
+============================== */
+
+#app-public .login-link{
+
+  margin-top:22px;
+
+  text-align:center;
+
+  font-size:15px;
+
+  color:#64748b;
+}
+
+#app-public .login-link a{
+
+  color:#2563eb;
+
+  text-decoration:none;
+
+  font-weight:700;
+}
+
+/* ===============================
+   FOOTER PREMIUM
+============================== */
+
+#app-public .footer{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:40px;
+
+  flex-wrap:wrap;
+
+  padding:50px;
+
+  margin-top:60px;
+
+  background:#020617;
+
+  color:#fff;
+}
+
+/* INFO */
+
+#app-public .footer-info{
+
+  color:#fff;
+
+  font-size:16px;
+
+  line-height:1.8;
+}
+
+#app-public .footer-info a{
+
+  color:#6ee7b7;
+
+  text-decoration:none;
+}
+
+/* PLANOS */
+
+#app-public .footer-planos{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:18px;
+
+  width:100%;
+
+  max-width:1180px;
+}
+
+/* CARD */
+
+#app-public .plano-card{
+
+  position:relative;
+
+  min-height:330px;
+
+  border-radius:28px;
+
+  padding:24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a 0%,
+      #111827 100%
+    );
+
+  color:#fff;
+
+  border:
+    2px solid rgba(255,255,255,.05);
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.28);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border .2s ease;
+
+  overflow:hidden;
+}
+
+/* HOVER */
+
+#app-public .plano-card:hover{
+
+  transform:
+    translateY(-6px);
+
+  border-color:#2563eb;
+
+  box-shadow:
+    0 24px 60px rgba(37,99,235,.22);
+}
+
+/* BUSINESS */
+
+#app-public .plano-card.destaque{
+
+  background:
+    linear-gradient(
+      135deg,
+      #312e81 0%,
+      #4338ca 100%
+    );
+
+  border:
+    2px solid #6366f1;
+}
+
+/* BADGE */
+
+#app-public .plano-card .badge{
+
+  position:absolute;
+
+  top:14px;
+  right:-42px;
+
+  background:#16a34a;
+
+  color:#fff;
+
+  padding:8px 48px;
+
+  font-size:12px;
+
+  font-weight:900;
+
+  transform:rotate(35deg);
+
+  letter-spacing:.4px;
+}
+
+/* TÍTULO */
+
+#app-public .plano-card h3{
+
+  font-size:44px;
+
+  font-weight:900;
+
+  margin-bottom:22px;
+
+  letter-spacing:-2px;
+}
+
+/* PREÇO */
+
+#app-public .plano-card .preco{
+
+  font-size:56px;
+
+  font-weight:900;
+
+  color:#6ee7b7;
+
+  line-height:1;
+
+  margin-bottom:10px;
+}
+
+/* PREÇO ANTIGO */
+
+#app-public .plano-card .preco-antigo{
+
+  font-size:18px;
+
+  opacity:.6;
+
+  text-decoration:line-through;
+
+  margin-bottom:6px;
+}
+
+/* FOUNDERS */
+
+#app-public .plano-card .founders{
+
+  color:#22c55e;
+
+  font-size:14px;
+
+  font-weight:800;
+
+  margin-bottom:18px;
+}
+
+/* INFO */
+
+#app-public .plano-card .limite{
+
+  font-size:18px;
+
+  line-height:2;
+
+  opacity:.95;
+}
+
+/* ===============================
+   RESPONSIVO
+============================== */
+
+@media(max-width:1200px){
+
+  #app-public .footer-planos{
+
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:768px){
+
+  #founders-banner{
+
+    padding:28px;
+  }
+
+  #founders-banner .titulo{
+
+    font-size:38px;
+  }
+
+  #founders-banner .subtitulo{
+
+    font-size:18px;
+  }
+
+  #founders-restantes{
+
+    font-size:58px;
+
+    text-align:left;
+  }
+
+  #app-public .form-row{
+    flex-direction:column;
+  }
+
+  #app-public .footer{
+
+    flex-direction:column;
+
+    padding:30px 20px;
+  }
+
+  #app-public .footer-planos{
+
+    grid-template-columns:1fr;
+  }
+
+  #app-public .plano-card{
+
+    min-height:auto;
+  }
+
+}
