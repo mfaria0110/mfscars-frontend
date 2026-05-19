@@ -1,14 +1,21 @@
 import { requestPublic } from './api-public.js';
 
 /* ===============================
-   💰 CARREGAR PLANOS (PUBLICO)
+   💰 CARREGAR PLANOS
 ================================ */
 async function carregarPlanos(){
 
-  const res = await requestPublic("/public/planos");
+  const res =
+    await requestPublic(
+      "/public/planos"
+    );
 
   if(!res.ok){
-    console.error("Erro ao buscar planos");
+
+    console.error(
+      "Erro ao buscar planos"
+    );
+
     return [];
   }
 
@@ -20,184 +27,349 @@ async function carregarPlanos(){
 ================================ */
 export async function renderFooter(){
 
-  const footer = document.getElementById("footer");
+  const footer =
+    document.getElementById(
+      "footer"
+    );
+
   if(!footer) return;
 
-  const planos = await carregarPlanos();
+  const planos =
+    await carregarPlanos();
 
   footer.innerHTML = `
-    <div class="footer">
 
-<div class="footer-info">
+<div
+  class="footer"
+  style="
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+    flex-wrap:wrap;
 
-  <strong>
-    MFS Cars Marketplace
-  </strong>
+    padding:50px;
 
-  <br>
+    margin-top:60px;
 
-  📧 mfaria2016@outlook.com
+    background:#020617;
 
-  <br>
+    color:#fff;
+  "
+>
 
-  📱 (24) 99972-6811
-
+  <!-- INFO -->
   <div
+    class="footer-info"
     style="
-      margin-top:14px;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      font-size:13px;
+      color:#fff;
+      font-size:16px;
+      line-height:1.8;
+      min-width:220px;
     "
   >
 
-    <a
-      href="/termos.html?tipo=termos"
-      target="_blank"
+    <strong
+      style="
+        font-size:22px;
+      "
     >
-      Termos
-    </a>
+      🚗 MFS Cars Marketplace
+    </strong>
 
-    <a
-      href="/termos.html?tipo=privacidade"
-      target="_blank"
-    >
-      Privacidade
-    </a>
+    <br>
 
-    <a
-      href="/cookies.html"
-      target="_blank"
+    📧 mfaria2016@outlook.com
+
+    <br>
+
+    📱 (24) 99972-6811
+
+    <div
+      style="
+        margin-top:18px;
+        display:flex;
+        gap:14px;
+        flex-wrap:wrap;
+        font-size:13px;
+      "
     >
-      Cookies
-    </a>
+
+      <a
+        href="/termos.html?tipo=termos"
+        target="_blank"
+        style="
+          color:#6ee7b7;
+          text-decoration:none;
+        "
+      >
+        Termos
+      </a>
+
+      <a
+        href="/termos.html?tipo=privacidade"
+        target="_blank"
+        style="
+          color:#6ee7b7;
+          text-decoration:none;
+        "
+      >
+        Privacidade
+      </a>
+
+      <a
+        href="/cookies.html"
+        target="_blank"
+        style="
+          color:#6ee7b7;
+          text-decoration:none;
+        "
+      >
+        Cookies
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- PLANOS -->
+  <div
+    class="footer-planos"
+    style="
+      display:grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(240px,1fr)
+        );
+
+      gap:18px;
+
+      flex:1;
+    "
+  >
+
+${planos.map(p => {
+
+  const founders =
+    Number(
+      p.desconto_founders || 0
+    ) > 0;
+
+  const valorFinal =
+    founders
+
+      ? Number(p.preco) *
+        (
+          1 -
+          (
+            Number(
+              p.desconto_founders
+            ) / 100
+          )
+        )
+
+      : Number(p.preco);
+
+  return `
+
+<div
+  class="plano-card"
+  style="
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:330px;
+
+    border-radius:28px;
+
+    padding:24px;
+
+    background:${
+      p.destaque
+
+        ? 'linear-gradient(135deg,#312e81 0%,#4338ca 100%)'
+
+        : 'linear-gradient(135deg,#0f172a 0%,#111827 100%)'
+    };
+
+    color:#fff;
+
+    border:
+      2px solid rgba(255,255,255,.05);
+
+    box-shadow:
+      0 18px 50px rgba(0,0,0,.28);
+  "
+>
+
+${p.nome === "BUSINESS" ? `
+
+<div
+  style="
+    position:absolute;
+
+    top:14px;
+    right:-42px;
+
+    background:#16a34a;
+
+    color:#fff;
+
+    padding:8px 48px;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    transform:rotate(35deg);
+
+    letter-spacing:.4px;
+  "
+>
+  MAIS VENDIDO
+</div>
+
+` : ""}
+
+<h3
+  style="
+    font-size:42px;
+
+    font-weight:900;
+
+    margin-bottom:22px;
+
+    letter-spacing:-2px;
+
+    color:#fff;
+  "
+>
+  ${p.nome}
+</h3>
+
+${founders && p.nome !== "FREE" ? `
+
+<div
+  style="
+    font-size:18px;
+
+    opacity:.6;
+
+    text-decoration:line-through;
+
+    margin-bottom:8px;
+  "
+>
+  R$ ${Number(p.preco).toLocaleString(
+    "pt-BR"
+  )}
+</div>
+
+<div
+  style="
+    font-size:52px;
+
+    font-weight:900;
+
+    color:#6ee7b7;
+
+    line-height:1;
+
+    margin-bottom:10px;
+  "
+>
+  R$ ${valorFinal.toLocaleString(
+    "pt-BR",
+    {
+      minimumFractionDigits:2
+    }
+  )}
+</div>
+
+<div
+  style="
+    color:#22c55e;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin-bottom:18px;
+  "
+>
+  🔥 ${p.desconto_founders}% OFF VITALÍCIO
+</div>
+
+` : `
+
+<div
+  style="
+    font-size:52px;
+
+    font-weight:900;
+
+    color:#6ee7b7;
+
+    line-height:1;
+
+    margin-bottom:18px;
+  "
+>
+  R$ ${Number(p.preco).toLocaleString(
+    "pt-BR"
+  )}
+</div>
+
+`}
+
+<div
+  style="
+    font-size:18px;
+    line-height:2;
+    opacity:.95;
+  "
+>
+  🚗 ${p.limite_veiculos} veículos
+</div>
+
+<div
+  style="
+    font-size:18px;
+    line-height:2;
+    opacity:.95;
+  "
+>
+  🏪 ${p.limite_lojas || "∞"} lojas
+</div>
+
+<div
+  style="
+    font-size:18px;
+    line-height:2;
+    opacity:.95;
+  "
+>
+  👥 ${
+    p.limite_vendedores
+
+      ? `${p.limite_vendedores} vendedores`
+
+      : "Vendedores ilimitados"
+  }
+</div>
+
+</div>
+
+`;
+
+}).join("")}
 
   </div>
 
 </div>
 
-    <div class="footer-planos">
-
-    ${planos.map(p => {
-
-      const founders =
-        Number(
-          p.desconto_founders || 0
-        ) > 0
-
-      const valorFinal =
-        founders
-
-          ? Number(p.preco) *
-            (
-              1 -
-              (
-                Number(
-                  p.desconto_founders
-                ) / 100
-              )
-            )
-
-          : Number(p.preco)
-
-      return `
-
-        <div
-          class="plano-card ${p.destaque ? 'destaque' : ''}"
-          style="
-            position:relative;
-            overflow:hidden;
-          "
-        >
-
-          ${p.nome === "BUSINESS" ? `
-
-            <div
-              style="
-                position:absolute;
-                top:10px;
-                right:-35px;
-                background:#16a34a;
-                color:#fff;
-                padding:6px 40px;
-                transform:rotate(35deg);
-                font-size:11px;
-                font-weight:700;
-              "
-            >
-              MAIS VENDIDO
-            </div>
-
-          ` : ""}
-
-          <h3>${p.nome}</h3>
-
-          ${founders && p.nome !== "FREE" ? `
-
-            <div
-              style="
-                text-decoration:line-through;
-                opacity:.6;
-                font-size:15px;
-                margin-bottom:4px;
-              "
-            >
-              R$ ${Number(p.preco).toLocaleString("pt-BR")}
-            </div>
-
-            <div class="preco">
-              R$ ${valorFinal.toLocaleString(
-                "pt-BR",
-                {
-                  minimumFractionDigits:2
-                }
-              )}
-            </div>
-
-            <div
-              style="
-                color:#22c55e;
-                font-size:12px;
-                font-weight:700;
-                margin-top:6px;
-              "
-            >
-              🔥 ${p.desconto_founders}% OFF VITALÍCIO
-            </div>
-
-          ` : `
-
-            <div class="preco">
-              R$ ${Number(p.preco).toLocaleString("pt-BR")}
-            </div>
-
-          `}
-
-          <div class="limite">
-            🚗 ${p.limite_veiculos} veículos
-          </div>
-
-          <div class="limite">
-            🏪 ${p.limite_lojas || "∞"} lojas
-          </div>
-
-          <div class="limite">
-            👥 ${
-              p.limite_vendedores
-                ? `${p.limite_vendedores} vendedores`
-                : "Vendedores ilimitados"
-            }
-          </div>
-
-        </div>
-
-      `
-
-    }).join("")}
-
-    </div>
-
-</div>
   `;
 }

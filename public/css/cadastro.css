@@ -3,10 +3,30 @@
 ========================================= */
 
 /* ===============================
+   BASE
+============================== */
+
+body{
+
+  margin:0;
+
+  padding:0;
+
+  background:#f8fafc;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  color:#0f172a;
+}
+
+/* ===============================
    CONTAINER
 ============================== */
 
-#app-public .container-cadastro{
+.container-cadastro{
 
   max-width:1280px;
 
@@ -113,7 +133,7 @@
    FORM CARD
 ============================== */
 
-#app-public .cadastro-card{
+.cadastro-card{
 
   background:#fff;
 
@@ -131,7 +151,7 @@
    TITULO
 ============================== */
 
-#app-public .cadastro-title{
+.cadastro-title{
 
   font-size:44px;
 
@@ -144,7 +164,7 @@
   letter-spacing:-1px;
 }
 
-#app-public .cadastro-sub{
+.cadastro-sub{
 
   font-size:18px;
 
@@ -157,7 +177,7 @@
    FORM ROW
 ============================== */
 
-#app-public .form-row{
+.form-row{
 
   display:flex;
 
@@ -170,7 +190,7 @@
    FORM GROUP
 ============================== */
 
-#app-public .form-group{
+.form-group{
 
   display:flex;
 
@@ -183,13 +203,13 @@
 
 /* TAMANHOS */
 
-#app-public .w-1{flex:1;}
-#app-public .w-2{flex:2;}
-#app-public .w-3{flex:3;}
+.w-1{flex:1;}
+.w-2{flex:2;}
+.w-3{flex:3;}
 
 /* LABEL */
 
-#app-public .form-group label{
+.form-group label{
 
   margin-bottom:8px;
 
@@ -202,8 +222,8 @@
 
 /* INPUT */
 
-#app-public .form-group input,
-#app-public .form-group select{
+.form-group input,
+.form-group select{
 
   height:54px;
 
@@ -229,8 +249,8 @@
 
 /* FOCUS */
 
-#app-public .form-group input:focus,
-#app-public .form-group select:focus{
+.form-group input:focus,
+.form-group select:focus{
 
   outline:none;
 
@@ -244,7 +264,7 @@
 
 /* BOTÃO */
 
-#app-public .btn-primary{
+.btn-primary{
 
   margin-top:14px;
 
@@ -279,7 +299,7 @@
     0 12px 30px rgba(37,99,235,.24);
 }
 
-#app-public .btn-primary:hover{
+.btn-primary:hover{
 
   transform:
     translateY(-2px);
@@ -292,7 +312,7 @@
    LOGIN LINK
 ============================== */
 
-#app-public .login-link{
+.login-link{
 
   margin-top:22px;
 
@@ -303,7 +323,7 @@
   color:#64748b;
 }
 
-#app-public .login-link a{
+.login-link a{
 
   color:#2563eb;
 
@@ -316,7 +336,7 @@
    FOOTER PREMIUM
 ============================== */
 
-#app-public .footer{
+.footer{
 
   display:flex;
 
@@ -339,7 +359,7 @@
 
 /* INFO */
 
-#app-public .footer-info{
+.footer-info{
 
   color:#fff;
 
@@ -348,7 +368,7 @@
   line-height:1.8;
 }
 
-#app-public .footer-info a{
+.footer-info a{
 
   color:#6ee7b7;
 
@@ -357,7 +377,7 @@
 
 /* PLANOS */
 
-#app-public .footer-planos{
+.footer-planos{
 
   display:grid;
 
@@ -373,7 +393,7 @@
 
 /* CARD */
 
-#app-public .plano-card{
+.plano-card{
 
   position:relative;
 
@@ -408,7 +428,7 @@
 
 /* HOVER */
 
-#app-public .plano-card:hover{
+.plano-card:hover{
 
   transform:
     translateY(-6px);
@@ -421,7 +441,7 @@
 
 /* BUSINESS */
 
-#app-public .plano-card.destaque{
+.plano-card.destaque{
 
   background:
     linear-gradient(
@@ -436,7 +456,7 @@
 
 /* BADGE */
 
-#app-public .plano-card .badge{
+.plano-card .badge{
 
   position:absolute;
 
@@ -460,7 +480,7 @@
 
 /* TÍTULO */
 
-#app-public .plano-card h3{
+.plano-card h3{
 
   font-size:44px;
 
@@ -473,7 +493,7 @@
 
 /* PREÇO */
 
-#app-public .plano-card .preco{
+.plano-card .preco{
 
   font-size:56px;
 
@@ -488,7 +508,7 @@
 
 /* PREÇO ANTIGO */
 
-#app-public .plano-card .preco-antigo{
+.plano-card .preco-antigo{
 
   font-size:18px;
 
@@ -501,7 +521,7 @@
 
 /* FOUNDERS */
 
-#app-public .plano-card .founders{
+.plano-card .founders{
 
   color:#22c55e;
 
@@ -514,7 +534,7 @@
 
 /* INFO */
 
-#app-public .plano-card .limite{
+.plano-card .limite{
 
   font-size:18px;
 
@@ -529,7 +549,7 @@
 
 @media(max-width:1200px){
 
-  #app-public .footer-planos{
+  .footer-planos{
 
     grid-template-columns:
       repeat(2,1fr);
@@ -561,23 +581,23 @@
     text-align:left;
   }
 
-  #app-public .form-row{
+  .form-row{
     flex-direction:column;
   }
 
-  #app-public .footer{
+  .footer{
 
     flex-direction:column;
 
     padding:30px 20px;
   }
 
-  #app-public .footer-planos{
+  .footer-planos{
 
     grid-template-columns:1fr;
   }
 
-  #app-public .plano-card{
+  .plano-card{
 
     min-height:auto;
   }
