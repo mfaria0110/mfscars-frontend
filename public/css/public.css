@@ -13,7 +13,7 @@ width:100%;
 padding:6px;
 border:none;
 background:#007bff;
-color:white; 
+color:white;
 font-size:12px;
 border-radius:5px;
 cursor:pointer;
@@ -107,7 +107,7 @@ background:#0056b3;
 }
 
 #app-public .info {
-  padding: 8px 10px;
+  padding: 10px;
   font-size: 13px;
 }
 
@@ -155,8 +155,9 @@ color:#555;
 }
 
 #app-public .container{
-  margin:auto;
-  padding:10px 30px 30px;
+
+margin:auto;
+padding:30px;
 }
 
 #app-public .menu a{
@@ -684,30 +685,4 @@ text-decoration:none;
 
 #app-public.veiculo-page .veiculo-grid .card:hover{
   transform:translateY(-4px);
-}
-
-#app-public .card{
-  position:relative;
-}
-
-#app-public .overlay{
-
-  top:8px;
-  left:8px;
-
-  background:rgba(0,0,0,.72);
-
-  color:white;
-
-  padding:5px 8px;
-
-  border-radius:6px;
-
-  font-size:9px;
-
-  text-align:center;
-
-  font-weight:600;
-
-  z-index:2;
 }
