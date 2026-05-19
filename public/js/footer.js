@@ -121,23 +121,6 @@ ${planos.map(p => {
 
 ${p.nome === "BUSINESS" ? `
 
-<div
-  style="
-    position:absolute;
-    top:14px;
-    right:-42px;
-    background:#16a34a;
-    color:#fff;
-    padding:8px 48px;
-    font-size:12px;
-    font-weight:900;
-    transform:rotate(35deg);
-    letter-spacing:.4px;
-  "
->
-  
-</div>
-
 ` : ""}
 
 <h3
