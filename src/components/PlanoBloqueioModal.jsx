@@ -28,7 +28,10 @@ export default function PlanoBloqueioModal({
 
         zIndex: 9999,
 
-        padding: 24
+        padding: 24,
+
+        backdropFilter:
+          "blur(4px)"
       }}
     >
 
@@ -37,45 +40,88 @@ export default function PlanoBloqueioModal({
 
           width: "100%",
 
-          maxWidth: 520,
+          maxWidth: 540,
 
           background:
             "linear-gradient(135deg, #020617 0%, #0f172a 100%)",
 
           borderRadius: 28,
 
-          padding: 36,
+          padding: 38,
 
           color: "#fff",
+
+          border:
+            "1px solid rgba(255,255,255,0.08)",
 
           boxShadow:
             "0 30px 80px rgba(0,0,0,0.35)"
         }}
       >
 
+        {/* BADGE */}
+
         <div
           style={{
-            fontSize: 54,
-            marginBottom: 18
+
+            display: "inline-flex",
+
+            alignItems: "center",
+
+            gap: 8,
+
+            padding:
+              "8px 14px",
+
+            borderRadius: 999,
+
+            background:
+              "rgba(37,99,235,0.15)",
+
+            color: "#93c5fd",
+
+            fontSize: 13,
+
+            fontWeight: 700,
+
+            marginBottom: 24
           }}
         >
-          🚨
+          🚀 Upgrade disponível
         </div>
+
+        {/* ICON */}
+
+        <div
+          style={{
+            fontSize: 56,
+            marginBottom: 20
+          }}
+        >
+          💎
+        </div>
+
+        {/* TITLE */}
 
         <h2
           style={{
             fontSize: 34,
-            marginBottom: 18
+            marginBottom: 18,
+            fontWeight: 800,
+            lineHeight: 1.1
           }}
         >
-          Assinatura Necessária
+          Limite do plano atingido
         </h2>
+
+        {/* MESSAGE */}
 
         <p
           style={{
+
             opacity: 0.82,
 
-            marginBottom: 32,
+            marginBottom: 28,
 
             lineHeight: 1.7,
 
@@ -84,6 +130,53 @@ export default function PlanoBloqueioModal({
         >
           {mensagem}
         </p>
+
+        {/* FOUNDERS */}
+
+        <div
+          style={{
+
+            background:
+              "rgba(16,185,129,0.12)",
+
+            border:
+              "1px solid rgba(16,185,129,0.25)",
+
+            borderRadius: 18,
+
+            padding: 18,
+
+            marginBottom: 28
+          }}
+        >
+
+          <div
+            style={{
+              fontWeight: 700,
+              marginBottom: 8,
+              color: "#6ee7b7"
+            }}
+          >
+            🔥 Oferta Founders
+          </div>
+
+          <div
+            style={{
+              opacity: 0.82,
+              lineHeight: 1.6
+            }}
+          >
+            Os primeiros clientes
+            garantem até
+            <strong>
+              {" "}30% OFF vitalício
+            </strong>
+            nos planos pagos.
+          </div>
+
+        </div>
+
+        {/* BUTTONS */}
 
         <div
           style={{
@@ -110,7 +203,8 @@ export default function PlanoBloqueioModal({
 
               border: 0,
 
-              background: "#2563eb",
+              background:
+                "linear-gradient(135deg,#2563eb,#1d4ed8)",
 
               color: "#fff",
 
@@ -118,10 +212,13 @@ export default function PlanoBloqueioModal({
 
               fontSize: 16,
 
-              cursor: "pointer"
+              cursor: "pointer",
+
+              boxShadow:
+                "0 10px 30px rgba(37,99,235,0.35)"
             }}
           >
-            Ver Planos
+            Ver planos
           </button>
 
           <button
@@ -151,7 +248,7 @@ export default function PlanoBloqueioModal({
               cursor: "pointer"
             }}
           >
-            Fechar
+            Agora não
           </button>
 
         </div>

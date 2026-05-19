@@ -19,7 +19,8 @@ import {
   upgradePlano,
   assinarPlano,
   gerarPixPlano,
-  consultarStatusPix
+  consultarStatusPix,
+  getFounders
 
 } from "./plano.service"
 
@@ -116,6 +117,26 @@ export function usePlano() {
       refetchOnWindowFocus:
         false
     })
+
+    /* ===============================
+       FOUNDERS
+    =============================== */
+
+    const foundersQuery =
+      useQuery({
+
+        queryKey: [
+          "founders"
+        ],
+
+        queryFn:
+          getFounders,
+
+        retry: false
+      })
+
+
+
 
   /* ===============================
      UPGRADE LOCAL
@@ -285,7 +306,12 @@ async function handleAssinar(
         ABRE MODAL PIX
       */
 
-      setPixData(response)
+      setPixData({
+
+  ...response,
+
+  plano
+})
 
       setShowPixModal(true)
 
@@ -464,6 +490,9 @@ async function handleAssinar(
 
     showPixModal,
 
-    setShowPixModal
+    setShowPixModal,
+
+    founders:
+     foundersQuery.data || null
   }
 }

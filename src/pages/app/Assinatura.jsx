@@ -20,6 +20,19 @@ export default function Assinatura() {
   const limite =
     planoAtual?.limite_veiculos || 0
 
+const lojasUsadas =
+  planoAtual?.usados_lojas || 0
+
+const lojasLimite =
+  planoAtual?.limite_lojas || 0
+
+const vendedoresUsados =
+  planoAtual?.usados_vendedores || 0
+
+const vendedoresLimite =
+  planoAtual?.limite_vendedores
+
+
   const porcentagem =
     limite > 0
       ? Math.min(
@@ -81,6 +94,35 @@ export default function Assinatura() {
     <div style={{
       padding: 24
     }}>
+
+
+<div
+  style={{
+    marginBottom: 28
+  }}
+>
+
+  <h1
+    style={{
+      fontSize: 38,
+      fontWeight: 800,
+      marginBottom: 12
+    }}
+  >
+    Escolha o plano ideal
+  </h1>
+
+  <p
+    style={{
+      opacity: 0.7,
+      fontSize: 18
+    }}
+  >
+    Cresça sua operação com CRM,
+    estoque, leads e multi lojas.
+  </p>
+
+</div>
 
       {/* =========================
           PLANO ATUAL
@@ -188,6 +230,21 @@ export default function Assinatura() {
 
         </div>
 
+{planoAtual?.nome !== "FREE" && (
+
+  <div
+    style={{
+      marginBottom: 18,
+      color: "#6ee7b7",
+      fontSize: 13,
+      fontWeight: "700"
+    }}
+  >
+    🔥 30% OFF vitalício
+  </div>
+
+)}
+
         {/* =========================
             CONSUMO
         ========================= */}
@@ -253,7 +310,189 @@ export default function Assinatura() {
 
         </div>
 
+{/* =========================
+    RESUMO USO
+========================= */}
+
+<div
+  style={{
+    marginTop: 24,
+
+    display: "grid",
+
+    gridTemplateColumns:
+      "repeat(auto-fit, minmax(180px,1fr))",
+
+    gap: 16
+  }}
+>
+
+  {/* LOJAS */}
+
+  <div
+    style={{
+      background: "#111827",
+
+      borderRadius: 16,
+
+      padding: 16
+    }}
+  >
+
+    <div
+      style={{
+        opacity: 0.7,
+        marginBottom: 8
+      }}
+    >
+      🏪 Lojas
+    </div>
+
+    <div
+      style={{
+        fontSize: 24,
+        fontWeight: 700
+      }}
+    >
+      {
+
+        planoAtual?.usados_lojas || 0
+
+      }
+
+      {" / "}
+
+      {
+
+        planoAtual?.limite_lojas === null
+
+          ? "∞"
+
+          : planoAtual?.limite_lojas || 0
+      }
+    </div>
+
+  </div>
+
+  {/* VENDEDORES */}
+
+  <div
+    style={{
+      background: "#111827",
+
+      borderRadius: 16,
+
+      padding: 16
+    }}
+  >
+
+    <div
+      style={{
+        opacity: 0.7,
+        marginBottom: 8
+      }}
+    >
+      👥 Vendedores
+    </div>
+
+    <div
+      style={{
+        fontSize: 24,
+        fontWeight: 700
+      }}
+    >
+      {
+
+        planoAtual?.usados_vendedores || 0
+
+      }
+
+      {" / "}
+
+      {
+
+        planoAtual?.limite_vendedores === null
+
+          ? "∞"
+
+          : planoAtual?.limite_vendedores || 0
+      }
+    </div>
+
+  </div>
+
+</div>
+
       </div>
+
+
+{founders && (
+
+  <div
+    style={{
+
+      marginBottom: 28,
+
+      background:
+        "linear-gradient(135deg,#065f46,#064e3b)",
+
+      color: "#fff",
+
+      borderRadius: 20,
+
+      padding: 20,
+
+      display: "flex",
+
+      justifyContent:
+        "space-between",
+
+      alignItems: "center",
+
+      flexWrap: "wrap",
+
+      gap: 16
+    }}
+  >
+
+    <div>
+
+      <div
+        style={{
+          fontSize: 20,
+          fontWeight: 800,
+          marginBottom: 8
+        }}
+      >
+        🔥 Oferta Founders
+      </div>
+
+      <div
+        style={{
+          opacity: 0.9
+        }}
+      >
+        Garanta 30% OFF vitalício
+        nos planos pagos.
+      </div>
+
+    </div>
+
+    <div
+      style={{
+        fontSize: 28,
+        fontWeight: 800
+      }}
+    >
+      {founders.restantes}
+      {" "}
+      vagas restantes
+    </div>
+
+  </div>
+
+)}
+
 
       {/* =========================
           PLANOS DISPONÍVEIS
@@ -292,13 +531,64 @@ export default function Assinatura() {
 
             return (
 
-              <div
-                key={plano.id}
+                <div
+                  key={plano.id}
+
+                  style={{
+
+                    background:
+
+                      plano.nome === "PREMIUM"
+
+                        ? "linear-gradient(135deg,#312e81,#1e1b4b)"
+
+                        : "linear-gradient(135deg,#111827,#1e293b)",
+
+                    borderRadius: 20,
+                    padding: 18,
+                    color: "#fff",
+
+                    border:
+                      isAtual
+                        ? "2px solid #2563eb"
+                        : "2px solid transparent",
+
+                    position: "relative",
+
+                    boxShadow:
+                      "0 8px 24px rgba(0,0,0,0.15)"
+                  }}
+                >
+
+                  {plano.nome === "BUSINESS" && (
+
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 16,
+                        left: 16,
+                        background: "#16a34a",
+                        padding: "5px 12px",
+                        borderRadius: 999,
+                        fontSize: 11,
+                        fontWeight: "700"
+                      }}
+                    >
+                      MAIS POPULAR
+                    </div>
+
+                  )}
 
                 style={{
 
-                  background:
-                    "linear-gradient(135deg, #111827 0%, #1e293b 100%)",
+                background:
+
+                  plano.nome === "PREMIUM"
+
+                    ? "linear-gradient(135deg,#312e81,#1e1b4b)"
+
+                    : "linear-gradient(135deg,#111827,#1e293b)",
+
                   borderRadius: 20,
                   padding: 18,
                   color: "#fff",
@@ -351,15 +641,35 @@ export default function Assinatura() {
                   R$ {plano.preco}
                 </div>
 
-                <div
-                  style={{
-                    opacity: 0.8,
-                    marginBottom: 28,
-                    fontSize: 18
-                  }}
-                >
-                  {plano.limite_veiculos} veículos
-                </div>
+<div
+  style={{
+    opacity: 0.9,
+    marginBottom: 24,
+    fontSize: 15,
+    lineHeight: 1.8
+  }}
+>
+
+  <div>
+    🚗 {plano.limite_veiculos} veículos
+  </div>
+
+  <div>
+    🏪 {plano.limite_lojas || "∞"} lojas
+  </div>
+
+  <div>
+    👥 {
+
+      plano.limite_vendedores === null
+
+        ? "Vendedores ilimitados"
+
+        : `${plano.limite_vendedores} vendedores por loja`
+    }
+  </div>
+
+</div>
 
                 <button
 
@@ -498,6 +808,9 @@ export default function Assinatura() {
                 "0 10px 40px rgba(0,0,0,0.4)"
             }}
           >
+
+
+
 
             <h2
               style={{

@@ -4,6 +4,7 @@ import { useAppStore } from "../../store/useAppStore"
 /* ===============================
    VALIDA PERMISSÃO
 =============================== */
+
 function validarPermissao(
   chave
 ) {
@@ -17,31 +18,39 @@ function validarPermissao(
   /*
     MASTER LIBERADO
   */
+
   if (
     usuario?.master
   ) {
+
     return true
   }
 
   return Array.isArray(
     permissoes
   )
+
     ? permissoes.includes(
         chave
       )
+
     : false
 }
 
 /* ===============================
    LISTA PLANOS
 =============================== */
+
 export async function getPlanos() {
 
   if (
+
     !validarPermissao(
       "plano.visualizar"
     )
+
   ) {
+
     return []
   }
 
@@ -65,6 +74,7 @@ export async function getPlanos() {
 /* ===============================
    PLANO ATUAL
 =============================== */
+
 export async function getPlanoAtual() {
 
   const state =
@@ -77,25 +87,34 @@ export async function getPlanoAtual() {
     state.isChangingLoja
 
   /*
-    evita corrida ao trocar loja
+    evita corrida troca loja
   */
+
   if (
+
     !lojaId ||
+
     isChangingLoja
+
   ) {
 
     console.warn(
+
       "Bloqueado getPlanoAtual -> loja não pronta"
+
     )
 
     return null
   }
 
   if (
+
     !validarPermissao(
       "plano.visualizar"
     )
+
   ) {
+
     return null
   }
 
@@ -113,9 +132,11 @@ export async function getPlanoAtual() {
     /*
       loja sem plano
     */
+
     if (
       e.response?.status === 400
     ) {
+
       return null
     }
 
@@ -128,6 +149,7 @@ export async function getPlanoAtual() {
 /* ===============================
    UPGRADE LOCAL
 =============================== */
+
 export async function upgradePlano(
   plano_id,
   loja_id
@@ -144,8 +166,11 @@ export async function upgradePlano(
     )
 
   if (
+
     !podeAssinar &&
+
     !podeUpgrade
+
   ) {
 
     throw new Error(
@@ -155,7 +180,9 @@ export async function upgradePlano(
 
   const { data } =
     await api.post(
+
       "/planos/upgrade",
+
       {
         plano_id,
         loja_id
@@ -168,6 +195,7 @@ export async function upgradePlano(
 /* ===============================
    ASSINAR PLANO
 =============================== */
+
 export async function assinarPlano(
   plano_id
 ) {
@@ -175,10 +203,13 @@ export async function assinarPlano(
   /*
     billing próprio SaaS
   */
+
   if (
+
     !validarPermissao(
       "billing.assinar"
     )
+
   ) {
 
     throw new Error(
@@ -200,7 +231,9 @@ export async function assinarPlano(
 
   const { data } =
     await api.post(
+
       "/billing/assinar",
+
       {
         loja_id,
         plano_id
@@ -213,6 +246,7 @@ export async function assinarPlano(
 /* ===============================
    GERAR PIX
 =============================== */
+
 export async function gerarPixPlano(
   plano_id
 ) {
@@ -222,9 +256,11 @@ export async function gerarPixPlano(
   */
 
   if (
+
     !validarPermissao(
       "billing.assinar"
     )
+
   ) {
 
     throw new Error(
@@ -246,7 +282,9 @@ export async function gerarPixPlano(
 
   const { data } =
     await api.post(
+
       "/billing/pix",
+
       {
         loja_id,
         plano_id
@@ -259,13 +297,97 @@ export async function gerarPixPlano(
 /* ===============================
    STATUS PIX
 =============================== */
+
 export async function consultarStatusPix(
   payment_id
 ) {
 
   const { data } =
     await api.get(
+
       `/billing/status/${payment_id}`
+
+    )
+
+  return data
+}
+
+/* ===============================
+   RESUMO CONSUMO
+=============================== */
+
+export function getResumoConsumo(
+  planoAtual
+) {
+
+  if (!planoAtual) {
+
+    return {
+
+      usadosVeiculos: 0,
+      limiteVeiculos: 0,
+
+      usadosLojas: 0,
+      limiteLojas: 0,
+
+      usadosVendedores: 0,
+      limiteVendedores: 0
+    }
+  }
+
+  return {
+
+    usadosVeiculos:
+      Number(
+        planoAtual.usados || 0
+      ),
+
+    limiteVeiculos:
+      Number(
+        planoAtual.limite_veiculos || 0
+      ),
+
+    usadosLojas:
+      Number(
+        planoAtual.usados_lojas || 0
+      ),
+
+    limiteLojas:
+
+      planoAtual.limite_lojas === null
+
+        ? "∞"
+
+        : Number(
+            planoAtual.limite_lojas || 0
+          ),
+
+    usadosVendedores:
+      Number(
+        planoAtual.usados_vendedores || 0
+      ),
+
+    limiteVendedores:
+
+      planoAtual.limite_vendedores === null
+
+        ? "∞"
+
+        : Number(
+            planoAtual.limite_vendedores || 0
+          )
+  }
+}
+
+/* ===============================
+   FOUNDERS
+=============================== */
+
+export async function getFounders() {
+
+  const { data } =
+    await api.get(
+      "/billing/founders"
     )
 
   return data
