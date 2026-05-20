@@ -116,7 +116,7 @@ app.innerHTML = `
     align-items:center;
 
     padding:
-      140px 40px 80px;
+      90px 40px 70px;
 
     color:#fff;
   "
@@ -181,7 +181,7 @@ app.innerHTML = `
           letter-spacing:-4px;
         "
       >
-        O sistema completo
+        CRM e gestão completa
         para lojas de veículos.
       </h1>
 
@@ -197,11 +197,8 @@ app.innerHTML = `
           margin-bottom:36px;
         "
       >
-        Controle estoque,
-        leads, vendedores,
-        contratos e múltiplas lojas
-        com uma plataforma moderna
-        e profissional.
+        Centralize estoque, leads, vendas e vendedores
+em uma plataforma moderna para revendas e multi-lojas.
       </p>
 
       <!-- BOTÕES -->
@@ -309,7 +306,7 @@ app.innerHTML = `
     <div>
 
 <img
-  src="https://placehold.co/900x600/0f172a/ffffff?text=MFS+Cars+Dashboard"
+  src="/assets/dashboard-preview.png"
   style="
     width:100%;
     border-radius:24px;
@@ -321,6 +318,370 @@ app.innerHTML = `
   </div>
 
 </div>
+
+
+<!-- BENEFÍCIOS -->
+<div
+  style="
+    background:#fff;
+    padding:90px 40px;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+    "
+  >
+
+    <!-- TÍTULO -->
+    <div
+      style="
+        text-align:center;
+        margin-bottom:60px;
+      "
+    >
+
+      <div
+        style="
+          color:#2563eb;
+          font-size:14px;
+          font-weight:800;
+          margin-bottom:14px;
+          letter-spacing:1px;
+          text-transform:uppercase;
+        "
+      >
+        Plataforma Completa
+      </div>
+
+      <h2
+        style="
+          font-size:54px;
+          line-height:1.1;
+          font-weight:900;
+          color:#0f172a;
+
+          margin:0 0 20px;
+        "
+      >
+        Tudo que sua loja precisa
+        em um único sistema.
+      </h2>
+
+      <p
+        style="
+          font-size:20px;
+          color:#64748b;
+          max-width:850px;
+          margin:auto;
+          line-height:1.7;
+        "
+      >
+        Centralize estoque, leads,
+        vendedores e operações
+        com uma plataforma moderna
+        para revendas e multi-lojas.
+      </p>
+
+    </div>
+
+    <!-- GRID -->
+    <div
+      style="
+        display:grid;
+
+        grid-template-columns:
+          repeat(
+            auto-fit,
+            minmax(280px,1fr)
+          );
+
+        gap:28px;
+      "
+    >
+
+      <!-- CARD -->
+      <div
+        style="
+          background:#fff;
+
+          border:
+            1px solid #e2e8f0;
+
+          border-radius:26px;
+
+          padding:34px;
+
+          box-shadow:
+            0 10px 35px
+            rgba(15,23,42,.05);
+
+          transition:.3s;
+        "
+      >
+
+        <div
+          style="
+            width:72px;
+            height:72px;
+
+            border-radius:22px;
+
+            background:
+              linear-gradient(
+                135deg,
+                #2563eb,
+                #1d4ed8
+              );
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-size:34px;
+
+            margin-bottom:24px;
+          "
+        >
+          🚗
+        </div>
+
+        <h3
+          style="
+            font-size:28px;
+            color:#0f172a;
+            margin-bottom:14px;
+          "
+        >
+          Gestão de Estoque
+        </h3>
+
+        <p
+          style="
+            color:#64748b;
+            line-height:1.8;
+            font-size:17px;
+          "
+        >
+          Cadastre veículos,
+          fotos, opcionais
+          e acompanhe todo
+          estoque em tempo real.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        style="
+          background:#fff;
+
+          border:
+            1px solid #e2e8f0;
+
+          border-radius:26px;
+
+          padding:34px;
+
+          box-shadow:
+            0 10px 35px
+            rgba(15,23,42,.05);
+        "
+      >
+
+        <div
+          style="
+            width:72px;
+            height:72px;
+
+            border-radius:22px;
+
+            background:
+              linear-gradient(
+                135deg,
+                #16a34a,
+                #15803d
+              );
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-size:34px;
+
+            margin-bottom:24px;
+          "
+        >
+          👥
+        </div>
+
+        <h3
+          style="
+            font-size:28px;
+            color:#0f172a;
+            margin-bottom:14px;
+          "
+        >
+          Leads Centralizados
+        </h3>
+
+        <p
+          style="
+            color:#64748b;
+            line-height:1.8;
+            font-size:17px;
+          "
+        >
+          Receba interessados
+          diretamente pelo sistema
+          e acompanhe cada oportunidade.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        style="
+          background:#fff;
+
+          border:
+            1px solid #e2e8f0;
+
+          border-radius:26px;
+
+          padding:34px;
+
+          box-shadow:
+            0 10px 35px
+            rgba(15,23,42,.05);
+        "
+      >
+
+        <div
+          style="
+            width:72px;
+            height:72px;
+
+            border-radius:22px;
+
+            background:
+              linear-gradient(
+                135deg,
+                #7c3aed,
+                #6d28d9
+              );
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-size:34px;
+
+            margin-bottom:24px;
+          "
+        >
+          🏪
+        </div>
+
+        <h3
+          style="
+            font-size:28px;
+            color:#0f172a;
+            margin-bottom:14px;
+          "
+        >
+          Multi-lojas
+        </h3>
+
+        <p
+          style="
+            color:#64748b;
+            line-height:1.8;
+            font-size:17px;
+          "
+        >
+          Gerencie múltiplas lojas
+          e operações em um único painel.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+      <div
+        style="
+          background:#fff;
+
+          border:
+            1px solid #e2e8f0;
+
+          border-radius:26px;
+
+          padding:34px;
+
+          box-shadow:
+            0 10px 35px
+            rgba(15,23,42,.05);
+        "
+      >
+
+        <div
+          style="
+            width:72px;
+            height:72px;
+
+            border-radius:22px;
+
+            background:
+              linear-gradient(
+                135deg,
+                #ea580c,
+                #c2410c
+              );
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-size:34px;
+
+            margin-bottom:24px;
+          "
+        >
+          📈
+        </div>
+
+        <h3
+          style="
+            font-size:28px;
+            color:#0f172a;
+            margin-bottom:14px;
+          "
+        >
+          Controle Comercial
+        </h3>
+
+        <p
+          style="
+            color:#64748b;
+            line-height:1.8;
+            font-size:17px;
+          "
+        >
+          Acompanhe vendedores,
+          permissões e performance
+          comercial da equipe.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <!-- BUSCA -->
 <div
