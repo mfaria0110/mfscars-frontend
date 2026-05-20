@@ -12,40 +12,331 @@ const app = document.getElementById("app-public");
 ============================== */
 
 app.innerHTML = `
-<div class="header">
-  <div class="logo">🚗 MFS Cars</div>
-  <div class="menu">
-    <a href="/cadastro.html">Cadastrar loja</a>
+
+<!-- HEADER -->
+<div
+  style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+
+    z-index:999;
+
+    background:
+      rgba(2,6,23,.88);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:
+      1px solid rgba(255,255,255,.06);
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:20px 30px;
+    "
+  >
+
+    <div
+      style="
+        font-size:34px;
+        font-weight:900;
+        color:#fff;
+      "
+    >
+      🚗 MFS Cars
+    </div>
+
+    <div
+      style="
+        display:flex;
+        gap:16px;
+        align-items:center;
+      "
+    >
+
+      <a
+        href="#planos"
+        style="
+          color:#cbd5e1;
+          text-decoration:none;
+          font-weight:600;
+        "
+      >
+        Planos
+      </a>
+
+      <a
+        href="/cadastro.html"
+        style="
+          background:#2563eb;
+          color:#fff;
+
+          padding:14px 24px;
+
+          border-radius:12px;
+
+          text-decoration:none;
+
+          font-weight:700;
+        "
+      >
+        Cadastrar loja
+      </a>
+
+    </div>
+
   </div>
+
 </div>
 
-<div class="hero">
+<!-- HERO -->
+<div
+  style="
+    background:
+      linear-gradient(
+        135deg,
+        #020617 0%,
+        #0f172a 45%,
+        #172554 100%
+      );
+
+    min-height:760px;
+
+    display:flex;
+    align-items:center;
+
+    padding:
+      140px 40px 80px;
+
+    color:#fff;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+        1.1fr 1fr;
+
+      gap:60px;
+
+      align-items:center;
+    "
+  >
+
+    <!-- TEXTO -->
+    <div>
+
+      <div
+        style="
+          display:inline-flex;
+          align-items:center;
+          gap:10px;
+
+          background:
+            rgba(59,130,246,.15);
+
+          border:
+            1px solid
+            rgba(59,130,246,.25);
+
+          padding:
+            10px 18px;
+
+          border-radius:999px;
+
+          color:#93c5fd;
+
+          font-size:14px;
+          font-weight:700;
+
+          margin-bottom:24px;
+        "
+      >
+        🚀 CRM & Gestão Automotiva
+      </div>
+
+      <h1
+        style="
+          font-size:72px;
+          line-height:1.02;
+          font-weight:900;
+
+          margin:0 0 26px;
+
+          letter-spacing:-4px;
+        "
+      >
+        O sistema completo
+        para lojas de veículos.
+      </h1>
+
+      <p
+        style="
+          font-size:22px;
+          line-height:1.6;
+
+          color:#cbd5e1;
+
+          max-width:720px;
+
+          margin-bottom:36px;
+        "
+      >
+        Controle estoque,
+        leads, vendedores,
+        contratos e múltiplas lojas
+        com uma plataforma moderna
+        e profissional.
+      </p>
+
+      <!-- BOTÕES -->
+      <div
+        style="
+          display:flex;
+          gap:18px;
+          flex-wrap:wrap;
+
+          margin-bottom:30px;
+        "
+      >
+
+        <a
+          href="/cadastro.html"
+          style="
+            background:#2563eb;
+            color:#fff;
+
+            padding:18px 30px;
+
+            border-radius:14px;
+
+            text-decoration:none;
+
+            font-size:18px;
+            font-weight:700;
+
+            box-shadow:
+              0 10px 30px
+              rgba(37,99,235,.35);
+          "
+        >
+          🚀 Testar grátis
+        </a>
+
+        <a
+          href="https://wa.me/5524999726811"
+          target="_blank"
+          style="
+            background:#16a34a;
+            color:#fff;
+
+            padding:18px 30px;
+
+            border-radius:14px;
+
+            text-decoration:none;
+
+            font-size:18px;
+            font-weight:700;
+          "
+        >
+          💬 WhatsApp
+        </a>
+
+      </div>
+
+      <!-- FOUNDERS -->
+      <div
+        style="
+          background:
+            rgba(34,197,94,.12);
+
+          border:
+            1px solid
+            rgba(34,197,94,.25);
+
+          padding:18px 22px;
+
+          border-radius:18px;
+
+          display:inline-block;
+        "
+      >
+
+        <div
+          style="
+            color:#4ade80;
+            font-size:15px;
+            font-weight:800;
+
+            margin-bottom:6px;
+          "
+        >
+          🔥 Oferta Founders
+        </div>
+
+        <div
+          style="
+            font-size:18px;
+            color:#fff;
+            font-weight:700;
+          "
+        >
+          30% OFF vitalício
+          nos planos pagos.
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MOCKUP -->
+    <div>
+
+      <img
+        src="/assets/dashboard-preview.png"
+        style="
+          width:100%;
+          border-radius:24px;
+
+          box-shadow:
+            0 40px 90px
+            rgba(0,0,0,.45);
+        "
+      />
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- BUSCA -->
+<div
+  class="hero"
+  style="
+    margin-top:-60px;
+    position:relative;
+    z-index:5;
+  "
+>
   <div class="busca">
-    <select id="marca"></select>
-    <input id="preco" placeholder="Preço máximo">
-    <input id="modelo" placeholder="Modelo">
-    <input id="cidade" placeholder="Cidade">
-    <button id="btnBuscar">Buscar</button>
-  </div>
-</div>
 
-<div class="marcas">
-  <img src="https://cdn-icons-png.flaticon.com/512/741/741407.png">
-  <img src="https://cdn-icons-png.flaticon.com/512/741/741417.png">
-  <img src="https://cdn-icons-png.flaticon.com/512/741/741420.png">
-</div>
-
-<div class="container">
-  <h3>Veículos disponíveis</h3>
-  <div class="grid" id="veiculos"></div>
-  <div id="paginacao" style="text-align:center;margin-top:20px;"></div>
-</div>
-
-<div class="footer">
-  MFS Cars Marketplace © 2026<br>
-  📧 <a href="mailto:mfaria2016@outlook.com">mfaria2016@outlook.com</a> |
-  📱 <a href="https://wa.me/5524999726811" target="_blank">(24) 99972-6811</a>
-</div>
 `;
  
 /* ===============================
