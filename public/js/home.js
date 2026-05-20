@@ -308,17 +308,13 @@ app.innerHTML = `
     <!-- MOCKUP -->
     <div>
 
-      <img
-        src="/assets/dashboard-preview.png"
-        style="
-          width:100%;
-          border-radius:24px;
-
-          box-shadow:
-            0 40px 90px
-            rgba(0,0,0,.45);
-        "
-      />
+<img
+  src="https://placehold.co/900x600/0f172a/ffffff?text=MFS+Cars+Dashboard"
+  style="
+    width:100%;
+    border-radius:24px;
+  "
+/>
 
     </div>
 
