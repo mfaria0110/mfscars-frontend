@@ -682,6 +682,198 @@ em uma plataforma moderna para revendas e multi-lojas.
 
 </div>
 
+<!-- SHOWCASE -->
+<div
+  style="
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8fafc 100%
+      );
+
+    padding:
+      120px 40px;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+    "
+  >
+
+    <!-- TÍTULO -->
+    <div
+      style="
+        text-align:center;
+        margin-bottom:70px;
+      "
+    >
+
+      <div
+        style="
+          color:#2563eb;
+          font-size:14px;
+          font-weight:800;
+
+          letter-spacing:1px;
+          text-transform:uppercase;
+
+          margin-bottom:14px;
+        "
+      >
+        Plataforma Moderna
+      </div>
+
+      <h2
+        style="
+          font-size:58px;
+          line-height:1.1;
+          font-weight:900;
+
+          color:#0f172a;
+
+          margin:0 0 20px;
+        "
+      >
+        Veja o MFS Cars
+        em ação
+      </h2>
+
+      <p
+        style="
+          font-size:20px;
+          color:#64748b;
+
+          max-width:850px;
+          margin:auto;
+
+          line-height:1.7;
+        "
+      >
+        Dashboard moderno,
+        controle comercial,
+        leads e gestão completa
+        para lojas de veículos.
+      </p>
+
+    </div>
+
+    <!-- MOCKUP -->
+    <div
+      style="
+        position:relative;
+      "
+    >
+
+      <!-- GLOW -->
+      <div
+        style="
+          position:absolute;
+
+          width:500px;
+          height:500px;
+
+          background:
+            rgba(37,99,235,.18);
+
+          filter:blur(120px);
+
+          top:50%;
+          left:50%;
+
+          transform:
+            translate(-50%,-50%);
+        "
+      ></div>
+
+      <!-- CARD -->
+      <div
+        style="
+          position:relative;
+
+          background:
+            linear-gradient(
+              135deg,
+              #0f172a,
+              #111827
+            );
+
+          border-radius:36px;
+
+          padding:28px;
+
+          overflow:hidden;
+
+          box-shadow:
+            0 40px 120px
+            rgba(15,23,42,.25);
+        "
+      >
+
+        <!-- TOPBAR -->
+        <div
+          style="
+            display:flex;
+            gap:10px;
+
+            margin-bottom:22px;
+          "
+        >
+
+          <div
+            style="
+              width:14px;
+              height:14px;
+
+              border-radius:999px;
+              background:#ef4444;
+            "
+          ></div>
+
+          <div
+            style="
+              width:14px;
+              height:14px;
+
+              border-radius:999px;
+              background:#f59e0b;
+            "
+          ></div>
+
+          <div
+            style="
+              width:14px;
+              height:14px;
+
+              border-radius:999px;
+              background:#22c55e;
+            "
+          ></div>
+
+        </div>
+
+        <!-- PRINT -->
+        <img
+          src="https://placehold.co/1400x800/0f172a/ffffff?text=MFS+Cars+Dashboard"
+          style="
+            width:100%;
+
+            border-radius:22px;
+
+            display:block;
+          "
+        />
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 <!-- BUSCA -->
 <div
