@@ -1593,6 +1593,9 @@ grid.innerHTML += `
 <div
   class="card"
 
+  onclick="window.abrirVeiculo(${v.id})"
+
+  
 onmouseover="
   this.style.transform='translateY(-8px)';
   this.style.boxShadow='0 30px 70px rgba(15,23,42,.14)';
@@ -1744,11 +1747,10 @@ style="
 "
 
 
-            onclick="
+onclick="
   event.stopPropagation();
 
-  window.location.href=
-    '/empresa.html?id=${v.loja_id}';
+  window.abrirLoja(${v.loja_id});
 "
 
               >
