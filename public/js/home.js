@@ -917,7 +917,7 @@ box-shadow:
         color:#64748b;
       "
     >
-      Milhares de veículos das melhores lojas parceiras reunidos em um só lugar.
+      Todos os veículos das melhores lojas parceiras reunidos em um só lugar.
     </p>
 
   </div>
@@ -928,14 +928,17 @@ box-shadow:
 
 
 <div
+<div
   style="
     position:relative;
 
-    margin-top:0px;
+    margin-top:8px;
+
+    margin-bottom:8px;
 
     z-index:20;
 
-  padding:0 30px;
+    padding:0 30px;
 
   "
 >
@@ -962,8 +965,9 @@ margin:0 auto;
     padding:34px;
 
 box-shadow:
-  0 4px 14px
-  rgba(15,23,42,.06);
+  0 2px 10px
+  rgba(15,23,42,.05);
+  
   "
 >
  
@@ -1165,7 +1169,7 @@ box-shadow:
   style="
     max-width:1400px;
     margin:auto;
-    padding:0 30px 80px;
+    padding:10px 30px 80px;
   "
 >
 
@@ -1376,7 +1380,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:210px;
+    height:200px;
 
     object-fit:cover;
 
