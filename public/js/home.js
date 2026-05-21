@@ -1134,9 +1134,7 @@ box-shadow:
             );
 
           color:#fff;
-
           font-size:13px;
-
           font-weight:700;
 
             box-shadow:
