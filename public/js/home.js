@@ -1139,9 +1139,7 @@ box-shadow:
 
           font-weight:700;
 
-          cursor:pointer;
-
-          box-shadow:
+            box-shadow:
             0 14px 35px
             rgba(37,99,235,.35);
         "
@@ -1597,8 +1595,6 @@ grid.innerHTML += `
 <div
   class="card"
 
- data-id="${v.loja_id}"
-
 onmouseover="
   this.style.transform='translateY(-8px)';
   this.style.boxShadow='0 30px 70px rgba(15,23,42,.14)';
@@ -1636,8 +1632,6 @@ onmouseout="
   src="${foto}"
 
   onclick="
-    event.stopPropagation();
-
     window.location.href=
       '/empresa.html?id=${v.loja_id}';
   "
@@ -1652,6 +1646,7 @@ onmouseout="
     display:block;
 
     transition:.2s;
+    cursor:pointer;
   "
 >
 
