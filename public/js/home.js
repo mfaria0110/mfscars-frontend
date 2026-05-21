@@ -1716,7 +1716,7 @@ style="
 
   width:140px;
 
-  height:38px;
+  height:35px;
 
   border:none;
 
