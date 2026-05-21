@@ -130,9 +130,9 @@ app.innerHTML = `
       display:grid;
 
       grid-template-columns:
-        1.1fr 1fr;
+        1fr 1.3fr;
 
-      gap:60px;
+      gap:50px;
 
       align-items:center;
     "
@@ -309,7 +309,14 @@ em uma plataforma moderna para revendas e multi-lojas.
   src="/assets/dashboard-preview.png"
   style="
     width:100%;
+    transform:scale(1.18);
+    transform-origin:center;
+    border:
+      1px solid rgba(255,255,255,.08);
     border-radius:24px;
+    box-shadow:
+      0 40px 90px
+      rgba(0,0,0,.45);
   "
 />
 
@@ -684,17 +691,22 @@ em uma plataforma moderna para revendas e multi-lojas.
 
 <!-- SHOWCASE -->
 <div
-  style="
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f8fafc 100%
-      );
+style="
+  width:100%;
 
-    padding:
-      120px 40px;
-  "
+  border-radius:22px;
+
+  display:block;
+
+  transform:scale(1.03);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 30px 80px
+    rgba(0,0,0,.45);
+"
 >
 
   <div
@@ -857,7 +869,7 @@ em uma plataforma moderna para revendas e multi-lojas.
 
         <!-- PRINT -->
         <img
-          src="https://placehold.co/1400x800/0f172a/ffffff?text=MFS+Cars+Dashboard"
+          src="/assets/dashboard-preview.png"
           style="
             width:100%;
 
@@ -875,18 +887,239 @@ em uma plataforma moderna para revendas e multi-lojas.
 
 </div>
 
-<!-- BUSCA -->
 <div
   class="hero"
   style="
-    margin-top:-60px;
     position:relative;
-    z-index:5;
+
+    margin-top:-90px;
+
+    z-index:20;
+
+    padding:
+      0 30px 80px;
   "
 >
-  <div class="busca">
+
+<div
+  class="busca"
+  style="
+    max-width:1400px;
+
+    margin:
+      -80px auto 80px;
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:
+      blur(24px);
+
+    border:
+      1px solid
+      rgba(255,255,255,.6);
+
+    border-radius:32px;
+
+    padding:34px;
+
+    box-shadow:
+      0 25px 80px
+      rgba(15,23,42,.12);
+
+    position:relative;
+    z-index:20;
+  "
+>
+ 
+
+  >
+
+    <div
+      style="
+        display:grid;
+
+        grid-template-columns:
+          repeat(
+            auto-fit,
+            minmax(220px,1fr)
+          );
+
+        gap:18px;
+      "
+    >
+
+      <!-- MARCA -->
+      <select
+        id="marca"
+
+        style="
+          height:58px;
+
+          border-radius:16px;
+
+          border:
+            1px solid #e2e8f0;
+
+          padding:0 18px;
+
+          font-size:16px;
+
+          background:#fff;
+        "
+      >
+        <option value="">
+          Todas marcas
+        </option>
+      </select>
+
+      <!-- MODELO -->
+      <input
+        id="modelo"
+        placeholder="Modelo"
+
+        style="
+          height:58px;
+
+          border-radius:16px;
+
+          border:
+            1px solid #e2e8f0;
+
+          padding:0 18px;
+
+          font-size:16px;
+
+          background:#fff;
+        "
+      />
+
+      <!-- CIDADE -->
+      <input
+        id="cidade"
+        placeholder="Cidade"
+
+        style="
+          height:58px;
+
+          border-radius:16px;
+
+          border:
+            1px solid #e2e8f0;
+
+          padding:0 18px;
+
+          font-size:16px;
+
+          background:#fff;
+        "
+      />
+
+      <!-- PREÇO -->
+      <select
+        id="preco"
+
+        style="
+          height:58px;
+
+          border-radius:16px;
+
+          border:
+            1px solid #e2e8f0;
+
+          padding:0 18px;
+
+          font-size:16px;
+
+          background:#fff;
+        "
+      >
+
+        <option value="">
+          Qualquer preço
+        </option>
+
+        <option value="30000">
+          Até R$ 30 mil
+        </option>
+
+        <option value="50000">
+          Até R$ 50 mil
+        </option>
+
+        <option value="100000">
+          Até R$ 100 mil
+        </option>
+
+      </select>
+
+      <!-- BOTÃO -->
+      <button
+        id="btnBuscar"
+
+        style="
+          height:58px;
+
+          padding:0 32px;
+
+          border:none;
+
+          border-radius:16px;
+
+          background:
+            linear-gradient(
+              135deg,
+              #2563eb,
+              #1d4ed8
+            );
+
+          color:#fff;
+
+          font-size:16px;
+          font-weight:700;
+
+          cursor:pointer;
+
+          box-shadow:
+            0 14px 35px
+            rgba(37,99,235,.35);
+        "
+      >
+        🔍 Buscar veículos
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- VEÍCULOS -->
+<div
+  style="
+    max-width:1400px;
+    margin:auto;
+    padding:0 30px 80px;
+  "
+>
+
+  <div
+    id="veiculos"
+    class="grid-veiculos"
+  ></div>
+
+  <div
+    id="paginacao"
+    style="
+      margin-top:40px;
+      text-align:center;
+    "
+  ></div>
+
+</div>
 
 `;
+
  
 /* ===============================
    🔘 EVENTOS
@@ -916,11 +1149,8 @@ async function carregarMarcas(){
     }
 
     const marcas = res.data;
-
     const select = document.getElementById("marca");
-
     select.innerHTML = `<option value="">Todas marcas</option>`;
-
     marcas.forEach(m=>{
       select.innerHTML += `<option value="${m.nome}">${m.nome}</option>`;
     });
