@@ -123,7 +123,7 @@ app.innerHTML = `
         display:grid;
 
         grid-template-columns:
-          1.15fr 1fr;
+          0.8fr 1fr;
       "
     >
 
@@ -140,7 +140,7 @@ app.innerHTML = `
 
           style="
             width:100%;
-            height:420px;
+            height:320px;
 
             object-fit:cover;
 
