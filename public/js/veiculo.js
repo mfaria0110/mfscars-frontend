@@ -122,8 +122,8 @@ app.innerHTML = `
 
         display:grid;
 
-        grid-template-columns:
-          0.8fr 1fr;
+grid-template-columns:
+  620px 1fr;
       "
     >
 
@@ -131,7 +131,7 @@ app.innerHTML = `
       <div
         style="
           background:#0f172a;
-          padding:24px;
+          padding:14px;
         "
       >
 
@@ -140,7 +140,7 @@ app.innerHTML = `
 
           style="
             width:100%;
-            height:320px;
+            height:360px;
 
             object-fit:cover;
 
@@ -154,12 +154,13 @@ app.innerHTML = `
           id="thumbs"
 
           style="
-            display:flex;
-            gap:14px;
+           display:flex;
 
-            margin-top:18px;
+        flex-wrap:wrap;
 
-            overflow:auto;
+        gap:8px;
+
+        margin-top:10px;
           "
         ></div>
 
@@ -804,9 +805,9 @@ img.src =
             img.src;
         };
 
-      img.style.width = "120px";
+      img.style.width = "82px";
 
-      img.style.height = "90px";
+      img.style.height = "62px";
 
       img.style.objectFit = "cover";
 
