@@ -969,17 +969,21 @@ box-shadow:
  
     <div
       style="
-        display:grid;
-  align-items:center;
 
-grid-template-columns:
-  220px
-  180px
-  180px
-  180px
-  160px;
+      display:grid;
 
-        gap:10px;
+      align-items:center;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(160px,1fr)
+        );
+
+      gap:12px;
+
+      width:100%;
+
       "
     >
 
@@ -988,6 +992,13 @@ grid-template-columns:
         id="marca"
 
         style="
+
+    width:100%;
+
+  min-width:0;
+
+  box-sizing:border-box;
+
           height:35px;
 
           border-radius:10px;
@@ -1034,6 +1045,13 @@ grid-template-columns:
         placeholder="Cidade"
 
         style="
+
+    width:100%;
+
+  min-width:0;
+
+  box-sizing:border-box;
+
           height:35px;
 
           border-radius:10px;
@@ -1054,6 +1072,13 @@ grid-template-columns:
         id="preco"
 
         style="
+
+    width:100%;
+
+  min-width:0;
+
+  box-sizing:border-box;
+
           height:35px;
 
           border-radius:10px;
@@ -1092,6 +1117,12 @@ grid-template-columns:
         id="btnBuscar"
 
         style="
+    width:100%;
+
+  min-width:0;
+
+  box-sizing:border-box;
+
           height:35px;
 
           padding:0 18px;
@@ -1162,6 +1193,29 @@ grid-template-columns:
   ></div>
 
 </div>
+
+
+  <style>
+
+@media(max-width:900px){
+
+  .busca > div{
+    grid-template-columns:
+      repeat(2,1fr) !important;
+  }
+
+}
+
+@media(max-width:640px){
+
+  .busca > div{
+    grid-template-columns:
+      1fr !important;
+  }
+
+}
+
+</style>
 
 `;
 
