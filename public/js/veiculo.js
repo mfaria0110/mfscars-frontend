@@ -301,6 +301,23 @@ app.innerHTML = `
               "
             ></div>
 
+            <div
+              id="cor"
+
+              style="
+                background:#f8fafc;
+
+                border-radius:20px;
+
+                padding:20px;
+
+                font-size:17px;
+
+                color:#0f172a;
+              "
+            ></div>
+
+
           </div>
 
           <!-- LOJA -->
@@ -573,7 +590,7 @@ if (!id) {
 
   alert("Veículo inválido");
 
-  window.location =
+  window.location.href =
     "/home.html";
 }
 
@@ -585,7 +602,7 @@ document.getElementById(
   "btnVoltar"
 ).onclick = () => {
 
-  window.location =
+  window.location.href =
     "/home.html";
 };
 
@@ -734,7 +751,7 @@ async function carregar() {
       "interesse"
     ).onclick = () => {
 
-      window.location =
+      window.location.href =
         `/lead.html?empresa=${v.empresa_id}&loja=${v.loja_id}&veiculo=${v.id}`;
     };
 
@@ -760,28 +777,45 @@ async function carregar() {
       dados.fotos?.length
     ) {
 
-    principal.src =
-      dados.fotos[0].url?.replace(
+principal.src =
+  dados.fotos[0].url
+    ? dados.fotos[0].url.replace(
         "http://",
         "https://"
-      );
+      )
+    : `${API_URL}/uploads/sem-foto.jpg`;
 
       dados.fotos.forEach(f => {
 
         const img =
           document.createElement("img");
 
-        img.src =
-          f.url?.replace(
-            "http://",
-            "https://"
-          );
+img.src =
+  f.url
+    ? f.url.replace(
+        "http://",
+        "https://"
+      )
+    : `${API_URL}/uploads/sem-foto.jpg`;
 
         img.onclick = () => {
 
           principal.src =
             img.src;
         };
+
+      img.style.width = "120px";
+
+      img.style.height = "90px";
+
+      img.style.objectFit = "cover";
+
+      img.style.borderRadius = "14px";
+
+      img.style.cursor = "pointer";
+
+      img.style.border =
+        "2px solid transparent";
 
         thumbs.appendChild(img);
       });
@@ -880,7 +914,7 @@ async function carregarSimilares() {
 
         div.onclick = () => {
 
-          window.location =
+          window.location.href =
             `/veiculo.html?id=${v.id}`;
         };
 
