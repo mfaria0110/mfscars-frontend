@@ -302,14 +302,19 @@ em uma plataforma moderna para revendas e multi-lojas.
 
     </div>
 
-    <!-- MOCKUP -->
-    <div>
+<!-- MOCKUP -->
+<div
+  style="
+    overflow:hidden;
+  "
+>
 
 <img
   src="/assets/dashboard-preview.png"
+
   style="
     width:100%;
-    transform:scale(1.18);
+    transform:scale(1.03);
     transform-origin:center;
     border:
       1px solid rgba(255,255,255,.08);
@@ -329,6 +334,7 @@ em uma plataforma moderna para revendas e multi-lojas.
 
 <!-- BENEFÍCIOS -->
 <div
+  id="planos"
   style="
     background:#fff;
     padding:90px 40px;
@@ -402,7 +408,7 @@ em uma plataforma moderna para revendas e multi-lojas.
         grid-template-columns:
           repeat(
             auto-fit,
-            minmax(280px,1fr)
+            minmax(240px,1fr)
           );
 
         gap:28px;
@@ -699,8 +705,8 @@ em uma plataforma moderna para revendas e multi-lojas.
         #f8fafc 100%
       );
 
-    padding:
-      120px 40px;
+padding:
+      70px 40px;
   "
 >
 
@@ -715,7 +721,7 @@ em uma plataforma moderna para revendas e multi-lojas.
     <div
       style="
         text-align:center;
-        margin-bottom:70px;
+        margin-bottom:40px;
       "
     >
 
@@ -872,7 +878,7 @@ em uma plataforma moderna para revendas e multi-lojas.
 
           display:block;
 
-          transform:scale(1.03);
+          transform:scale(1);
 
           border:
             1px solid rgba(255,255,255,.08);
@@ -940,11 +946,12 @@ em uma plataforma moderna para revendas e multi-lojas.
       style="
         display:grid;
 
-        grid-template-columns:
-          repeat(
-            auto-fit,
-            minmax(220px,1fr)
-          );
+grid-template-columns:
+  1.2fr
+  1fr
+  1fr
+  .9fr
+  auto;
 
         gap:18px;
       "
@@ -1104,10 +1111,21 @@ em uma plataforma moderna para revendas e multi-lojas.
   "
 >
 
-  <div
-    id="veiculos"
-    class="grid-veiculos"
-  ></div>
+<div
+  id="veiculos"
+
+  style="
+    display:grid;
+
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(320px,1fr)
+      );
+
+    gap:28px;
+  "
+></div>
 
   <div
     id="paginacao"
@@ -1245,7 +1263,7 @@ onmouseout="
 "
 
   style="
-  
+
     background:#fff;
 
     border-radius:28px;
