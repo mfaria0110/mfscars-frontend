@@ -570,7 +570,7 @@ box-shadow:
     </div>
 
     <!-- GRID -->
-  
+
     <div
       style="
 
@@ -966,25 +966,26 @@ box-shadow:
   "
 >
  
-    <div
-      style="
+<div
+  style="
 
       display:grid;
 
       align-items:center;
 
       grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(220px,260px)
-        );
+        1fr
+        1fr
+        1fr
+        1fr
+        220px;
 
       gap:12px;
 
       width:100%;
 
       "
-    >
+>
 
       <!-- MARCA -->
       <select
