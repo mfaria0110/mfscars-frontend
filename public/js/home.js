@@ -53,7 +53,16 @@ app.innerHTML = `
         color:#fff;
       "
     >
-      🚗 MFS Cars
+   
+<img
+  src="/assets/logo.png"
+
+  style="
+    height:48px;
+    display:block;
+  "
+>
+
     </div>
 
     <div
@@ -64,34 +73,87 @@ app.innerHTML = `
       "
     >
 
-      <a
-        href="#planos"
-        style="
-          color:#cbd5e1;
-          text-decoration:none;
-          font-weight:600;
-        "
-      >
-        Planos
-      </a>
+<div
+  style="
+    display:flex;
+    align-items:center;
+    gap:34px;
+  "
+>
 
-      <a
-        href="/cadastro.html"
-        style="
-          background:#2563eb;
-          color:#fff;
+  <a
+    href="#funcionalidades"
 
-          padding:14px 24px;
+    style="
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      opacity:.9;
+    "
+  >
+    Funcionalidades
+  </a>
 
-          border-radius:12px;
+  <a
+    href="#planos"
 
-          text-decoration:none;
+    style="
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      opacity:.9;
+    "
+  >
+    Planos
+  </a>
 
-          font-weight:700;
-        "
-      >
-        Cadastrar loja
-      </a>
+  <a
+    href="#marketplace"
+
+    style="
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      opacity:.9;
+    "
+  >
+    Marketplace
+  </a>
+
+  <a
+    href="#contato"
+
+    style="
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      opacity:.9;
+    "
+  >
+    Contato
+  </a>
+
+  <a
+    href="/cadastro.html"
+
+    style="
+      background:#2563eb;
+      color:#fff;
+
+      padding:14px 24px;
+
+      border-radius:12px;
+
+      text-decoration:none;
+
+      font-weight:700;
+    "
+  >
+    🏪 Cadastrar loja
+  </a>
+
+</div>
+
 
     </div>
 
@@ -110,8 +172,8 @@ app.innerHTML = `
         #172554 100%
       );
 
-    padding:
-      60px 40px 50px;
+padding:
+      40px 40px 30px;
   "
 >
 
@@ -433,11 +495,11 @@ app.innerHTML = `
 
       style="
         width:100%;
-        border-radius:28px;
+        border-radius:22px;
         display:block;
-        box-shadow:
-          0 30px 90px
-          rgba(0,0,0,.45);
+box-shadow:
+  0 40px 120px
+  rgba(37,99,235,.22);
       "
     >
 
@@ -453,7 +515,7 @@ app.innerHTML = `
   id="planos"
   style="
     background:#fff;
-    padding:90px 40px;
+    padding:70px 40px;
   "
 >
 
@@ -487,7 +549,7 @@ app.innerHTML = `
 
       <h2
         style="
-          font-size:54px;
+          font-size:42px;
           line-height:1.1;
           font-weight:900;
           color:#0f172a;
@@ -1032,8 +1094,8 @@ padding:
   style="
     max-width:1400px;
 
-    margin:
-      -80px auto 80px;
+margin:
+      0 auto 70px;
 
     background:
       rgba(255,255,255,.92);
@@ -1045,7 +1107,7 @@ padding:
       1px solid
       rgba(255,255,255,.6);
 
-    border-radius:32px;
+    border-radius:24px;
 
     padding:34px;
 
@@ -1236,7 +1298,7 @@ grid-template-columns:
     grid-template-columns:
       repeat(
         auto-fit,
-        minmax(320px,1fr)
+        minmax(240px,1fr)
       );
 
     gap:28px;
@@ -1405,7 +1467,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:240px;
+    height:180px;
 
     object-fit:cover;
 
