@@ -1597,7 +1597,7 @@ grid.innerHTML += `
 <div
   class="card"
 
-  onclick="window.abrirVeiculo(${v.id})"
+  data-id="${v.id}"
 
 onmouseover="
   this.style.transform='translateY(-8px)';
@@ -1744,7 +1744,14 @@ style="
 "
 
 
-              onclick="event.stopPropagation(); window.abrirLoja(${v.loja_id})">
+            onclick="
+  event.stopPropagation();
+
+  window.location.href=
+    '/empresa.html?id=${v.loja_id}';
+"
+
+              >
               Ver loja
             </button>
 
@@ -1753,6 +1760,22 @@ style="
         </div>
       `;
     });
+
+document
+  .querySelectorAll(".card")
+  .forEach(card=>{
+
+    card.addEventListener("click", ()=>{
+
+      const id =
+        card.dataset.id;
+
+      window.location.href =
+        `/veiculo.html?id=${id}`;
+
+    });
+
+  });
 
     renderPaginacao();
 
@@ -1835,11 +1858,18 @@ function buscar(){
 ============================== */
 
 window.abrirVeiculo = function(id){
-  window.location = `/veiculo.html?id=${id}`;
+
+  window.location.href =
+    `/veiculo.html?id=${id}`;
+
 }
 
+
 window.abrirLoja = function(lojaId){
-  window.location = `/empresa.html?id=${lojaId}`;
+
+  window.location.href =
+    `/empresa.html?id=${lojaId}`;
+
 }
 
 /* ===============================
