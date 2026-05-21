@@ -1288,7 +1288,7 @@ gap:28px;
           color:#fff;
           font-size:14px;
           font-weight:700;
-          margin-bottom:14px;
+          margin-bottom:4px;
         "
       >
         Fale conosco
@@ -1426,7 +1426,7 @@ gap:28px;
           color:#fff;
           text-decoration:none;
 
-          padding:10px 18px;
+          padding:5px 18px;
 
           border-radius:18px;
 
