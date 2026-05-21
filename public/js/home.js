@@ -275,7 +275,8 @@ padding:
     <div
       style="
         display:flex;
-        gap:18px;
+
+        gap:10px;
 
         flex-wrap:wrap;
 
@@ -291,7 +292,7 @@ padding:
 
           padding:0 34px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           background:
             linear-gradient(
@@ -328,7 +329,7 @@ padding:
 
           padding:0 34px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           background:
             linear-gradient(
@@ -358,7 +359,7 @@ padding:
     <div
       style="
         display:flex;
-        gap:18px;
+        gap:10px;
 
         flex-wrap:wrap;
       "
@@ -605,7 +606,7 @@ box-shadow:
 
           border-radius:26px;
 
-          padding:34px;
+          padding:10px;
 
           box-shadow:
             0 10px 35px
@@ -934,8 +935,8 @@ box-shadow:
 
     z-index:20;
 
-    padding:
-      0 30px 5px;
+  padding:0 30px;
+  
   "
 >
 
@@ -944,8 +945,7 @@ box-shadow:
   style="
     max-width:1400px;
 
-margin:
-      0 auto 10px;
+margin:0 auto;
 
     background:
       rgba(255,255,255,.92);
@@ -978,7 +978,7 @@ grid-template-columns:
   .9fr
   auto;
 
-        gap:18px;
+        gap:10px;
       "
     >
 
@@ -987,16 +987,16 @@ grid-template-columns:
         id="marca"
 
         style="
-          height:58px;
+          height:35px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           border:
             1px solid #e2e8f0;
 
-          padding:0 18px;
+          padding:0 12px;
 
-          font-size:16px;
+          font-size:14px;
 
           background:#fff;
         "
@@ -1014,14 +1014,14 @@ grid-template-columns:
         style="
           height:58px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           border:
             1px solid #e2e8f0;
 
-          padding:0 18px;
+          padding:0 12px;
 
-          font-size:16px;
+          font-size:14px;
 
           background:#fff;
         "
@@ -1035,14 +1035,14 @@ grid-template-columns:
         style="
           height:58px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           border:
             1px solid #e2e8f0;
 
-          padding:0 18px;
+          padding:0 12px;
 
-          font-size:16px;
+          font-size:14px;
 
           background:#fff;
         "
@@ -1055,14 +1055,14 @@ grid-template-columns:
         style="
           height:58px;
 
-          border-radius:16px;
+          border-radius:10px;
 
           border:
             1px solid #e2e8f0;
 
-          padding:0 18px;
+          padding:0 12px;
 
-          font-size:16px;
+          font-size:14px;
 
           background:#fff;
         "
@@ -1093,11 +1093,11 @@ grid-template-columns:
         style="
           height:58px;
 
-          padding:0 32px;
+          padding:0 18px;
 
           border:none;
 
-          border-radius:16px;
+          border-radius:10px;
 
           background:
             linear-gradient(
@@ -1108,7 +1108,8 @@ grid-template-columns:
 
           color:#fff;
 
-          font-size:16px;
+          font-size:14px;
+
           font-weight:700;
 
           cursor:pointer;
@@ -1290,7 +1291,7 @@ onmouseout="
 
     background:#fff;
 
-    border-radius:16px;
+    border-radius:10px;
 
     overflow:hidden;
 
