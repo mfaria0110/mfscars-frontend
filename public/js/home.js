@@ -1650,7 +1650,7 @@ onmouseout="
   class="info"
 
   style="
-    padding:18px;
+    padding: 5px 10px 7px;
 
     display:flex;
     flex-direction:column;
