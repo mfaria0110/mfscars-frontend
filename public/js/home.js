@@ -736,7 +736,7 @@ gap:28px;
 
           border-radius:26px;
 
-          padding:24px;
+          padding:10px 24px;
 
           box-shadow:
             0 10px 35px
@@ -783,8 +783,9 @@ gap:28px;
         <p
           style="
             color:#64748b;
-            line-height:1.8;
+            line-height:1.3;
             font-size:17px;
+            padding: 10px 10px;
           "
         >
           Gerencie múltiplas lojas
@@ -813,8 +814,8 @@ gap:28px;
 
         <div
           style="
-            width:72px;
-            height:72px;
+            width:58px;
+            height:58px;
 
             border-radius:22px;
 
@@ -1651,6 +1652,7 @@ onmouseout="
   style="
     padding:24px;
    margin-bottom:10px;
+  margin-top:10px;
   "
 >
 
@@ -1670,24 +1672,19 @@ onmouseout="
     font-weight:700;
     color:#0f172a;
 
-    margin-bottom:10px;
+    margin-bottom:5px;
   "
 >
 
   Ano: ${v.ano}</div>
 
-
-
-
-            <div
+  <div
   style="
     font-size:20px;
     font-weight:900;
 
     color:#16a34a;
-
-    margin:
-      16px 0;
+;
   "
 >
               R$ ${Number(v.valor).toLocaleString("pt-BR")}
