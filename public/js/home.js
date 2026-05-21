@@ -895,20 +895,20 @@ box-shadow:
   <div
     style="
       text-align:center;
-      margin-bottom:50px;
+      margin-bottom:24px;
     "
   >
 
-    <h2
+    <h3
       style="
         font-size:54px;
         color:#0f172a;
         font-weight:900;
-        margin-bottom:14px;
+        margin-bottom:8px;
       "
     >
       Encontre o veículo ideal
-    </h2>
+    </h3>
 
     <p
       style="
@@ -1143,10 +1143,9 @@ grid-template-columns:
     display:grid;
 
     grid-template-columns:
-      repeat(
-        auto-fit,
-        minmax(260px,1fr)
-      );
+      repeat(auto-fill, 320px);
+
+    justify-content:center;
 
     gap:28px;
   "
@@ -1291,7 +1290,7 @@ onmouseout="
 
     background:#fff;
 
-    border-radius:20px;
+    border-radius:16px;
 
     overflow:hidden;
 
@@ -1314,7 +1313,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:220px;
+    height:210px;
 
     object-fit:cover;
 
@@ -1372,8 +1371,11 @@ onmouseout="
 
   style="
     margin-top:18px;
+  display:block;
+margin-left:auto;
+margin-right:auto;
 
-    width:100%;
+   width:160px;
 
     height:52px;
 
