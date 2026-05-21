@@ -540,7 +540,7 @@ box-shadow:
 
       <h4
         style="
-          font-size:42px;
+          font-size:32px;
           line-height:1.1;
           font-weight:900;
           color:#0f172a;
@@ -554,7 +554,7 @@ box-shadow:
 
       <h5
         style="
-          font-size:20px;
+          font-size:15px;
           color:#64748b;
           max-width:850px;
           margin:auto;
@@ -639,7 +639,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:28px;
+            font-size:20px;
             color:#0f172a;
             margin-bottom:14px;
           "
@@ -650,7 +650,7 @@ box-shadow:
         <p
           style="
             color:#64748b;
-            line-height:1.8;
+            line-height:1.7;
             font-size:17px;
           "
         >
@@ -844,7 +844,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:28px;
+            font-size:20px;
             color:#0f172a;
             margin-bottom:14px;
           "
@@ -855,7 +855,7 @@ box-shadow:
         <p
           style="
             color:#64748b;
-            line-height:1.8;
+            line-height:1.7;
             font-size:17px;
           "
         >
