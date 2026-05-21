@@ -1635,6 +1635,13 @@ onmouseout="
 <img
   src="${foto}"
 
+  onclick="
+    event.stopPropagation();
+
+    window.location.href=
+      '/empresa.html?id=${v.loja_id}';
+  "
+
   style="
     width:100%;
 
@@ -1760,22 +1767,6 @@ style="
         </div>
       `;
     });
-
-document
-  .querySelectorAll(".card")
-  .forEach(card=>{
-
-    card.addEventListener("click", ()=>{
-
-      const id =
-        card.dataset.id;
-
-      window.location.href =
-        `/empresa.html?id=${id}`;
-
-    });
-
-  });
 
     renderPaginacao();
 
