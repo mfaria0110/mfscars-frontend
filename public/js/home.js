@@ -1024,6 +1024,13 @@ box-shadow:
         placeholder="Modelo"
 
         style="
+
+          width:100%;
+
+          min-width:0;
+
+          box-sizing:border-box;
+
           height:35px;
 
           border-radius:10px;
