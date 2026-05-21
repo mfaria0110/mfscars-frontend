@@ -577,7 +577,7 @@ display:grid;
 grid-template-columns:
   repeat(
     auto-fit,
-    minmax(220px,260px)
+    minmax(220px,220px)
   );
 
 justify-content:center;
@@ -1241,6 +1241,8 @@ gap:28px;
 
       padding:3px 15px;
 
+    border-radius:10px;
+
       display:grid;
 
       grid-template-columns:
@@ -1636,7 +1638,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:150px;
+    height:170px;
 
     object-fit:cover;
 
@@ -1716,7 +1718,7 @@ style="
 
   width:140px;
 
-  height:35px;
+  height:32px;
 
   border:none;
 
