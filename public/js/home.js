@@ -1597,7 +1597,7 @@ grid.innerHTML += `
 <div
   class="card"
 
-  data-id="${v.id}"
+ data-id="${v.loja_id}"
 
 onmouseover="
   this.style.transform='translateY(-8px)';
@@ -1771,7 +1771,7 @@ document
         card.dataset.id;
 
       window.location.href =
-        `/veiculo.html?id=${id}`;
+        `/empresa.html?id=${id}`;
 
     });
 
