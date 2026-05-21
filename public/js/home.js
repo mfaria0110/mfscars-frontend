@@ -1238,7 +1238,7 @@ gap:28px;
       max-width:1400px;
       margin:auto;
 
-      padding:14px 30px;
+      padding:3px 15px;
 
       display:grid;
 
@@ -1262,7 +1262,7 @@ gap:28px;
         src="/assets/logo.png"
         style="
           height:34px;
-          margin-bottom:12px;
+          margin-bottom:2px;
         "
       >
 
