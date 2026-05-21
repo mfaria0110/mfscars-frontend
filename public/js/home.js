@@ -570,20 +570,24 @@ box-shadow:
     </div>
 
     <!-- GRID -->
+  
     <div
       style="
-display:grid;
 
-grid-template-columns:
-  repeat(
-    auto-fit,
-    minmax(220px,220px)
-  );
+        display:grid;
 
-justify-content:center;
+        align-items:center;
 
-gap:28px;
+        grid-template-columns:
+          1fr
+          1fr
+          1fr
+          1fr
+          220px;
 
+        gap:12px;
+
+        width:100%;
       "
     >
 
@@ -1191,13 +1195,13 @@ gap:28px;
 </div>
 
 
-  <style>
+<style>
 
-@media(max-width:900px){
+@media(max-width:1100px){
 
   .busca > div{
     grid-template-columns:
-      repeat(2,1fr) !important;
+      1fr 1fr !important;
   }
 
 }
