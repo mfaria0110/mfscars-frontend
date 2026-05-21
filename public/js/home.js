@@ -902,7 +902,7 @@ box-shadow:
 
     <h3
       style="
-        font-size:54px;
+        font-size:34px;
         color:#0f172a;
         font-weight:900;
         margin-bottom:8px;
@@ -936,7 +936,7 @@ box-shadow:
     z-index:20;
 
   padding:0 30px;
-  
+
   "
 >
 
@@ -996,7 +996,7 @@ grid-template-columns:
 
           padding:0 12px;
 
-          font-size:14px;
+          font-size:12px;
 
           background:#fff;
         "
@@ -1012,7 +1012,7 @@ grid-template-columns:
         placeholder="Modelo"
 
         style="
-          height:58px;
+          height:35px;
 
           border-radius:10px;
 
@@ -1021,7 +1021,7 @@ grid-template-columns:
 
           padding:0 12px;
 
-          font-size:14px;
+          font-size:12px;
 
           background:#fff;
         "
@@ -1033,7 +1033,7 @@ grid-template-columns:
         placeholder="Cidade"
 
         style="
-          height:58px;
+          height:35px;
 
           border-radius:10px;
 
@@ -1042,7 +1042,7 @@ grid-template-columns:
 
           padding:0 12px;
 
-          font-size:14px;
+          font-size:12px;
 
           background:#fff;
         "
@@ -1053,7 +1053,7 @@ grid-template-columns:
         id="preco"
 
         style="
-          height:58px;
+          height:35px;
 
           border-radius:10px;
 
@@ -1062,7 +1062,7 @@ grid-template-columns:
 
           padding:0 12px;
 
-          font-size:14px;
+          font-size:12px;
 
           background:#fff;
         "
@@ -1091,7 +1091,7 @@ grid-template-columns:
         id="btnBuscar"
 
         style="
-          height:58px;
+          height:35px;
 
           padding:0 18px;
 
@@ -1108,7 +1108,7 @@ grid-template-columns:
 
           color:#fff;
 
-          font-size:14px;
+          font-size:13px;
 
           font-weight:700;
 
@@ -1144,7 +1144,7 @@ grid-template-columns:
     display:grid;
 
     grid-template-columns:
-      repeat(auto-fill, 320px);
+      repeat(auto-fill, 250px);
 
     justify-content:center;
 
