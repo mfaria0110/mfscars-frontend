@@ -572,15 +572,18 @@ box-shadow:
     <!-- GRID -->
     <div
       style="
-        display:grid;
+display:grid;
 
-        grid-template-columns:
-          repeat(
-            auto-fit,
-            minmax(220px,260px)
-          );
+grid-template-columns:
+  repeat(
+    auto-fit,
+    minmax(220px,260px)
+  );
 
-        gap:28px;
+justify-content:center;
+
+gap:28px;
+
       "
     >
 
@@ -594,7 +597,7 @@ box-shadow:
 
           border-radius:26px;
 
-         padding:18px;
+         padding:15px;
 
           box-shadow:
             0 10px 35px
@@ -624,7 +627,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:16px;
+            margin-bottom:15px;
           "
         >
           🚗
@@ -693,7 +696,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:16px;
+            margin-bottom:14px;
           "
         >
           👥
@@ -761,7 +764,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:24px;
+            margin-bottom:14px;
           "
         >
           🏪
@@ -828,7 +831,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:24px;
+            margin-bottom:14px;
           "
         >
           📈
@@ -968,7 +971,7 @@ box-shadow:
       grid-template-columns:
         repeat(
           auto-fit,
-          minmax(160px,1fr)
+          minmax(220px,260px)
         );
 
       gap:12px;
@@ -1266,7 +1269,7 @@ gap:28px;
       <div
         style="
           color:#cbd5e1;
-          font-size:15px;
+          font-size:12px;
           line-height:1.7;
           max-width:240px;
         "
@@ -1283,7 +1286,7 @@ gap:28px;
       <div
         style="
           color:#fff;
-          font-size:16px;
+          font-size:14px;
           font-weight:700;
           margin-bottom:14px;
         "
@@ -1295,7 +1298,7 @@ gap:28px;
         style="
           color:#cbd5e1;
           line-height:1.5;
-          font-size:13px;
+          font-size:12px;
         "
       >
         📞 (24) 99972-6811<br>
@@ -1310,9 +1313,9 @@ gap:28px;
       <div
         style="
           color:#fff;
-          font-size:16px;
+          font-size:14px;
           font-weight:700;
-          margin-bottom:14px;
+          margin-bottom:5px;
         "
       >
         Atendimento
@@ -1337,7 +1340,7 @@ gap:28px;
       <div
         style="
           color:#fff;
-          font-size:16px;
+          font-size:14px;
           font-weight:700;
           margin-bottom:14px;
         "
@@ -1447,7 +1450,7 @@ gap:28px;
 
           <div
             style="
-              font-size:18px;
+              font-size:15px;
             "
           >
             Falar no WhatsApp
