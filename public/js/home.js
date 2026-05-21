@@ -100,236 +100,355 @@ app.innerHTML = `
 </div>
 
 <!-- HERO -->
-<div
+<section
   style="
     background:
       linear-gradient(
         135deg,
         #020617 0%,
-        #0f172a 45%,
+        #081028 50%,
         #172554 100%
       );
 
-    min-height:760px;
-
-    display:flex;
-    align-items:center;
-
     padding:
-      90px 40px 70px;
-
-    color:#fff;
+      60px 40px 50px;
   "
 >
 
-  <div
-    style="
-      max-width:1400px;
-      margin:auto;
+<div
+  style="
+    max-width:1400px;
+    margin:auto;
 
-      display:grid;
+    display:grid;
 
-      grid-template-columns:
-        1fr 1.3fr;
+    grid-template-columns:
+      1fr 1.1fr;
 
-      gap:50px;
+    align-items:center;
 
-      align-items:center;
-    "
-  >
+    gap:50px;
+  "
+>
 
-    <!-- TEXTO -->
-    <div>
+  <!-- TEXTO -->
+  <div>
 
-      <div
+    <div
+      style="
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:10px;
+
+        background:
+          rgba(37,99,235,.14);
+
+        border:
+          1px solid
+          rgba(59,130,246,.28);
+
+        color:#93c5fd;
+
+        padding:
+          12px 20px;
+
+        border-radius:999px;
+
+        font-size:15px;
+        font-weight:700;
+
+        margin-bottom:30px;
+      "
+    >
+      🚀 CRM & Gestão Automotiva
+    </div>
+
+    <h1
+      style="
+        font-size:72px;
+
+        line-height:.95;
+
+        color:#fff;
+
+        font-weight:900;
+
+        margin:0 0 28px;
+      "
+    >
+      CRM e gestão
+      completa para
+      <span
         style="
-          display:inline-flex;
-          align-items:center;
-          gap:10px;
+          color:#3b82f6;
+        "
+      >
+        lojas de veículos.
+      </span>
+    </h1>
+
+    <p
+      style="
+        font-size:24px;
+
+        line-height:1.6;
+
+        color:#cbd5e1;
+
+        max-width:720px;
+
+        margin-bottom:38px;
+      "
+    >
+      Controle estoque, leads,
+      vendedores, vendas e múltiplas
+      lojas em um único sistema.
+    </p>
+
+    <!-- BOTÕES -->
+    <div
+      style="
+        display:flex;
+        gap:18px;
+
+        flex-wrap:wrap;
+
+        margin-bottom:38px;
+      "
+    >
+
+      <a
+        href="/cadastro.html"
+
+        style="
+          height:62px;
+
+          padding:0 34px;
+
+          border-radius:16px;
 
           background:
-            rgba(59,130,246,.15);
+            linear-gradient(
+              135deg,
+              #2563eb,
+              #1d4ed8
+            );
 
-          border:
-            1px solid
-            rgba(59,130,246,.25);
+          color:#fff;
 
-          padding:
-            10px 18px;
-
-          border-radius:999px;
-
-          color:#93c5fd;
-
-          font-size:14px;
-          font-weight:700;
-
-          margin-bottom:24px;
-        "
-      >
-        🚀 CRM & Gestão Automotiva
-      </div>
-
-      <h1
-        style="
-          font-size:72px;
-          line-height:1.02;
-          font-weight:900;
-
-          margin:0 0 26px;
-
-          letter-spacing:-4px;
-        "
-      >
-        CRM e gestão completa
-        para lojas de veículos.
-      </h1>
-
-      <p
-        style="
-          font-size:22px;
-          line-height:1.6;
-
-          color:#cbd5e1;
-
-          max-width:720px;
-
-          margin-bottom:36px;
-        "
-      >
-        Centralize estoque, leads, vendas e vendedores
-em uma plataforma moderna para revendas e multi-lojas.
-      </p>
-
-      <!-- BOTÕES -->
-      <div
-        style="
           display:flex;
-          gap:18px;
-          flex-wrap:wrap;
+          align-items:center;
+          justify-content:center;
 
-          margin-bottom:30px;
+          text-decoration:none;
+
+          font-size:18px;
+          font-weight:800;
+
+          box-shadow:
+            0 20px 40px
+            rgba(37,99,235,.28);
         "
       >
+        🚀 Testar grátis
+      </a>
 
-        <a
-          href="/cadastro.html"
-          style="
-            background:#2563eb;
-            color:#fff;
+      <a
+        href="https://wa.me/5524999726811"
+        target="_blank"
 
-            padding:18px 30px;
-
-            border-radius:14px;
-
-            text-decoration:none;
-
-            font-size:18px;
-            font-weight:700;
-
-            box-shadow:
-              0 10px 30px
-              rgba(37,99,235,.35);
-          "
-        >
-          🚀 Testar grátis
-        </a>
-
-        <a
-          href="https://wa.me/5524999726811"
-          target="_blank"
-          style="
-            background:#16a34a;
-            color:#fff;
-
-            padding:18px 30px;
-
-            border-radius:14px;
-
-            text-decoration:none;
-
-            font-size:18px;
-            font-weight:700;
-          "
-        >
-          💬 WhatsApp
-        </a>
-
-      </div>
-
-      <!-- FOUNDERS -->
-      <div
         style="
+          height:62px;
+
+          padding:0 34px;
+
+          border-radius:16px;
+
           background:
-            rgba(34,197,94,.12);
+            linear-gradient(
+              135deg,
+              #16a34a,
+              #15803d
+            );
 
-          border:
-            1px solid
-            rgba(34,197,94,.25);
+          color:#fff;
 
-          padding:18px 22px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
 
-          border-radius:18px;
+          text-decoration:none;
 
-          display:inline-block;
+          font-size:18px;
+          font-weight:800;
         "
       >
-
-        <div
-          style="
-            color:#4ade80;
-            font-size:15px;
-            font-weight:800;
-
-            margin-bottom:6px;
-          "
-        >
-          🔥 Oferta Founders
-        </div>
-
-        <div
-          style="
-            font-size:18px;
-            color:#fff;
-            font-weight:700;
-          "
-        >
-          30% OFF vitalício
-          nos planos pagos.
-        </div>
-
-      </div>
+        💬 Falar no WhatsApp
+      </a>
 
     </div>
 
-<!-- MOCKUP -->
-<div
-  style="
-    overflow:hidden;
-  "
->
+    <!-- MINI FEATURES -->
+    <div
+      style="
+        display:flex;
+        gap:18px;
 
-<img
-  src="/assets/dashboard-preview.png"
+        flex-wrap:wrap;
+      "
+    >
 
-  style="
-    width:100%;
-    transform:scale(1.03);
-    transform-origin:center;
-    border:
-      1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    box-shadow:
-      0 40px 90px
-      rgba(0,0,0,.45);
-  "
-/>
+      <div
+        style="
+          background:
+            rgba(255,255,255,.06);
+
+          border:
+            1px solid
+            rgba(255,255,255,.08);
+
+          border-radius:18px;
+
+          padding:18px 22px;
+
+          color:#fff;
+
+          min-width:180px;
+        "
+      >
+        <div
+          style="
+            font-size:14px;
+            opacity:.7;
+
+            margin-bottom:8px;
+          "
+        >
+          📦 Estoque
+        </div>
+
+        <div
+          style="
+            font-size:18px;
+            font-weight:800;
+          "
+        >
+          Gestão completa
+        </div>
+      </div>
+
+      <div
+        style="
+          background:
+            rgba(255,255,255,.06);
+
+          border:
+            1px solid
+            rgba(255,255,255,.08);
+
+          border-radius:18px;
+
+          padding:18px 22px;
+
+          color:#fff;
+
+          min-width:180px;
+        "
+      >
+        <div
+          style="
+            font-size:14px;
+            opacity:.7;
+
+            margin-bottom:8px;
+          "
+        >
+          👥 Leads
+        </div>
+
+        <div
+          style="
+            font-size:18px;
+            font-weight:800;
+          "
+        >
+          Centralização total
+        </div>
+      </div>
+
+      <div
+        style="
+          background:
+            rgba(255,255,255,.06);
+
+          border:
+            1px solid
+            rgba(255,255,255,.08);
+
+          border-radius:18px;
+
+          padding:18px 22px;
+
+          color:#fff;
+
+          min-width:180px;
+        "
+      >
+        <div
+          style="
+            font-size:14px;
+            opacity:.7;
+
+            margin-bottom:8px;
+          "
+        >
+          🏪 Multi-lojas
+        </div>
+
+        <div
+          style="
+            font-size:18px;
+            font-weight:800;
+          "
+        >
+          Tudo em um lugar
+        </div>
+      </div>
 
     </div>
 
   </div>
 
+  <!-- DASHBOARD -->
+  <div
+    style="
+      overflow:hidden;
+    "
+  >
+
+    <img
+      src="/assets/dashboard-preview.png"
+
+      style="
+        width:100%;
+
+        border-radius:28px;
+
+        display:block;
+
+        box-shadow:
+          0 30px 90px
+          rgba(0,0,0,.45);
+      "
+    >
+
+  </div>
+
 </div>
+
+</section>
 
 
 <!-- BENEFÍCIOS -->
