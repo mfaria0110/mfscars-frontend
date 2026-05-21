@@ -227,19 +227,21 @@ padding:
       🚀 CRM & Gestão Automotiva
     </div>
 
-    <h1
-      style="
-        font-size:64px;
+<h1
+  style="
+    font-size:52px;
 
-        line-height:1.05;
+    line-height:1.05;
 
-        color:#fff;
+    color:#fff;
 
-        font-weight:900;
+    font-weight:900;
 
-        margin:0 0 28px;
-      "
-    >
+    margin:0 0 28px;
+
+    max-width:720px;
+  "
+>
       CRM e gestão completa
       para
       <span
@@ -873,183 +875,62 @@ box-shadow:
 
 </div>
 
-<!-- SHOWCASE -->
+<!-- MARKETPLACE -->
+<section
+  id="marketplace"
+
+  style="
+    background:#fff;
+    padding:80px 30px;
+  "
+>
+
 <div
   style="
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #f8fafc 100%
-      );
-
-padding:
-      70px 40px;
+    max-width:1400px;
+    margin:auto;
   "
 >
 
   <div
     style="
-      max-width:1400px;
-      margin:auto;
+      text-align:center;
+      margin-bottom:50px;
     "
   >
 
-    <!-- TÍTULO -->
-    <div
+    <h2
       style="
-        text-align:center;
-        margin-bottom:40px;
+        font-size:54px;
+        color:#0f172a;
+        font-weight:900;
+        margin-bottom:14px;
       "
     >
+      Encontre o veículo ideal
+    </h2>
 
-      <div
-        style="
-          color:#2563eb;
-          font-size:14px;
-          font-weight:800;
-
-          letter-spacing:1px;
-          text-transform:uppercase;
-
-          margin-bottom:14px;
-        "
-      >
-        Plataforma Moderna
-      </div>
-
-      <h3
-        style="
-          font-size:58px;
-          line-height:1.1;
-          font-weight:900;
-
-          color:#0f172a;
-
-          margin:0 0 20px;
-        "
-      >
-        Encontreo o veículo ideal
-        em ação
-      </h3>
-
-      <p
-        style="
-          font-size:20px;
-          color:#64748b;
-
-          max-width:850px;
-          margin:auto;
-
-          line-height:1.7;
-        "
-      >
-        Milhares de veículos das melhores lojas parceiras em um so lugar.
-      </p>
-
-    </div>
-
-      <!-- CARD -->
-      <div
-        style="
-          position:relative;
-
-          background:
-            linear-gradient(
-              135deg,
-              #0f172a,
-              #111827
-            );
-
-          border-radius:36px;
-
-          padding:28px;
-
-          overflow:hidden;
-
-          box-shadow:
-            0 40px 120px
-            rgba(15,23,42,.25);
-        "
-      >
-
-        <!-- TOPBAR -->
-        <div
-          style="
-            display:flex;
-            gap:10px;
-
-            margin-bottom:22px;
-          "
-        >
-
-          <div
-            style="
-              width:14px;
-              height:14px;
-
-              border-radius:999px;
-              background:#ef4444;
-            "
-          ></div>
-
-          <div
-            style="
-              width:14px;
-              height:14px;
-
-              border-radius:999px;
-              background:#f59e0b;
-            "
-          ></div>
-
-          <div
-            style="
-              width:14px;
-              height:14px;
-
-              border-radius:999px;
-              background:#22c55e;
-            "
-          ></div>
-
-        </div>
-
-        <!-- PRINT -->
-        <img
-          src="/assets/dashboard-preview.png"
-          style="
-          width:100%;
-
-          border-radius:22px;
-
-          display:block;
-
-          transform:scale(1);
-
-          border:
-            1px solid rgba(255,255,255,.08);
-
-          box-shadow:
-            0 30px 80px
-            rgba(0,0,0,.45);
-        "
-
-        />
-
-      </div>
-
-    </div>
+    <p
+      style="
+        font-size:20px;
+        color:#64748b;
+      "
+    >
+      Milhares de veículos das melhores lojas parceiras reunidos em um só lugar.
+    </p>
 
   </div>
 
 </div>
 
+</section>
+
+
 <div
   style="
     position:relative;
 
-    margin-top:-90px;
+    margin-top:0px;
 
     z-index:20;
 
@@ -1264,7 +1145,7 @@ grid-template-columns:
     grid-template-columns:
       repeat(
         auto-fit,
-        minmax(220px,1fr)
+        minmax(260px,1fr)
       );
 
     gap:28px;
@@ -1410,7 +1291,7 @@ onmouseout="
 
     background:#fff;
 
-    border-radius:28px;
+    border-radius:20px;
 
     overflow:hidden;
 
@@ -1433,7 +1314,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:160px;
+    height:220px;
 
     object-fit:cover;
 
@@ -1466,7 +1347,7 @@ onmouseout="
 
             <div
   style="
-    font-size:32px;
+    font-size:20px;
     font-weight:900;
 
     color:#16a34a;
