@@ -1655,7 +1655,7 @@ onmouseout="
     display:flex;
     flex-direction:column;
 
-    min-height:250px;
+    min-height:180px;
   "
 >
 
