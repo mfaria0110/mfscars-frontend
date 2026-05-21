@@ -668,7 +668,7 @@ gap:28px;
 
           border-radius:26px;
 
-          padding:24px;
+          padding:10px 24px;
 
           box-shadow:
             0 10px 35px
@@ -804,7 +804,7 @@ gap:28px;
 
           border-radius:26px;
 
-          padding:24px;
+          padding:10px 24px;
 
           box-shadow:
             0 10px 35px
