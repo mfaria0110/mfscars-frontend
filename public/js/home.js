@@ -433,11 +433,8 @@ app.innerHTML = `
 
       style="
         width:100%;
-
         border-radius:28px;
-
         display:block;
-
         box-shadow:
           0 30px 90px
           rgba(0,0,0,.45);
