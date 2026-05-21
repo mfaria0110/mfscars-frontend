@@ -229,9 +229,9 @@ padding:
 
     <h1
       style="
-        font-size:72px;
+        font-size:64px;
 
-        line-height:.95;
+        line-height:1.05;
 
         color:#fff;
 
@@ -240,8 +240,8 @@ padding:
         margin:0 0 28px;
       "
     >
-      CRM e gestão
-      completa para
+      CRM e gestão completa
+      para
       <span
         style="
           color:#3b82f6;
@@ -918,7 +918,7 @@ padding:
         Plataforma Moderna
       </div>
 
-      <h2
+      <h3
         style="
           font-size:58px;
           line-height:1.1;
@@ -929,9 +929,9 @@ padding:
           margin:0 0 20px;
         "
       >
-        Veja o MFS Cars
+        Encontreo o veículo ideal
         em ação
-      </h2>
+      </h3>
 
       <p
         style="
@@ -944,41 +944,10 @@ padding:
           line-height:1.7;
         "
       >
-        Dashboard moderno,
-        controle comercial,
-        leads e gestão completa
-        para lojas de veículos.
+        Milhares de veículos das melhores lojas parceiras em um so lugar.
       </p>
 
     </div>
-
-    <!-- MOCKUP -->
-    <div
-      style="
-        position:relative;
-      "
-    >
-
-      <!-- GLOW -->
-      <div
-        style="
-          position:absolute;
-
-          width:500px;
-          height:500px;
-
-          background:
-            rgba(37,99,235,.18);
-
-          filter:blur(120px);
-
-          top:50%;
-          left:50%;
-
-          transform:
-            translate(-50%,-50%);
-        "
-      ></div>
 
       <!-- CARD -->
       <div
