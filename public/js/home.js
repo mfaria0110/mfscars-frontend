@@ -1333,7 +1333,7 @@ onmouseout="
 
             <div
   style="
-    font-size:24px;
+    font-size:15px;
     font-weight:700;
     color:#0f172a;
 
@@ -1342,7 +1342,19 @@ onmouseout="
 >
   ${v.marca} ${v.modelo}</div>
 
-            <div class="ano">Ano ${v.ano}</div>
+   <div style="
+    font-size:15px;
+    font-weight:700;
+    color:#0f172a;
+
+    margin-bottom:10px;
+  "
+>
+
+            Ano: ${v.ano}</div>
+
+
+
 
             <div
   style="
@@ -1370,19 +1382,15 @@ onmouseout="
   class="btn-loja"
 
   style="
-    margin-top:18px;
+  margin-top:10px;
   display:block;
-margin-left:auto;
-margin-right:auto;
+  margin-left:auto;
+  margin-right:auto;
 
    width:160px;
-
-    height:52px;
-
+    height:35px;
     border:none;
-
     border-radius:14px;
-
     background:
       linear-gradient(
         135deg,
@@ -1392,7 +1400,7 @@ margin-right:auto;
 
     color:#fff;
 
-    font-size:16px;
+    font-size:15px;
     font-weight:700;
 
     cursor:pointer;
