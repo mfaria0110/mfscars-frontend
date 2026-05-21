@@ -229,7 +229,7 @@ padding:
 
 <h1
   style="
-    font-size:52px;
+    font-size:42px;
 
     line-height:1.05;
 
@@ -517,7 +517,7 @@ box-shadow:
   id="planos"
   style="
     background:#fff;
-    padding:70px 40px;
+    padding:40px 40px;
   "
 >
 
@@ -532,7 +532,7 @@ box-shadow:
     <div
       style="
         text-align:center;
-        margin-bottom:60px;
+        margin-bottom:30px;
       "
     >
 
@@ -549,7 +549,7 @@ box-shadow:
         Plataforma Completa
       </div>
 
-      <h2
+      <h3
         style="
           font-size:42px;
           line-height:1.1;
@@ -561,7 +561,7 @@ box-shadow:
       >
         Tudo que sua loja precisa
         em um único sistema.
-      </h2>
+      </h3>
 
       <p
         style="
@@ -881,7 +881,7 @@ box-shadow:
 
   style="
     background:#fff;
-    padding:80px 30px;
+    padding:5px 30px;
   "
 >
 
@@ -935,7 +935,7 @@ box-shadow:
     z-index:20;
 
     padding:
-      0 30px 80px;
+      0 30px 5px;
   "
 >
 
@@ -945,7 +945,7 @@ box-shadow:
     max-width:1400px;
 
 margin:
-      0 auto 70px;
+      0 auto 10px;
 
     background:
       rgba(255,255,255,.92);
