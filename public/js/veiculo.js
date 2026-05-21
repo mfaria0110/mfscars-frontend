@@ -140,7 +140,7 @@ app.innerHTML = `
 
           style="
             width:100%;
-            height:620px;
+            height:420px;
 
             object-fit:cover;
 
@@ -193,11 +193,11 @@ app.innerHTML = `
             Veículo disponível
           </div>
 
-          <h1
+          <h3
             id="titulo"
 
             style="
-              font-size:56px;
+              font-size:35px;
               line-height:1.05;
 
               color:#0f172a;
@@ -208,18 +208,18 @@ app.innerHTML = `
             "
           >
             Carregando...
-          </h1>
+          </h3>
 
           <div
             id="valor"
 
             style="
-              font-size:52px;
+              font-size:40px;
               font-weight:900;
 
               color:#16a34a;
 
-              margin-bottom:34px;
+              margin-bottom:14px;
             "
           ></div>
 
