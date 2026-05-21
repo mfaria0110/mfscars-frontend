@@ -1076,16 +1076,13 @@ margin:
       1px solid
       rgba(255,255,255,.6);
 
-    border-radius:24px;
+    border-radius:18px;
 
     padding:34px;
 
-    box-shadow:
-      0 25px 80px
-      rgba(15,23,42,.12);
-
-    position:relative;
-    z-index:20;
+box-shadow:
+  0 4px 14px
+  rgba(15,23,42,.06);
   "
 >
  
@@ -1267,7 +1264,7 @@ grid-template-columns:
     grid-template-columns:
       repeat(
         auto-fit,
-        minmax(240px,1fr)
+        minmax(220px,1fr)
       );
 
     gap:28px;
@@ -1436,13 +1433,13 @@ onmouseout="
   style="
     width:100%;
 
-    height:180px;
+    height:160px;
 
     object-fit:cover;
 
     display:block;
 
-    transition:.4s;
+    transition:.2s;
   "
 >
 
@@ -1457,7 +1454,7 @@ onmouseout="
             <div
   style="
     font-size:24px;
-    font-weight:800;
+    font-weight:700;
     color:#0f172a;
 
     margin-bottom:10px;
