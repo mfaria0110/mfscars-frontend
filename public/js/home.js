@@ -882,7 +882,8 @@ box-shadow:
 
   style="
     background:#fff;
-    padding:5px 30px;
+
+    padding:0 30px 6px;
   "
 >
 
@@ -896,13 +897,13 @@ box-shadow:
   <div
     style="
       text-align:center;
-      margin-bottom:24px;
+      margin-bottom:10px;
     "
   >
 
     <h3
       style="
-        font-size:34px;
+        font-size:28px;
         color:#0f172a;
         font-weight:900;
         margin-bottom:8px;
@@ -913,7 +914,7 @@ box-shadow:
 
     <p
       style="
-        font-size:20px;
+        font-size:16px;
         color:#64748b;
       "
     >
@@ -967,7 +968,7 @@ margin:0 auto;
 box-shadow:
   0 2px 10px
   rgba(15,23,42,.05);
-  
+
   "
 >
  
@@ -1395,12 +1396,14 @@ onmouseout="
 
   style="
     padding:24px;
+  margin-bottom:10px;
+  margin-bottom:10px;
   "
 >
 
             <div
   style="
-    font-size:15px;
+    font-size:14px;
     font-weight:700;
     color:#0f172a;
 
@@ -1418,7 +1421,7 @@ onmouseout="
   "
 >
 
-            Ano: ${v.ano}</div>
+  Ano: ${v.ano}</div>
 
 
 
