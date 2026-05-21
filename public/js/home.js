@@ -631,7 +631,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:28px;
+            font-size:22px;
             color:#0f172a;
             margin-bottom:14px;
           "
@@ -914,8 +914,6 @@ box-shadow:
 
 </section>
 
-
-<div
 <div
   style="
     position:relative;
