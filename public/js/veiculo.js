@@ -11,109 +11,551 @@ app.classList.add("veiculo-page");
 ============================== */
 
 app.innerHTML = `
-<div class="header">
-  <div>🚗 MFS Cars Marketplace</div>
 
-  <button
-    id="btnVoltar"
-    class="btn-voltar"
+<!-- HEADER -->
+<div
+  style="
+    position:sticky;
+    top:0;
+
+    z-index:999;
+
+    background:
+      rgba(255,255,255,.82);
+
+    backdrop-filter:
+      blur(18px);
+
+    border-bottom:
+      1px solid #e2e8f0;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:22px 30px;
+    "
   >
-    ← Voltar
-  </button>
-</div>
-
-<div class="veiculo-container">
-
-  <div>
-
-    <img
-      id="fotoPrincipal"
-      class="foto-principal"
-    >
 
     <div
-      id="thumbs"
-      class="thumbs"
-    ></div>
+      style="
+        font-size:34px;
+        font-weight:900;
+
+        color:#0f172a;
+      "
+    >
+      🚗 MFS Cars
+    </div>
+
+    <button
+      id="btnVoltar"
+
+      style="
+        height:52px;
+
+        padding:0 22px;
+
+        border:none;
+
+        border-radius:14px;
+
+        background:#0f172a;
+
+        color:#fff;
+
+        font-size:16px;
+        font-weight:700;
+
+        cursor:pointer;
+      "
+    >
+      ← Voltar
+    </button>
 
   </div>
 
-  <div class="veiculo-info">
+</div>
 
-    <h2 id="titulo">
-      Carregando...
-    </h2>
+<!-- PAGE -->
+<div
+  style="
+    background:
+      linear-gradient(
+        180deg,
+        #f8fafc 0%,
+        #ffffff 100%
+      );
 
+    min-height:100vh;
+
+    padding:50px 30px 90px;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+    "
+  >
+
+    <!-- CARD -->
     <div
-      id="valor"
-      class="valor"
-    ></div>
+      style="
+        background:#fff;
 
-    <div class="ficha">
+        border-radius:36px;
 
-      <p id="ano"></p>
+        overflow:hidden;
 
-      <p id="km"></p>
+        box-shadow:
+          0 30px 100px
+          rgba(15,23,42,.10);
 
-      <p id="comb"></p>
+        display:grid;
 
-      <p id="cambio"></p>
+        grid-template-columns:
+          1.15fr 1fr;
+      "
+    >
 
-      <p id="cor"></p>
+      <!-- GALERIA -->
+      <div
+        style="
+          background:#0f172a;
+          padding:24px;
+        "
+      >
+
+        <img
+          id="fotoPrincipal"
+
+          style="
+            width:100%;
+            height:620px;
+
+            object-fit:cover;
+
+            border-radius:26px;
+
+            display:block;
+          "
+        >
+
+        <div
+          id="thumbs"
+
+          style="
+            display:flex;
+            gap:14px;
+
+            margin-top:18px;
+
+            overflow:auto;
+          "
+        ></div>
+
+      </div>
+
+      <!-- INFO -->
+      <div
+        style="
+          padding:46px;
+
+          display:flex;
+          flex-direction:column;
+          justify-content:space-between;
+        "
+      >
+
+        <div>
+
+          <div
+            style="
+              color:#2563eb;
+
+              font-size:14px;
+              font-weight:800;
+
+              text-transform:uppercase;
+
+              margin-bottom:16px;
+            "
+          >
+            Veículo disponível
+          </div>
+
+          <h1
+            id="titulo"
+
+            style="
+              font-size:56px;
+              line-height:1.05;
+
+              color:#0f172a;
+
+              margin:0 0 24px;
+
+              font-weight:900;
+            "
+          >
+            Carregando...
+          </h1>
+
+          <div
+            id="valor"
+
+            style="
+              font-size:52px;
+              font-weight:900;
+
+              color:#16a34a;
+
+              margin-bottom:34px;
+            "
+          ></div>
+
+          <!-- GRID -->
+          <div
+            style="
+              display:grid;
+
+              grid-template-columns:
+                repeat(2,1fr);
+
+              gap:18px;
+
+              margin-bottom:40px;
+            "
+          >
+
+            <div
+              id="ano"
+
+              style="
+                background:#f8fafc;
+
+                border-radius:20px;
+
+                padding:20px;
+
+                font-size:17px;
+
+                color:#0f172a;
+              "
+            ></div>
+
+            <div
+              id="km"
+
+              style="
+                background:#f8fafc;
+
+                border-radius:20px;
+
+                padding:20px;
+
+                font-size:17px;
+
+                color:#0f172a;
+              "
+            ></div>
+
+            <div
+              id="comb"
+
+              style="
+                background:#f8fafc;
+
+                border-radius:20px;
+
+                padding:20px;
+
+                font-size:17px;
+
+                color:#0f172a;
+              "
+            ></div>
+
+            <div
+              id="cambio"
+
+              style="
+                background:#f8fafc;
+
+                border-radius:20px;
+
+                padding:20px;
+
+                font-size:17px;
+
+                color:#0f172a;
+              "
+            ></div>
+
+          </div>
+
+          <!-- LOJA -->
+          <div
+            style="
+              background:#f8fafc;
+
+              border-radius:24px;
+
+              padding:24px;
+
+              margin-bottom:34px;
+            "
+          >
+
+            <div
+              style="
+                font-size:14px;
+                color:#64748b;
+
+                margin-bottom:10px;
+              "
+            >
+              Loja
+            </div>
+
+            <div
+              id="loja"
+
+              style="
+                font-size:26px;
+                font-weight:800;
+
+                color:#0f172a;
+
+                margin-bottom:12px;
+              "
+            ></div>
+
+            <div
+              id="telefone"
+
+              style="
+                font-size:18px;
+                color:#2563eb;
+              "
+            ></div>
+
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div
+          style="
+            display:flex;
+            gap:18px;
+          "
+        >
+
+          <button
+            id="whatsapp"
+
+            style="
+              flex:1;
+
+              height:68px;
+
+              border:none;
+
+              border-radius:18px;
+
+              background:
+                linear-gradient(
+                  135deg,
+                  #16a34a,
+                  #15803d
+                );
+
+              color:#fff;
+
+              font-size:18px;
+              font-weight:800;
+
+              cursor:pointer;
+
+              box-shadow:
+                0 20px 40px
+                rgba(22,163,74,.25);
+            "
+          >
+            💬 WhatsApp
+          </button>
+
+          <button
+            id="interesse"
+
+            style="
+              flex:1;
+
+              height:68px;
+
+              border:none;
+
+              border-radius:18px;
+
+              background:
+                linear-gradient(
+                  135deg,
+                  #2563eb,
+                  #1d4ed8
+                );
+
+              color:#fff;
+
+              font-size:18px;
+              font-weight:800;
+
+              cursor:pointer;
+
+              box-shadow:
+                0 20px 40px
+                rgba(37,99,235,.25);
+            "
+          >
+            🚀 Tenho interesse
+          </button>
+
+        </div>
+
+      </div>
 
     </div>
 
-    <h3>Loja</h3>
+    <!-- DESCRIÇÃO -->
+    <div
+      style="
+        background:#fff;
 
-    <p id="loja"></p>
+        border-radius:32px;
 
-    <p id="telefone"></p>
+        padding:42px;
 
-    <button
-      id="whatsapp"
-      class="botao"
+        margin-top:34px;
+
+        box-shadow:
+          0 20px 60px
+          rgba(15,23,42,.06);
+      "
     >
-      Falar no WhatsApp
-    </button>
 
-    <button
-      id="interesse"
-      class="botao2"
+      <h2
+        style="
+          font-size:36px;
+          color:#0f172a;
+
+          margin-bottom:24px;
+        "
+      >
+        Descrição
+      </h2>
+
+      <p
+        id="descricao"
+
+        style="
+          color:#475569;
+
+          line-height:1.9;
+
+          font-size:18px;
+        "
+      ></p>
+
+    </div>
+
+    <!-- OPCIONAIS -->
+    <div
+      style="
+        background:#fff;
+
+        border-radius:32px;
+
+        padding:42px;
+
+        margin-top:34px;
+
+        box-shadow:
+          0 20px 60px
+          rgba(15,23,42,.06);
+      "
     >
-      Tenho interesse
-    </button>
+
+      <h2
+        style="
+          font-size:36px;
+          color:#0f172a;
+
+          margin-bottom:24px;
+        "
+      >
+        Opcionais
+      </h2>
+
+      <ul
+        id="listaOpcionais"
+
+        style="
+          display:grid;
+
+          grid-template-columns:
+            repeat(auto-fit,minmax(260px,1fr));
+
+          gap:18px;
+
+          padding:0;
+
+          list-style:none;
+        "
+      ></ul>
+
+    </div>
+
+    <!-- SIMILARES -->
+    <div
+      class="similares section"
+
+      style="
+        margin-top:40px;
+      "
+    >
+
+      <h2
+        style="
+          font-size:38px;
+          margin-bottom:28px;
+          color:#0f172a;
+        "
+      >
+        Veículos semelhantes
+      </h2>
+
+      <div
+        id="similares"
+        class="veiculo-grid"
+      ></div>
+
+    </div>
 
   </div>
 
 </div>
 
-<div class="descricao section">
-
-  <h2>Descrição</h2>
-
-  <p id="descricao"></p>
-
-</div>
-
-<div class="opcionais section">
-
-  <h2>Opcionais</h2>
-
-  <ul id="listaOpcionais"></ul>
-
-</div>
-
-<div class="similares section">
-
-  <h2>Veículos semelhantes</h2>
-
-  <div
-    id="similares"
-    class="veiculo-grid"
-  ></div>
-
-</div>
 `;
+
 
 /* ===============================
    🔍 PARAMS

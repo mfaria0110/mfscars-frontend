@@ -691,22 +691,17 @@ em uma plataforma moderna para revendas e multi-lojas.
 
 <!-- SHOWCASE -->
 <div
-style="
-  width:100%;
+  style="
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8fafc 100%
+      );
 
-  border-radius:22px;
-
-  display:block;
-
-  transform:scale(1.03);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  box-shadow:
-    0 30px 80px
-    rgba(0,0,0,.45);
-"
+    padding:
+      120px 40px;
+  "
 >
 
   <div
@@ -871,12 +866,22 @@ style="
         <img
           src="/assets/dashboard-preview.png"
           style="
-            width:100%;
+          width:100%;
 
-            border-radius:22px;
+          border-radius:22px;
 
-            display:block;
-          "
+          display:block;
+
+          transform:scale(1.03);
+
+          border:
+            1px solid rgba(255,255,255,.08);
+
+          box-shadow:
+            0 30px 80px
+            rgba(0,0,0,.45);
+        "
+
         />
 
       </div>
@@ -888,7 +893,6 @@ style="
 </div>
 
 <div
-  class="hero"
   style="
     position:relative;
 
@@ -932,9 +936,6 @@ style="
   "
 >
  
-
-  >
-
     <div
       style="
         display:grid;
@@ -1120,7 +1121,7 @@ style="
 
 `;
 
- 
+
 /* ===============================
    🔘 EVENTOS
 ============================== */
@@ -1224,22 +1225,94 @@ const res = await requestPublic(`/public/veiculos?${params.toString()}`);
         )
       : `${API_URL}/uploads/sem-foto.jpg`;
 
-      grid.innerHTML += `
-        <div class="card" onclick="window.abrirVeiculo(${v.id})">
+grid.innerHTML += `
 
-          <img src="${foto}">
+<div
+  class="card"
 
-<div class="overlay">
-  Ver detalhes do veículo - Clique na foto
-</div>
+  onclick="window.abrirVeiculo(${v.id})"
 
-          <div class="info">
+onmouseover="
+  this.style.transform='translateY(-8px)';
+  this.style.boxShadow='0 30px 70px rgba(15,23,42,.14)';
+  this.querySelector('img').style.transform='scale(1.05)';
+"
 
-            <div><strong>${v.marca} ${v.modelo}</strong></div>
+onmouseout="
+  this.style.transform='translateY(0)';
+  this.style.boxShadow='0 15px 40px rgba(15,23,42,.06)';
+  this.querySelector('img').style.transform='scale(1)';
+"
+
+  style="
+  
+    background:#fff;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:
+      1px solid #e2e8f0;
+
+    box-shadow:
+      0 15px 40px
+      rgba(15,23,42,.06);
+
+    transition:.3s;
+
+    cursor:pointer;
+  "
+>
+
+<img
+  src="${foto}"
+
+  style="
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.4s;
+  "
+>
+
+<div
+  class="info"
+
+  style="
+    padding:24px;
+  "
+>
+
+            <div
+  style="
+    font-size:24px;
+    font-weight:800;
+    color:#0f172a;
+
+    margin-bottom:10px;
+  "
+>
+  ${v.marca} ${v.modelo}</div>
 
             <div class="ano">Ano ${v.ano}</div>
 
-            <div class="valor">
+            <div
+  style="
+    font-size:32px;
+    font-weight:900;
+
+    color:#16a34a;
+
+    margin:
+      16px 0;
+  "
+>
               R$ ${Number(v.valor).toLocaleString("pt-BR")}
             </div>
 
@@ -1251,7 +1324,34 @@ const res = await requestPublic(`/public/veiculos?${params.toString()}`);
               📍 ${v.cidade || ''} / ${v.estado || ''}
             </div>
 
-            <button class="btn-loja"
+<button
+  class="btn-loja"
+
+  style="
+    margin-top:18px;
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+      );
+
+    color:#fff;
+
+    font-size:16px;
+    font-weight:700;
+
+    cursor:pointer;
+  "
               onclick="event.stopPropagation(); window.abrirLoja(${v.loja_id})">
               Ver loja
             </button>
