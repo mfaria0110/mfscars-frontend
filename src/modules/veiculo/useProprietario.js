@@ -23,8 +23,8 @@ const empresaId =
 
   const { temPermissao } = usePermissao()
 
-  const podeVisualizar = temPermissao("proprietario.visualizar")
-  const podeEditar = temPermissao("proprietario.editar")
+  const podeVisualizar = temPermissao("veiculo.visualizar")
+  const podeEditar = temPermissao("veiculo.editar")
 
   const [form, setForm] = useState({
     nome: "",
@@ -66,12 +66,6 @@ const empresaId =
   }, [veiculoId, lojaId, podeVisualizar])
 
   function handleChange(e) {
-    if (!podeEditar) {
-      toast.error(
-        "Sem permissão para editar proprietário"
-      )
-      return
-    }
 
     const { name, value } = e.target
 
@@ -172,4 +166,5 @@ const empresaId =
     salvar,
     excluir
   }
+
 }

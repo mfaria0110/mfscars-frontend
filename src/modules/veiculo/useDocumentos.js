@@ -23,8 +23,8 @@ const empresaId =
 
   const { temPermissao } = usePermissao()
 
-  const podeVisualizar = temPermissao("documento.visualizar")
-  const podeEditar = temPermissao("documento.editar")
+  const podeVisualizar = temPermissao("veiculo.visualizar")
+  const podeEditar = temPermissao("veiculo.editar")
 
   const [lista, setLista] = useState([])
   const [file, setFile] = useState(null)
@@ -62,13 +62,7 @@ const empresaId =
   }
 
   async function upload(veiculoId) {
-    if (!podeEditar) {
-      toast.error(
-        "Sem permissão para enviar documentos"
-      )
-      return
-    }
-
+ 
     if (!file || !veiculoId) {
       toast.error("Selecione um arquivo")
       return
@@ -119,4 +113,5 @@ const empresaId =
     upload,
     carregar
   }
+
 }
