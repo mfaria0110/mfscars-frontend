@@ -1636,7 +1636,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:200px;
+    height:170px;
 
     object-fit:cover;
 
@@ -1650,19 +1650,22 @@ onmouseout="
   class="info"
 
   style="
-    padding:24px;
-   margin-bottom:10px;
-  margin-top:10px;
+    padding:18px;
+
+    display:flex;
+    flex-direction:column;
+
+    min-height:250px;
   "
 >
 
-            <div
+  <div
   style="
     font-size:14px;
     font-weight:700;
     color:#0f172a;
 
-    margin-bottom:10px;
+    margin-bottom:6px;
   "
 >
   ${v.marca} ${v.modelo}</div>
@@ -1676,7 +1679,9 @@ onmouseout="
   "
 >
 
-  Ano: ${v.ano}</div>
+  Ano: ${v.ano || "-"}
+
+  </div>
 
   <div
   style="
@@ -1701,30 +1706,42 @@ onmouseout="
 <button
   class="btn-loja"
 
-  style="
-  margin-top:10px;
-  display:block;
+style="
+  margin-top:auto;
+
   margin-left:auto;
   margin-right:auto;
 
-   width:160px;
-    height:35px;
-    border:none;
-    border-radius:14px;
-    background:
-      linear-gradient(
-        135deg,
-        #2563eb,
-        #1d4ed8
-      );
+  margin-bottom:15px;
 
-    color:#fff;
+  width:140px;
 
-    font-size:13px;
-    font-weight:700;
+  height:38px;
 
-    cursor:pointer;
-  "
+  border:none;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color:#fff;
+
+  font-size:13px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+"
+
+
               onclick="event.stopPropagation(); window.abrirLoja(${v.loja_id})">
               Ver loja
             </button>
