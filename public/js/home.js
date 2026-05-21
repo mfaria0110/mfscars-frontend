@@ -1595,7 +1595,7 @@ grid.innerHTML += `
 
   onclick="window.abrirVeiculo(${v.id})"
 
-  
+
 onmouseover="
   this.style.transform='translateY(-8px)';
   this.style.boxShadow='0 30px 70px rgba(15,23,42,.14)';
@@ -1632,11 +1632,13 @@ onmouseout="
 <img
   src="${foto}"
 
-  onclick="
-    window.location.href=
-      '/empresa.html?id=${v.loja_id}';
-  "
+onclick="
+  event.stopPropagation();
 
+  window.location.href=
+    '/empresa.html?id=${v.loja_id}';
+"
+  
   style="
     width:100%;
 
