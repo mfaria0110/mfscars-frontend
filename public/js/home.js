@@ -970,13 +970,14 @@ box-shadow:
     <div
       style="
         display:grid;
+  align-items:center;
 
 grid-template-columns:
-  1.2fr
-  1fr
-  1fr
-  .9fr
-  auto;
+  220px
+  180px
+  180px
+  180px
+  160px;
 
         gap:10px;
       "
@@ -1144,7 +1145,7 @@ grid-template-columns:
     display:grid;
 
     grid-template-columns:
-      repeat(auto-fill, 250px);
+      repeat(auto-fill, 230px);
 
     justify-content:center;
 
