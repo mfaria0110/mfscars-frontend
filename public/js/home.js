@@ -227,9 +227,9 @@ padding:
       🚀 CRM & Gestão Automotiva
     </div>
 
-<h1
+<h2
   style="
-    font-size:42px;
+    font-size:35px;
 
     line-height:1.05;
 
@@ -251,7 +251,7 @@ padding:
       >
         lojas de veículos.
       </span>
-    </h1>
+    </h2>
 
     <p
       style="
@@ -618,8 +618,8 @@ box-shadow:
 
         <div
           style="
-            width:72px;
-            height:72px;
+            width:58px;
+            height:58px;
 
             border-radius:22px;
 
@@ -636,7 +636,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:24px;
+            margin-bottom:16px;
           "
         >
           🚗
@@ -656,7 +656,7 @@ box-shadow:
           style="
             color:#64748b;
             line-height:1.8;
-            font-size:17px;
+            font-size:14px;
           "
         >
           Cadastre veículos,
@@ -677,7 +677,7 @@ box-shadow:
 
           border-radius:26px;
 
-          padding:34px;
+          padding:24px;
 
           box-shadow:
             0 10px 35px
@@ -724,7 +724,7 @@ box-shadow:
         <p
           style="
             color:#64748b;
-            line-height:1.8;
+            line-height:1.6;
             font-size:17px;
           "
         >
@@ -745,7 +745,7 @@ box-shadow:
 
           border-radius:26px;
 
-          padding:34px;
+          padding:24px;
 
           box-shadow:
             0 10px 35px
@@ -812,7 +812,7 @@ box-shadow:
 
           border-radius:26px;
 
-          padding:34px;
+          padding:24px;
 
           box-shadow:
             0 10px 35px
@@ -903,7 +903,7 @@ box-shadow:
 
     <h3
       style="
-        font-size:28px;
+        font-size:20px;
         color:#0f172a;
         font-weight:900;
         margin-bottom:8px;
@@ -963,7 +963,7 @@ margin:0 auto;
 
     border-radius:18px;
 
-    padding:34px;
+    padding:24px;
 
 box-shadow:
   0 2px 10px
