@@ -297,7 +297,7 @@ padding:
 
           text-decoration:none;
 
-          font-size:18px;
+          font-size:16px;
           font-weight:800;
 
           box-shadow:
@@ -334,7 +334,7 @@ padding:
 
           text-decoration:none;
 
-          font-size:18px;
+          font-size:16px;
           font-weight:800;
         "
       >
@@ -384,7 +384,7 @@ padding:
 
         <div
           style="
-            font-size:18px;
+            font-size:16px;
             font-weight:800;
           "
         >
@@ -423,7 +423,7 @@ padding:
 
         <div
           style="
-            font-size:18px;
+            font-size:16px;
             font-weight:800;
           "
         >
@@ -462,7 +462,7 @@ padding:
 
         <div
           style="
-            font-size:18px;
+            font-size:16px;
             font-weight:800;
           "
         >
@@ -538,7 +538,7 @@ box-shadow:
         Plataforma Completa
       </div>
 
-      <h3
+      <h4
         style="
           font-size:42px;
           line-height:1.1;
@@ -550,9 +550,9 @@ box-shadow:
       >
         Tudo que sua loja precisa
         em um único sistema.
-      </h3>
+      </h4>
 
-      <p
+      <h5
         style="
           font-size:20px;
           color:#64748b;
@@ -565,7 +565,7 @@ box-shadow:
         vendedores e operações
         com uma plataforma moderna
         para revendas e multi-lojas.
-      </p>
+      </h5>
 
     </div>
 
@@ -577,7 +577,7 @@ box-shadow:
         grid-template-columns:
           repeat(
             auto-fit,
-            minmax(160px,1fr)
+            minmax(220px,260px)
           );
 
         gap:28px;
@@ -594,7 +594,7 @@ box-shadow:
 
           border-radius:26px;
 
-         padding:24px;
+         padding:18px;
 
           box-shadow:
             0 10px 35px
@@ -675,8 +675,8 @@ box-shadow:
 
         <div
           style="
-            width:72px;
-            height:72px;
+            width:58px;
+            height:58px;
 
             border-radius:22px;
 
@@ -693,7 +693,7 @@ box-shadow:
 
             font-size:34px;
 
-            margin-bottom:24px;
+            margin-bottom:16px;
           "
         >
           👥
@@ -701,7 +701,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:28px;
+            font-size:20px;
             color:#0f172a;
             margin-bottom:14px;
           "
@@ -743,8 +743,8 @@ box-shadow:
 
         <div
           style="
-            width:72px;
-            height:72px;
+            width:58px;
+            height:58px;
 
             border-radius:22px;
 
@@ -1164,14 +1164,19 @@ box-shadow:
   id="veiculos"
 
   style="
-    display:grid;
 
-    grid-template-columns:
-      repeat(auto-fill, 230px);
+display:grid;
 
-    justify-content:center;
+grid-template-columns:
+  repeat(
+    auto-fit,
+    minmax(220px,260px)
+  );
 
-    gap:28px;
+justify-content:center;
+
+gap:28px;
+
   "
 ></div>
 
@@ -1230,7 +1235,7 @@ box-shadow:
       max-width:1400px;
       margin:auto;
 
-      padding:28px 30px;
+      padding:14px 30px;
 
       display:grid;
 
@@ -1241,7 +1246,7 @@ box-shadow:
         1fr
         1.3fr;
 
-      gap:30px;
+      gap:18px;
 
       align-items:center;
     "
@@ -1253,7 +1258,7 @@ box-shadow:
       <img
         src="/assets/logo.png"
         style="
-          height:44px;
+          height:34px;
           margin-bottom:12px;
         "
       >
@@ -1278,7 +1283,7 @@ box-shadow:
       <div
         style="
           color:#fff;
-          font-size:18px;
+          font-size:16px;
           font-weight:700;
           margin-bottom:14px;
         "
@@ -1289,8 +1294,8 @@ box-shadow:
       <div
         style="
           color:#cbd5e1;
-          line-height:2;
-          font-size:15px;
+          line-height:1.5;
+          font-size:13px;
         "
       >
         📞 (24) 99972-6811<br>
@@ -1305,7 +1310,7 @@ box-shadow:
       <div
         style="
           color:#fff;
-          font-size:18px;
+          font-size:16px;
           font-weight:700;
           margin-bottom:14px;
         "
@@ -1316,8 +1321,8 @@ box-shadow:
       <div
         style="
           color:#cbd5e1;
-          line-height:2;
-          font-size:15px;
+          line-height:1.5;
+          font-size:13px;
         "
       >
         Segunda à Sexta<br>
@@ -1332,7 +1337,7 @@ box-shadow:
       <div
         style="
           color:#fff;
-          font-size:18px;
+          font-size:16px;
           font-weight:700;
           margin-bottom:14px;
         "
@@ -1350,8 +1355,8 @@ box-shadow:
         <a
           href="#"
           style="
-            width:42px;
-            height:42px;
+            width:34px;
+            height:34px;
 
             border-radius:50%;
 
@@ -1372,8 +1377,8 @@ box-shadow:
         <a
           href="#"
           style="
-            width:42px;
-            height:42px;
+            width:34px;
+            height:34px;
 
             border-radius:50%;
 
@@ -1418,7 +1423,7 @@ box-shadow:
           color:#fff;
           text-decoration:none;
 
-          padding:18px 28px;
+          padding:10px 18px;
 
           border-radius:18px;
 
@@ -1434,7 +1439,7 @@ box-shadow:
         "
       >
 
-        <span style="font-size:30px;">
+        <span style="font-size:22px;">
           💬
         </span>
 
@@ -1442,7 +1447,7 @@ box-shadow:
 
           <div
             style="
-              font-size:22px;
+              font-size:18px;
             "
           >
             Falar no WhatsApp
@@ -1450,7 +1455,7 @@ box-shadow:
 
           <div
             style="
-              font-size:13px;
+              font-size:11px;
               opacity:.9;
               font-weight:500;
             "
@@ -1658,7 +1663,7 @@ onmouseout="
   ${v.marca} ${v.modelo}</div>
 
    <div style="
-    font-size:15px;
+    font-size:13px;
     font-weight:700;
     color:#0f172a;
 
@@ -1715,7 +1720,7 @@ onmouseout="
 
     color:#fff;
 
-    font-size:15px;
+    font-size:13px;
     font-weight:700;
 
     cursor:pointer;
