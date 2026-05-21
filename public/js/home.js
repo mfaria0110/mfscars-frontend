@@ -82,19 +82,6 @@ app.innerHTML = `
 >
 
   <a
-    href="#funcionalidades"
-
-    style="
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      opacity:.9;
-    "
-  >
-    Funcionalidades
-  </a>
-
-  <a
     href="#planos"
 
     style="
@@ -781,7 +768,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:28px;
+            font-size:22px;
             color:#0f172a;
             margin-bottom:14px;
           "
