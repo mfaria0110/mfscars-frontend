@@ -368,7 +368,7 @@ padding:
 
           color:#fff;
 
-          min-width:180px;
+          min-width:160px;
         "
       >
         <div
@@ -1160,7 +1160,7 @@ box-shadow:
   style="
     max-width:1400px;
     margin:auto;
-    padding:10px 30px 80px;
+    padding:10px 30px 20px;
   "
 >
 
@@ -1636,7 +1636,7 @@ onmouseout="
   style="
     width:100%;
 
-    height:170px;
+    height:150px;
 
     object-fit:cover;
 
@@ -1712,7 +1712,7 @@ style="
   margin-left:auto;
   margin-right:auto;
 
-  margin-bottom:15px;
+  margin-bottom:5px;
 
   width:140px;
 
