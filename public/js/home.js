@@ -160,7 +160,8 @@ app.innerHTML = `
       );
 
 padding:
-      40px 40px 30px;
+  120px 40px 60px;
+
   "
 >
 
@@ -216,7 +217,7 @@ padding:
 
 <h2
   style="
-    font-size:35px;
+    font-size:28px;
 
     line-height:1.05;
 
@@ -593,7 +594,7 @@ box-shadow:
 
           border-radius:26px;
 
-          padding:10px;
+         padding:24px;
 
           box-shadow:
             0 10px 35px
@@ -631,7 +632,7 @@ box-shadow:
 
         <h3
           style="
-            font-size:22px;
+            font-size:28px;
             color:#0f172a;
             margin-bottom:14px;
           "
@@ -643,7 +644,7 @@ box-shadow:
           style="
             color:#64748b;
             line-height:1.8;
-            font-size:14px;
+            font-size:17px;
           "
         >
           Cadastre veículos,
@@ -1207,6 +1208,266 @@ box-shadow:
 
 </style>
 
+<footer
+  style="
+    background:
+      linear-gradient(
+        90deg,
+        #020617,
+        #071a3d,
+        #020617
+      );
+
+    border-top:
+      1px solid rgba(255,255,255,.08);
+
+    margin-top:40px;
+  "
+>
+
+  <div
+    style="
+      max-width:1400px;
+      margin:auto;
+
+      padding:28px 30px;
+
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        1fr
+        1fr
+        1fr
+        1.3fr;
+
+      gap:30px;
+
+      align-items:center;
+    "
+  >
+
+    <!-- LOGO -->
+    <div>
+
+      <img
+        src="/assets/logo.png"
+        style="
+          height:44px;
+          margin-bottom:12px;
+        "
+      >
+
+      <div
+        style="
+          color:#cbd5e1;
+          font-size:15px;
+          line-height:1.7;
+          max-width:240px;
+        "
+      >
+        O sistema completo para sua loja
+        de veículos vender mais e melhor.
+      </div>
+
+    </div>
+
+    <!-- CONTATO -->
+    <div>
+
+      <div
+        style="
+          color:#fff;
+          font-size:18px;
+          font-weight:700;
+          margin-bottom:14px;
+        "
+      >
+        Fale conosco
+      </div>
+
+      <div
+        style="
+          color:#cbd5e1;
+          line-height:2;
+          font-size:15px;
+        "
+      >
+        📞 (24) 99972-6811<br>
+        ✉️ mfaria2016@outlook.com
+      </div>
+
+    </div>
+
+    <!-- ATENDIMENTO -->
+    <div>
+
+      <div
+        style="
+          color:#fff;
+          font-size:18px;
+          font-weight:700;
+          margin-bottom:14px;
+        "
+      >
+        Atendimento
+      </div>
+
+      <div
+        style="
+          color:#cbd5e1;
+          line-height:2;
+          font-size:15px;
+        "
+      >
+        Segunda à Sexta<br>
+        08h às 18h
+      </div>
+
+    </div>
+
+    <!-- SOCIAL -->
+    <div>
+
+      <div
+        style="
+          color:#fff;
+          font-size:18px;
+          font-weight:700;
+          margin-bottom:14px;
+        "
+      >
+        Siga-nos
+      </div>
+
+      <div
+        style="
+          display:flex;
+          gap:14px;
+        "
+      >
+
+        <a
+          href="#"
+          style="
+            width:42px;
+            height:42px;
+
+            border-radius:50%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            background:
+              rgba(255,255,255,.08);
+
+            font-size:20px;
+            text-decoration:none;
+          "
+        >
+          📸
+        </a>
+
+        <a
+          href="#"
+          style="
+            width:42px;
+            height:42px;
+
+            border-radius:50%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            background:
+              rgba(255,255,255,.08);
+
+            font-size:20px;
+            text-decoration:none;
+          "
+        >
+          💬
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- WHATS -->
+    <div
+      style="
+        display:flex;
+        justify-content:flex-end;
+      "
+    >
+
+      <a
+        href="https://wa.me/5524999726811"
+        target="_blank"
+
+        style="
+          background:
+            linear-gradient(
+              135deg,
+              #16a34a,
+              #22c55e
+            );
+
+          color:#fff;
+          text-decoration:none;
+
+          padding:18px 28px;
+
+          border-radius:18px;
+
+          display:flex;
+          align-items:center;
+
+          gap:14px;
+
+          font-weight:700;
+
+          box-shadow:
+            0 10px 30px rgba(34,197,94,.25);
+        "
+      >
+
+        <span style="font-size:30px;">
+          💬
+        </span>
+
+        <div>
+
+          <div
+            style="
+              font-size:22px;
+            "
+          >
+            Falar no WhatsApp
+          </div>
+
+          <div
+            style="
+              font-size:13px;
+              opacity:.9;
+              font-weight:500;
+            "
+          >
+            Estamos online!
+          </div>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</footer>
+
 `;
 
 
@@ -1381,8 +1642,7 @@ onmouseout="
 
   style="
     padding:24px;
-  margin-bottom:10px;
-  margin-bottom:10px;
+   margin-bottom:10px;
   "
 >
 
