@@ -589,7 +589,7 @@ box-shadow:
         grid-template-columns:
           repeat(
             auto-fit,
-            minmax(240px,1fr)
+            minmax(160px,1fr)
           );
 
         gap:28px;
@@ -1172,7 +1172,7 @@ grid-template-columns:
 
 document.getElementById("btnBuscar").onclick = buscar;
 
-document.addEventListener("keypress", (e)=>{
+document.addEventListener("keydown", (e)=>{
   if(e.key === "Enter"){
     buscar();
   }
@@ -1220,10 +1220,17 @@ async function carregarVeiculos(){
 
     const params = new URLSearchParams();
 
-    const marca = document.getElementById("marca").value;
-    const preco = document.getElementById("preco").value;
-    const modelo = document.getElementById("modelo").value;
-    const cidade = document.getElementById("cidade").value;
+const marca =
+  document.getElementById("marca")?.value || "";
+
+const preco =
+  document.getElementById("preco")?.value || "";
+
+const modelo =
+  document.getElementById("modelo")?.value || "";
+
+const cidade =
+  document.getElementById("cidade")?.value || "";
 
     if(marca) params.append("marca", marca);
     if(preco) params.append("preco", preco);
@@ -1468,7 +1475,28 @@ window.mudarPagina = function(p){
 ============================== */
 
 function buscar(){
+
+  const marca =
+    document.getElementById("marca")?.value || "";
+
+  const modelo =
+    document.getElementById("modelo")?.value || "";
+
+  const cidade =
+    document.getElementById("cidade")?.value || "";
+
+  const preco =
+    document.getElementById("preco")?.value || "";
+
+  console.log({
+    marca,
+    modelo,
+    cidade,
+    preco
+  });
+
   paginaAtual = 1;
+
   carregarVeiculos();
 }
 
