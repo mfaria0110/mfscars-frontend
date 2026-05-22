@@ -181,6 +181,14 @@ async function editar(id) {
       data.data ||
       data
 
+
+const clausulasRes =
+  await api.get(
+    `/loja-clausula/${id}`
+  )
+
+const clausulas =
+  clausulasRes.data || {}
     setEditando(id)
 
     setForm({
@@ -226,14 +234,14 @@ async function editar(id) {
       descricao:
         loja.descricao || "",
 
-      clausulas:
-      loja.clausulas || "",
+clausulas:
+  clausulas.clausulas || "",
 
-      garantia:
-        loja.garantia || "",
+garantia:
+  clausulas.garantia || "",
 
-      transferencia:
-        loja.transferencia || "",
+transferencia:
+  clausulas.transferencia || "",
 
       instagram:
         loja.instagram || "",
@@ -387,26 +395,25 @@ for (let pair of formData.entries()) {
   )
 }
 
-await api.post(
-  "/loja-clausula",
-  {
+if(editando){
 
-    empresa_id:
-      usuario?.empresa_id,
+  await api.post(
+    "/loja-clausula",
+    {
 
-loja_id:
-  editando || lojaId,
-
-    clausulas:
-      form.clausulas,
-
-    garantia:
-      form.garantia,
-
-    transferencia:
-      form.transferencia
-  }
-)
+      empresa_id:
+        usuario?.empresa_id,
+      loja_id:
+        editando,
+      clausulas:
+        form.clausulas,
+      garantia:
+        form.garantia,
+      transferencia:
+        form.transferencia
+    }
+  )
+}
 
 await salvar({
   dados: formData,
