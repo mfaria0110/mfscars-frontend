@@ -19,6 +19,10 @@ import {
 } from "react-leaflet"
 import "../../components/styles/lojas.css"
 
+import ReactQuill from "react-quill"
+
+import "react-quill/dist/quill.snow.css"
+
 const API_URL =
   import.meta.env.VITE_API_URL
 
@@ -142,6 +146,11 @@ function abrirNovo() {
   horario_funcionamento: "",
   status: "ATIVO",
   logo: ""
+  clausulas: "",
+
+garantia: "",
+
+transferencia: ""
 })
   setLogoFile(null)
   setModal(true)
@@ -216,6 +225,15 @@ async function editar(id) {
 
       descricao:
         loja.descricao || "",
+
+      clausulas:
+      loja.clausulas || "",
+
+      garantia:
+        loja.garantia || "",
+
+      transferencia:
+        loja.transferencia || "",
 
       instagram:
         loja.instagram || "",
@@ -369,6 +387,27 @@ for (let pair of formData.entries()) {
   )
 }
 
+await api.post(
+  "/loja-clausula",
+  {
+
+    empresa_id:
+      usuario?.empresa_id,
+
+loja_id:
+  editando || lojaId,
+
+    clausulas:
+      form.clausulas,
+
+    garantia:
+      form.garantia,
+
+    transferencia:
+      form.transferencia
+  }
+)
+
 await salvar({
   dados: formData,
   id: editando
@@ -468,6 +507,23 @@ if (!podeVisualizar) {
     </div>
   )
 }
+
+const quillModules = {
+
+  toolbar:[
+
+    ["bold","italic","underline"],
+
+    [
+      { list:"ordered" },
+
+      { list:"bullet" }
+    ],
+
+    ["clean"]
+  ]
+}
+
 
   /* ===============================
      ⏳ LOADING
@@ -800,6 +856,99 @@ if (!podeVisualizar) {
   }
   setForm={setForm}
 />
+
+</div>
+
+<div className="form-group col-12">
+
+  <h3
+    style={{
+      marginTop:"20px"
+    }}
+  >
+    📄 Contrato da Loja
+  </h3>
+
+</div>
+
+{/* CLÁUSULAS */}
+
+<div className="form-group col-12">
+
+  <label>
+    Cláusulas Contratuais
+  </label>
+
+  <ReactQuill
+    theme="snow"
+
+    modules={quillModules}
+
+    value={
+      form.clausulas || ""
+    }
+
+    onChange={(value)=>
+      setForm(prev=>({
+        ...prev,
+        clausulas:value
+      }))
+    }
+  />
+
+</div>
+
+{/* GARANTIA */}
+
+<div className="form-group col-12">
+
+  <label>
+    Garantia
+  </label>
+
+  <ReactQuill
+    theme="snow"
+
+    modules={quillModules}
+
+    value={
+      form.garantia || ""
+    }
+
+    onChange={(value)=>
+      setForm(prev=>({
+        ...prev,
+        garantia:value
+      }))
+    }
+  />
+
+</div>
+
+{/* TRANSFERÊNCIA */}
+
+<div className="form-group col-12">
+
+  <label>
+    Transferência
+  </label>
+
+  <ReactQuill
+    theme="snow"
+
+    modules={quillModules}
+
+    value={
+      form.transferencia || ""
+    }
+
+    onChange={(value)=>
+      setForm(prev=>({
+        ...prev,
+        transferencia:value
+      }))
+    }
+  />
 
 </div>
 
