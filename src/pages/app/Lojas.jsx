@@ -145,7 +145,7 @@ function abrirNovo() {
   site: "",
   horario_funcionamento: "",
   status: "ATIVO",
-  logo: ""
+  logo: "",
   clausulas: "",
 
 garantia: "",
