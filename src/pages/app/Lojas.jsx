@@ -15,6 +15,10 @@ import toast from "react-hot-toast"
 import "../../components/styles/lojas.css"
 import { lazy, Suspense } from "react"
 
+import ReactQuill from "react-quill"
+
+import "react-quill/dist/quill.snow.css"
+
 const MapPicker = lazy(() =>
   import("../../components/MapPicker")
 )
@@ -918,33 +922,20 @@ if (!podeVisualizar) {
     Cláusulas Contratuais
   </label>
 
-  <textarea
-    className="form-control"
+<ReactQuill
+  theme="snow"
 
-    style={{
+  value={
+    form.clausulas || ""
+  }
 
-      minHeight:"180px",
-
-      borderRadius:"12px",
-
-      padding:"16px",
-
-      fontSize:"15px",
-
-      lineHeight:"1.6"
-    }}
-
-    value={
-      form.clausulas || ""
-    }
-
-    onChange={(e)=>
-      setForm(prev=>({
-        ...prev,
-        clausulas:e.target.value
-      }))
-    }
-  />
+  onChange={(value) =>
+    setForm(prev => ({
+      ...prev,
+      clausulas: value
+    }))
+  }
+/>
 
 </div>
 
@@ -956,33 +947,20 @@ if (!podeVisualizar) {
     Garantia
   </label>
 
-  <textarea
-    className="form-control"
+<ReactQuill
+  theme="snow"
 
-    style={{
+  value={
+    form.garantia || ""
+  }
 
-      minHeight:"180px",
-
-      borderRadius:"12px",
-
-      padding:"16px",
-
-      fontSize:"15px",
-
-      lineHeight:"1.6"
-    }}
-
-    value={
-      form.garantia || ""
-    }
-
-    onChange={(e)=>
-      setForm(prev=>({
-        ...prev,
-        garantia:e.target.value
-      }))
-    }
-  />
+  onChange={(value) =>
+    setForm(prev => ({
+      ...prev,
+      garantia: value
+    }))
+  }
+/>
 
 </div>
 
@@ -994,31 +972,17 @@ if (!podeVisualizar) {
     Transferência
   </label>
 
-<textarea
-
-  className="form-control"
-
-  style={{
-
-    minHeight:"180px",
-
-    borderRadius:"12px",
-
-    padding:"16px",
-
-    fontSize:"15px",
-
-    lineHeight:"1.6"
-  }}
+<ReactQuill
+  theme="snow"
 
   value={
     form.transferencia || ""
   }
 
-  onChange={(e)=>
-    setForm(prev=>({
+  onChange={(value) =>
+    setForm(prev => ({
       ...prev,
-      transferencia:e.target.value
+      transferencia: value
     }))
   }
 />
