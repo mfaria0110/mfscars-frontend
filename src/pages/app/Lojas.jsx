@@ -14,6 +14,7 @@ import toast from "react-hot-toast"
 
 import "../../components/styles/lojas.css"
 import { lazy, Suspense } from "react"
+import TipTapEditor from "../../components/TipTapEditor"
 
 const MapPicker = lazy(() =>
   import("../../components/MapPicker")
@@ -915,36 +916,20 @@ if (!podeVisualizar) {
 <div className="form-group col-12">
 
   <label>
-    Cláusulas Contratuais
+    CLÁUSULAS CONTRATUAIS
   </label>
 
-  <textarea
-    className="form-control"
+<TipTapEditor
 
-    style={{
+  value={form.clausulas}
 
-      minHeight:"180px",
-
-      borderRadius:"12px",
-
-      padding:"16px",
-
-      fontSize:"15px",
-
-      lineHeight:"1.6"
-    }}
-
-    value={
-      form.clausulas || ""
-    }
-
-    onChange={(e)=>
-      setForm(prev=>({
-        ...prev,
-        clausulas:e.target.value
-      }))
-    }
-  />
+  onChange={(value)=>
+    setForm(prev=>({
+      ...prev,
+      clausulas:value
+    }))
+  }
+/>
 
 </div>
 
@@ -953,36 +938,20 @@ if (!podeVisualizar) {
 <div className="form-group col-12">
 
   <label>
-    Garantia
+    GARANTIA
   </label>
 
-  <textarea
-    className="form-control"
+<TipTapEditor
 
-    style={{
+  value={form.garantia}
 
-      minHeight:"180px",
-
-      borderRadius:"12px",
-
-      padding:"16px",
-
-      fontSize:"15px",
-
-      lineHeight:"1.6"
-    }}
-
-    value={
-      form.garantia || ""
-    }
-
-    onChange={(e)=>
-      setForm(prev=>({
-        ...prev,
-        garantia:e.target.value
-      }))
-    }
-  />
+  onChange={(value)=>
+    setForm(prev=>({
+      ...prev,
+      garantia:value
+    }))
+  }
+/>
 
 </div>
 
@@ -991,34 +960,17 @@ if (!podeVisualizar) {
 <div className="form-group col-12">
 
   <label>
-    Transferência
+    TRANSFERÊNCIA
   </label>
 
-<textarea
+<TipTapEditor
 
-  className="form-control"
+  value={form.transferencia}
 
-  style={{
-
-    minHeight:"180px",
-
-    borderRadius:"12px",
-
-    padding:"16px",
-
-    fontSize:"15px",
-
-    lineHeight:"1.6"
-  }}
-
-  value={
-    form.transferencia || ""
-  }
-
-  onChange={(e)=>
+  onChange={(value)=>
     setForm(prev=>({
       ...prev,
-      transferencia:e.target.value
+      transferencia:value
     }))
   }
 />
