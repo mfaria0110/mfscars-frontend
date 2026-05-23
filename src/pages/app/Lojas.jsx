@@ -66,6 +66,7 @@ const [loading, setLoading] = useState(true)
 
   const [modal, setModal] = useState(false)
   const [editando, setEditando] = useState(null)
+  
   const [form, setForm] = useState({
 
   nome: "",
@@ -90,7 +91,7 @@ const [loading, setLoading] = useState(true)
   clausulas: "",
   garantia: "",
   transferencia: ""
-})tForm] = useState({})
+})
 
   const [logoFile, setLogoFile] =
   useState(null)
