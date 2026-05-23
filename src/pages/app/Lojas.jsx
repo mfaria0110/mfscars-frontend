@@ -869,26 +869,25 @@ if (!podeVisualizar) {
 {/* MAPA */}
 
 <div className="form-group col-12">
-
-  <label>
-    Localização no mapa
-  </label>
+  <label>Localização no mapa</label>
 
   <Suspense
-    fallback={
-      <p>
-        Carregando mapa...
-      </p>
-    }
+    fallback={<p>Carregando mapa...</p>}
   >
 
     <MapPicker
       lat={
         form.latitude
+          ? Number(form.latitude)
+          : -44.477584
       }
+
       lng={
         form.longitude
+          ? Number(form.longitude)
+          : -46.6333
       }
+
       setForm={setForm}
     />
 
