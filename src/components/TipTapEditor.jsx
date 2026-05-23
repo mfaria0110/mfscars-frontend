@@ -30,18 +30,21 @@ export default function TipTapEditor({
 
     <div
       style={{
-        border:"1px solid #ddd",
-        borderRadius:"8px",
-        background:"#fff",
-        padding:"10px"
+        border: "1px solid #dcdcdc",
+        borderRadius: "10px",
+        background: "#fff",
+        overflow: "hidden",
+        marginBottom: "20px"
       }}
     >
 
       <div
         style={{
-          display:"flex",
-          gap:"10px",
-          marginBottom:"10px"
+          display: "flex",
+          gap: "10px",
+          padding: "10px",
+          borderBottom: "1px solid #eee",
+          background: "#fafafa"
         }}
       >
 
@@ -50,8 +53,15 @@ export default function TipTapEditor({
           onClick={() =>
             editor.chain().focus().toggleBold().run()
           }
+          style={{
+            padding: "6px 12px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            cursor: "pointer",
+            background: "#fff"
+          }}
         >
-          B
+          <b>B</b>
         </button>
 
         <button
@@ -59,8 +69,15 @@ export default function TipTapEditor({
           onClick={() =>
             editor.chain().focus().toggleItalic().run()
           }
+          style={{
+            padding: "6px 12px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            cursor: "pointer",
+            background: "#fff"
+          }}
         >
-          I
+          <i>I</i>
         </button>
 
         <button
@@ -68,13 +85,33 @@ export default function TipTapEditor({
           onClick={() =>
             editor.chain().focus().toggleBulletList().run()
           }
+          style={{
+            padding: "6px 12px",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            cursor: "pointer",
+            background: "#fff"
+          }}
         >
           Lista
         </button>
 
       </div>
 
-      <EditorContent editor={editor} />
+      <div
+        style={{
+          padding: "20px",
+          minHeight: "220px",
+          lineHeight: "1.8",
+          fontSize: "15px",
+          color: "#333",
+          fontFamily: "Arial"
+        }}
+      >
+
+        <EditorContent editor={editor} />
+
+      </div>
 
     </div>
   )
