@@ -66,7 +66,31 @@ const [loading, setLoading] = useState(true)
 
   const [modal, setModal] = useState(false)
   const [editando, setEditando] = useState(null)
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({
+
+  nome: "",
+  cnpj: "",
+  telefone: "",
+  cidade: "",
+  estado: "",
+  endereco: "",
+  numero: "",
+  bairro: "",
+  cep: "",
+  latitude: "",
+  longitude: "",
+  descricao: "",
+  instagram: "",
+  facebook: "",
+  site: "",
+  horario_funcionamento: "",
+  status: "ATIVO",
+  logo: "",
+
+  clausulas: "",
+  garantia: "",
+  transferencia: ""
+})tForm] = useState({})
 
   const [logoFile, setLogoFile] =
   useState(null)
