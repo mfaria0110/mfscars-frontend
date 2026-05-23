@@ -929,12 +929,17 @@ if (!podeVisualizar) {
     form.clausulas || ""
   }
 
-  onChange={(value) =>
-    setForm(prev => ({
+  onChange={(value)=>
+    setForm(prev=>({
       ...prev,
-      clausulas: value
+      clausulas:value
     }))
   }
+
+  style={{
+    background:"#fff",
+    minHeight:"220px"
+  }}
 />
 
 </div>
@@ -954,12 +959,17 @@ if (!podeVisualizar) {
     form.garantia || ""
   }
 
-  onChange={(value) =>
-    setForm(prev => ({
+  onChange={(value)=>
+    setForm(prev=>({
       ...prev,
-      garantia: value
+      garantia:value
     }))
   }
+
+  style={{
+    background:"#fff",
+    minHeight:"220px"
+  }}
 />
 
 </div>
@@ -971,7 +981,6 @@ if (!podeVisualizar) {
   <label>
     Transferência
   </label>
-
 <ReactQuill
   theme="snow"
 
@@ -979,12 +988,17 @@ if (!podeVisualizar) {
     form.transferencia || ""
   }
 
-  onChange={(value) =>
-    setForm(prev => ({
+  onChange={(value)=>
+    setForm(prev=>({
       ...prev,
-      transferencia: value
+      transferencia:value
     }))
   }
+
+  style={{
+    background:"#fff",
+    minHeight:"220px"
+  }}
 />
 
 </div>
