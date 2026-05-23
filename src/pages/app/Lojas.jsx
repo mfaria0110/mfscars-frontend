@@ -11,17 +11,22 @@ import {
   maskCEP
 } from "../../utils/masks"
 import toast from "react-hot-toast"
+
+/*
 import {
   MapContainer,
   TileLayer,
   Marker,
   useMapEvents
 } from "react-leaflet"
+
+import "leaflet/dist/leaflet.css"
+*/
+
 import "../../components/styles/lojas.css"
 
-import ReactQuill from "react-quill"
 
-import "react-quill/dist/quill.snow.css"
+
 
 const API_URL =
   import.meta.env.VITE_API_URL
@@ -160,38 +165,49 @@ transferencia: ""
      ✏️ EDITAR
   ============================== */
 async function editar(id) {
+
   if (!podeEditar) {
+
     toast.error(
       "Sem permissão para editar loja"
     )
+
     return
   }
 
   try {
-    const data =
-      await buscar(id)
 
-    console.log(
-      "DADOS LOJA:",
-      data
-    )
+    const res =
+      await api.get(
+        `/lojas/${id}`
+      )
 
     const loja =
-      data.loja ||
-      data.data ||
-      data
+      res.data || {}
 
+    let clausulas = {}
 
-const clausulasRes =
-  await api.get(
-    `/loja-clausula/${id}`
-  )
+    try {
 
-const clausulas =
-  clausulasRes.data || {}
+      const clausulasRes =
+        await api.get(
+          `/loja-clausula/${id}`
+        )
+
+      clausulas =
+        clausulasRes.data || {}
+
+    } catch(err) {
+
+      console.log(
+        "Sem cláusulas"
+      )
+    }
+
     setEditando(id)
 
     setForm({
+
       nome:
         loja.nome || "",
 
@@ -234,15 +250,6 @@ const clausulas =
       descricao:
         loja.descricao || "",
 
-clausulas:
-  clausulas.clausulas || "",
-
-garantia:
-  clausulas.garantia || "",
-
-transferencia:
-  clausulas.transferencia || "",
-
       instagram:
         loja.instagram || "",
 
@@ -259,13 +266,24 @@ transferencia:
         loja.status || "ATIVO",
 
       logo:
-        loja.logo || ""
+        loja.logo || "",
+
+      clausulas:
+        clausulas?.clausulas || "",
+
+      garantia:
+        clausulas?.garantia || "",
+
+      transferencia:
+        clausulas?.transferencia || ""
     })
 
     setLogoFile(null)
+
     setModal(true)
 
   } catch (e) {
+
     console.error(e)
 
     toast.error(
@@ -395,6 +413,11 @@ for (let pair of formData.entries()) {
   )
 }
 
+await salvar({
+  dados: formData,
+  id: editando
+})
+
 if(editando){
 
   await api.post(
@@ -415,10 +438,6 @@ if(editando){
   )
 }
 
-await salvar({
-  dados: formData,
-  id: editando
-})
 
     const res =
       await api.get("/lojas")
@@ -515,21 +534,6 @@ if (!podeVisualizar) {
   )
 }
 
-const quillModules = {
-
-  toolbar:[
-
-    ["bold","italic","underline"],
-
-    [
-      { list:"ordered" },
-
-      { list:"bullet" }
-    ],
-
-    ["clean"]
-  ]
-}
 
 
   /* ===============================
@@ -845,7 +849,7 @@ const quillModules = {
                 <textarea value={form.descricao || ""} onChange={e => setForm({ ...form, descricao: e.target.value })}/>
               </div>
 
-
+{/*
 
 <div className="form-group col-12">
   <label>Localização no mapa</label>
@@ -865,6 +869,7 @@ const quillModules = {
 />
 
 </div>
+*/}
 
 <div className="form-group col-12">
 
@@ -886,19 +891,30 @@ const quillModules = {
     Cláusulas Contratuais
   </label>
 
-  <ReactQuill
-    theme="snow"
+  <textarea
+    className="form-control"
 
-    modules={quillModules}
+    style={{
+
+      minHeight:"180px",
+
+      borderRadius:"12px",
+
+      padding:"16px",
+
+      fontSize:"15px",
+
+      lineHeight:"1.6"
+    }}
 
     value={
       form.clausulas || ""
     }
 
-    onChange={(value)=>
+    onChange={(e)=>
       setForm(prev=>({
         ...prev,
-        clausulas:value
+        clausulas:e.target.value
       }))
     }
   />
@@ -913,19 +929,30 @@ const quillModules = {
     Garantia
   </label>
 
-  <ReactQuill
-    theme="snow"
+  <textarea
+    className="form-control"
 
-    modules={quillModules}
+    style={{
+
+      minHeight:"180px",
+
+      borderRadius:"12px",
+
+      padding:"16px",
+
+      fontSize:"15px",
+
+      lineHeight:"1.6"
+    }}
 
     value={
       form.garantia || ""
     }
 
-    onChange={(value)=>
+    onChange={(e)=>
       setForm(prev=>({
         ...prev,
-        garantia:value
+        garantia:e.target.value
       }))
     }
   />
@@ -940,22 +967,34 @@ const quillModules = {
     Transferência
   </label>
 
-  <ReactQuill
-    theme="snow"
+<textarea
 
-    modules={quillModules}
+  className="form-control"
 
-    value={
-      form.transferencia || ""
-    }
+  style={{
 
-    onChange={(value)=>
-      setForm(prev=>({
-        ...prev,
-        transferencia:value
-      }))
-    }
-  />
+    minHeight:"180px",
+
+    borderRadius:"12px",
+
+    padding:"16px",
+
+    fontSize:"15px",
+
+    lineHeight:"1.6"
+  }}
+
+  value={
+    form.transferencia || ""
+  }
+
+  onChange={(e)=>
+    setForm(prev=>({
+      ...prev,
+      transferencia:e.target.value
+    }))
+  }
+/>
 
 </div>
 
@@ -1029,6 +1068,8 @@ const quillModules = {
   )
 }
 
+
+/*
 function MapPicker({ lat, lng, setForm }) {
 
   function LocationMarker() {
@@ -1045,14 +1086,27 @@ function MapPicker({ lat, lng, setForm }) {
       }
     })
 
-    return lat && lng ? <Marker position={[lat, lng]} /> : null
+    return (
+      <Marker
+        position={[
+          Number(lat) || -23.5505,
+          Number(lng) || -46.6333
+        ]}
+      />
+    )
   }
 
   return (
 <MapContainer
-  key={`${lat}-${lng}`}
-  center={[lat, lng]}
+  key={`${Number(lat) || -22.486181}-${Number(lng) || -44.477584}`}
+
+  center={[
+    Number(lat) || -22.486181,
+    Number(lng) || -44.477584
+  ]}
+
   zoom={13}
+
   style={{
     height: "250px",
     borderRadius: "12px"
@@ -1065,3 +1119,5 @@ function MapPicker({ lat, lng, setForm }) {
     </MapContainer>
   )
 }
+
+*/
