@@ -12,21 +12,7 @@ import {
 } from "../../utils/masks"
 import toast from "react-hot-toast"
 
-/*
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  useMapEvents
-} from "react-leaflet"
-
-import "leaflet/dist/leaflet.css"
-*/
-
 import "../../components/styles/lojas.css"
-
-
-
 
 const API_URL =
   import.meta.env.VITE_API_URL
@@ -849,28 +835,6 @@ if (!podeVisualizar) {
                 <textarea value={form.descricao || ""} onChange={e => setForm({ ...form, descricao: e.target.value })}/>
               </div>
 
-{/*
-
-<div className="form-group col-12">
-  <label>Localização no mapa</label>
-
-<MapPicker
-  lat={
-    form.latitude
-      ? Number(form.latitude)
-      : -23.5505
-  }
-  lng={
-    form.longitude
-      ? Number(form.longitude)
-      : -46.6333
-  }
-  setForm={setForm}
-/>
-
-</div>
-*/}
-
 <div className="form-group col-12">
 
   <h3
@@ -1069,55 +1033,3 @@ if (!podeVisualizar) {
 }
 
 
-/*
-function MapPicker({ lat, lng, setForm }) {
-
-  function LocationMarker() {
-
-    useMapEvents({
-      click(e) {
-        const { lat, lng } = e.latlng
-
-        setForm(prev => ({
-          ...prev,
-          latitude: lat,
-          longitude: lng
-        }))
-      }
-    })
-
-    return (
-      <Marker
-        position={[
-          Number(lat) || -23.5505,
-          Number(lng) || -46.6333
-        ]}
-      />
-    )
-  }
-
-  return (
-<MapContainer
-  key={`${Number(lat) || -22.486181}-${Number(lng) || -44.477584}`}
-
-  center={[
-    Number(lat) || -22.486181,
-    Number(lng) || -44.477584
-  ]}
-
-  zoom={13}
-
-  style={{
-    height: "250px",
-    borderRadius: "12px"
-  }}
->
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <LocationMarker />
-    </MapContainer>
-  )
-}
-
-*/
