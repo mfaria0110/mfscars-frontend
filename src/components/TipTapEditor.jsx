@@ -100,7 +100,7 @@ export default function TipTapEditor({
 
       <div
         style={{
-          padding: "20px",
+          padding: "20px 0px 0px 40px",
           minHeight: "220px",
           lineHeight: "1.8",
           fontSize: "15px",
