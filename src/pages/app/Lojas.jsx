@@ -15,10 +15,6 @@ import toast from "react-hot-toast"
 import "../../components/styles/lojas.css"
 import { lazy, Suspense } from "react"
 
-import ReactQuill from "react-quill"
-
-import "react-quill/dist/quill.snow.css"
-
 const MapPicker = lazy(() =>
   import("../../components/MapPicker")
 )
@@ -922,25 +918,33 @@ if (!podeVisualizar) {
     Cláusulas Contratuais
   </label>
 
-<ReactQuill
-  theme="snow"
+  <textarea
+    className="form-control"
 
-  value={
-    form.clausulas || ""
-  }
+    style={{
 
-  onChange={(value)=>
-    setForm(prev=>({
-      ...prev,
-      clausulas:value
-    }))
-  }
+      minHeight:"180px",
 
-  style={{
-    background:"#fff",
-    minHeight:"220px"
-  }}
-/>
+      borderRadius:"12px",
+
+      padding:"16px",
+
+      fontSize:"15px",
+
+      lineHeight:"1.6"
+    }}
+
+    value={
+      form.clausulas || ""
+    }
+
+    onChange={(e)=>
+      setForm(prev=>({
+        ...prev,
+        clausulas:e.target.value
+      }))
+    }
+  />
 
 </div>
 
@@ -952,25 +956,33 @@ if (!podeVisualizar) {
     Garantia
   </label>
 
-<ReactQuill
-  theme="snow"
+  <textarea
+    className="form-control"
 
-  value={
-    form.garantia || ""
-  }
+    style={{
 
-  onChange={(value)=>
-    setForm(prev=>({
-      ...prev,
-      garantia:value
-    }))
-  }
+      minHeight:"180px",
 
-  style={{
-    background:"#fff",
-    minHeight:"220px"
-  }}
-/>
+      borderRadius:"12px",
+
+      padding:"16px",
+
+      fontSize:"15px",
+
+      lineHeight:"1.6"
+    }}
+
+    value={
+      form.garantia || ""
+    }
+
+    onChange={(e)=>
+      setForm(prev=>({
+        ...prev,
+        garantia:e.target.value
+      }))
+    }
+  />
 
 </div>
 
@@ -981,24 +993,34 @@ if (!podeVisualizar) {
   <label>
     Transferência
   </label>
-<ReactQuill
-  theme="snow"
+
+<textarea
+
+  className="form-control"
+
+  style={{
+
+    minHeight:"180px",
+
+    borderRadius:"12px",
+
+    padding:"16px",
+
+    fontSize:"15px",
+
+    lineHeight:"1.6"
+  }}
 
   value={
     form.transferencia || ""
   }
 
-  onChange={(value)=>
+  onChange={(e)=>
     setForm(prev=>({
       ...prev,
-      transferencia:value
+      transferencia:e.target.value
     }))
   }
-
-  style={{
-    background:"#fff",
-    minHeight:"220px"
-  }}
 />
 
 </div>
