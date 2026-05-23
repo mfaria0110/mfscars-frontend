@@ -13,6 +13,11 @@ import {
 import toast from "react-hot-toast"
 
 import "../../components/styles/lojas.css"
+import { lazy, Suspense } from "react"
+
+const MapPicker = lazy(() =>
+  import("../../components/MapPicker")
+)
 
 const API_URL =
   import.meta.env.VITE_API_URL
@@ -66,7 +71,7 @@ const [loading, setLoading] = useState(true)
 
   const [modal, setModal] = useState(false)
   const [editando, setEditando] = useState(null)
-  
+
   const [form, setForm] = useState({
 
   nome: "",
@@ -859,6 +864,40 @@ if (!podeVisualizar) {
                 <label>Descrição</label>
                 <textarea value={form.descricao || ""} onChange={e => setForm({ ...form, descricao: e.target.value })}/>
               </div>
+
+
+{/* MAPA */}
+
+<div className="form-group col-12">
+
+  <label>
+    Localização no mapa
+  </label>
+
+  <Suspense
+    fallback={
+      <p>
+        Carregando mapa...
+      </p>
+    }
+  >
+
+    <MapPicker
+      lat={
+        form.latitude
+      }
+      lng={
+        form.longitude
+      }
+      setForm={setForm}
+    />
+
+  </Suspense>
+
+</div>
+
+
+
 
 <div className="form-group col-12">
 
