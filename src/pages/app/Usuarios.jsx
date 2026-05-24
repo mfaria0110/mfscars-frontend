@@ -173,32 +173,39 @@ async function editarUsuario(u) {
   /* ===============================
      SALVAR
   ============================== */
+
   async function handleSalvar() {
+
+  try {
 
     const lojasAtualizadas = Array.from(
       new Map(
-        form.lojas.map(l => [Number(l.loja_id), l])
+        form.lojas.map(l => [
+          Number(l.loja_id),
+          l
+        ])
       ).values()
     )
 
-if (
-  form.tipo === "usuario" &&
-  !lojasAtualizadas.length
-) {
-  alert("Selecione ao menos uma loja")
-  return
-}
+    if (
+      form.tipo === "usuario" &&
+      !lojasAtualizadas.length
+    ) {
+      alert("Selecione ao menos uma loja")
+      return
+    }
 
-      const dados = {
-        ...form,
-        lojas:
-          form.tipo === "usuario"
-            ? lojasAtualizadas.map(l => ({
-                loja_id: l.loja_id,
-                perfil: l.perfil
-              }))
-            : []
-      }
+    const dados = {
+      ...form,
+
+      lojas:
+        form.tipo === "usuario"
+          ? lojasAtualizadas.map(l => ({
+              loja_id: l.loja_id,
+              perfil: l.perfil
+            }))
+          : []
+    }
 
     await salvar({
       dados,
@@ -206,18 +213,32 @@ if (
     })
 
     setModalOpen(false)
-setUsuarioSelecionado(null)
 
-setForm({
-  nome: "",
-  email: "",
-  senha: "",
-  tipo: "usuario",
-  ativo: true,
-  empresa_id: null,
-  lojas: []
-})
+    setUsuarioSelecionado(null)
+
+    setForm({
+      nome: "",
+      email: "",
+      senha: "",
+      tipo: "usuario",
+      ativo: true,
+      empresa_id: null,
+      lojas: []
+    })
+
+  } catch (e) {
+
+    console.error(
+      "ERRO SALVAR USUARIO:",
+      e
+    )
+
+    alert(
+      e?.response?.data?.erro ||
+      "Erro ao salvar usuário"
+    )
   }
+}
 
   /* ===============================
      LOADING
