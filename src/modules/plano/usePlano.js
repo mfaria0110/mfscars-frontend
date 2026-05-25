@@ -452,14 +452,21 @@ async function handleAssinar(
      RETURN
   =============================== */
 
-  return {
+    return {
 
     planos:
       planosQuery.data || [],
 
     planoAtual:
-      planoAtualQuery.data ||
-      null,
+      planoAtualQuery.data,
+
+    semPlano:
+
+      !planoAtualQuery.isLoading &&
+
+      !planoAtualQuery.error &&
+
+      !planoAtualQuery.data,
 
     loading:
 

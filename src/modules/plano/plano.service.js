@@ -1,394 +1,414 @@
-import api from "../../api/api"
-import { useAppStore } from "../../store/useAppStore"
+const db =
+  require("../../shared/database/db")
 
-/* ===============================
-   VALIDA PERMISSÃO
-=============================== */
+/* =========================================
+   BUSCAR PLANO ATIVO
+========================================= */
 
-function validarPermissao(
-  chave
+async function getPlanoAtivo(
+  client,
+  lojaId
+) { 
+
+  const result =
+    await client.query(`
+
+      SELECT
+        lp.*,
+
+        p.nome,
+        p.preco,
+
+        p.limite_veiculos,
+        p.limite_lojas,
+        p.limite_vendedores
+
+      FROM loja_plano lp
+
+      JOIN plano p
+        ON p.id = lp.plano_id
+
+      WHERE
+        lp.loja_id = $1
+        AND lp.status = 'ativo'
+
+      ORDER BY lp.id DESC
+
+      LIMIT 1
+
+    `, [lojaId])
+
+  return result.rows[0] || null
+}
+
+/* =========================================
+   VALIDAR LIMITE VEÍCULOS
+========================================= */
+
+async function validarLimiteVeiculos(
+  client,
+  lojaId
 ) {
 
-  const {
-    usuario,
-    permissoes
-  } =
-    useAppStore.getState()
-
-  /*
-    MASTER LIBERADO
-  */
-
-  if (
-    usuario?.master
-  ) {
-
-    return true
-  }
-
-  return Array.isArray(
-    permissoes
-  )
-
-    ? permissoes.includes(
-        chave
-      )
-
-    : false
-}
-
-/* ===============================
-   LISTA PLANOS
-=============================== */
-
-export async function getPlanos() {
-
-  if (
-
-    !validarPermissao(
-      "plano.visualizar"
+  const plano =
+    await getPlanoAtivo(
+      client,
+      lojaId
     )
 
+  if (!plano) {
+
+    throw new Error(
+      "Nenhum plano ativo"
+    )
+  }
+
+  const usados =
+    Number(
+      plano.usados || 0
+    )
+
+  const limite =
+    Number(
+      plano.limite_veiculos || 0
+    )
+
+  if (
+    usados >= limite
   ) {
 
-    return []
+    throw new Error(
+      "Limite de veículos atingido"
+    )
   }
 
-  try {
-
-    const { data } =
-      await api.get(
-        "/planos"
-      )
-
-    return data || []
-
-  } catch (e) {
-
-    console.error(e)
-
-    return []
-  }
+  return plano
 }
 
-/* ===============================
-   PLANO ATUAL
-=============================== */
+/* =========================================
+   VALIDAR LIMITE LOJAS
+========================================= */
 
-export async function getPlanoAtual() {
+async function validarLimiteLojas(
+  client,
+  empresaId
+) {
 
-  const state =
-    useAppStore.getState()
+  /* =========================
+     LOJA PRINCIPAL
+  ========================= */
+
+  const lojaPrincipal =
+    await client.query(`
+
+      SELECT id
+
+      FROM loja
+
+      WHERE empresa_id = $1
+
+      ORDER BY id ASC
+
+      LIMIT 1
+
+    `, [empresaId])
+
+  if (
+    !lojaPrincipal.rows.length
+  ) {
+
+    throw new Error(
+      "Empresa sem loja"
+    )
+  }
 
   const lojaId =
-    state.lojaId
+    lojaPrincipal.rows[0].id
 
-  const isChangingLoja =
-    state.isChangingLoja
-
-  /*
-    evita corrida troca loja
-  */
-
-  if (
-
-    !lojaId ||
-
-    isChangingLoja
-
-  ) {
-
-    console.warn(
-
-      "Bloqueado getPlanoAtual -> loja não pronta"
-
+  const plano =
+    await getPlanoAtivo(
+      client,
+      lojaId
     )
 
-    return null
+  if (!plano) {
+
+    throw new Error(
+      "Nenhum plano ativo"
+    )
   }
+
+  /* =========================
+     ILIMITADO
+  ========================= */
 
   if (
-
-    !validarPermissao(
-      "plano.visualizar"
-    )
-
+    plano.limite_lojas === null
   ) {
 
-    return null
+    return plano
   }
 
-  try {
+  const total =
+    await client.query(`
 
-    const { data } =
-      await api.get(
-        "/planos/atual"
+      SELECT
+        COUNT(*)::INTEGER AS total
+
+      FROM loja
+
+      WHERE empresa_id = $1
+
+    `, [empresaId])
+
+  const usados =
+    Number(
+      total.rows[0].total || 0
+    )
+
+  const limite =
+    Number(
+      plano.limite_lojas || 0
+    )
+
+  if (
+    usados >= limite
+  ) {
+
+    throw new Error(
+      "Limite de lojas atingido"
+    )
+  }
+
+  return plano
+}
+
+/* =========================================
+   VALIDAR LIMITE VENDEDORES
+========================================= */
+
+async function validarLimiteVendedores(
+  client,
+  lojaId
+) {
+
+  const plano =
+    await getPlanoAtivo(
+      client,
+      lojaId
+    )
+
+  if (!plano) {
+
+    throw new Error(
+      "Nenhum plano ativo"
+    )
+  }
+
+  /* =========================
+     ILIMITADO
+  ========================= */
+
+  if (
+    plano.limite_vendedores === null
+  ) {
+
+    return plano
+  }
+
+  const total =
+    await client.query(`
+
+      SELECT
+        COUNT(*)::INTEGER AS total
+
+      FROM usuario
+
+      WHERE
+        loja_id = $1
+        AND master = false
+
+    `, [lojaId])
+
+  const usados =
+    Number(
+      total.rows[0].total || 0
+    )
+
+  const limite =
+    Number(
+      plano.limite_vendedores || 0
+    )
+
+  if (
+    usados >= limite
+  ) {
+
+    throw new Error(
+      "Limite de vendedores atingido"
+    )
+  }
+
+  return plano
+}
+
+/* =========================================
+   CONSUMIR VEÍCULO
+========================================= */
+
+async function consumirVeiculo(
+  client,
+  lojaId
+) {
+
+  await validarLimiteVeiculos(
+    client,
+    lojaId
+  )
+
+  const result =
+    await client.query(`
+
+      UPDATE loja_plano
+
+      SET usados = usados + 1
+
+      WHERE id = (
+
+        SELECT id
+
+        FROM loja_plano
+
+        WHERE
+          loja_id = $1
+          AND status = 'ativo'
+
+        ORDER BY id DESC
+
+        LIMIT 1
+
       )
 
-    return data || null
+      RETURNING *
 
-  } catch (e) {
+    `, [lojaId])
 
-    /*
-      loja sem plano
-    */
-
-    if (
-      e.response?.status === 400
-    ) {
-
-      return null
-    }
-
-    console.error(e)
-
-    throw e
-  }
+  return result.rows[0]
 }
 
-/* ===============================
-   UPGRADE LOCAL
-=============================== */
+/* =========================================
+   LIBERAR VEÍCULO
+========================================= */
 
-export async function upgradePlano(
-  plano_id,
-  loja_id
+async function liberarVeiculo(
+  client,
+  lojaId
 ) {
 
-  const podeAssinar =
-    validarPermissao(
-      "billing.assinar"
+  const result =
+    await client.query(`
+
+      UPDATE loja_plano
+
+      SET usados = GREATEST(
+        usados - 1,
+        0
+      )
+
+      WHERE id = (
+
+        SELECT id
+
+        FROM loja_plano
+
+        WHERE
+          loja_id = $1
+          AND status = 'ativo'
+
+        ORDER BY id DESC
+
+        LIMIT 1
+
+      )
+
+      RETURNING *
+
+    `, [lojaId])
+
+  return result.rows[0]
+}
+
+/* =========================================
+   VALIDAR STATUS
+========================================= */
+
+async function validarPlanoAtivo(
+  client,
+  lojaId
+) {
+
+  const plano =
+    await getPlanoAtivo(
+      client,
+      lojaId
     )
 
-  const podeUpgrade =
-    validarPermissao(
-      "billing.upgrade"
+  if (!plano) {
+
+    throw new Error(
+      "Nenhum plano ativo"
     )
+  }
+
+  /* =========================
+     STATUS
+  ========================= */
 
   if (
-
-    !podeAssinar &&
-
-    !podeUpgrade
-
+    plano.status !== "ativo"
   ) {
 
     throw new Error(
-      "Sem permissão para alterar plano"
+      `Plano ${plano.status}`
     )
   }
 
-  const { data } =
-    await api.post(
+  /* =========================
+     CICLO VENCIDO
+  ========================= */
 
-      "/planos/upgrade",
+  const vencido =
+    await client.query(`
 
-      {
-        plano_id,
-        loja_id
-      }
-    )
+      SELECT NOW() > $1 AS vencido
 
-  return data
-}
-
-/* ===============================
-   ASSINAR PLANO
-=============================== */
-
-export async function assinarPlano(
-  plano_id
-) {
-
-  /*
-    billing próprio SaaS
-  */
+    `, [plano.ciclo_fim])
 
   if (
-
-    !validarPermissao(
-      "billing.assinar"
-    )
-
+    vencido.rows[0].vencido
   ) {
 
     throw new Error(
-      "Sem permissão para assinar plano"
+      "Plano vencido"
     )
   }
 
-  const loja_id =
-    useAppStore
-      .getState()
-      .lojaId
-
-  if (!loja_id) {
-
-    throw new Error(
-      "Loja não encontrada"
-    )
-  }
-
-  const { data } =
-    await api.post(
-
-      "/billing/assinar",
-
-      {
-        loja_id,
-        plano_id
-      }
-    )
-
-  return data
+  return plano
 }
 
-/* ===============================
-   GERAR PIX
-=============================== */
+module.exports = {
 
-export async function gerarPixPlano(
-  plano_id
-) {
+  getPlanoAtivo,
 
-  /*
-    billing próprio SaaS
-  */
+  validarLimiteVeiculos,
 
-  if (
+  validarLimiteLojas,
 
-    !validarPermissao(
-      "billing.assinar"
-    )
+  validarLimiteVendedores,
 
-  ) {
+  consumirVeiculo,
 
-    throw new Error(
-      "Sem permissão para assinar plano"
-    )
-  }
+  liberarVeiculo,
 
-  const loja_id =
-    useAppStore
-      .getState()
-      .lojaId
-
-  if (!loja_id) {
-
-    throw new Error(
-      "Loja não encontrada"
-    )
-  }
-
-  const { data } =
-    await api.post(
-
-      "/billing/pix",
-
-      {
-        loja_id,
-        plano_id
-      }
-    )
-
-  return data
-}
-
-/* ===============================
-   STATUS PIX
-=============================== */
-
-export async function consultarStatusPix(
-  payment_id
-) {
-
-  const { data } =
-    await api.get(
-
-      `/billing/status/${payment_id}`
-
-    )
-
-  return data
-}
-
-/* ===============================
-   RESUMO CONSUMO
-=============================== */
-
-export function getResumoConsumo(
-  planoAtual
-) {
-
-  if (!planoAtual) {
-
-    return {
-
-      usadosVeiculos: 0,
-      limiteVeiculos: 0,
-
-      usadosLojas: 0,
-      limiteLojas: 0,
-
-      usadosVendedores: 0,
-      limiteVendedores: 0
-    }
-  }
-
-  return {
-
-    usadosVeiculos:
-      Number(
-        planoAtual.usados || 0
-      ),
-
-    limiteVeiculos:
-      Number(
-        planoAtual.limite_veiculos || 0
-      ),
-
-    usadosLojas:
-      Number(
-        planoAtual.usados_lojas || 0
-      ),
-
-    limiteLojas:
-
-      planoAtual.limite_lojas === null
-
-        ? "∞"
-
-        : Number(
-            planoAtual.limite_lojas || 0
-          ),
-
-    usadosVendedores:
-      Number(
-        planoAtual.usados_vendedores || 0
-      ),
-
-    limiteVendedores:
-
-      planoAtual.limite_vendedores === null
-
-        ? "∞"
-
-        : Number(
-            planoAtual.limite_vendedores || 0
-          )
-  }
-}
-
-/* ===============================
-   FOUNDERS
-=============================== */
-
-export async function getFounders() {
-
-  const { data } =
-    await api.get(
-      "/billing/founders"
-    )
-
-  return data
+  validarPlanoAtivo
 }
