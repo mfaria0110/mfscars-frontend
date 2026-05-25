@@ -73,10 +73,9 @@ export default function Login() {
       =============================== */
 
 
+console.log("LOGIN OK")
 
-  navigate(
-        "/app/veiculos"
-      )
+
 
     } catch (error) {
 
