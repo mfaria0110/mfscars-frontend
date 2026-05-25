@@ -92,6 +92,7 @@ function PlanoValidator() {
 
   const {
     planoAtual,
+    semPlano,
     loading
   } = usePlano()
 
