@@ -91,8 +91,22 @@ export function usePlano() {
      PLANO ATUAL
   =============================== */
 
-  const planoAtualQuery =
-    useQuery({
+/* ===============================
+   PLANO ATUAL
+=============================== */
+
+    console.log({
+
+      lojaId,
+
+      podeVisualizar,
+
+      isChangingLoja
+
+    })
+
+    const planoAtualQuery =
+      useQuery({
 
       queryKey: [
         "planoAtual",
