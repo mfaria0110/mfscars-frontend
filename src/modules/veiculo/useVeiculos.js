@@ -109,10 +109,19 @@ export function useVeiculos() {
     loading:
       query.isLoading,
 
-    error:
-      erro ||
-      query.error?.message ||
-      null,
+ error: erro,
+
+ useEffect(() => {
+
+  if (query.error?.message) {
+
+    setErro(
+      query.error.message
+    )
+
+  }
+
+}, [query.error])
 
     limparErro:
       () => setErro(null),

@@ -70,14 +70,6 @@ export default function Veiculos() {
     veiculoId: null
   })
 
-  /* ===============================
-     🔥 ERRO
-  ============================== */
-  useEffect(() => {
-    if (error) {
-      setShowModalErro(true)
-    }
-  }, [error])
 
   /* ===============================
      🔥 ATUALIZA LISTA
