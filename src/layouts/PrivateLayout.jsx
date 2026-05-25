@@ -10,9 +10,6 @@ import { useDashboard } from "../modules/dashboard/useDashboard"
 import { usePermissao } from "../modules/permissao/usePermissao"
 import TelaLojaInativa from "../components/TelaLojaInativa"
 
-import PlanoBloqueioModal
-from "../components/PlanoBloqueioModal"
-
 export default function PrivateLayout() {
   const isChangingLoja =
     useAppStore(
@@ -23,23 +20,6 @@ export default function PrivateLayout() {
   const lojaInativa = useAppStore(
   (state) => state.lojaInativa
   )
-
-  const paywall =
-    useAppStore(
-      state => state.paywall
-    )
-
-  const paywallMensagem =
-    useAppStore(
-      state =>
-        state.paywallMensagem
-    )
-
-  const fecharPaywall =
-    useAppStore(
-      state =>
-        state.fecharPaywall
-    )
 
   const { temPermissao } =
     usePermissao()
@@ -127,20 +107,7 @@ if (lojaInativa) {
 
       </div>
 
-      <PlanoBloqueioModal
-
-      aberto={paywall}
-
-      mensagem={
-        paywallMensagem
-      }
-
-      onClose={
-        fecharPaywall
-      }
-    />
-
-      
+    
     </div>
   )
 }

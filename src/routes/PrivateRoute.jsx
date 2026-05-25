@@ -81,6 +81,163 @@ export default function PrivateRoute() {
      PLANO
   ========================= */
 
-  return <Outlet />
+  return <PlanoValidator />
 }
 
+/* =========================
+   VALIDADOR PLANO
+========================= */
+
+function PlanoValidator() {
+
+  const {
+    planoAtual,
+    loading
+  } = usePlano()
+
+  if (loading) {
+
+    return null
+  }
+
+  if (!planoAtual) {
+
+    return (
+
+      <PlanoBloqueioModal
+
+        aberto={true}
+
+        mensagem={
+          "Sua empresa ainda não possui um plano ativo."
+        }
+
+        onClose={() => {}}
+
+      />
+
+    )
+  }
+
+  const status =
+    planoAtual?.status
+      ?.toLowerCase?.()
+
+  if (
+
+    planoAtual?.nome
+      ?.toLowerCase?.() ===
+      "free"
+
+  ) {
+
+    return <Outlet />
+  }
+
+  if (
+    status === "ativo"
+  ) {
+
+    return <Outlet />
+  }
+
+  if (
+    status === "pendente"
+  ) {
+
+    return (
+
+      <PlanoBloqueioModal
+
+        aberto={true}
+
+        mensagem={
+          "Seu pagamento ainda está pendente de confirmação."
+        }
+
+        onClose={() => {}}
+
+      />
+
+    )
+  }
+
+  if (
+    status === "inadimplente"
+  ) {
+
+    return (
+
+      <PlanoBloqueioModal
+
+        aberto={true}
+
+        mensagem={
+          "Seu pagamento foi recusado ou está inadimplente."
+        }
+
+        onClose={() => {}}
+
+      />
+
+    )
+  }
+
+  if (
+    status === "cancelado"
+  ) {
+
+    return (
+
+      <PlanoBloqueioModal
+
+        aberto={true}
+
+        mensagem={
+          "Sua assinatura foi cancelada."
+        }
+
+        onClose={() => {}}
+
+      />
+
+    )
+  }
+
+  if (
+    status === "pausado"
+  ) {
+
+    return (
+
+      <PlanoBloqueioModal
+
+        aberto={true}
+
+        mensagem={
+          "Sua assinatura está pausada."
+        }
+
+        onClose={() => {}}
+
+      />
+
+    )
+  }
+
+  return (
+
+    <PlanoBloqueioModal
+
+      aberto={true}
+
+      mensagem={
+        "Seu acesso está bloqueado."
+      }
+
+      onClose={() => {}}
+
+    />
+
+  )
+}
