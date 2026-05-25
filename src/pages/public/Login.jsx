@@ -72,57 +72,9 @@ export default function Login() {
          VERIFICA NOVOS TERMOS
       =============================== */
 
-      try {
-
-        const aceite =
-          await api.get(
-            "/juridico/verificar-aceite"
-          )
-
-if (
-  aceite.data?.precisaAceite
-) {
-
-  /* ===============================
-     👑 ADMIN PODE ACEITAR
-  ============================== */
-
-  if (
-    aceite.data?.podeAceitar
-  ) {
-
-    abrirAceite(
-      aceite.data.pendentes || []
-    )
-
-  } else {
-
-    /* ===============================
-       🚫 USUÁRIO COMUM
-    ============================== */
-
-    setModalBloqueado(true)
-
-    return
-  }
-
-  return
-}
 
 
-      } catch(e){
-
-        console.error(
-          "Erro ao verificar aceite",
-          e
-        )
-      }
-
-      toast.success(
-        "Login realizado com sucesso"
-      )
-
-      navigate(
+  navigate(
         "/app/veiculos"
       )
 
