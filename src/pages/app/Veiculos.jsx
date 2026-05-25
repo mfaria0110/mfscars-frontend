@@ -60,11 +60,6 @@ export default function Veiculos() {
     limparErro
   } = useVeiculos()
 
-  const [
-    showModalErro,
-    setShowModalErro
-  ] = useState(false)
-
   const [modalCancelar, setModalCancelar] = useState({
     open: false,
     veiculoId: null
@@ -255,63 +250,6 @@ export default function Veiculos() {
         ))}
 
       </div>
-
-      {/* MODAL ERRO */}
-      {showModalErro && error && (
-
-        <div
-          className="modal"
-          onClick={() => {
-            setShowModalErro(false)
-            limparErro()
-          }}
-        >
-
-          <div
-            className="modal-content"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
-
-            <div className="modal-header">
-
-              <h3>⚠️ Atenção</h3>
-
-              <button
-                className="modal-close"
-                onClick={() => {
-                  setShowModalErro(false)
-                  limparErro()
-                }}
-              >
-                ✕
-              </button>
-
-            </div>
-
-            <p style={{ fontSize: "16px" }}>
-              {error}
-            </p>
-
-            <div className="actions">
-
-              <button
-                onClick={() => {
-                  setShowModalErro(false)
-                  limparErro()
-                }}
-              >
-                Fechar
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
 
       <CancelarVendaModal
         open={modalCancelar.open}
