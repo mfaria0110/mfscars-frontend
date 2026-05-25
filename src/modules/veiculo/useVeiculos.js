@@ -39,14 +39,19 @@ export function useVeiculos() {
   const [erro, setErro] =
     useState(null)
 
-  /* debounce */
+  /* ===============================
+     DEBOUNCE
+  ============================== */
+
   useEffect(() => {
 
     const delay =
       setTimeout(() => {
+
         setFiltrosDebounced(
           filtros
         )
+
       }, 500)
 
     return () =>
@@ -54,7 +59,10 @@ export function useVeiculos() {
 
   }, [filtros])
 
-  /* query */
+  /* ===============================
+     QUERY
+  ============================== */
+
   const query = useQuery({
 
     queryKey: [
@@ -67,7 +75,9 @@ export function useVeiculos() {
 
     queryFn: async () => {
 
-      if (!lojaId) return []
+      if (!lojaId) {
+        return []
+      }
 
       const lista =
         await getVeiculos(
@@ -89,6 +99,26 @@ export function useVeiculos() {
     staleTime: 1000 * 30
   })
 
+  /* ===============================
+     CAPTURA ERRO
+  ============================== */
+
+  useEffect(() => {
+
+    if (query.error?.message) {
+
+      setErro(
+        query.error.message
+      )
+
+    }
+
+  }, [query.error])
+
+  /* ===============================
+     INVALIDATE
+  ============================== */
+
   const invalidate =
     async () => {
 
@@ -97,6 +127,10 @@ export function useVeiculos() {
         exact: false
       })
     }
+
+  /* ===============================
+     RETURN
+  ============================== */
 
   return {
 
@@ -109,19 +143,8 @@ export function useVeiculos() {
     loading:
       query.isLoading,
 
- error: erro,
-
- useEffect(() => {
-
-  if (query.error?.message) {
-
-    setErro(
-      query.error.message
-    )
-
-  }
-
-}, [query.error])
+    error:
+      erro,
 
     limparErro:
       () => setErro(null),
