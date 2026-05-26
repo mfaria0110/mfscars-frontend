@@ -95,10 +95,7 @@ export async function getPlanoAtual() {
 
     )
 
-    alert(JSON.stringify({
-    lojaId,
-    isChangingLoja
-  }, null, 2))
+
 
     return null
   }
