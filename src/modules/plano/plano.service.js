@@ -43,6 +43,17 @@ function validarPermissao(
 
 export async function getPlanos() {
 
+  if (
+
+    !validarPermissao(
+      "plano.visualizar"
+    )
+
+  ) {
+
+    return []
+  }
+
   try {
 
     const { data } =

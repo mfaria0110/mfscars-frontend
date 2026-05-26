@@ -179,25 +179,40 @@ export const useAppStore =
         "perfil"
       )
 
-      set({
-        accessToken:
-          data.accessToken,
+const lojaInicial =
+  data.lojas?.[0]?.id || null
 
-        refreshToken:
-          data.refreshToken,
+if (lojaInicial) {
 
-        usuario:
-          data.usuario,
+  sessionStorage.setItem(
+    "loja_id",
+    String(lojaInicial)
+  )
+}
 
-        lojas:
-          data.lojas || [],
+set({
+  accessToken:
+    data.accessToken,
 
-        permissoes:
-          data.permissoes || [],
+  refreshToken:
+    data.refreshToken,
 
-        lojaId: null,
-        perfil: null
-      })
+  usuario:
+    data.usuario,
+
+  lojas:
+    data.lojas || [],
+
+  permissoes:
+    data.permissoes || [],
+
+  lojaId:
+    lojaInicial,
+
+  perfil: null
+})
+
+
     },
 
     setAccessToken: (
