@@ -98,16 +98,6 @@ export async function getPlanoAtual() {
     return null
   }
 
-  if (
-
-    !validarPermissao(
-      "plano.visualizar"
-    )
-
-  ) {
-
-    return null
-  }
 
   try {
 
