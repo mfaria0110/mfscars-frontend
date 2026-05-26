@@ -108,12 +108,7 @@ export async function getPlanoAtual() {
         "/planos/atual"
       )
 
-alert(
-  "API RETORNOU:\n\n" +
-  JSON.stringify(data)
-)
-
-    return data || null
+  return data || null
 
   } catch (e) {
 
