@@ -8,7 +8,7 @@ const api = axios.create({
 })
 
 /* ===============================
-   CONTROLE GLOBAL (ANTI-DUPLICAÇÃO)
+ CONTROLE GLOBAL (ANTI-DUPLICAÇÃO) MF
 =============================== */
 let lojaInativaToastAtivo = false
 
@@ -242,26 +242,55 @@ api.interceptors.response.use(
     }
 
     /* ===============================
-       PAYWALL SaaS
-    =============================== */
+   LIMITE LOJAS → UPGRADE
+=============================== */
 
-    const bloqueioPlano =
+if (
+  mensagem.includes(
+    "Limite de lojas atingido"
+  )
+) {
 
-      mensagem.includes(
-        "inadimplente"
-      ) ||
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      "Você atingiu o limite de lojas do seu plano. Faça upgrade para continuar."
+    )
 
-      mensagem.includes(
-        "Limite"
-      ) ||
+  return Promise.reject(error)
+}
 
-      mensagem.includes(
-        "Plano"
-      ) ||
+/* ===============================
+   BLOQUEIO PLANO
+=============================== */
 
-      mensagem.includes(
-        "vencido"
-      )
+const bloqueioPlano =
+
+  mensagem.includes(
+    "inadimplente"
+  ) ||
+
+  mensagem.includes(
+    "Nenhum plano ativo"
+  ) ||
+
+  mensagem.includes(
+    "Plano vencido"
+  )
+
+if (bloqueioPlano) {
+
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      mensagem
+    )
+
+  return Promise.reject(
+    error
+  )
+}
+
 
     if (bloqueioPlano) {
 
