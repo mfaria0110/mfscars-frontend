@@ -116,12 +116,9 @@ export function usePlano() {
       queryFn:
         getPlanoAtual,
 
-      enabled:
-        Boolean(lojaId) &&
-        Boolean(
-          podeVisualizar
-        ) &&
-        !isChangingLoja,
+enabled:
+  Boolean(lojaId) &&
+  !isChangingLoja,
 
       retry: false,
 
@@ -462,6 +459,11 @@ async function handleAssinar(
     queryClient
   ])
 
+console.log(
+  "PLANO QUERY DATA:",
+  planoAtualQuery.data
+)
+
   /* ===============================
      RETURN
   =============================== */
@@ -474,13 +476,12 @@ async function handleAssinar(
     planoAtual:
       planoAtualQuery.data,
 
-    semPlano:
+semPlano:
 
-      !planoAtualQuery.isLoading &&
+  planoAtualQuery.status ===
+    "success" &&
 
-      !planoAtualQuery.error &&
-
-      !planoAtualQuery.data,
+  !planoAtualQuery.data,
 
     loading:
 
