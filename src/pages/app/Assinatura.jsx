@@ -72,14 +72,14 @@ async function copiarPix() {
       "PIX copiado!"
     )
 
-  } 
+  } catch {
 
-catch {
-
-  toast.error(
-    "Erro ao copiar PIX"
-  )
+    toast.error(
+      "Erro ao copiar PIX"
+    )
+  }
 }
+
 
   if (loading) {
     return (
