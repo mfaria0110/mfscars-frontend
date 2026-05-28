@@ -1,4 +1,7 @@
 import { usePlano } from "../../modules/plano/usePlano"
+import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export default function Assinatura() {
 
@@ -16,24 +19,11 @@ const {
 
 } = usePlano()
 
-  const usados =
-    planoAtual?.usados || 0
+const usados =
+  planoAtual?.usados_veiculos || 0
 
   const limite =
     planoAtual?.limite_veiculos || 0
-
-const lojasUsadas =
-  planoAtual?.usados_lojas || 0
-
-const lojasLimite =
-  planoAtual?.limite_lojas || 0
-
-const vendedoresUsados =
-  planoAtual?.usados_vendedores || 0
-
-const vendedoresLimite =
-  planoAtual?.limite_vendedores
-
 
   const porcentagem =
     limite > 0
@@ -55,31 +45,41 @@ const vendedoresLimite =
       ? "#dc2626"
       : "#f59e0b"
 
+
+const usuario =
+  JSON.parse(
+    sessionStorage.getItem(
+      "usuario"
+    ) || "{}"
+  )
+
+const isMaster =
+  usuario?.master === true
+
   /* =========================
      COPIAR PIX
   ========================= */
 
-  async function copiarPix() {
+async function copiarPix() {
 
-    try {
+  try {
 
-      await navigator.clipboard.writeText(
-        pixData?.copiaecola || ""
-      )
+    await navigator.clipboard.writeText(
+      pixData?.copiaecola || ""
+    )
 
-      alert(
-        "PIX copiado!"
-      )
+    toast.success(
+      "PIX copiado!"
+    )
 
-    } catch (e) {
+  } 
 
-      console.error(e)
+catch {
 
-      alert(
-        "Erro ao copiar PIX"
-      )
-    }
-  }
+  toast.error(
+    "Erro ao copiar PIX"
+  )
+}
 
   if (loading) {
     return (
@@ -521,15 +521,7 @@ const vendedoresLimite =
             const isFree =
               Number(plano.preco) < 0.5
 
-            const usuario =
-            JSON.parse(
-              sessionStorage.getItem(
-                "usuario"
-              ) || "{}"
-            )
 
-            const isMaster =
-              usuario?.master === true
 
 return (
 

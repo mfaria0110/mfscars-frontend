@@ -3,38 +3,36 @@ import { useAppStore } from "../../store/useAppStore"
 import { useQueryClient } from "@tanstack/react-query"
 import toast from "react-hot-toast"
 import { usePermissao } from "../permissao/usePermissao"
+import { tratarErro } from "../../utils/tratarErro"
 
 export function useLoja() {
+
   const setLojaId = useAppStore(
-    (state) => state.setLojaId
+    state => state.setLojaId
   )
 
   const setAccessToken = useAppStore(
-    (state) => state.setAccessToken
-  )
-
-  const setLojas = useAppStore(
-    (state) => state.setLojas
+    state => state.setAccessToken
   )
 
   const setPerfil = useAppStore(
-    (state) => state.setPerfil
+    state => state.setPerfil
   )
 
   const setPermissoes = useAppStore(
-    (state) => state.setPermissoes
+    state => state.setPermissoes
   )
 
   const setChangingLoja = useAppStore(
-    (state) => state.setChangingLoja
+    state => state.setChangingLoja
   )
 
   const lojaAtual = useAppStore(
-    (state) => state.lojaId
+    state => state.lojaId
   )
 
   const isVendaAtiva = useAppStore(
-    (state) => state.isVendaAtiva
+    state => state.isVendaAtiva
   )
 
   const queryClient =
@@ -46,71 +44,84 @@ export function useLoja() {
   async function trocarLoja(
     loja_id
   ) {
-    const id = Number(
-      loja_id
-    )
 
-    console.log(
-      "USUARIO STORE:",
-      useAppStore.getState().usuario
-    )
-
-    console.log(
-      "LOJA ATUAL:",
-      lojaAtual
-    )
-
-    console.log(
-      "LOJA NOVA:",
-      id
-    )
+    const id =
+      Number(loja_id)
 
     if (!id) {
+
       toast.error(
         "Selecione uma loja válida"
       )
+
       return
     }
 
-// 🔥 BLOQUEIO DURANTE VENDA
-if (isVendaAtiva) {
-  toast.error("Finalize ou cancele a venda antes de trocar de loja")
-  return
-}    
+    /* ===============================
+       🔥 BLOQUEIO DURANTE VENDA
+    ============================== */
+    if (isVendaAtiva) {
 
-const usuario = useAppStore.getState().usuario;
+      toast.error(
+        "Finalize ou cancele a venda antes de trocar de loja"
+      )
 
-if (
-  lojaAtual &&
-  !usuario?.master &&
-  usuario?.tipo !== "admin" &&
-  !temPermissao("loja.trocar")
-) {
-  toast.error("Sem permissão para trocar loja")
-  return
-}
+      return
+    }
+
+    const usuario =
+      useAppStore
+        .getState()
+        .usuario
+
+    /* ===============================
+       🔐 PERMISSÃO
+    ============================== */
+    if (
+
+      lojaAtual &&
+
+      !usuario?.master &&
+
+      usuario?.tipo !== "admin" &&
+
+      !temPermissao(
+        "loja.trocar"
+      )
+
+    ) {
+
+      toast.error(
+        "Sem permissão para trocar loja"
+      )
+
+      return
+    }
 
     try {
-      /*
-        trava UI
-      */
+
+      /* ===============================
+         🔒 TRAVA UI
+      ============================== */
       setChangingLoja(true)
 
       useAppStore.setState({
+
         lojaInativa: false,
+
         isChangingLoja: true
       })
 
-      /*
-        cancela queries antigas
-      */
+      /* ===============================
+         🧹 LIMPA QUERIES ANTIGAS
+      ============================== */
       await queryClient.cancelQueries()
 
       queryClient.clear()
 
-      /*
-        troca token
-      */
+      /* ===============================
+         🔄 TROCA TOKEN
+      ============================== */
       const res =
         await api.post(
           "/auth/selecionar-loja",
@@ -125,77 +136,90 @@ if (
       if (
         !data?.accessToken
       ) {
+
         throw new Error(
           "Token não recebido"
         )
       }
 
-      /*
-        token novo
-      */
+      /* ===============================
+         🔑 TOKEN NOVO
+      ============================== */
       setAccessToken(
         data.accessToken
       )
 
-      /*
-        salva novo refresh token
-      */
+      /* ===============================
+         ♻️ REFRESH TOKEN
+      ============================== */
       if (data.refreshToken) {
+
         sessionStorage.setItem(
           "refreshToken",
           data.refreshToken
         )
       }
 
-      /*
-        perfil
-      */
+      /* ===============================
+         👤 PERFIL
+      ============================== */
       if (data.perfil) {
+
         setPerfil(
           data.perfil
         )
       }
 
-      /*
-        permissões
-      */
-      if (
-        data.permissoes
-      ) {
+      /* ===============================
+         🔐 PERMISSÕES
+      ============================== */
+      if (data.permissoes) {
+
         setPermissoes(
           data.permissoes
         )
       }
 
-      /*
-        salva loja nova
-      */
+      /* ===============================
+         🏪 NOVA LOJA
+      ============================== */
       setLojaId(id)
 
-      /*
-        atualiza storage
-      */
       sessionStorage.setItem(
         "loja_id",
         String(id)
       )
 
-      /*
-       limpa novamente
-        evita refetch antigo
-      */
+      /* ===============================
+         🧹 LIMPA NOVAMENTE
+      ============================== */
       await queryClient.cancelQueries()
 
       queryClient.clear()
 
-      /*
-        refetch agora com loja correta
-      */
+      /* ===============================
+         🔄 REFRESH
+      ============================== */
       await queryClient.invalidateQueries()
 
+      /* ===============================
+         📢 EVENTOS
+      ============================== */
       window.dispatchEvent(
         new Event(
           "lojaChanged"
+        )
+      )
+
+      window.dispatchEvent(
+        new Event(
+          "dashboardAtualizado"
+        )
+      )
+
+      window.dispatchEvent(
+        new Event(
+          "planoAtualizado"
         )
       )
 
@@ -203,32 +227,24 @@ if (
         "Loja alterada com sucesso"
       )
 
-      /*
-        libera tela somente no final
-      */
+      /* ===============================
+         🔓 LIBERA UI
+      ============================== */
       setTimeout(() => {
+
         setChangingLoja(
           false
         )
+
       }, 300)
 
     } catch (e) {
-      console.error(
-        "Erro ao trocar loja:",
-        e
-      )
 
       setChangingLoja(
         false
       )
 
-      const msg =
-        e.response?.data
-          ?.erro ||
-        e.message ||
-        "Erro ao trocar loja"
-
-      toast.error(msg)
+      tratarErro(e)
     }
   }
 

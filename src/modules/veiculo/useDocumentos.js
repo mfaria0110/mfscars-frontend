@@ -3,6 +3,8 @@ import api from "../../api/api"
 import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
 import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export function useDocumentos(veiculoId) {
 const lojaId = useAppStore(
@@ -49,14 +51,16 @@ const empresaId =
       )
 
       setLista(res.data || [])
-    } catch (e) {
-      console.error(e)
+    } 
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao carregar documentos"
-      )
-    } finally {
+catch (e) {
+
+  console.error(e)
+
+  tratarErro(e)
+}
+
+    finally {
       setLoading(false)
     }
   }
@@ -91,14 +95,16 @@ const empresaId =
       setFile(null)
 
       await carregar()
-    } catch (e) {
-      console.error(e)
+    } 
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao enviar documento"
-      )
-    } finally {
+catch (e) {
+
+  console.error(e)
+
+  tratarErro(e)
+}
+
+    finally {
       setLoading(false)
     }
   }

@@ -3,6 +3,8 @@ import api from "../../api/api"
 import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
 import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export function useProprietario(veiculoId) {
 const lojaId = useAppStore(
@@ -50,14 +52,16 @@ const empresaId =
         if (res.data) {
           setForm(res.data)
         }
-      } catch (e) {
-        console.error(e)
+      } 
 
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar proprietário"
-        )
-      } finally {
+catch (e) {
+
+  console.error(e)
+
+  tratarErro(e)
+}
+
+       finally {
         setLoading(false)
       }
     }
@@ -101,14 +105,16 @@ const empresaId =
       toast.success(
         "Proprietário salvo com sucesso"
       )
-    } catch (e) {
-      console.error(e)
+    } 
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao salvar proprietário"
-      )
-    } finally {
+catch (e) {
+
+  console.error(e)
+
+  tratarErro(e)
+}
+
+     finally {
       setLoading(false)
     }
   }
@@ -144,16 +150,17 @@ const empresaId =
       "Proprietário excluído"
     )
 
-  } catch (e) {
+  } 
 
-    console.error(e)
+catch (e) {
 
-    toast.error(
-      e.response?.data?.erro ||
-      "Erro ao excluir proprietário"
-    )
+  console.error(e)
 
-  } finally {
+  tratarErro(e)
+
+}
+
+  finally {
 
     setLoading(false)
   }

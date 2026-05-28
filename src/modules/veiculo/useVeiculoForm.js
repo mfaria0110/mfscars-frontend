@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import api from "../../api/api"
 import { limparMoeda } from "../../utils/moeda"
-import toast from "react-hot-toast"
 import { useUIStore } from "../../store/uiStore"
 import { useQueryClient } from "@tanstack/react-query"
 import { usePermissao } from "../permissao/usePermissao"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export function useVeiculoForm(id) {
   const modo = id ? "edit" : "create"
@@ -271,17 +272,21 @@ export function useVeiculoForm(id) {
       )
 
       return res.data
-    } catch (e) {
-      console.error(e)
+    } 
 
-      toast.error(
-        e.response?.data?.erro ||
-        e.message ||
-        "Erro ao salvar veículo"
-      )
 
-      throw e
-    } finally {
+catch (e) {
+
+  console.error(e)
+
+  tratarErro(e)
+
+  throw e
+
+} 
+
+
+    finally {
       setLoading(false)
       setLoadingGlobal(false)
     }

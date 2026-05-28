@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import api from "../../api/api"
 import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
-import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export function useMarcaModelo(marca_id) {
   const lojaId = useAppStore(state => state.lojaId)
@@ -29,14 +30,19 @@ export function useMarcaModelo(marca_id) {
         const res = await api.get("/veiculos/marcas")
 
         setMarcas(res.data || [])
-      } catch (e) {
-        console.error("Erro marcas:", e)
+      } 
 
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar marcas"
-        )
-      } finally {
+catch (e) {
+
+  console.error(
+    "Erro marcas:",
+    e
+  )
+
+  tratarErro(e)
+}
+
+      finally {
         setLoadingMarcas(false)
       }
     }
@@ -59,14 +65,19 @@ export function useMarcaModelo(marca_id) {
         )
 
         setModelos(res.data || [])
-      } catch (e) {
-        console.error("Erro modelos:", e)
+      } 
 
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar modelos"
-        )
-      } finally {
+catch (e) {
+
+  console.error(
+    "Erro modelos:",
+    e
+  )
+
+  tratarErro(e)
+}
+
+      finally {
         setLoadingModelos(false)
       }
     }

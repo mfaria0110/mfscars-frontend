@@ -9,15 +9,22 @@ import {
   useQueryClient
 } from "@tanstack/react-query"
 
-import { useAppStore } from "../../store/useAppStore"
-import { usePermissao } from "../permissao/usePermissao"
+import toast from "react-hot-toast"
+
+import { useAppStore }
+  from "../../store/useAppStore"
+
+import { usePermissao }
+  from "../permissao/usePermissao"
+
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 import {
 
   getPlanos,
   getPlanoAtual,
   upgradePlano,
-  assinarPlano,
   gerarPixPlano,
   consultarStatusPix,
   getFounders
@@ -84,29 +91,18 @@ export function usePlano() {
       enabled:
         podeVisualizar,
 
-      retry: false
+      retry: false,
+
+      refetchOnWindowFocus:
+        false
     })
 
   /* ===============================
      PLANO ATUAL
   =============================== */
 
-/* ===============================
-   PLANO ATUAL
-=============================== */
-
-    console.log({
-
-      lojaId,
-
-      podeVisualizar,
-
-      isChangingLoja
-
-    })
-
-    const planoAtualQuery =
-      useQuery({
+  const planoAtualQuery =
+    useQuery({
 
       queryKey: [
         "planoAtual",
@@ -116,9 +112,9 @@ export function usePlano() {
       queryFn:
         getPlanoAtual,
 
-enabled:
-  Boolean(lojaId) &&
-  !isChangingLoja,
+      enabled:
+        Boolean(lojaId) &&
+        !isChangingLoja,
 
       retry: false,
 
@@ -129,25 +125,25 @@ enabled:
         false
     })
 
-    /* ===============================
-       FOUNDERS
-    =============================== */
+  /* ===============================
+     FOUNDERS
+  =============================== */
 
-    const foundersQuery =
-      useQuery({
+  const foundersQuery =
+    useQuery({
 
-        queryKey: [
-          "founders"
-        ],
+      queryKey: [
+        "founders"
+      ],
 
-        queryFn:
-          getFounders,
+      queryFn:
+        getFounders,
 
-        retry: false
-      })
+      retry: false,
 
-
-
+      refetchOnWindowFocus:
+        false
+    })
 
   /* ===============================
      UPGRADE LOCAL
@@ -168,6 +164,7 @@ enabled:
       onSuccess: () => {
 
         queryClient.invalidateQueries({
+
           queryKey: [
             "planoAtual",
             lojaId
@@ -175,11 +172,27 @@ enabled:
         })
 
         queryClient.invalidateQueries({
+
           queryKey: [
             "dashboard",
             lojaId
           ]
         })
+
+        window.dispatchEvent(
+          new Event(
+            "planoAtualizado"
+          )
+        )
+
+        toast.success(
+          "Plano alterado com sucesso"
+        )
+      },
+
+      onError: (e) => {
+
+        tratarErro(e)
       }
     })
 
@@ -193,7 +206,7 @@ enabled:
 
     if (!podeEditar) {
 
-      alert(
+      toast.error(
         "Sem permissão para alterar plano"
       )
 
@@ -202,146 +215,115 @@ enabled:
 
     if (!lojaId) {
 
-      alert(
+      toast.error(
         "Selecione uma loja"
       )
 
       return
     }
 
+    await mutation.mutateAsync({
+
+      plano_id,
+
+      loja_id:
+        lojaId
+    })
+  }
+
+  /* ===============================
+     ASSINAR PLANO
+  =============================== */
+
+  async function handleAssinar(
+    plano
+  ) {
+
     try {
 
-      await mutation.mutateAsync({
+      /* ===========================
+         FREE
+      ============================ */
 
-        plano_id,
+      if (
 
-        loja_id:
+        plano?.nome
+          ?.toLowerCase?.() === "free"
+
+      ) {
+
+        await upgradePlano(
+
+          plano.id,
+
           lojaId
-      })
+        )
+
+        queryClient.invalidateQueries({
+
+          queryKey: [
+            "planoAtual",
+            lojaId
+          ]
+        })
+
+        queryClient.invalidateQueries({
+
+          queryKey: [
+            "dashboard",
+            lojaId
+          ]
+        })
+
+        window.dispatchEvent(
+          new Event(
+            "planoAtualizado"
+          )
+        )
+
+        toast.success(
+          "Plano FREE ativado com sucesso!"
+        )
+
+        return
+      }
+
+      /* ===========================
+         PLANOS PAGOS
+      ============================ */
+
+      const response =
+        await gerarPixPlano(
+          plano.id
+        )
+
+      if (
+        response?.payment_id
+      ) {
+
+        setPixData({
+
+          ...response,
+
+          plano
+        })
+
+        setShowPixModal(
+          true
+        )
+
+        return
+      }
+
+      toast.error(
+        "Erro ao gerar PIX"
+      )
 
     } catch (e) {
 
-      alert(
-        e.message
-      )
+      tratarErro(e)
     }
   }
-
-/* ===============================
-   ASSINAR PLANO
-=============================== */
-
-async function handleAssinar(
-  plano
-) {
-
-  try {
-
-    /*
-      FREE
-    */
-
-    if (
-
-      plano?.nome
-        ?.toLowerCase?.() === "free"
-
-    ) {
-
-      await upgradePlano(
-
-        plano.id,
-
-        lojaId
-
-      )
-
-      /*
-        REFRESH
-      */
-
-      queryClient.invalidateQueries({
-
-        queryKey: [
-          "planoAtual",
-          lojaId
-        ]
-      })
-
-      queryClient.invalidateQueries({
-
-        queryKey: [
-          "dashboard",
-          lojaId
-        ]
-      })
-
-      alert(
-        "Plano FREE ativado com sucesso!"
-      )
-
-      return
-    }
-
-    /*
-      PLANOS PAGOS
-    */
-
-    const response =
-      await gerarPixPlano(
-        plano.id
-      )
-
-    /*
-      PIX GERADO
-    */
-
-    if (
-      response?.payment_id
-    ) {
-
-      /*
-        PIX REUTILIZADO
-      */
-
-      if (
-        response?.reutilizado
-      ) {
-
-        alert(
-          "PIX anterior reutilizado."
-        )
-      }
-
-      /*
-        ABRE MODAL PIX
-      */
-
-      setPixData({
-
-  ...response,
-
-  plano
-})
-
-      setShowPixModal(true)
-
-      return
-    }
-
-    alert(
-      "Erro ao gerar PIX"
-    )
-
-  } catch (e) {
-
-    console.error(e)
-
-    alert(
-      "Erro ao iniciar pagamento"
-    )
-  }
-}
 
   /* ===============================
      POLLING PIX
@@ -353,25 +335,21 @@ async function handleAssinar(
       !pixData?.payment_id
     ) return
 
-    /* ===============================
-       TEMPO INICIAL PIX
-    =============================== */
-
     const startedAt =
       Date.now()
 
     const interval =
       setInterval(async () => {
 
-        /* ===============================
-           EXPIRA PIX
-        =============================== */
-
         const elapsed =
           Date.now() - startedAt
 
         const limite =
           15 * 60 * 1000
+
+        /* ===========================
+           EXPIRA PIX
+        ============================ */
 
         if (
           elapsed > limite
@@ -387,7 +365,7 @@ async function handleAssinar(
 
           setPixData(null)
 
-          alert(
+          toast.error(
             "PIX expirado. Gere uma nova cobrança."
           )
 
@@ -401,9 +379,9 @@ async function handleAssinar(
               pixData.payment_id
             )
 
-          /*
-            PAGAMENTO APROVADO
-          */
+          /* ===========================
+             PAGAMENTO APROVADO
+          ============================ */
 
           if (
             status?.status ===
@@ -414,7 +392,7 @@ async function handleAssinar(
               interval
             )
 
-            alert(
+            toast.success(
               "Plano ativado com sucesso!"
             )
 
@@ -424,11 +402,8 @@ async function handleAssinar(
 
             setPixData(null)
 
-            /*
-              RELOAD
-            */
-
             queryClient.invalidateQueries({
+
               queryKey: [
                 "planoAtual",
                 lojaId
@@ -436,16 +411,23 @@ async function handleAssinar(
             })
 
             queryClient.invalidateQueries({
+
               queryKey: [
                 "dashboard",
                 lojaId
               ]
             })
+
+            window.dispatchEvent(
+              new Event(
+                "planoAtualizado"
+              )
+            )
           }
 
         } catch (e) {
 
-          console.error(e)
+          tratarErro(e)
         }
 
       }, 3000)
@@ -459,16 +441,11 @@ async function handleAssinar(
     queryClient
   ])
 
-console.log(
-  "PLANO QUERY DATA:",
-  planoAtualQuery.data
-)
-
   /* ===============================
      RETURN
   =============================== */
 
-    return {
+  return {
 
     planos:
       planosQuery.data || [],
@@ -476,12 +453,12 @@ console.log(
     planoAtual:
       planoAtualQuery.data,
 
-semPlano:
+    semPlano:
 
-  planoAtualQuery.status ===
-    "success" &&
+      planoAtualQuery.status ===
+        "success" &&
 
-  !planoAtualQuery.data,
+      !planoAtualQuery.data,
 
     loading:
 
@@ -515,6 +492,6 @@ semPlano:
     setShowPixModal,
 
     founders:
-     foundersQuery.data || null
+      foundersQuery.data || null
   }
 }

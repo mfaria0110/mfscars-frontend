@@ -49,11 +49,9 @@ export function useDashboard() {
       !!lojaId &&
       podeVisualizarDashboard,
 
-    /* evita cache velho */
     staleTime:
       1000 * 10,
 
-    /* evita refetch desnecessário */
     refetchOnWindowFocus:
       false,
 
@@ -91,6 +89,11 @@ export function useDashboard() {
       atualizar
     )
 
+    window.addEventListener(
+      "dashboardAtualizado",
+      atualizar
+    )
+
     return () => {
 
       window.removeEventListener(
@@ -100,6 +103,11 @@ export function useDashboard() {
 
       window.removeEventListener(
         "planoAtualizado",
+        atualizar
+      )
+
+      window.removeEventListener(
+        "dashboardAtualizado",
         atualizar
       )
     }

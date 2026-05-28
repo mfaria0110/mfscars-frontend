@@ -6,6 +6,8 @@ import {
 
 import api from "../../api/api"
 import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
 
@@ -40,11 +42,6 @@ export function useUsuarios() {
 
     queryFn: async () => {
 
-      console.log(
-        "🔥 BUSCANDO USUÁRIOS DA LOJA:",
-        lojaId
-      )
-
       const res =
         await api.get("/usuarios") // ✅ SEM params
 
@@ -55,10 +52,9 @@ export function useUsuarios() {
 
     retry: false,
 
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 30
 
-    staleTime: 0
   })
 
   /* ===============================
@@ -132,13 +128,11 @@ export function useUsuarios() {
       })
     },
 
-    onError: (e) => {
-      toast.error(
-        e.response?.data?.erro ||
-        e.message ||
-        "Erro ao salvar usuário"
-      )
-    }
+onError: (e) => {
+
+  tratarErro(e)
+}
+    
   })
 
   /* ===============================
@@ -173,12 +167,10 @@ export function useUsuarios() {
       })
     },
 
-    onError: (e) => {
-      toast.error(
-        e.message ||
-        "Erro ao atualizar status"
-      )
-    }
+onError: (e) => {
+
+  tratarErro(e)
+}
   })
 
   /* ===============================
@@ -209,12 +201,10 @@ export function useUsuarios() {
       })
     },
 
-    onError: (e) => {
-      toast.error(
-        e.message ||
-        "Erro ao excluir usuário"
-      )
-    }
+onError: (e) => {
+
+  tratarErro(e)
+}
   })
 
   /* ===============================

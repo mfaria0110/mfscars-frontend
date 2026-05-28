@@ -320,10 +320,10 @@ export function getResumoConsumo(
 
   return {
 
-    usadosVeiculos:
-      Number(
-        planoAtual.usados || 0
-      ),
+usadosVeiculos:
+  Number(
+    planoAtual.usados_veiculos || 0
+  ),
 
     limiteVeiculos:
       Number(

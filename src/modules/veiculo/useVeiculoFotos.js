@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import api from "../../api/api"
 import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 import imageCompression
   from "browser-image-compression"
 
@@ -117,19 +119,20 @@ export function useVeiculoFotos(id) {
 
       setPreview(previews)
 
-    } catch (e) {
+    } 
 
-      console.error(
-        "Erro ao carregar fotos",
-        e
-      )
+catch (e) {
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao carregar fotos"
-      )
+  console.error(
+    "Erro ao carregar fotos",
+    e
+  )
 
-    } finally {
+  tratarErro(e)
+
+}
+
+    finally {
 
       setLoadingGlobal(false)
     }
@@ -279,16 +282,17 @@ export function useVeiculoFotos(id) {
         )
       })
 
-    } catch (e) {
+    } 
 
-      console.error(e)
+catch (e) {
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao remover foto"
-      )
+  console.error(e)
 
-    } finally {
+  tratarErro(e)
+
+}
+
+    finally {
 
       setLoadingGlobal(false)
     }
@@ -322,16 +326,17 @@ export function useVeiculoFotos(id) {
         "Foto principal definida"
       )
 
-    } catch (e) {
+    } 
 
-      console.error(e)
+catch (e) {
 
-      toast.error(
-        e.response?.data?.erro ||
-        "Erro ao definir principal"
-      )
+  console.error(e)
 
-    } finally {
+  tratarErro(e)
+
+}
+
+    finally {
 
       setLoadingGlobal(false)
     }
@@ -415,20 +420,20 @@ export function useVeiculoFotos(id) {
         "Fotos enviadas!"
       )
 
-    } catch (e) {
+    } 
 
-      console.error(
-        "UPLOAD FOTO ERRO:",
-        e.response?.data || e
-      )
+catch (e) {
 
-      toast.error(
-        e.response?.data?.erro ||
-        e.message ||
-        "Erro ao enviar fotos"
-      )
+  console.error(
+    "UPLOAD FOTO ERRO:",
+    e.response?.data || e
+  )
 
-    } finally {
+  tratarErro(e)
+
+} 
+
+    finally {
 
       setLoadingGlobal(false)
     }

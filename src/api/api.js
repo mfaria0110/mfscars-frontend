@@ -249,7 +249,47 @@ if (
   mensagem.includes(
     "Limite de lojas atingido"
   )
+) 
+
+/* ===============================
+   LIMITE VEÍCULOS → UPGRADE
+=============================== */
+
+if (
+  mensagem.includes(
+    "Limite de veículos atingido"
+  )
 ) {
+
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      "Você atingiu o limite de veículos do seu plano. Faça upgrade para continuar."
+    )
+
+  return Promise.reject(error)
+}
+
+/* ===============================
+   LIMITE VENDEDORES → UPGRADE
+=============================== */
+
+if (
+  mensagem.includes(
+    "Limite de vendedores atingido"
+  )
+) {
+
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      "Você atingiu o limite de vendedores do seu plano. Faça upgrade para continuar."
+    )
+
+  return Promise.reject(error)
+}
+
+{
 
   useAppStore
     .getState()

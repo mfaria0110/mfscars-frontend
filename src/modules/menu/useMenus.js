@@ -15,22 +15,28 @@ export function useMenus() {
   const { temPermissao } =
     usePermissao()
 
-const usuario =
-  useAppStore(
-    s => s.usuario
-  )
+  const usuario =
+    useAppStore(
+      s => s.usuario
+    )
 
   const podeVisualizarMenu =
     true
 
   const query = useQuery({
 
-    queryKey: ["menus"],
+    queryKey: [
+      "menus",
+      usuario?.id,
+      usuario?.master
+    ],
 
     queryFn: async () => {
 
       const res =
-        await api.get("/menus")
+        await api.get(
+          "/menus"
+        )
 
       const menus =
         res.data || []
@@ -40,7 +46,6 @@ const usuario =
         /* =========================
            EMPRESAS = MASTER ONLY
         ========================= */
-
         if (
 
           menu.rota === "/app/empresas" &&
@@ -55,7 +60,6 @@ const usuario =
         /* =========================
            SEM PERMISSÃO
         ========================= */
-
         if (!menu.permissao) {
 
           return true
@@ -64,7 +68,6 @@ const usuario =
         /* =========================
            PERMISSÃO
         ========================= */
-
         return temPermissao(
           menu.permissao
         )
@@ -73,8 +76,15 @@ const usuario =
     },
 
     enabled:
-      podeVisualizarMenu
+      podeVisualizarMenu,
 
+    staleTime:
+      1000 * 60 * 5,
+
+    refetchOnWindowFocus:
+      false,
+
+    retry: false
   })
 
   return {

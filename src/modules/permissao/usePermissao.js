@@ -6,30 +6,24 @@ export function usePermissao() {
 
   const usuario =
     useAppStore(
-      (state) => state.usuario
+      state => state.usuario
     )
 
   const permissoes =
     useAppStore(
-      (state) => state.permissoes
+      state => state.permissoes
     )
 
   /* =========================
      ADMIN GLOBAL
   ========================= */
-
   function isAdminGlobal() {
 
     if (!usuario) {
-
       return false
     }
 
-    /* =========================
-       MASTER
-    ========================= */
-
-    if (
+    return (
 
       usuario.master === true ||
 
@@ -37,38 +31,22 @@ export function usePermissao() {
 
       usuario.master === 1 ||
 
-      usuario.master === "1"
+      usuario.master === "1" ||
 
-    ) {
+      (
+        typeof usuario.perfil ===
+          "string" &&
 
-      return true
-    }
-
-    /* =========================
-       PERFIL ADMIN
-    ========================= */
-
-    if (
-
-      typeof usuario.perfil ===
-        "string" &&
-
-      usuario.perfil
-        .toLowerCase()
-        .trim() === "admin"
-
-    ) {
-
-      return true
-    }
-
-    return false
+        usuario.perfil
+          .toLowerCase()
+          .trim() === "admin"
+      )
+    )
   }
 
   /* =========================
      TEM PERMISSÃO
   ========================= */
-
   function temPermissao(
     chave
   ) {
@@ -82,21 +60,12 @@ export function usePermissao() {
 
     ) {
 
-      console.warn(
-
-        "Permissão inválida:",
-
-        chave
-
-      )
-
       return false
     }
 
     /* =========================
        BYPASS ADMIN
     ========================= */
-
     if (isAdminGlobal()) {
 
       return true
@@ -105,7 +74,6 @@ export function usePermissao() {
     /* =========================
        SEGURANÇA
     ========================= */
-
     if (
 
       !Array.isArray(
@@ -127,6 +95,5 @@ export function usePermissao() {
     temPermissao,
 
     isAdminGlobal
-
   }
 }

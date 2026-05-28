@@ -3,6 +3,8 @@ import api from "../../api/api"
 import { useAppStore } from "../../store/useAppStore"
 import { usePermissao } from "../permissao/usePermissao"
 import toast from "react-hot-toast"
+import { tratarErro }
+  from "../../utils/tratarErro"
 
 export function useOpcionais(id) {
   const lojaId = useAppStore(state => state.lojaId)
@@ -29,14 +31,19 @@ export function useOpcionais(id) {
         const res = await api.get("/veiculos/opcionais")
 
         setLista(res.data || [])
-      } catch (e) {
-        console.error("Erro opcionais:", e)
+      } 
 
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar opcionais"
-        )
-      } finally {
+catch (e) {
+
+  console.error(
+    "Erro opcionais:",
+    e
+  )
+
+  tratarErro(e)
+}
+
+       finally {
         setLoading(false)
       }
     }
@@ -62,17 +69,19 @@ export function useOpcionais(id) {
         setSelecionados(
           opcionais.map(o => o.id)
         )
-      } catch (e) {
-        console.error(
-          "Erro veículo opcionais:",
-          e
-        )
+      } 
 
-        toast.error(
-          e.response?.data?.erro ||
-          "Erro ao carregar opcionais do veículo"
-        )
-      } finally {
+catch (e) {
+
+  console.error(
+    "Erro veículo opcionais:",
+    e
+  )
+
+  tratarErro(e)
+}
+
+      finally {
         setLoading(false)
       }
     }

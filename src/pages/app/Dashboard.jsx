@@ -139,11 +139,11 @@ export default function Dashboard() {
 
           <div className="dashboard-value">
 
-            {plano?.nome || "--"} (
-            {plano?.usados || 0}/
-            {plano?.limite || 0}
-            )
+{plano?.nome || "--"} (
+{plano?.usados_veiculos || 0}/
+{plano?.limite_veiculos || 0}
 
+)
           </div>
 
         </div>
