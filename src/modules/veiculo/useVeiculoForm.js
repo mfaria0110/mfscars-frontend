@@ -137,13 +137,32 @@ export function useVeiculoForm(id) {
       return
     }
 
-    if (name === "valor") {
-      setForm(prev => ({
-        ...prev,
-        valor: limparMoeda(value)
-      }))
-      return
-    }
+if (name === "valor") {
+
+  const apenasNumeros =
+    String(value)
+      .replace(/\D/g, "")
+
+  // NUMERIC(12,2)
+  // máximo: 9.999.999.999,99
+if (apenasNumeros.length > 12) {
+
+  if (apenasNumeros.length === 13) {
+    toast.error(
+      "Valor máximo permitido é R$ 9.999.999.999,99"
+    )
+  }
+
+  return
+}
+
+  setForm(prev => ({
+    ...prev,
+    valor: limparMoeda(value)
+  }))
+
+  return
+}
 
     setForm(prev => ({
       ...prev,
@@ -250,13 +269,6 @@ export function useVeiculoForm(id) {
 
       let res
 
-      if (modo === "edit") {
-        res = await api.put(
-          `/veiculos/${id}`,
-          dados
-        )
-      } else {
-
       /* ===============================
          PLACA OBRIGATÓRIA
       ============================== */
@@ -287,7 +299,15 @@ export function useVeiculoForm(id) {
           )
           return
         }
-        
+
+      if (modo === "edit") {
+        res = await api.put(
+          `/veiculos/${id}`,
+          dados
+        )
+      } else {
+
+    
         res = await api.post(
           `/veiculos`,
           dados

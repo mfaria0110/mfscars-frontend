@@ -323,9 +323,9 @@ return (
                       value={formatarMoeda(
                         form.valor
                         )}
-                      onChange={
-                        handleChange
-                      }
+                      onChange={handleChange}
+                      required
+                      maxLength={16}
                     />
                   </div>
 
