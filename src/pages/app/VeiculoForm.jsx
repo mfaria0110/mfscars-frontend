@@ -390,16 +390,14 @@ return (
 
 
                   <div className="proprietario-group">
-                    <label>
-                      Placa
-                    </label>
+                    <label>Placa</label>
 
-                    <Input
-                      name="placa"
-                      value={form.placa || ""}
-                      onChange={handleChange}
-                      required
-                    />
+                  <input
+                    name="placa"
+                    value={form.placa || ""}
+                    onChange={handleChange}
+                    required
+                  />
                   </div>
 
                   <div className="proprietario-group">
