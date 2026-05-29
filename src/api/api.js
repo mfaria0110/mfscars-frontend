@@ -122,11 +122,6 @@ api.interceptors.request.use(
         String(lojaId)
     }
 
-    console.log(
-      "HEADER LOJA:",
-      config.headers["x-loja-id"]
-    )
-
     return config
   },
 
