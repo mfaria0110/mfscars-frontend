@@ -256,6 +256,38 @@ export function useVeiculoForm(id) {
           dados
         )
       } else {
+
+      /* ===============================
+         PLACA OBRIGATÓRIA
+      ============================== */
+
+      if (!form.placa?.trim()) {
+        toast.error(
+          "Informe a placa do veículo"
+        )
+        return
+      }
+
+      /* ===============================
+         VALOR MÁXIMO
+      ============================== */
+
+        const valorNumerico = dados.valor
+
+        if (!valorNumerico || valorNumerico <= 0) {
+          toast.error(
+            "Informe um valor válido para o veículo"
+          )
+          return
+        }
+
+        if (valorNumerico > 9999999999.99) {
+          toast.error(
+            "Valor do veículo excede o limite permitido"
+          )
+          return
+        }
+        
         res = await api.post(
           `/veiculos`,
           dados
