@@ -108,6 +108,11 @@ const documentos = useDocumentos(veiculoIdAtual)
           opcionais.selecionados
         )
 
+      console.log(
+  "RETORNO SALVAR:",
+  veiculo
+)
+
       if (!veiculo && !id) {
         throw new Error(
           "Erro ao salvar veículo"
