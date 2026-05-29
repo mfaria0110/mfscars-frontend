@@ -162,34 +162,85 @@ api.interceptors.response.use(
        401 → TOKEN
     =============================== */
 
-    if (status === 401) {
+  if (
+    status === 401 &&
+    !error.config._retry
+  ) {
 
-      const tokenExpirado =
+  const tokenExpirado =
 
-        mensagem.toLowerCase().includes("token") ||
+    mensagem.toLowerCase().includes("token") ||
 
-        mensagem.toLowerCase().includes("jwt") ||
+    mensagem.toLowerCase().includes("jwt") ||
 
-        mensagem.toLowerCase().includes("expirado") ||
+    mensagem.toLowerCase().includes("expirado") ||
 
-        mensagem.toLowerCase().includes("unauthorized")
+    mensagem.toLowerCase().includes("unauthorized")
 
-      if (tokenExpirado) {
+  if (!tokenExpirado) {
 
-        console.warn(
-          "Token expirado → logout"
-        )
+    return Promise.reject(error)
+  }
 
-        const logout =
-          useAppStore
-            .getState()
-            .logout
+  try {
 
-        logout()
-      }
+    const state =
+      useAppStore.getState()
+
+    const refreshToken =
+      state.refreshToken
+
+    if (!refreshToken) {
+
+      state.logout()
 
       return Promise.reject(error)
     }
+
+      console.warn(
+        "🔄 Renovando token..."
+      )
+
+      error.config._retry = true
+
+      const response =
+        await axios.post(
+        "https://api.mfscars.com.br/auth/refresh",
+        {
+          refreshToken
+        }
+      )
+
+    const novoToken =
+      response.data.accessToken
+
+    state.setAccessToken(
+      novoToken
+    )
+
+    error.config.headers.Authorization =
+      `Bearer ${novoToken}`
+
+    console.warn(
+      "✅ Token renovado"
+    )
+
+    return api(error.config)
+
+  } catch (e) {
+
+    console.error(
+      "❌ Falha refresh",
+      e
+    )
+
+    useAppStore
+      .getState()
+      .logout()
+
+    return Promise.reject(error)
+  }
+}
 
     /* ===============================
        403 → LOJA INATIVA
@@ -236,15 +287,25 @@ api.interceptors.response.use(
       })
     }
 
-    /* ===============================
-   LIMITE LOJAS → UPGRADE
+/* ===============================
+   LIMITE VEÍCULOS → UPGRADE
 =============================== */
 
 if (
   mensagem.includes(
     "Limite de lojas atingido"
   )
-) 
+) {
+
+  useAppStore
+    .getState()
+    .abrirPaywall(
+      "Você atingiu o limite de lojas do seu plano. Faça upgrade para continuar."
+    )
+
+  return Promise.reject(error)
+}
+
 
 /* ===============================
    LIMITE VEÍCULOS → UPGRADE
@@ -265,6 +326,8 @@ if (
   return Promise.reject(error)
 }
 
+
+
 /* ===============================
    LIMITE VENDEDORES → UPGRADE
 =============================== */
@@ -284,16 +347,6 @@ if (
   return Promise.reject(error)
 }
 
-{
-
-  useAppStore
-    .getState()
-    .abrirPaywall(
-      "Você atingiu o limite de lojas do seu plano. Faça upgrade para continuar."
-    )
-
-  return Promise.reject(error)
-}
 
 /* ===============================
    BLOQUEIO PLANO
@@ -325,20 +378,6 @@ if (bloqueioPlano) {
     error
   )
 }
-
-
-    if (bloqueioPlano) {
-
-      useAppStore
-        .getState()
-        .abrirPaywall(
-          mensagem
-        )
-
-      return Promise.reject(
-        error
-      )
-    }
 
     /* ===============================
        OUTROS 403
