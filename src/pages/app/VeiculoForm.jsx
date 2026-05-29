@@ -171,12 +171,14 @@ export default function VeiculoForm() {
       "Veículo salvo com sucesso"
       )
 
-/*
- força tela desmontar e montar novamente
-*/
-    if (!id && veiculoId) {
-      navigate(`/app/veiculos/editar/${veiculoId}`)
-    }
+  /*
+   força tela desmontar e montar novamente
+  */
+  toast.success(
+    "Veículo salvo com sucesso"
+  )
+
+  navigate("/app/veiculos")
 
 
   } catch (e) {

@@ -7,6 +7,8 @@ import toast from "react-hot-toast"
 import { usePermissao } from "../permissao/usePermissao"
 import { tratarErro }
   from "../../utils/tratarErro"
+import { useNavigate }
+  from "react-router-dom"
 
 export function useVeiculoForm(id) {
   const modo = id ? "edit" : "create"
@@ -24,6 +26,8 @@ export function useVeiculoForm(id) {
   )
 
   const queryClient = useQueryClient()
+
+  const navigate = useNavigate()
 
   const [form, setForm] = useState({
     marca: "",
@@ -324,7 +328,10 @@ if (apenasNumeros.length > 12) {
           : "Veículo criado"
       )
 
+      navigate("/app/veiculos")
+
       return res.data
+
     } 
 
 
