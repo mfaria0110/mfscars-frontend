@@ -228,12 +228,23 @@
   gap: 10px;
   margin-bottom: 8px;
   margin-top: 6px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  flex-wrap: nowrap;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .tabs-header button {
+  flex-shrink: 0;
+
   padding: 10px 16px;
   border-radius: 8px;
   border: none;
+
   background: #e5e7eb;
   cursor: pointer;
 }
@@ -406,4 +417,15 @@ label {
   .veiculos-filtros {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .tabs-header {
+    padding-bottom: 4px;
+  }
+
+  .tabs-header button {
+    min-width: max-content;
+  }
+
+}
+
 }
