@@ -228,16 +228,12 @@ async function editarUsuario(u) {
 
   } catch (e) {
 
-    console.error(
-      "ERRO SALVAR USUARIO:",
-      e
-    )
-
-    alert(
-      e?.response?.data?.erro ||
-      "Erro ao salvar usuário"
-    )
-  }
+  console.error(
+    "ERRO SALVAR USUARIO:",
+    e
+  )
+}
+  
 }
 
   /* ===============================
