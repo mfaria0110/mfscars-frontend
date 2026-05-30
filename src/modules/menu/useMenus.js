@@ -10,6 +10,7 @@ import { usePermissao }
 import { useAppStore }
   from "../../store/useAppStore"
 
+
 export function useMenus() {
 
   const { temPermissao } =
@@ -20,16 +21,22 @@ export function useMenus() {
       s => s.usuario
     )
 
+  const lojaId =
+  useAppStore(
+    s => s.lojaId
+  )
+
   const podeVisualizarMenu =
     true
 
   const query = useQuery({
 
-    queryKey: [
-      "menus",
-      usuario?.id,
-      usuario?.master
-    ],
+queryKey: [
+  "menus",
+  usuario?.id,
+  usuario?.master,
+  lojaId
+],
 
     queryFn: async () => {
 
@@ -75,8 +82,9 @@ export function useMenus() {
       })
     },
 
-    enabled:
-      podeVisualizarMenu,
+enabled:
+  podeVisualizarMenu &&
+  !!lojaId,
 
     staleTime:
       1000 * 60 * 5,
