@@ -12,11 +12,15 @@
 ================================ */
 
 .main-content {
-  margin-left: 220px; /* 🔥 espaço da sidebar */
-  width: 100%;
+  margin-left: 220px;
+
+  width: calc(100% - 220px);
 
   display: flex;
   flex-direction: column;
+
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* ===============================
@@ -35,4 +39,29 @@
 
 .sidebar.collapsed + .main-content {
   margin-left: 70px;
+  width: calc(100% - 70px);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .main-content {
+
+    margin-left: 70px;
+
+    width: calc(100% - 70px);
+
+    overflow-x: hidden;
+  }
+
+  .page-content {
+
+    padding: 8px 10px 20px 10px;
+
+    overflow-x: hidden;
+  }
+
 }

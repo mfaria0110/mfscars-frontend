@@ -190,3 +190,35 @@
 .documento-link:hover {
   text-decoration: underline;
 }
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .proprietario-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .proprietario-container .proprietario-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .documentos-upload {
+    flex-direction: column;
+  }
+
+  .documentos-upload select,
+  .documentos-upload input,
+  .documentos-upload button {
+    width: 100%;
+  }
+
+  .documento-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+}
