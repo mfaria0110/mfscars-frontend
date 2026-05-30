@@ -334,14 +334,14 @@ if (
 
 if (
   mensagem.includes(
-    "Limite de vendedores atingido"
+    "Limite de usuários atingido"
   )
 ) {
 
   useAppStore
     .getState()
     .abrirPaywall(
-      "Você atingiu o limite de vendedores do seu plano. Faça upgrade para continuar."
+      "Você atingiu o limite de usuários do seu plano. Faça upgrade para continuar."
     )
 
   return Promise.reject(error)

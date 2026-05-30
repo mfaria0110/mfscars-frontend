@@ -394,7 +394,7 @@ async function copiarPix() {
         marginBottom: 8
       }}
     >
-      👥 Vendedores
+      👥 Usuários
     </div>
 
     <div
@@ -721,9 +721,9 @@ return (
 
       plano.limite_vendedores === null
 
-        ? "Vendedores ilimitados"
+        ? "Usuários ilimitados"
 
-        : `${plano.limite_vendedores} vendedores por loja`
+        : `${plano.limite_vendedores} usuários por loja`
     }
   </div>
 
