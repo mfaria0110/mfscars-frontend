@@ -75,15 +75,30 @@ export function useAuth() {
       })
 
       // auto seleção de loja
-      if (lojas.length === 1) {
-        const lojaId = lojas[0].id
+const lojaSalva =
+  Number(
+    sessionStorage.getItem(
+      "loja_id"
+    )
+  )
 
-        console.log("🔥 Auto selecionando loja:", lojaId)
+const lojaInicial =
+  lojaSalva ||
+  lojas?.[0]?.id
 
-        setTimeout(() => {
-          trocarLoja(lojaId)
-        }, 100)
-      }
+if (lojaInicial) {
+
+  console.log(
+    "🔥 Auto selecionando loja:",
+    lojaInicial
+  )
+
+  setTimeout(() => {
+
+    trocarLoja(lojaInicial)
+
+  }, 100)
+}
 
       // inicia logout por inatividade
       iniciarIdleLogout(clearSession)
