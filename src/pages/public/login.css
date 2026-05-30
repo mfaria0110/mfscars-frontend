@@ -10,14 +10,21 @@ html, body, #root {
 
 /* FUNDO TOTAL */
 .login-page {
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(135deg, #1e3c72, #2563eb);
+  padding: 16px;
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    135deg,
+    #1e3c72,
+    #2563eb
+  );
 }
 
 /* CARD */
@@ -85,6 +92,12 @@ html, body, #root {
   transition: 0.2s;
 }
 
+.login-input,
+.login-btn,
+.login-card {
+  box-sizing: border-box;
+}
+
 .login-input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
@@ -121,8 +134,28 @@ html, body, #root {
 }
 
 /* RESPONSIVO */
-@media(max-width: 400px){
+@media (max-width: 768px) {
+
+  .login-page {
+    padding: 20px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
   .login-card {
-    padding: 25px 15px;
+    max-width: 100%;
+    padding: 24px 18px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .login-subtitle {
+    font-size: 16px;
+  }
+
+  .login-input {
+    font-size: 16px;
   }
 }
