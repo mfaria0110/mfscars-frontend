@@ -418,9 +418,16 @@ text-decoration:none;
 ================================ */
 
 /* TOPO */
-#app-public.empresa-page .topo-loja{
-  background: linear-gradient(90deg, #111, #444);
-  padding:25px 0;
+#app-public.empresa-page .topo-loja {
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #1e293b,
+      #334155
+    );
+
+  padding: 40px 0;
   color:white;
 }
 

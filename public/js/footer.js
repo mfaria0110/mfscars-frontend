@@ -238,9 +238,9 @@ R$ ${valorFinal.toLocaleString(
   👥 ${
     p.limite_vendedores
 
-      ? `${p.limite_vendedores} vendedores`
+      ? `${p.limite_vendedores} usuários`
 
-      : "Vendedores ilimitados"
+      : "usuários ilimitados"
   }
 </div>
 

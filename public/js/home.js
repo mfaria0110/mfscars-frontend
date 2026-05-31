@@ -108,19 +108,6 @@ app.innerHTML = `
   </a>
 
   <a
-    href="#contato"
-
-    style="
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      opacity:.9;
-    "
-  >
-    Contato
-  </a>
-
-  <a
     href="/cadastro.html"
 
     style="

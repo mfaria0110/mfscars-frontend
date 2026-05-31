@@ -44,22 +44,25 @@ app.innerHTML = `
         flex-wrap:wrap;
       ">
 
-        <h1 id="nome"></h1>
+<h1 id="nome"></h1>
 
-        <span id="qtdTopo"></span>
+<div
+  id="premium"
+  class="badge-premium"
+>
+  ⭐ Loja Premium
+</div>
 
-      </div>
+<div class="loja-meta">
 
-      <div
-        id="premium"
-        class="badge-premium"
-      >
-        ⭐ Loja Premium
-      </div>
+  <div id="cidade"></div>
 
-      <p id="cidade"></p>
+  <div id="telefone"></div>
 
-      <p id="telefone"></p>
+  <div id="qtdTopo"></div>
+
+</div>
+
 
       <a
         id="whats"
@@ -73,7 +76,8 @@ app.innerHTML = `
         id="btnMapa"
         target="_blank"
       >
-        📍 Ver no mapa
+        💬 Chamar no WhatsApp
+📍 Como chegar
       </a>
 
     </div>
@@ -248,15 +252,15 @@ async function carregar() {
         "block";
     }
 
-    document.getElementById(
-      "cidade"
-    ).innerText =
-      `${loja.cidade || ""} - ${loja.estado || ""}`;
+document.getElementById(
+  "cidade"
+).innerHTML =
+  `📍 ${loja.cidade || ""} - ${loja.estado || ""}`;
 
-    document.getElementById(
-      "telefone"
-    ).innerText =
-      loja.telefone || "-";
+document.getElementById(
+  "telefone"
+).innerHTML =
+  `📞 ${loja.telefone || "-"}`;
 
     /* WHATS */
 
@@ -305,6 +309,11 @@ async function carregar() {
 
     veiculos =
       dados.veiculos || [];
+
+document.getElementById(
+  "qtdTopo"
+).innerHTML =
+  `🚗 ${veiculos.length} veículo${veiculos.length > 1 ? "s" : ""} disponível${veiculos.length > 1 ? "is" : ""}`;
 
     filtrar();
 
