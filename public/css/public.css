@@ -486,6 +486,14 @@ linear-gradient(
   color:white;
 }
 
+#app-public.empresa-page{
+  background:#fff;
+}
+
+#app-public.empresa-page .container{
+  background:#fff;
+}
+
 #app-public.empresa-page .loja-box{
   max-width:1200px;
   margin:auto;
@@ -546,23 +554,21 @@ linear-gradient(
 }
 
 /* SIDEBAR */
+/* SIDEBAR */
 #app-public.empresa-page .sidebar{
   display:grid;
 
   grid-template-columns:
-    220px  /* Buscar */
-    220px  /* Marca */
-    220px  /* Modelo */
-    120px  /* Min */
-    120px  /* Max */
-    140px  /* Ordenar */
-    120px; /* Filtrar */
+    1.5fr
+    1.2fr
+    1.2fr
+    90px
+    90px
+    130px
+    110px;
 
-  gap:12px;
+  gap:10px;
   align-items:center;
-}
-
-#app-public.empresa-page .sidebar{
 
   background:#fff;
   border:1px solid #e5e7eb;
@@ -585,15 +591,9 @@ linear-gradient(
   margin-bottom:0;
 }
 
-#app-public.empresa-page .sidebar button{
-  width:auto;
-  min-width:140px;
-}
-
-
 /*BOTAO FILTRAR*/
 #app-public.empresa-page #btnFiltrar{
-  width:120px;
+  width:110px;
   height:32px;
 
   border:none;
@@ -606,6 +606,10 @@ linear-gradient(
   cursor:pointer;
 }
 
+#app-public.empresa-page #btnFiltrar{
+  align-self:center;
+}
+
 #app-public.empresa-page #btnFiltrar:hover{
 
   background:#1d4ed8;
@@ -614,11 +618,13 @@ linear-gradient(
 
 /* CARD */
 #app-public.empresa-page .grid{
-
   display:grid;
+
   grid-template-columns:
-    repeat(auto-fill,280px);
+    repeat(auto-fill,250px);
+
   gap:20px;
+
   justify-content:flex-start;
 }
 
@@ -627,13 +633,9 @@ linear-gradient(
 }
 
 #app-public.empresa-page .card{
-
-  width:280px;
-  min-width:280px;
-  max-width:280px;
-}
-
-#app-public.empresa-page .card{
+  width:250px;
+  min-width:250px;
+  max-width:250px;
 
   background:#fff;
   border:1px solid #e5e7eb;
