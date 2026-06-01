@@ -53,16 +53,6 @@ app.innerHTML = `
 >
 
   <div
-    style="
-      font-size:34px;
-      font-weight:900;
-      color:#0f172a;
-    "
-  >
-    🚗 MFS Cars
-  </div>
-
-  <div
     id="headerLoja"
 
     style="
