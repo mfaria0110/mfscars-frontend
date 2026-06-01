@@ -21,8 +21,11 @@ app.innerHTML = `
     🚗 MFS Cars Marketplace
   </span>
 
-<button class="btn-voltar" onclick="history.back()">
-  ← VoltarMF
+<button
+  class="btn-voltar"
+  onclick="window.location='/home.html'"
+>
+  ← Voltar
 </button>
 
 </div>
