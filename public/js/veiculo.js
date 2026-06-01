@@ -44,16 +44,40 @@ app.innerHTML = `
     "
   >
 
-    <div
-      style="
-        font-size:34px;
-        font-weight:900;
+<div
+  style="
+    display:flex;
+    align-items:center;
+    gap:60px;
+  "
+>
 
-        color:#0f172a;
-      "
-    >
-      🚗 MFS Cars
-    </div>
+  <div
+    style="
+      font-size:34px;
+      font-weight:900;
+      color:#0f172a;
+    "
+  >
+    🚗 MFS Cars
+  </div>
+
+  <div
+    id="headerLoja"
+
+    style="
+      display:none;
+
+      align-items:center;
+      gap:18px;
+
+      font-size:15px;
+      font-weight:700;
+      color:#0f172a;
+    "
+  ></div>
+
+</div>
 
     <button
       id="btnVoltar"
@@ -96,7 +120,7 @@ app.innerHTML = `
 
     min-height:100vh;
 
-    padding:50px 30px 90px;
+    padding:10px 10px 50px;
   "
 >
 
@@ -124,7 +148,7 @@ display:grid;
 grid-template-columns:
   540px 1fr;
 align-items:start;
-  
+
       "
     >
 
@@ -146,7 +170,7 @@ align-items:start;
 
           style="
             width:100%;
-            height:360px;
+            height:300px;
 
             object-fit:cover;
 
@@ -180,7 +204,7 @@ thumbs.style.overflowY = "auto";
       <!-- INFO -->
       <div
         style="
-          padding:46px;
+          padding:26px;
 
           display:flex;
           flex-direction:column;
@@ -209,8 +233,8 @@ thumbs.style.overflowY = "auto";
             id="titulo"
 
             style="
-              font-size:35px;
-              line-height:1.05;
+              font-size:28px;
+              line-height:1.15;
 
               color:#0f172a;
 
@@ -226,7 +250,7 @@ thumbs.style.overflowY = "auto";
             id="valor"
 
             style="
-              font-size:40px;
+              font-size:32px;
               font-weight:900;
 
               color:#16a34a;
@@ -245,7 +269,7 @@ thumbs.style.overflowY = "auto";
 
               gap:18px;
 
-              margin-bottom:40px;
+              margin-bottom:20px;
             "
           >
 
@@ -257,9 +281,8 @@ thumbs.style.overflowY = "auto";
 
                 border-radius:20px;
 
-                padding:20px;
-
-                font-size:17px;
+padding:14px 18px;
+font-size:15px;
 
                 color:#0f172a;
               "
@@ -332,19 +355,6 @@ thumbs.style.overflowY = "auto";
 
           </div>
 
-          <!-- LOJA -->
-          <div
-            style="
-              background:#f8fafc;
-
-              border-radius:24px;
-
-              padding:24px;
-
-              margin-bottom:34px;
-            "
-          >
-
             <div
               style="
                 font-size:14px;
@@ -396,7 +406,7 @@ thumbs.style.overflowY = "auto";
             style="
               flex:1;
 
-              height:68px;
+              height:54px;
 
               border:none;
 
@@ -411,7 +421,7 @@ thumbs.style.overflowY = "auto";
 
               color:#fff;
 
-              font-size:18px;
+              font-size:14px;
               font-weight:800;
 
               cursor:pointer;
@@ -430,7 +440,7 @@ thumbs.style.overflowY = "auto";
             style="
               flex:1;
 
-              height:68px;
+              height:54px;
 
               border:none;
 
@@ -445,7 +455,7 @@ thumbs.style.overflowY = "auto";
 
               color:#fff;
 
-              font-size:18px;
+              font-size:16px;
               font-weight:800;
 
               cursor:pointer;
@@ -617,6 +627,26 @@ document.getElementById(
   window.location.href =
     "/home.html";
 };
+
+document.getElementById(
+  "headerLoja"
+).style.display = "flex";
+
+document.getElementById(
+  "headerLoja"
+).innerHTML = `
+  🏪 ${v.loja}
+
+  <a
+    href="tel:${v.telefone}"
+    style="
+      color:#2563eb;
+      text-decoration:none;
+    "
+  >
+    📞 ${v.telefone}
+  </a>
+`;
 
 /* ===============================
    🚗 CARREGAR VEÍCULO
