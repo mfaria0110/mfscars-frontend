@@ -547,21 +547,21 @@ function render(lista) {
         ? v.fotos[0]
         : null;
 
-    const foto =
-      primeiraFoto?.url
-        ? primeiraFoto.url
-        : (
-            v.foto &&
-            v.foto !== "undefined" &&
-            v.foto !== "null"
-          )
-            ? (
-               v.foto.startsWith("http")
-                ? v.foto.replace("http://", "https://")
-                  : `${API_URL}/uploads/${v.foto}`
-              )
-            : `${API_URL}/uploads/sem-foto.jpg`;
-
+      const foto =
+        primeiraFoto?.url
+          ? primeiraFoto.url
+          : (
+              v.foto &&
+              v.foto !== "undefined" &&
+              v.foto !== "null" &&
+              !v.foto.includes("sem-foto")
+            )
+              ? (
+                  v.foto.startsWith("http")
+                    ? v.foto.replace("http://", "https://")
+                    : `${API_URL}/uploads/${v.foto}`
+                )
+              : "/assets/sem-foto.png";
 
 
     grid.innerHTML += `
@@ -584,9 +584,14 @@ function render(lista) {
     : "🤍"}
 </div>
 
-        <img
+<img
   src="${foto}"
-  onerror="this.src='${API_URL}/uploads/sem-foto.jpg'"
+  alt="${v.modelo}"
+  loading="lazy"
+  onerror="
+    this.onerror=null;
+    this.src='/assets/sem-foto.png';
+  "
 >
 
     <div class="info">
