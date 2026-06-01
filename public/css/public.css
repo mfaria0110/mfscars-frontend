@@ -24,6 +24,40 @@ transition:0.2s;
 background:#0056b3;
 }
 
+
+/*LOJAS*/
+.loja-dados{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.loja-meta{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-size:20px;
+}
+
+.loja-acoes{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.btn-mapa{
+  background:#2563eb;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  text-decoration:none;
+}
+
+.whats{
+  padding:12px 18px;
+}
+
+
 /* ===============================
    HEADER
 ============================== */
@@ -419,13 +453,13 @@ text-decoration:none;
 
 /* TOPO */
 #app-public.empresa-page .topo-loja {
-  background:
-    linear-gradient(
-      135deg,
-      #0f172a,
-      #1e293b,
-      #334155
-    );
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#172554,
+#1e293b
+);
 
   padding: 40px 0;
   color:white;

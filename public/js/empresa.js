@@ -44,41 +44,48 @@ app.innerHTML = `
         flex-wrap:wrap;
       ">
 
-<h1 id="nome"></h1>
+<div class="loja-dados">
 
-<div
-  id="premium"
-  class="badge-premium"
->
-  ⭐ Loja Premium
+  <h1 id="nome"></h1>
+
+  <div
+    id="premium"
+    class="badge-premium"
+  >
+    ⭐ Loja Premium
+  </div>
+
+  <div class="loja-meta">
+
+    <div id="cidade"></div>
+
+    <div id="telefone"></div>
+
+    <div id="qtdTopo"></div>
+
+  </div>
+
+  <div class="loja-acoes">
+
+    <a
+      id="whats"
+      class="whats"
+      target="_blank"
+    >
+      💬 Chamar no WhatsApp
+    </a>
+
+  <a
+    id="btnMapa"
+    target="_blank"
+    class="btn-mapa"
+  >
+    📍 Como chegar
+  </a>
+
+  </div>
+
 </div>
-
-<div class="loja-meta">
-
-  <div id="cidade"></div>
-
-  <div id="telefone"></div>
-
-  <div id="qtdTopo"></div>
-
-</div>
-
-
-      <a
-        id="whats"
-        class="whats"
-        target="_blank"
-      >
-        WhatsApp
-      </a>
-
-      <a
-        id="btnMapa"
-        target="_blank"
-      >
-        💬 Chamar no WhatsApp
-📍 Como chegar
-      </a>
 
     </div>
 
