@@ -571,7 +571,7 @@ function render(lista) {
         onclick="window.abrirVeiculo(${v.id})"
       >
 
-/*
+
 <div
   class="fav-btn"
   onclick="
@@ -583,8 +583,6 @@ function render(lista) {
     ? "❤️"
     : "🤍"}
 </div>
-
-*/
 
         <img
   src="${foto}"
