@@ -276,22 +276,21 @@ document.getElementById(
       "whats"
     ).href =
       `https://wa.me/${tel}`;
+      
 
     /* LOGO */
-    document.getElementById(
-      "logo"
-    ).src =
+     document.getElementById("logo").src =
       loja.logo
         ? (
             loja.logo.startsWith("http")
               ? loja.logo.replace("http://", "https://")
-              : `${API_URL}/assets/${loja.logo}`
+              : `${API_URL}${loja.logo}`
           )
-        : `${API_URL}/assets/sem-logo.png`;
+        : "/assets/sem-logo.png";
+
 
 
     /* MAPA */
-
     document.getElementById(
       "btnMapa"
     ).href =

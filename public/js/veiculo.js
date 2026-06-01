@@ -120,20 +120,26 @@ app.innerHTML = `
           0 30px 100px
           rgba(15,23,42,.10);
 
-        display:grid;
-
+display:grid;
 grid-template-columns:
-  620px 1fr;
+  540px 1fr;
+align-items:start;
+  
       "
     >
 
       <!-- GALERIA -->
-      <div
-        style="
-          background:#0f172a;
-          padding:14px;
-        "
-      >
+<div
+  style="
+    background:#0f172a;
+    padding:14px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:flex-start;
+  "
+>
 
         <img
           id="fotoPrincipal"
@@ -162,7 +168,12 @@ grid-template-columns:
 
         margin-top:10px;
           "
-        ></div>
+        >
+
+thumbs.style.maxHeight = "160px";
+thumbs.style.overflowY = "auto";
+
+        </div>
 
       </div>
 
@@ -920,7 +931,13 @@ async function carregarSimilares() {
         };
 
         div.innerHTML = `
-          <img src="${foto}">
+          <img
+            src="${foto}"
+            onerror="
+              this.onerror=null;
+              this.src='/assets/sem-foto.png';
+            "
+          >
 
           <div class="card-info">
 
