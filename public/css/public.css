@@ -702,22 +702,22 @@ linear-gradient(
   color:#0a7d2c;
 }
 
-#app-public .preco{
-  font-size:16px;        /* 🔥 menor */
-  font-weight:bold;
-  color:#0a7d2c;
-  margin:5px 0;
-}
+  #app-public .preco{
+    font-size:16px;        /* 🔥 menor */
+    font-weight:bold;
+    color:#0a7d2c;
+    margin:5px 0;
+  }
 
-#app-public .footer{
-  text-align:center;
-}
+  #app-public .footer{
+    text-align:center;
+  }
 
-#app-public .footer-info{
-  font-size:15px;
-  line-height:1.5;
-  color:#f6f7fb;
-}
+  #app-public .footer-info{
+    font-size:15px;
+    line-height:1.5;
+    color:#f6f7fb;
+  }
 
 @media(max-width:768px){
 

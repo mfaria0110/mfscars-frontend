@@ -58,9 +58,7 @@ app.innerHTML = `
   <div class="loja-meta">
 
     <div id="cidade"></div>
-
     <div id="telefone"></div>
-
     <div id="qtdTopo"></div>
 
   </div>
