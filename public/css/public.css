@@ -551,6 +551,7 @@ linear-gradient(
   max-width:1400px;
   margin:20px auto;
   padding:0 20px;
+  margin-top: 10px;
 }
 
 /* SIDEBAR */
@@ -575,7 +576,6 @@ linear-gradient(
   border-radius:12px;
   padding:15px;
   box-shadow:0 2px 8px rgba(0,0,0,.06);
-  margin-top: 10px;
 }
 
 #app-public.empresa-page .sidebar input,
