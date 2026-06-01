@@ -571,22 +571,20 @@ function render(lista) {
         onclick="window.abrirVeiculo(${v.id})"
       >
 
-        <div
-          onclick="
-            event.stopPropagation();
-            window.toggleFav(${v.id})
-          "
-          style="
-            position:absolute;
-            top:8px;
-            right:8px;
-            cursor:pointer;
-          "
-        >
-          ${isFavorito(v.id)
-            ? "❤️"
-            : "🤍"}
-        </div>
+/*
+<div
+  class="fav-btn"
+  onclick="
+    event.stopPropagation();
+    window.toggleFav(${v.id})
+  "
+>
+  ${isFavorito(v.id)
+    ? "❤️"
+    : "🤍"}
+</div>
+
+*/
 
         <img
   src="${foto}"
