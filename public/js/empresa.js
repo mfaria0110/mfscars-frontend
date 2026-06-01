@@ -201,14 +201,6 @@ if (!id) {
 ============================== */
 
 document.getElementById(
-  "btnVoltar"
-).onclick = () => {
-
-  window.location =
-    "/home.html";
-};
-
-document.getElementById(
   "btnFiltrar"
 ).onclick = filtrar;
 
@@ -435,7 +427,8 @@ function filtrar() {
 
     lista.sort(
       (a, b) =>
-        a.valor - b.valor
+        Number(a.valor) -
+        Number(b.valor)
     );
   }
 
@@ -449,15 +442,16 @@ function filtrar() {
     );
   }
 
-  if (
-    ordenar === "ano_desc"
-  ) {
+if (
+  ordenar === "ano_desc"
+) {
 
-    lista.sort(
-      (a, b) =>
-        b.ano - a.ano
-    );
-  }
+  lista.sort(
+    (a, b) =>
+      Number(b.ano_modelo || 0) -
+      Number(a.ano_modelo || 0)
+  );
+}
 
   render(lista);
 }
