@@ -482,7 +482,7 @@ linear-gradient(
 #1e293b
 );
 
-  padding: 15px 0;
+  padding: 10px 0;
   color:white;
 }
 
@@ -549,8 +549,22 @@ linear-gradient(
 /* CONTAINER */
 #app-public.empresa-page .container{
   max-width:1400px;
-  margin:20px auto;
+  margin:10px auto;
   padding:5px 0px;
+
+}
+
+/* TITULO*/
+
+/* TITULO RESULTADOS */
+
+#app-public.empresa-page #titulo{
+
+  color:#111827;
+  font-size:32px;
+  font-weight:800;
+  line-height:1.2;
+  margin:15px 0 10px;
 
 }
 
