@@ -592,24 +592,31 @@ function render(lista) {
   onerror="this.src='${API_URL}/uploads/sem-foto.jpg'"
 >
 
-        <div class="info">
+    <div class="info">
 
-          <div class="modelo">
-            ${v.marca} ${v.modelo}
-          </div>
+    <div class="modelo">
+      ${v.marca} ${v.modelo}
+    </div>
 
-          <div>
-            ${v.ano || "-"}
-          </div>
+    <div class="detalhes">
+      📅 ${v.ano_modelo || "-"}
+    </div>
 
-          <div class="valor">
-            R$ ${Number(v.valor)
-              .toLocaleString("pt-BR")}
-          </div>
+    <div class="detalhes">
+      ⛽ ${v.combustivel || "-"}
+    </div>
 
-        </div>
+    <div class="detalhes">
+      ⚙️ ${v.cambio || "-"}
+    </div>
 
-      </div>
+    <div class="valor">
+      R$ ${Number(v.valor)
+        .toLocaleString("pt-BR")}
+    </div>
+
+  </div>
+
     `;
   });
 }
@@ -632,3 +639,13 @@ window.toggleFav =
 ============================== */
 
 carregar();
+
+function formatarTelefone(numero) {
+  const n = numero.replace(/\D/g,'');
+
+  if (n.length === 11) {
+    return `(${n.slice(0,2)}) ${n.slice(2,7)}-${n.slice(7)}`;
+  }
+
+  return numero;
+}

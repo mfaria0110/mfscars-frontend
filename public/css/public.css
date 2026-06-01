@@ -57,6 +57,32 @@ background:#0056b3;
   padding:12px 18px;
 }
 
+.divisor-loja{
+  height:1px;
+  background:rgba(255,255,255,.15);
+  margin:25px 0;
+}
+
+.btn-voltar{
+  background:#ffffff;
+  color:#111827;
+
+  padding:12px 20px;
+
+  border-radius:12px;
+  border:none;
+
+  font-weight:600;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.15);
+
+  transition:.2s;
+}
+
+.btn-voltar:hover{
+  transform:translateY(-2px);
+}
 
 /* ===============================
    HEADER
@@ -579,7 +605,7 @@ linear-gradient(
 /* IMAGEM */
 #app-public.empresa-page .card img{
   width:100%;
-  height:130px;
+  height:180px;
   object-fit:cover;
 }
 
@@ -591,6 +617,34 @@ linear-gradient(
 #app-public.empresa-page .modelo{
   font-size:14px;
   font-weight:bold;
+}
+
+#app-public.empresa-page .modelo{
+  font-size:15px;
+  font-weight:700;
+  color:#111827;
+  margin-bottom:8px;
+  min-height:42px;
+}
+
+#app-public.empresa-page .detalhes{
+  font-size:13px;
+  color:#6b7280;
+  margin-bottom:4px;
+}
+
+#app-public.empresa-page .info{
+  padding:12px;
+  min-height:140px;
+  display:flex;
+  flex-direction:column;
+}
+
+#app-public.empresa-page .valor{
+  margin-top:auto;
+  font-size:22px;
+  color:#0a7d2c;
+  font-weight:700;
 }
 
 #app-public.empresa-page .valor{
