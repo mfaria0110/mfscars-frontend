@@ -53,6 +53,16 @@ app.innerHTML = `
 >
 
   <div
+    style="
+      font-size:34px;
+      font-weight:900;
+      color:#0f172a;
+    "
+  >
+    🚗 MFS Cars
+  </div>
+
+  <div
     id="headerLoja"
 
     style="
@@ -174,15 +184,18 @@ align-items:start;
           id="thumbs"
 
           style="
-            display:flex;
-            flex-wrap:wrap;
-            gap:8px;
-            margin-top:10px;
+           display:flex;
 
-            max-height:160px;
-            overflow-y:auto;
+        flex-wrap:wrap;
+
+        gap:8px;
+
+        margin-top:10px;
           "
         >
+
+thumbs.style.maxHeight = "160px";
+thumbs.style.overflowY = "auto";
 
         </div>
 
@@ -339,6 +352,41 @@ font-size:15px;
               "
             ></div>
 
+
+          </div>
+
+            <div
+              style="
+                font-size:14px;
+                color:#64748b;
+
+                margin-bottom:10px;
+              "
+            >
+              Loja
+            </div>
+
+            <div
+              id="loja"
+
+              style="
+                font-size:26px;
+                font-weight:800;
+
+                color:#0f172a;
+
+                margin-bottom:12px;
+              "
+            ></div>
+
+            <div
+              id="telefone"
+
+              style="
+                font-size:18px;
+                color:#2563eb;
+              "
+            ></div>
 
           </div>
 
@@ -681,25 +729,28 @@ async function carregar() {
         ${v.telefone}
       </a>`;
 
-    document.getElementById(
-      "headerLoja"
-    ).style.display = "flex";
 
-    document.getElementById(
-      "headerLoja"
-    ).innerHTML = `
-      🏪 ${v.loja}
+document.getElementById(
+  "headerLoja"
+).style.display = "flex";
 
-      <a
-        href="tel:${v.telefone}"
-        style="
-          color:#2563eb;
-          text-decoration:none;
-        "
-      >
-        📞 ${v.telefone}
-      </a>
-    `;
+document.getElementById(
+  "headerLoja"
+).innerHTML = `
+  🏪 ${v.loja}
+
+  <a
+    href="tel:${v.telefone}"
+    style="
+      color:#2563eb;
+      text-decoration:none;
+    "
+  >
+    📞 ${v.telefone}
+  </a>
+`;
+
+      
 
     /* WHATSAPP */
 
