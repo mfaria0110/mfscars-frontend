@@ -180,24 +180,19 @@ align-items:start;
           "
         >
 
-        <div
-          id="thumbs"
+      <div
+        id="thumbs"
+        style="
+          display:flex;
+          flex-wrap:wrap;
+          gap:8px;
+          margin-top:10px;
+          max-height:160px;
+          overflow-y:auto;
+        "
+      ></div>
 
-          style="
-           display:flex;
 
-        flex-wrap:wrap;
-
-        gap:8px;
-
-        margin-top:10px;
-          "
-        >
-
-thumbs.style.maxHeight = "160px";
-thumbs.style.overflowY = "auto";
-
-        </div>
 
       </div>
 
@@ -354,39 +349,6 @@ font-size:15px;
 
 
           </div>
-
-            <div
-              style="
-                font-size:14px;
-                color:#64748b;
-
-                margin-bottom:10px;
-              "
-            >
-              Loja
-            </div>
-
-            <div
-              id="loja"
-
-              style="
-                font-size:26px;
-                font-weight:800;
-
-                color:#0f172a;
-
-                margin-bottom:12px;
-              "
-            ></div>
-
-            <div
-              id="telefone"
-
-              style="
-                font-size:18px;
-                color:#2563eb;
-              "
-            ></div>
 
           </div>
 
@@ -717,17 +679,6 @@ async function carregar() {
     ).innerText =
       v.descricao || "Sem descrição";
 
-    document.getElementById(
-      "loja"
-    ).innerText =
-      v.loja;
-
-    document.getElementById(
-      "telefone"
-    ).innerHTML =
-      `<a href="tel:${v.telefone}">
-        ${v.telefone}
-      </a>`;
 
 
 document.getElementById(
@@ -750,7 +701,7 @@ document.getElementById(
   </a>
 `;
 
-      
+
 
     /* WHATSAPP */
 
