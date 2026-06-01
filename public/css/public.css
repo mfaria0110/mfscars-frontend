@@ -697,7 +697,28 @@ grid-template-columns:
 
 /* MAPA */
 #app-public.empresa-page .mapa{
-  margin-top:40px;
+
+  max-width:1400px;
+
+  margin:30px auto;
+
+  padding:0 20px;
+}
+
+#app-public.empresa-page #mapa{
+
+  width:100%;
+
+  height:400px;
+
+  border:none;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.08);
 }
 
 /* RESPONSIVO */

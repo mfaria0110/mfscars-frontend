@@ -300,6 +300,17 @@ document.getElementById(
         ? `https://www.google.com/maps?q=${loja.latitude},${loja.longitude}`
         : `https://www.google.com/maps?q=${loja.cidade}`;
 
+     const mapa =
+        document.getElementById("mapa");
+
+      mapa.src =
+        loja.latitude &&
+        loja.longitude
+          ? `https://maps.google.com/maps?q=${loja.latitude},${loja.longitude}&z=15&output=embed`
+          : `https://maps.google.com/maps?q=${encodeURIComponent(
+              `${loja.cidade} ${loja.estado}`
+            )}&z=12&output=embed`;   
+
     /* VEÍCULOS */
 
     veiculos =
