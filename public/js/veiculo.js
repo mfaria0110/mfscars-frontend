@@ -258,12 +258,9 @@ align-items:start;
           <div
             style="
               display:grid;
-
               grid-template-columns:
-                repeat(2,1fr);
-
-              gap:18px;
-
+                repeat(3,1fr);
+              gap:10px;
               margin-bottom:20px;
             "
           >
@@ -273,13 +270,15 @@ align-items:start;
 
               style="
                 background:#f8fafc;
+                height:32px;
+                padding:0 12px;
 
-                border-radius:20px;
+                display:flex;
+                align-items:center;
 
-padding:14px 18px;
-font-size:15px;
-
-                color:#0f172a;
+                border-radius:12px;
+                font-size:14px;
+                  color:#0f172a;
               "
             ></div>
 
@@ -288,14 +287,15 @@ font-size:15px;
 
               style="
                 background:#f8fafc;
+                height:32px;
+                padding:0 12px;
 
-                border-radius:20px;
+                display:flex;
+                align-items:center;
 
-                padding:20px;
-
-                font-size:17px;
-
-                color:#0f172a;
+                border-radius:12px;
+                font-size:14px;
+                  color:#0f172a;
               "
             ></div>
 
@@ -304,14 +304,15 @@ font-size:15px;
 
               style="
                 background:#f8fafc;
+                height:32px;
+                padding:0 12px;
 
-                border-radius:20px;
+                display:flex;
+                align-items:center;
 
-                padding:20px;
-
-                font-size:17px;
-
-                color:#0f172a;
+                border-radius:12px;
+                font-size:14px;
+                  color:#0f172a;
               "
             ></div>
 
@@ -320,14 +321,15 @@ font-size:15px;
 
               style="
                 background:#f8fafc;
+                height:32px;
+                padding:0 12px;
 
-                border-radius:20px;
+                display:flex;
+                align-items:center;
 
-                padding:20px;
-
-                font-size:17px;
-
-                color:#0f172a;
+                border-radius:12px;
+                font-size:14px;
+                  color:#0f172a;
               "
             ></div>
 
@@ -336,14 +338,15 @@ font-size:15px;
 
               style="
                 background:#f8fafc;
+                height:32px;
+                padding:0 12px;
 
-                border-radius:20px;
+                display:flex;
+                align-items:center;
 
-                padding:20px;
-
-                font-size:17px;
-
-                color:#0f172a;
+                border-radius:12px;
+                font-size:14px;
+                  color:#0f172a;
               "
             ></div>
 
