@@ -342,41 +342,6 @@ font-size:15px;
 
           </div>
 
-            <div
-              style="
-                font-size:14px;
-                color:#64748b;
-
-                margin-bottom:10px;
-              "
-            >
-              Loja
-            </div>
-
-            <div
-              id="loja"
-
-              style="
-                font-size:26px;
-                font-weight:800;
-
-                color:#0f172a;
-
-                margin-bottom:12px;
-              "
-            ></div>
-
-            <div
-              id="telefone"
-
-              style="
-                font-size:18px;
-                color:#2563eb;
-              "
-            ></div>
-
-          </div>
-
         </div>
 
         <!-- CTA -->
