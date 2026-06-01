@@ -184,18 +184,15 @@ align-items:start;
           id="thumbs"
 
           style="
-           display:flex;
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            margin-top:10px;
 
-        flex-wrap:wrap;
-
-        gap:8px;
-
-        margin-top:10px;
+            max-height:160px;
+            overflow-y:auto;
           "
         >
-
-thumbs.style.maxHeight = "160px";
-thumbs.style.overflowY = "auto";
 
         </div>
 
@@ -628,26 +625,6 @@ document.getElementById(
     "/home.html";
 };
 
-document.getElementById(
-  "headerLoja"
-).style.display = "flex";
-
-document.getElementById(
-  "headerLoja"
-).innerHTML = `
-  🏪 ${v.loja}
-
-  <a
-    href="tel:${v.telefone}"
-    style="
-      color:#2563eb;
-      text-decoration:none;
-    "
-  >
-    📞 ${v.telefone}
-  </a>
-`;
-
 /* ===============================
    🚗 CARREGAR VEÍCULO
 ============================== */
@@ -748,6 +725,26 @@ async function carregar() {
       `<a href="tel:${v.telefone}">
         ${v.telefone}
       </a>`;
+
+    document.getElementById(
+      "headerLoja"
+    ).style.display = "flex";
+
+    document.getElementById(
+      "headerLoja"
+    ).innerHTML = `
+      🏪 ${v.loja}
+
+      <a
+        href="tel:${v.telefone}"
+        style="
+          color:#2563eb;
+          text-decoration:none;
+        "
+      >
+        📞 ${v.telefone}
+      </a>
+    `;
 
     /* WHATSAPP */
 
