@@ -22,7 +22,7 @@ app.innerHTML = `
   </span>
 
 <button class="btn-voltar" onclick="history.back()">
-  ← Voltar
+  ← VoltarMF
 </button>
 
 </div>
