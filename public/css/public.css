@@ -482,7 +482,7 @@ linear-gradient(
 #1e293b
 );
 
-  padding: 40px 0;
+  padding: 15px 0;
   color:white;
 }
 
@@ -504,8 +504,8 @@ linear-gradient(
 
 /* LOGO */
 #app-public.empresa-page .logo{
-  width:90px;
-  height:90px;
+  width:70px;
+  height:70px;
   border-radius:10px;
   object-fit:cover;
   background:#222;
@@ -513,13 +513,13 @@ linear-gradient(
 
 /* INFO */
 #app-public.empresa-page .loja-info h1{
-  margin:0;
-  font-size:24px;
+  margin:0 0 8px 0;
+  font-size:22px;
+  line-height:1.1;
 }
 
 #app-public.empresa-page .loja-info p{
-  margin:4px 0;
-  font-size:14px;
+  margin:2px 0;
 }
 
 /* PREMIUM */
