@@ -21,9 +21,9 @@ app.innerHTML = `
     🚗 MFS Cars Marketplace
   </span>
 
-  <button id="btnVoltar">
-    ← Voltar
-  </button>
+<button class="btn-voltar" onclick="history.back()">
+  ← Voltar
+</button>
 
 </div>
 
@@ -93,10 +93,7 @@ app.innerHTML = `
 
 </div>
 
-<div
-  class="container"
-  style="display:flex;gap:20px;"
->
+<div class="container">
 
   <div class="sidebar">
 
