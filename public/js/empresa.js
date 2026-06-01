@@ -98,8 +98,6 @@ app.innerHTML = `
 
   <div class="sidebar">
 
-    <h3>Filtrar</h3>
-
     <input
       id="buscaGeral"
       placeholder="Buscar"
