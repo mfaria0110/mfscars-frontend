@@ -737,25 +737,45 @@ try {
 
 
 
-document.getElementById(
-  "headerLoja"
-).style.display = "flex";
+console.log(
+  "LOJA:",
+  v.loja
+);
 
-document.getElementById(
-  "headerLoja"
-).innerHTML = `
-  🏪 ${v.loja}
+console.log(
+  "TEL:",
+  v.telefone
+);
 
-  <a
-    href="tel:${v.telefone}"
-    style="
-      color:#2563eb;
-      text-decoration:none;
-    "
-  >
-    📞 ${v.telefone}
-  </a>
-`;
+if (lojaResp.ok) {
+
+  const loja =
+    lojaResp.data?.loja;
+
+  document.getElementById(
+    "headerLoja"
+  ).style.display = "flex";
+
+  document.getElementById(
+    "headerLoja"
+  ).innerHTML = `
+    <span>
+      🏪 ${loja?.nome || v.loja}
+    </span>
+
+    <a
+      href="tel:${loja?.telefone || v.telefone}"
+      style="
+        color:#2563eb;
+        text-decoration:none;
+      "
+    >
+      📞 ${formatarTelefone(
+        loja?.telefone || v.telefone
+      )}
+    </a>
+  `;
+}
 
 
 
