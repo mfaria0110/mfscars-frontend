@@ -285,7 +285,7 @@ align-items:start;
                 align-items:center;
 
                 border-radius:12px;
-                font-size:14px;
+                font-size:16px;
                   color:#0f172a;
               "
             ></div>
@@ -302,7 +302,7 @@ align-items:start;
                 align-items:center;
 
                 border-radius:12px;
-                font-size:14px;
+                font-size:16px;
                   color:#0f172a;
               "
             ></div>
@@ -319,7 +319,7 @@ align-items:start;
                 align-items:center;
 
                 border-radius:12px;
-                font-size:14px;
+                font-size:16px;
                   color:#0f172a;
               "
             ></div>
@@ -336,7 +336,7 @@ align-items:start;
                 align-items:center;
 
                 border-radius:12px;
-                font-size:14px;
+                font-size:16px;
                   color:#0f172a;
               "
             ></div>
@@ -353,7 +353,7 @@ align-items:start;
                 align-items:center;
 
                 border-radius:12px;
-                font-size:14px;
+                font-size:16px;
                   color:#0f172a;
               "
             ></div>
