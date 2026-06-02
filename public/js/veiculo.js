@@ -71,7 +71,7 @@ app.innerHTML = `
       align-items:center;
       gap:18px;
 
-      font-size:15px;
+      font-size:20px;
       font-weight:700;
       color:#0f172a;
     "
@@ -83,7 +83,7 @@ app.innerHTML = `
       id="btnVoltar"
 
       style="
-        height:52px;
+        height:35px;
 
         padding:0 22px;
 
@@ -229,7 +229,7 @@ align-items:start;
             id="titulo"
 
             style="
-              font-size:28px;
+              font-size:22px;
               line-height:1.15;
 
               color:#0f172a;
@@ -246,7 +246,7 @@ align-items:start;
             id="valor"
 
             style="
-              font-size:32px;
+              font-size:25px;
               font-weight:900;
 
               color:#16a34a;
