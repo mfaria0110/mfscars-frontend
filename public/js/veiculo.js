@@ -40,7 +40,7 @@ app.innerHTML = `
       justify-content:space-between;
       align-items:center;
 
-      padding:22px 30px;
+      padding:5px 5px;
     "
   >
 
@@ -59,7 +59,7 @@ app.innerHTML = `
     alt="Logo"
 
     style="
-      height:60px;
+      height:90px;
       max-width:220px;
 
       object-fit:contain;
