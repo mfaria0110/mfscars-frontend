@@ -580,6 +580,29 @@ document.getElementById(
     "/home.html";
 };
 
+function formatarTelefone(numero) {
+
+  const n = String(numero || "")
+    .replace(/\D/g, "");
+
+  if (n.length === 11) {
+    return n.replace(
+      /(\d{2})(\d{5})(\d{4})/,
+      "($1) $2-$3"
+    );
+  }
+
+  if (n.length === 10) {
+    return n.replace(
+      /(\d{2})(\d{4})(\d{4})/,
+      "($1) $2-$3"
+    );
+  }
+
+  return numero || "";
+}
+
+
 /* ===============================
    🚗 CARREGAR VEÍCULO
 ============================== */
@@ -716,12 +739,8 @@ try {
 
 document.getElementById(
   "headerLoja"
-).style.display = "flex";
-
-document.getElementById(
-  "headerLoja"
 ).innerHTML = `
-  🏪 ${v.loja}
+  <strong>${v.loja}</strong>
 
   <a
     href="tel:${v.telefone}"
@@ -730,7 +749,7 @@ document.getElementById(
       text-decoration:none;
     "
   >
-    📞 ${v.telefone}
+    📞 ${formatarTelefone(v.telefone)}
   </a>
 `;
 
