@@ -52,15 +52,22 @@ app.innerHTML = `
   "
 >
 
-  <div
+<div id="headerLogo">
+  <img
+    id="logoLoja"
+    src="/assets/sem-logo.png"
+    alt="Logo"
+
     style="
-      font-size:34px;
-      font-weight:900;
-      color:#0f172a;
+      height:60px;
+      max-width:220px;
+
+      object-fit:contain;
+
+      display:block;
     "
   >
-    🚗 MFS Cars
-  </div>
+</div>
 
   <div
     id="headerLoja"
@@ -358,7 +365,7 @@ align-items:start;
           style="
             display:flex;
             gap:12px;
-            margin-top:20px;
+            margin-top:40px;
           "
         >
 
@@ -597,6 +604,25 @@ async function carregar() {
 
     const v =
       dados.veiculo;
+
+    const logo =
+      document.getElementById(
+        "logoLoja"
+      );
+
+    if (v.logo) {
+
+      logo.src =
+        v.logo.replace(
+          "http://",
+          "https://"
+        );
+
+    } else {
+
+      logo.src =
+        "/assets/sem-logo.png";
+    }
 
     /* SEO */
 
