@@ -49,24 +49,25 @@ app.innerHTML = `
 
 <div class="loja-dados">
 
+
+<div class="cabecalho-loja">
+
   <h1 id="nome"></h1>
 
-  <div
-    id="premium"
-    class="badge-premium"
-  >
-    ⭐ Loja Premium
-  </div>
+  <span id="cidade"></span>
 
-  <div class="loja-meta">
+  <span id="telefone"></span>
 
-    <div id="cidade"></div>
-    <div id="telefone"></div>
-    <div id="qtdTopo"></div>
+</div>
 
-  </div>
+<div
+  id="premium"
+  class="badge-premium"
+>
+  ⭐ Loja Premium
+</div>
 
-  <div class="loja-acoes">
+<div class="loja-acoes">
 
     <a
       id="whats"
@@ -250,12 +251,14 @@ async function carregar() {
 document.getElementById(
   "cidade"
 ).innerHTML =
-  `📍 ${loja.cidade || ""} - ${loja.estado || ""}`;
+  `📍 ${loja.cidade || ""}/${loja.estado || ""}`;
 
 document.getElementById(
   "telefone"
 ).innerHTML =
-  `📞 ${loja.telefone || "-"}`;
+  `📞 ${formatarTelefone(
+    loja.telefone || ""
+  )}`;
 
     /* WHATS */
 
@@ -315,10 +318,6 @@ document.getElementById(
     veiculos =
       dados.veiculos || [];
 
-document.getElementById(
-  "qtdTopo"
-).innerHTML =
-  `🚗 ${veiculos.length} veículo${veiculos.length > 1 ? "s" : ""} disponível${veiculos.length > 1 ? "is" : ""}`;
 
     filtrar();
 

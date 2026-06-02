@@ -26,6 +26,25 @@ background:#0056b3;
 
 
 /*LOJAS*/
+
+.cabecalho-loja {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cabecalho-loja h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.cabecalho-loja span {
+  font-size: 18px;
+  color: #fff;
+}
+
 .loja-dados{
   display:flex;
   flex-direction:column;
