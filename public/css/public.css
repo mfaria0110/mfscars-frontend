@@ -76,7 +76,7 @@ background:#0056b3;
 
 .whats{
   padding:12px 18px;
-  height: 20px;
+  height: 23px;
 }
 
 .divisor-loja{
@@ -561,11 +561,11 @@ linear-gradient(
   background:#25d366;
   color:white;
   padding:8px 15px;
-  border-radius:6px;
+  border-radius:8px;
   text-decoration:none;
   font-size:14px;
   display:inline-block;
-  margin-top:8px;
+  
 }
 
 /* CONTAINER */
