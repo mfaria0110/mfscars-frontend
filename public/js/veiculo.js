@@ -602,24 +602,51 @@ async function carregar() {
     const dados =
       res.data;
 
-    const v =
-      dados.veiculo;
+const v =
+  dados.veiculo;
 
-    const logo =
-      document.getElementById(
-        "logoLoja"
-      );
+/* ===============================
+   LOGO DA LOJA
+================================ */
 
-if (v.loja_logo) {
+try {
 
-  logo.src =
-    v.loja_logo;
+  const lojaResp =
+    await requestPublic(
+      `/public/loja/${v.loja_id}`
+    );
 
-} else {
+  if (
+    lojaResp.ok &&
+    lojaResp.data?.loja?.logo
+  ) {
 
-  logo.src =
+    document.getElementById(
+      "logoLoja"
+    ).src =
+      lojaResp.data.loja.logo;
+
+  } else {
+
+    document.getElementById(
+      "logoLoja"
+    ).src =
+      "/assets/sem-logo.png";
+  }
+
+} catch (e) {
+
+  console.error(
+    "Erro carregando logo:",
+    e
+  );
+
+  document.getElementById(
+    "logoLoja"
+  ).src =
     "/assets/sem-logo.png";
 }
+
 
     /* SEO */
 
