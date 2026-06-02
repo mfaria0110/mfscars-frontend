@@ -610,19 +610,16 @@ async function carregar() {
         "logoLoja"
       );
 
-    if (v.logo) {
+if (v.loja_logo) {
 
-      logo.src =
-        v.logo.replace(
-          "http://",
-          "https://"
-        );
+  logo.src =
+    v.loja_logo;
 
-    } else {
+} else {
 
-      logo.src =
-        "/assets/sem-logo.png";
-    }
+  logo.src =
+    "/assets/sem-logo.png";
+}
 
     /* SEO */
 
