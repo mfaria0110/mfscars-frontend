@@ -59,7 +59,7 @@ app.innerHTML = `
     alt="Logo"
 
     style="
-      height:90px;
+      height:75px;
       max-width:220px;
 
       object-fit:contain;
