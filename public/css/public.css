@@ -75,7 +75,7 @@ background:#0056b3;
 
 .whats{
   padding:12px 18px;
-  height: 25px;
+  height: 30px;
 }
 
 .divisor-loja{
@@ -559,7 +559,7 @@ linear-gradient(
 #app-public.empresa-page .whats{
   background:#25d366;
   color:white;
-  padding:8px 15px;
+  padding: 8px 30px 0px 18px;
   border-radius:8px;
   text-decoration:none;
   font-size:14px;
