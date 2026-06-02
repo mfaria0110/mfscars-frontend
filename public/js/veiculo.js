@@ -196,16 +196,17 @@ align-items:start;
 
       </div>
 
-      <!-- INFO -->
-      <div
-        style="
-          padding:26px;
+        <!-- INFO -->
+        <div
+          style="
+            padding:26px;
 
-          display:flex;
-          flex-direction:column;
-          justify-content:space-between;
-        "
-      >
+            display:flex;
+            flex-direction:column;
+
+            justify-content:flex-start;
+          "
+        >
 
         <div>
 
@@ -353,47 +354,31 @@ align-items:start;
 
           </div>
 
-          </div>
-
-        </div>
-
-        <!-- CTA -->
-        <div
+          <div
           style="
             display:flex;
-            gap:18px;
+            gap:12px;
+            margin-top:20px;
           "
         >
 
           <button
             id="whatsapp"
-
             style="
               flex:1;
-
-              height:54px;
-
+              height:48px;
               border:none;
-
-              border-radius:18px;
-
+              border-radius:14px;
               background:
                 linear-gradient(
                   135deg,
                   #16a34a,
                   #15803d
                 );
-
               color:#fff;
-
-              font-size:14px;
-              font-weight:800;
-
+              font-size:15px;
+              font-weight:700;
               cursor:pointer;
-
-              box-shadow:
-                0 20px 40px
-                rgba(22,163,74,.25);
             "
           >
             💬 WhatsApp
@@ -401,39 +386,34 @@ align-items:start;
 
           <button
             id="interesse"
-
             style="
               flex:1;
-
-              height:54px;
-
+              height:48px;
               border:none;
-
-              border-radius:18px;
-
+              border-radius:14px;
               background:
                 linear-gradient(
                   135deg,
                   #2563eb,
                   #1d4ed8
                 );
-
               color:#fff;
-
-              font-size:16px;
-              font-weight:800;
-
+              font-size:15px;
+              font-weight:700;
               cursor:pointer;
-
-              box-shadow:
-                0 20px 40px
-                rgba(37,99,235,.25);
             "
           >
             🚀 Tenho interesse
           </button>
 
         </div>
+
+
+          </div>
+
+        </div>
+
+
 
       </div>
 
