@@ -736,47 +736,27 @@ try {
       v.descricao || "Sem descrição";
 
 
+document.getElementById(
+  "headerLoja"
+).style.display = "flex";
 
-console.log(
-  "LOJA:",
-  v.loja
-);
+document.getElementById(
+  "headerLoja"
+).innerHTML = `
+  <span>
+    🏪 ${v.loja || ""}
+  </span>
 
-console.log(
-  "TEL:",
-  v.telefone
-);
-
-if (lojaResp.ok) {
-
-  const loja =
-    lojaResp.data?.loja;
-
-  document.getElementById(
-    "headerLoja"
-  ).style.display = "flex";
-
-  document.getElementById(
-    "headerLoja"
-  ).innerHTML = `
-    <span>
-      🏪 ${loja?.nome || v.loja}
-    </span>
-
-    <a
-      href="tel:${loja?.telefone || v.telefone}"
-      style="
-        color:#2563eb;
-        text-decoration:none;
-      "
-    >
-      📞 ${formatarTelefone(
-        loja?.telefone || v.telefone
-      )}
-    </a>
-  `;
-}
-
+  <a
+    href="tel:${v.telefone || ""}"
+    style="
+      color:#2563eb;
+      text-decoration:none;
+    "
+  >
+    📞 ${formatarTelefone(v.telefone)}
+  </a>
+`;
 
 
     /* WHATSAPP */
