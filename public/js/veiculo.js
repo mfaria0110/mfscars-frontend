@@ -739,8 +739,12 @@ try {
 
 document.getElementById(
   "headerLoja"
+).style.display = "flex";
+
+document.getElementById(
+  "headerLoja"
 ).innerHTML = `
-  <strong>${v.loja}</strong>
+  🏪 ${v.loja}
 
   <a
     href="tel:${v.telefone}"
@@ -749,7 +753,7 @@ document.getElementById(
       text-decoration:none;
     "
   >
-    📞 ${formatarTelefone(v.telefone)}
+    📞 ${v.telefone}
   </a>
 `;
 
