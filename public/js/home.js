@@ -158,10 +158,9 @@ padding:
     margin:auto;
     display:grid;
     grid-template-columns:
-      0.85fr 1.35fr;
+      0.65fr 1.55fr;
 
     gap:30px;
-  margin-top: 200px;
   "
 >
 
@@ -474,7 +473,7 @@ padding:
       src="/assets/dashboard-preview.png"
 
       style="
-        width:120%;
+        width:140%;
         max-width:none;
         border-radius:22px;
         display:block;
