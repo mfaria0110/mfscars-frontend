@@ -327,14 +327,16 @@ padding:
     </div>
 
     <!-- MINI FEATURES -->
-    <div
-      style="
-        display:flex;
-        gap:10px;
+<div
+  style="
+    display:grid;
 
-        flex-wrap:wrap;
-      "
-    >
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap:12px;
+  "
+>
 
       <div
         style="
@@ -351,7 +353,7 @@ padding:
 
           color:#fff;
 
-          min-width:160px;
+          
         "
       >
         <div
@@ -390,7 +392,7 @@ padding:
 
           color:#fff;
 
-          min-width:180px;
+          
         "
       >
         <div
@@ -429,7 +431,7 @@ padding:
 
           color:#fff;
 
-          min-width:180px;
+          
         "
       >
         <div
