@@ -467,7 +467,7 @@ padding:
     justify-content:center;
     align-items:flex-start;
 
-    margin-top:-35px;
+    margin-top:35px;
   "
 >
 
