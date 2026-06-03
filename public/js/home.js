@@ -162,9 +162,8 @@ padding:
     grid-template-columns:
       0.85fr 1.35fr;
 
-    align-items:center;
-
     gap:30px;
+  margin-top: 200px;
   "
 >
 
