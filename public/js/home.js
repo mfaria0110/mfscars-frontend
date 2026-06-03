@@ -104,7 +104,7 @@ app.innerHTML = `
       opacity:.9;
     "
   >
-    MarketplaceMF
+    Marketplace
   </a>
 
   <a
@@ -158,7 +158,7 @@ padding:
     margin:auto;
     display:grid;
     grid-template-columns:
-      0.65fr 1.55fr;
+      0.9fr 1.1fr;
 
     gap:30px;
   "
@@ -469,19 +469,20 @@ padding:
     "
   >
 
-    <img
-      src="/assets/dashboard-preview.png"
+<img
+  src="/assets/dashboard-preview.png"
 
-      style="
-        width:140%;
-        max-width:none;
-        border-radius:22px;
-        display:block;
-        box-shadow:
-          0 40px 120px
-          rgba(37,99,235,.22);
-              "
-    >
+  style="
+    width:100%;
+    transform:scale(1.08);
+    transform-origin:center;
+    border-radius:22px;
+    display:block;
+    box-shadow:
+      0 40px 120px
+      rgba(37,99,235,.22);
+  "
+>
 
   </div>
 
