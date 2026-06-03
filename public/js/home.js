@@ -160,11 +160,11 @@ padding:
     display:grid;
 
     grid-template-columns:
-      1fr 1.1fr;
+      0.85fr 1.35fr;
 
     align-items:center;
 
-    gap:50px;
+    gap:30px;
   "
 >
 
@@ -462,9 +462,14 @@ padding:
   </div>
 
   <!-- DASHBOARD -->
+
   <div
     style="
-      overflow:hidden;
+      overflow:visible;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
     "
   >
 
@@ -472,13 +477,14 @@ padding:
       src="/assets/dashboard-preview.png"
 
       style="
-        width:100%;
+        width:120%;
+        max-width:none;
         border-radius:22px;
         display:block;
-box-shadow:
-  0 40px 120px
-  rgba(37,99,235,.22);
-      "
+        box-shadow:
+          0 40px 120px
+          rgba(37,99,235,.22);
+              "
     >
 
   </div>
