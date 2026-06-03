@@ -156,9 +156,7 @@ padding:
   style="
     max-width:1400px;
     margin:auto;
-
     display:grid;
-
     grid-template-columns:
       0.85fr 1.35fr;
 
