@@ -158,9 +158,9 @@ padding:
     margin:auto;
     display:grid;
     grid-template-columns:
-      0.9fr 1.1fr;
+      0.95fr 1.05fr;
 
-    gap:30px;
+    gap:40px;
   "
 >
 
@@ -459,15 +459,17 @@ padding:
 
   <!-- DASHBOARD -->
 
-  <div
-    style="
-      overflow:visible;
+<div
+  style="
+    overflow:visible;
 
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    "
-  >
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    margin-top:-35px;
+  "
+>
 
 <img
   src="/assets/dashboard-preview.png"
